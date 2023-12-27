@@ -96,7 +96,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .prata {
-    font-family: 'Prata', serif;
+    font-family: 'prata', serif;
 }
 
 .arvo {
@@ -121,6 +121,10 @@ body::-webkit-scrollbar-thumb {
 
 .dancing {
     font-family: 'Dancing Script', serif;
+}
+
+.cardo {
+    font-family: 'cardo', serif;
 }
 
 #qr_code {

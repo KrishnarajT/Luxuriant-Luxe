@@ -74,7 +74,7 @@ const About = () => {
 				</p>
 				<div className="flex justify-center md:mx-20 md:my-4 md:hidden">
 					<div
-						className="text-xl mt-4 prata text-center
+						className="text-xl mt-4 cardo text-center
 				md:p-10 md:rounded-2xl xl:text-4xl lg:text-3xl md:text-2xl md:text-left md:flex-1"
 					>
 						luxuriant luxe wont give you the false expectations from
@@ -91,7 +91,7 @@ const About = () => {
 			>
 				<div className="md:flex md:justify-center md:flex-row md:mx-20 md:my-4">
 					<div
-						className="text-xl mt-4 prata text-center
+						className="text-xl mt-4 cardo text-center
 				md:p-10 md:rounded-2xl xl:text-4xl lg:text-3xl md:text-2xl md:text-left md:flex-1"
 					>
 						luxuriant luxe wont give you the false expectations from
@@ -121,11 +121,11 @@ const About = () => {
 
 				<div className="md:flex md:justify-center md:flex-row-reverse md:mx-20 md:my-4">
 					<div
-						className="text-xl mt-4 prata text-center
+						className="text-xl mt-4 cardo text-center
 				md:p-10 md:rounded-2xl xl:text-4xl lg:text-3xl md:text-2xl md:text-left md:flex-1"
 					>
 						Made with{" "}
-						<span className="text-accent prata xl:text-4xl lg:text-3xl md:text-2xl italic">
+						<span className="text-accent cardo xl:text-4xl lg:text-3xl md:text-2xl italic">
 							{" "}
 							pure safe-to-use organic{" "}
 						</span>
@@ -133,7 +133,7 @@ const About = () => {
 						it will only help you get rid of those dark spots, tan,
 						open pores, and small bumps and will make your skin
 						outrageously flawless like{" "}
-						<span className="text-accent prata xl:text-4xl lg:text-3xl md:text-2xl italic">
+						<span className="text-accent cardo xl:text-4xl lg:text-3xl md:text-2xl italic">
 							{" "}
 							you've always dreamt of.{" "}
 						</span>
@@ -162,7 +162,7 @@ const About = () => {
 
 				<div className="md:flex md:justify-center md:flex-row md:mx-20 md:my-4">
 					<div
-						className="text-xl mt-4 prata text-center
+						className="text-xl mt-4 cardo text-center
 				md:p-10 md:rounded-2xl xl:text-4xl lg:text-3xl md:text-2xl md:text-left md:flex-1"
 					>
 						luxuriant luxe wont give you the false expectations from
@@ -190,9 +190,9 @@ const About = () => {
 					Only Premium
 				</div>
 
-				<div className="text-xl mt-4 prata text-center">
+				<div className="text-xl mt-4 cardo text-center">
 					Made with{" "}
-					<span className="text-accent prata text-xl">
+					<span className="text-accent cardo text-xl">
 						{" "}
 						pure safe-to-use organic{" "}
 					</span>
@@ -200,7 +200,7 @@ const About = () => {
 					will only help you get rid of those dark spots, tan, open
 					pores, and small bumps and will make your skin outrageously
 					flawless like{" "}
-					<span className="text-accent prata text-xl">
+					<span className="text-accent cardo text-xl">
 						{" "}
 						you've always dreamt of.{" "}
 					</span>
@@ -229,9 +229,9 @@ const About = () => {
 					Why are we special?
 				</div>
 
-				<div className="text-xl mt-4 prata text-center">
+				<div className="text-xl mt-4 cardo text-center">
 					Made with{" "}
-					<span className="text-accent prata text-xl">
+					<span className="text-accent cardo text-xl">
 						{" "}
 						pure safe-to-use organic{" "}
 					</span>
@@ -239,7 +239,7 @@ const About = () => {
 					will only help you get rid of those dark spots, tan, open
 					pores, and small bumps and will make your skin outrageously
 					flawless like{" "}
-					<span className="text-accent prata text-xl">
+					<span className="text-accent cardo text-xl">
 						{" "}
 						you've always dreamt of.{" "}
 					</span>
@@ -267,7 +267,7 @@ const About = () => {
 						className="w-screen h-64 bg-center snap-center self-center"
 					></div>
 				</div>
-				<div className="text-xl mt-4 prata p-4 text-center">
+				<div className="text-xl mt-4 cardo p-4 text-center">
 					We are from Pune. We are a group of students who are
 					passionate about skincare and beauty. We strive to bring you
 					the best products at the best prices!
@@ -303,13 +303,13 @@ const About = () => {
 						></div>
 					</div>
 				</div>
-				<div className="text-xl mt-4 prata p-4 m-5 text-center md:w-4/5">
-					<span className="text-accent prata text-xl lg:text-3xl">
+				<div className="text-xl mt-4 cardo p-4 m-5 text-center md:w-4/5">
+					<span className="text-accent cardo text-xl lg:text-3xl">
 						Two people who got influenced by the ancient skincare
 						heritage from the 1st century and made it time travel to
 						2023 for you.
 					</span>
-					<span className="text-accent prata text-xl lg:text-3xl">
+					<span className="text-accent cardo text-xl lg:text-3xl">
 						We are from Pune. We are a group of students who are
 						passionate about skincare and beauty. We strive to bring
 						you the best products at the best prices!
@@ -321,11 +321,11 @@ const About = () => {
 				id="intro"
 			>
 				Get in Touch!
-				<div className="text-xl mt-10 prata text-center md:w-3/4 md:text-3xl">
+				<div className="text-xl mt-10 cardo text-center md:w-3/4 md:text-3xl">
 					For any queries, Feel Free to Call, or Whatsapp us anytime!
 					We assure you that we will get back to you in 24 hours!
 				</div>
-				<div className="text-xl mt-10 prata text-center md:w-3/4 md:text-3xl">
+				<div className="text-xl mt-10 cardo text-center md:w-3/4 md:text-3xl">
 					You can Also DM us on our Instagram!
 				</div>
 				<div className="flex justify-center mt-4">
@@ -345,7 +345,7 @@ const About = () => {
 							className="w-20 h-20 bg-center snap-center self-center text-secondary-content"
 						></div>
 						<p className="dancing text-3xl text-secondary-content">
-							<span className="text-2xl prata text-secondary-content">
+							<span className="text-2xl cardo text-secondary-content">
 								Luxuriant Luxe
 							</span>
 							<br />

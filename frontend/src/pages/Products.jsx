@@ -106,7 +106,7 @@ const Products = () => {
 				className="flex flex-col p-4 justify-center items-center md:hidden"
 				id="intro"
 			>
-				<div className="text-xl mt-4 prata text-center md:text-3xl w-3/4">
+				<div className="text-xl mt-4 cardo text-center md:text-3xl w-3/4">
 					Tired of trying to find a product for your skin which is
 					organic beneficial and chemical free? Dont worry! We have
 					got you covered!
@@ -127,7 +127,7 @@ const Products = () => {
 						Oily Skin
 					</div>
 					{/* text desc */}
-					<div className="text-xl mt-4 prata text-center md:text-2xl xl:text-3xl md:text-left">
+					<div className="text-xl mt-4 cardo text-center md:text-2xl xl:text-3xl md:text-left">
 						Tired of trying to find a product for your skin which is
 						organic beneficial and chemical free? Don't worry! We
 						have got you covered! Reduces Oiliness, makes skin
@@ -179,7 +179,7 @@ const Products = () => {
 						{<ProductCarousel images={product_1_images} />}
 					</div>
 				</div>
-				<div className="text-xl mt-4 prata text-center">
+				<div className="text-xl mt-4 cardo text-center">
 					Tired of trying to find a product for your skin which is
 					organic beneficial and chemical free? Don't worry! We have
 					got you covered! Reduces Oiliness, makes skin bouncy,
@@ -222,7 +222,7 @@ const Products = () => {
 						Dry Skin
 					</div>
 					{/* text desc */}
-					<div className="text-xl mt-4 prata text-center md:text-2xl xl:text-3xl md:text-left">
+					<div className="text-xl mt-4 cardo text-center md:text-2xl xl:text-3xl md:text-left">
 						Our body cleanser is dedicated to rejuvenate and make
 						your dry skin soft, bouncy and supple again. Our
 						cleanser contains essential nature sources oils which
@@ -276,7 +276,7 @@ const Products = () => {
 				</div> */}
 				{<ProductCarousel images={product_2_images} />}
 
-				<div className="text-xl mt-4 prata text-center">
+				<div className="text-xl mt-4 cardo text-center">
 					Our body cleanser is dedicated to rejuvenate and make your
 					dry skin soft, bouncy and supple again. Our cleanser
 					contains essential nature sources oils which are easy to
@@ -317,7 +317,7 @@ const Products = () => {
 						Normal Skin
 					</div>
 					{/* text desc */}
-					<div className="text-xl mt-4 prata text-center md:text-2xl xl:text-3xl md:text-left">
+					<div className="text-xl mt-4 cardo text-center md:text-2xl xl:text-3xl md:text-left">
 						A perfect balance of essential oils and natural
 						smoothness helping you in simplifying and making your
 						bathing and skincare experience organic and fun.
@@ -368,7 +368,7 @@ const Products = () => {
 				</div> */}
 				{<ProductCarousel images={product_3_images} />}
 
-				<div className="text-xl mt-4 prata text-center ">
+				<div className="text-xl mt-4 cardo text-center ">
 					A perfect balance of essential oils and natural smoothness
 					helping you in simplifying and making your bathing and
 					skincare experience organic and fun.
@@ -416,7 +416,7 @@ const Products = () => {
 							className="w-20 h-20 bg-center snap-center self-center text-secondary-content"
 						></div>
 						<p className="dancing text-3xl text-secondary-content">
-							<span className="text-2xl prata text-secondary-content">
+							<span className="text-2xl cardo text-secondary-content">
 								Luxuriant Luxe
 							</span>
 							<br />
@@ -481,11 +481,11 @@ const Products = () => {
 
 			<div className="flex justify-center toast-center toast">
 				<div
-					className="alert alert-success hidden transform-gpu transition-all duration-300 flex gap-4 md:text-3xl prata"
+					className="alert alert-success hidden transform-gpu transition-all duration-300 flex gap-4 md:text-3xl cardo"
 					id="added_order"
 				>
 					<IconDiscountCheckFilled className="w-6 h-6 md:w-10 md:h-10" />
-					<span className="prata">Added to Cart!</span>
+					<span className="cardo">Added to Cart!</span>
 				</div>
 			</div>
 

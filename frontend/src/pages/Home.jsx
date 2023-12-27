@@ -17,7 +17,8 @@ import ScrollToTopButton from "../components/ui/ScrollToTopButton";
 import slideshowhtml from "../components/slideshow.html";
 import About from "./About";
 import Products from "./Products";
-import Cart from './Cart';
+import Cart from "./Cart";
+import FAQ from "./FAQ";
 
 const Home = () => {
 	const navigate = useNavigate();
@@ -63,9 +64,9 @@ const Home = () => {
 				<About />
 			</section>
 
-			{/* <section>
-				<Cart />
-			</section> */}
+			<section>
+				<FAQ />
+			</section>
 
 			{/* <div className="my-12"> */}
 			{/* <div className="ribbon color"></div> */}
@@ -78,7 +79,7 @@ const Home = () => {
 						className="w-20 h-20 bg-center snap-center self-center text-secondary-content"
 					></div>
 					<p className="dancing text-3xl text-secondary-content">
-						<span className="text-2xl prata text-secondary-content">
+						<span className="text-2xl cardo text-secondary-content">
 							Luxuriant Luxe
 						</span>
 						<br />
@@ -86,11 +87,10 @@ const Home = () => {
 					</p>
 					<p>Copyright © 2023 - All right reserved</p>
 					<div className="flex gap-4">
-
-					<a className="link">Privacy Policy</a>
-					<a className="link">Terms and Conditions</a>
-					<a className="link">Refund and Return Policy</a>
-					<a className="link">Shipping Policy</a>
+						<a className="link">Privacy Policy</a>
+						<a className="link">Terms and Conditions</a>
+						<a className="link">Refund and Return Policy</a>
+						<a className="link">Shipping Policy</a>
 					</div>
 				</aside>
 				<nav className="text-secondary-content">

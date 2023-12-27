@@ -210,7 +210,7 @@ const Cart = () => {
 						return (
 							<div className="flex justify-between items-center gap-4 w-full px-4 pt-4 bg-base-200 rounded-2xl">
 								<div className="">
-									<div className="text-2xl prata my-1">
+									<div className="text-2xl cardo my-1">
 										{
 											productInfo.filter((product) => {
 												return (
@@ -220,7 +220,7 @@ const Cart = () => {
 											})[0].product_name
 										}
 									</div>
-									<div className="text-sm prata my-1">
+									<div className="text-sm cardo my-1">
 										Cost: &#8377;{" "}
 										{
 											productInfo.filter((product) => {
@@ -231,7 +231,7 @@ const Cart = () => {
 											})[0].product_cost
 										}
 									</div>
-									<div className="text-sm prata my-1">
+									<div className="text-sm cardo my-1">
 										Quantity: {item.quantity}
 									</div>
 
@@ -287,7 +287,7 @@ const Cart = () => {
 			) : (
 				<div className="text-center flex flex-col justify-center items-center m-8 text-accent">
 					<IconShoppingCartHeart className="w-24 h-24" />
-					<div className="text-2xl prata my-2">
+					<div className="text-2xl cardo my-2">
 						Your cart is empty.
 					</div>
 				</div>
@@ -571,7 +571,7 @@ const Cart = () => {
 						className="w-20 h-20 bg-center snap-center self-center text-secondary-content"
 					></div>
 					<p className="dancing text-3xl text-secondary-content">
-						<span className="text-2xl prata text-secondary-content">
+						<span className="text-2xl cardo text-secondary-content">
 							Luxuriant Luxe
 						</span>
 						<br />

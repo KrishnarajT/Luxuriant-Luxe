@@ -5890,11 +5890,6 @@ details.collapse summary::-webkit-details-marker {
   color: rgb(136 14 79 / var(--tw-text-opacity));
 }
 
-.text-primary-content {
-  --tw-text-opacity: 1;
-  color: hsl(var(--pc) / var(--tw-text-opacity));
-}
-
 .text-purple-500 {
   --tw-text-opacity: 1;
   color: rgb(156 39 176 / var(--tw-text-opacity));
@@ -5923,6 +5918,11 @@ details.collapse summary::-webkit-details-marker {
 .text-red-900 {
   --tw-text-opacity: 1;
   color: rgb(183 28 28 / var(--tw-text-opacity));
+}
+
+.text-secondary-content {
+  --tw-text-opacity: 1;
+  color: hsl(var(--sc) / var(--tw-text-opacity));
 }
 
 .text-teal-500 {
@@ -5962,11 +5962,6 @@ details.collapse summary::-webkit-details-marker {
 .text-yellow-900 {
   --tw-text-opacity: 1;
   color: rgb(245 127 23 / var(--tw-text-opacity));
-}
-
-.text-secondary-content {
-  --tw-text-opacity: 1;
-  color: hsl(var(--sc) / var(--tw-text-opacity));
 }
 
 .antialiased {
@@ -6414,7 +6409,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .prata {
-  font-family: 'Prata', serif;
+  font-family: 'prata', serif;
 }
 
 .arvo {
@@ -6439,6 +6434,10 @@ body::-webkit-scrollbar-thumb {
 
 .dancing {
   font-family: 'Dancing Script', serif;
+}
+
+.cardo {
+  font-family: 'cardo', serif;
 }
 
 #qr_code {
@@ -6697,250 +6696,10 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media (min-width: 720px) {
-  .md\:btn {
-    display: inline-flex;
-    flex-shrink: 0;
-    cursor: pointer;
-    -webkit-user-select: none;
-       -moz-user-select: none;
-            user-select: none;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    border-color: transparent;
-    border-color: hsl(var(--b2) / var(--tw-border-opacity));
-    text-align: center;
-    transition-property: color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-    transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-    transition-duration: 200ms;
-    border-radius: var(--rounded-btn, 0.5rem);
-    height: 3rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    min-height: 3rem;
-    font-size: 0.875rem;
-    line-height: 1em;
-    gap: 0.5rem;
-    font-weight: 600;
-    -webkit-text-decoration-line: none;
-            text-decoration-line: none;
-    border-width: var(--border-btn, 1px);
-    animation: button-pop var(--animation-btn, 0.25s) ease-out;
-    text-transform: var(--btn-text-case, uppercase);
-    --tw-border-opacity: 1;
-    --tw-bg-opacity: 1;
-    background-color: hsl(var(--b2) / var(--tw-bg-opacity));
-    --tw-text-opacity: 1;
-    color: hsl(var(--bc) / var(--tw-text-opacity));
-    outline-color: hsl(var(--bc) / 1);
-  }
-
-  .md\:btn[disabled],.md\:btn:disabled {
-    pointer-events: none;
-  }
-
-  .btn-group > input.md\:btn[type="radio"] {
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-  }
-
-  .btn-group > input.md\:btn[type="radio"]:before {
-    content: attr(data-title);
-  }
-
-  .md\:btn:is(input[type="checkbox"]),.md\:btn:is(input[type="radio"]) {
-    width: auto;
-    -webkit-appearance: none;
-       -moz-appearance: none;
-            appearance: none;
-  }
-
-  .md\:btn:is(input[type="checkbox"]):after,.md\:btn:is(input[type="radio"]):after {
-    --tw-content: attr(aria-label);
-    content: var(--tw-content);
-  }
-
-  @media (hover: hover) {
-    .md\:btn:hover {
-      --tw-border-opacity: 1;
-      border-color: hsl(var(--b3) / var(--tw-border-opacity));
-      --tw-bg-opacity: 1;
-      background-color: hsl(var(--b3) / var(--tw-bg-opacity));
-    }
-
-    .md\:btn.glass:hover {
-      --glass-opacity: 25%;
-      --glass-border-opacity: 15%;
-    }
-
-    .md\:btn-ghost:hover {
-      --tw-border-opacity: 0;
-      background-color: hsl(var(--bc) / var(--tw-bg-opacity));
-      --tw-bg-opacity: 0.2;
-    }
-
-    .md\:btn[disabled]:hover,.md\:btn:disabled:hover {
-      --tw-border-opacity: 0;
-      background-color: hsl(var(--n) / var(--tw-bg-opacity));
-      --tw-bg-opacity: 0.2;
-      color: hsl(var(--bc) / var(--tw-text-opacity));
-      --tw-text-opacity: 0.2;
-    }
-
-    .md\:btn:is(input[type="checkbox"]:checked):hover,.md\:btn:is(input[type="radio"]:checked):hover {
-      --tw-border-opacity: 1;
-      border-color: hsl(var(--pf) / var(--tw-border-opacity));
-      --tw-bg-opacity: 1;
-      background-color: hsl(var(--pf) / var(--tw-bg-opacity));
-    }
-  }
-
-  .md\:btn:active:hover,.md\:btn:active:focus {
-    animation: button-pop 0s ease-out;
-    transform: scale(var(--btn-focus-scale, 0.97));
-  }
-
-  .md\:btn:focus-visible {
-    outline-style: solid;
-    outline-width: 2px;
-    outline-offset: 2px;
-  }
-
-  .md\:btn.glass {
-    --tw-shadow: 0 0 #0000;
-    --tw-shadow-colored: 0 0 #0000;
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-    outline-color: currentColor;
-  }
-
-  .md\:btn.glass.btn-active {
-    --glass-opacity: 25%;
-    --glass-border-opacity: 15%;
-  }
-
-  .md\:btn-ghost {
-    border-width: 1px;
-    border-color: transparent;
-    background-color: transparent;
-    color: currentColor;
-    --tw-shadow: 0 0 #0000;
-    --tw-shadow-colored: 0 0 #0000;
-    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-    outline-color: currentColor;
-  }
-
-  .md\:btn-ghost.btn-active {
-    --tw-border-opacity: 0;
-    background-color: hsl(var(--bc) / var(--tw-bg-opacity));
-    --tw-bg-opacity: 0.2;
-  }
-
-  .md\:btn.btn-disabled,.md\:btn[disabled],.md\:btn:disabled {
-    --tw-border-opacity: 0;
-    background-color: hsl(var(--n) / var(--tw-bg-opacity));
-    --tw-bg-opacity: 0.2;
-    color: hsl(var(--bc) / var(--tw-text-opacity));
-    --tw-text-opacity: 0.2;
-  }
-
-  .btn-group > input.md\:btn[type="radio"]:checked {
-    --tw-border-opacity: 1;
-    border-color: hsl(var(--p) / var(--tw-border-opacity));
-    --tw-bg-opacity: 1;
-    background-color: hsl(var(--p) / var(--tw-bg-opacity));
-    --tw-text-opacity: 1;
-    color: hsl(var(--pc) / var(--tw-text-opacity));
-  }
-
-  .btn-group > input.md\:btn[type="radio"]:checked:focus-visible {
-    outline-style: solid;
-    outline-width: 2px;
-    outline-color: hsl(var(--p) / 1);
-  }
-
-  .md\:btn:is(input[type="checkbox"]:checked),.md\:btn:is(input[type="radio"]:checked) {
-    --tw-border-opacity: 1;
-    border-color: hsl(var(--p) / var(--tw-border-opacity));
-    --tw-bg-opacity: 1;
-    background-color: hsl(var(--p) / var(--tw-bg-opacity));
-    --tw-text-opacity: 1;
-    color: hsl(var(--pc) / var(--tw-text-opacity));
-  }
-
-  .md\:btn:is(input[type="checkbox"]:checked):focus-visible,.md\:btn:is(input[type="radio"]:checked):focus-visible {
-    outline-color: hsl(var(--p) / 1);
-  }
-
   .mockup-phone .md\:display {
     overflow: hidden;
     border-radius: 40px;
     margin-top: -25px;
-  }
-
-  .btn-group .md\:btn:not(:first-child):not(:last-child) {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  .btn-group .md\:btn:first-child:not(:last-child) {
-    margin-left: -1px;
-    margin-top: -0px;
-    border-top-left-radius: var(--rounded-btn, 0.5rem);
-    border-top-right-radius: 0;
-    border-bottom-left-radius: var(--rounded-btn, 0.5rem);
-    border-bottom-right-radius: 0;
-  }
-
-  .btn-group .md\:btn:last-child:not(:first-child) {
-    border-top-left-radius: 0;
-    border-top-right-radius: var(--rounded-btn, 0.5rem);
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: var(--rounded-btn, 0.5rem);
-  }
-
-  .btn-group-horizontal .md\:btn:not(:first-child):not(:last-child) {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  .btn-group-horizontal .md\:btn:first-child:not(:last-child) {
-    margin-left: -1px;
-    margin-top: -0px;
-    border-top-left-radius: var(--rounded-btn, 0.5rem);
-    border-top-right-radius: 0;
-    border-bottom-left-radius: var(--rounded-btn, 0.5rem);
-    border-bottom-right-radius: 0;
-  }
-
-  .btn-group-horizontal .md\:btn:last-child:not(:first-child) {
-    border-top-left-radius: 0;
-    border-top-right-radius: var(--rounded-btn, 0.5rem);
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: var(--rounded-btn, 0.5rem);
-  }
-
-  .btn-group-vertical .md\:btn:first-child:not(:last-child) {
-    margin-left: -0px;
-    margin-top: -1px;
-    border-top-left-radius: var(--rounded-btn, 0.5rem);
-    border-top-right-radius: var(--rounded-btn, 0.5rem);
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
-  .btn-group-vertical .md\:btn:last-child:not(:first-child) {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-left-radius: var(--rounded-btn, 0.5rem);
-    border-bottom-right-radius: var(--rounded-btn, 0.5rem);
   }
 }
 
@@ -9636,14 +9395,14 @@ body::-webkit-scrollbar-thumb {
     line-height: 1;
   }
 
-  .md\:text-xl {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
-  }
-
   .md\:text-7xl {
     font-size: 4.5rem;
     line-height: 1;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 
   .md\:normal-case {
