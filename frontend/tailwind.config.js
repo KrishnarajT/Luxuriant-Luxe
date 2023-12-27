@@ -13,16 +13,16 @@ module.exports = withMT({
 	theme: {
 		extend: {
 			colors: {
-				text: "#231010",
-				background: "#f6eaea",
-				primary: "#e89293",
-				secondary: "#e9cece",
+				text: "#000000",
+				background: "#ffffff",
+				primary: "#200d0d",
+				secondary: "#eabfbf",
 				accent: "#eb5959",
-				text_dark: "#efdcdc",
-				background_dark: "#181616",
-				primary_dark: "#c58a8a",
-				secondary_dark: "#140404",
-				accent_dark: "#f26c6c",
+				text_dark: "#ddd8d8",
+				background_dark: "#151414",
+				primary_dark: "#f6e3e3",
+				secondary_dark: "#eabfbf",
+				accent_dark: "#eb5959",
 			},
 		},
 	},
@@ -32,10 +32,10 @@ module.exports = withMT({
 		themes: [
 			{
 				MyLight: {
-					text: "#231010",
-					"base-100": "#f6eaea",
-					primary: "#e89293",
-					secondary: "#e9cece",
+					text: "#000000",
+					"base-100": "#ffffff",
+					primary: "#200d0d",
+					secondary: "#eabfbf",
 					neutral: "#a2494a",
 					accent: "#eb5959",
 					info: "#5699eb",
@@ -54,11 +54,11 @@ module.exports = withMT({
 					// "--tab-radius": "0.5rem", // border radius of tabs
 				},
 				MyDark: {
-					primary: "#c58a8a",
-					secondary: "#140404",
+					primary: "#f6e3e3",
+					secondary: "#eabfbf",
 					accent: "#eb5959",
 					neutral: "#f26c6c",
-					"base-100": "#181616",
+					"base-100": "#151414",
 					info: "#5699eb",
 					success: "#37e1cd",
 					warning: "#eabe10",

@@ -564,21 +564,28 @@ const Cart = () => {
 				<div></div>
 			)}
 
-			<footer className="footer footer-center p-10 bg-secondary text-primary-content bottom-0">
+			<footer className="footer footer-center p-10 bg-secondary bottom-0 text-secondary-content">
 				<aside>
 					<div
 						id="luxelogo"
-						className="w-20 h-20 bg-center snap-center self-center"
+						className="w-20 h-20 bg-center snap-center self-center text-secondary-content"
 					></div>
-					<p className="dancing text-3xl">
-						<span className="text-2xl prata">Luxuriant Luxe</span>
+					<p className="dancing text-3xl text-secondary-content">
+						<span className="text-2xl prata text-secondary-content">
+							Luxuriant Luxe
+						</span>
 						<br />
 						Your Skin Our Priority
 					</p>
 					<p>Copyright © 2023 - All right reserved</p>
-					<a className="link">Privacy Policy</a>
+					<div className="flex gap-4">
+						<a className="link">Privacy Policy</a>
+						<a className="link">Terms and Conditions</a>
+						<a className="link">Refund and Return Policy</a>
+						<a className="link">Shipping Policy</a>
+					</div>
 				</aside>
-				<nav className="">
+				<nav className="text-secondary-content">
 					<div className="flex flex-wrap justify-center items-center gap-4 w-2/3 lg:w-fit">
 						<a href="https://wa.me/917666018928?text=Welcome%20to%20Luxuriant%20Luxe!%20How%20can%20we%20assist%20you%20today%3F%20">
 							<IconBrandWhatsapp className="w-8 h-8" />

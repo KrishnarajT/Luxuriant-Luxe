@@ -43,11 +43,11 @@ export function Navbar(props) {
 	return (
 		<div className="z-50">
 			<div
-				className={`navbar bg-secondary text-secondary-content flex-row-reverse justify-end h-40 md:flex-row md:h-32`}
+				className={`navbar bg-base-100 text-base-content flex-row-reverse justify-end h-40 md:flex-row md:h-32`}
 			>
 				{/* maincontents */}
 				<div
-					className="hidden text-text
+					className="hidden text-base-content
 			   md:flex"
 				>
 					<ul className="menu menu-horizontal px-1">
@@ -55,7 +55,7 @@ export function Navbar(props) {
 							<NavLink
 								to={"/products"}
 								id="contact_element"
-								className="hover:text-text"
+								className="hover:text-base-content"
 							>
 								<IconShoppingBag className="w-8 h-8" />
 							</NavLink>
@@ -64,7 +64,7 @@ export function Navbar(props) {
 							<NavLink
 								to={"/about"}
 								id="contact_element"
-								className="hover:text-text"
+								className="hover:text-base-content"
 							>
 								<IconInfoCircle className="w-8 h-8" />
 							</NavLink>
@@ -76,15 +76,15 @@ export function Navbar(props) {
 				<div className="flex w-screen md:w-fit md:pl-0 md:display justify-center mr-8 md:flex-row md:flex-1 md:mr-0">
 					<div
 						className="flex-row-reverse px-2 gap-0 flex
-			md:flex-row text-text"
+			md:flex-row text-base-content"
 					>
 						<NavLink to={"/"} className="flex flex-row">
-							<div
+							{/* <div
 								id="luxelogo"
 								className="w-28 h-28 bg-center snap-center self-center"
-							></div>
-							<div className="md:btn md:btn-ghost md:normal-case md:text-xl hidden md:hidden">
-								Luxuriant Luxe
+							></div> */}
+							<div className="md:normal-case md:text-7xl text-3xl bodoni text-center">
+								LUXURIANT LUXE
 							</div>
 						</NavLink>
 					</div>
@@ -97,7 +97,7 @@ export function Navbar(props) {
 								<NavLink
 									to={"/cart"}
 									id="contact_element"
-									className="hover:text-text text-text"
+									className="hover:text-base-content text-base-content"
 								>
 									<IconShoppingCart className="w-8 h-8" />
 								</NavLink>
@@ -123,7 +123,7 @@ export function Navbar(props) {
 								<li className="text-lg md:text-xl">
 									<button className="btn btn-ghost rounded-btn">
 										<IconSun
-											className="w-8 h-8 text-text hover:text-text"
+											className="w-8 h-8 text-base-content hover:text-base-content"
 											onClick={() => {
 												setTheme("light");
 											}}
@@ -134,16 +134,16 @@ export function Navbar(props) {
 						</ul>
 					</div>
 					{/* Profile */}
-					<div className="hidden md:flex text-text">
-						<ul className="menu menu-horizontal text-text px-1">
+					<div className="hidden md:flex text-base-content">
+						<ul className="menu menu-horizontal text-base-content px-1">
 							<li>
 								<details>
 									<summary>
-										<IconUserBolt className="w-8 h-8 text-secondary-content text-text" />
+										<IconUserBolt className="w-8 h-8 text-base-content text-base-content" />
 									</summary>
-									<ul className="p-2 bg-base-100 text-secondary-content">
+									<ul className="p-2 bg-base-100 text-base-content">
 										<li
-											className="text-lg hover:text-text text-text"
+											className="text-lg hover:text-base-content text-base-content"
 											onClick={() => {
 												handleLogout();
 											}}
@@ -162,15 +162,15 @@ export function Navbar(props) {
 					<ul className="menu menu-horizontal px-1 w-fit">
 						<li>
 							<details className="w-fit">
-								<summary className="text-md md:text-xl text-text">
-									<IconMenu2 className="w-6 h-6 text-text" />
+								<summary className="text-md md:text-xl text-base-content">
+									<IconMenu2 className="w-6 h-6 text-base-content" />
 								</summary>
 								<ul className="p-2 bg-base-100 text-base-content z-50 flex flex-wrap flex-col w-fit gap-2">
 									<li className="text-md md:text-xl whitespace-nowrap flex-nowrap w-36">
 										<NavLink
 											to={"/"}
 											id="contact_element"
-											className="hover:text-text"
+											className="hover:text-base-content"
 										>
 											<IconHome className="w-6 h-6" />
 											Home
@@ -180,7 +180,7 @@ export function Navbar(props) {
 										<NavLink
 											to={"/products"}
 											id="contact_element"
-											className="hover:text-text"
+											className="hover:text-base-content"
 										>
 											<IconShoppingBag className="w-6 h-6" />
 											Products
@@ -190,7 +190,7 @@ export function Navbar(props) {
 										<NavLink
 											to={"/about"}
 											id="contact_element"
-											className="hover:text-text"
+											className="hover:text-base-content"
 										>
 											<IconInfoCircle className="w-6 h-6" />
 											About Us
@@ -200,7 +200,7 @@ export function Navbar(props) {
 										<NavLink
 											to={"/cart"}
 											id="contact_element"
-											className="hover:text-text"
+											className="hover:text-base-content"
 										>
 											<IconShoppingCart className="w-6 h-6" />
 											Cart
@@ -208,7 +208,7 @@ export function Navbar(props) {
 									</li>
 									<li className="menu menu-horizontal px-1 py-0 ">
 										<details>
-											<summary className="text-md md:text-xl text-secondary-content">
+											<summary className="text-md md:text-xl text-base-content">
 												<IconBrush className="w-6 h-6" />
 												Theme
 											</summary>
@@ -242,8 +242,8 @@ export function Navbar(props) {
 									</li>
 									<li className="menu menu-horizontal px-1 py-0">
 										<details>
-											<summary className="text-md md:text-xl text-secondary-content">
-												<IconUserBolt className="w-6 h-6 text-secondary-content" />
+											<summary className="text-md md:text-xl text-base-content">
+												<IconUserBolt className="w-6 h-6 text-base-content" />
 												Account
 											</summary>
 											<ul className="p-2 bg-base-100 text-base-content">
@@ -251,7 +251,7 @@ export function Navbar(props) {
 													<NavLink
 														to={"/"}
 														id="contact_element"
-														className="hover:text-text"
+														className="hover:text-base-content"
 													>
 														<IconLogout className="w-6 h-6" />
 														Logout
