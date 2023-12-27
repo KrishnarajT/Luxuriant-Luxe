@@ -153,6 +153,48 @@ const About = () => {
 					className="dancing text-2xl text-center mb-6 mt-8
 				md:text-5xl"
 				>
+					Authenticity in Beauty
+				</p>
+
+				<div className="md:flex md:justify-center md:flex-row-reverse md:mx-20 md:my-4">
+					<div
+						className="text-xl mt-4 cardo text-center
+				md:p-10 md:rounded-2xl xl:text-4xl lg:text-3xl md:text-2xl md:text-left md:flex-1"
+					>
+						Unveil the{" "}
+						<span className="text-accent cardo xl:text-4xl lg:text-3xl md:text-2xl italic">
+							{" "}
+							sublime secrets of skincare{" "}
+						</span>{" "}
+						that honor the essence of your unique beauty. For true
+						radiance stems not from a generic mold, but from the
+						sacred sympohony of your individuality. Behold the power
+						of
+						<span className="text-accent cardo xl:text-4xl lg:text-3xl md:text-2xl italic">
+							{" "}
+							Luxuriant Luxe{" "}
+						</span>
+						An exclusive range of expertly crafted potions that
+						embrace your skin's intrinsic character and empower its
+						natural faculties. With each elixir, your skin awakens
+						to its ful potential, embarking on a transofrmative
+						journey towards unparalleled luminosity.
+					</div>
+					<div className="md:flex-1 md:flex md:p-4 md:justify-start p-4">
+						<div className="rounded-3xl flex items-center 2xl:w-1/2">
+							<img
+								src={product_1_image_1}
+								alt=""
+								className="rounded-3xl"
+							/>
+						</div>
+					</div>
+				</div>
+
+				<p
+					className="dancing text-2xl text-center mb-6 mt-8
+				md:text-5xl"
+				>
 					Why we are
 					<span className="text-accent dancing text-xl md:text-5xl">
 						{" "}
@@ -204,6 +246,35 @@ const About = () => {
 						{" "}
 						you've always dreamt of.{" "}
 					</span>
+				</div>
+			</section>
+
+			<section
+				className="flex flex-col p-2 m-8 justify-center items-center md:hidden"
+				id="intro"
+			>
+				<div className="text-4xl md:text-5xl bulgatti my-6">
+					Authenticity in Beauty
+				</div>
+
+				<div className="text-xl mt-4 cardo text-center">
+					Unveil the{" "}
+					<span className="text-accent cardo text-xl">
+						{" "}
+						sublime secrets of skincare{" "}
+					</span>{" "}
+					that honor the essence of your unique beauty. For true
+					radiance stems not from a generic mold, but from the sacred
+					sympohony of your individuality. Behold the power of
+					<span className="text-accent cardo text-xl">
+						{" "}
+						Luxuriant Luxe{" "}
+					</span>
+					An exclusive range of expertly crafted potions that embrace
+					your skin's intrinsic character and empower its natural
+					faculties. With each elixir, your skin awakens to its ful
+					potential, embarking on a transofrmative journey towards
+					unparalleled luminosity.
 				</div>
 			</section>
 
