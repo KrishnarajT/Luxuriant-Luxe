@@ -18,6 +18,7 @@ import Login from "./pages/Login";
 import Customers from "./pages/Customers";
 import Orders from "./pages/Orders";
 import Products from "./pages/Products";
+import Emails from "./pages/Emails.jsx";
 
 function App() {
 	const [isNavbarPresent, setisNavbarPresent] = useState(true);
@@ -50,6 +51,7 @@ function App() {
 							<Route path="/customers" element={<Customers/>}/>
 							<Route path="/orders" element={<Orders/>}/>
 							<Route path="/products" element={<Products/>}/>
+							<Route path="/emails" element={<Emails/>}/>
 						</Routes>
 					</div>
 				</UserContextProvider>

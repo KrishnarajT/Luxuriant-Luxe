@@ -32,7 +32,7 @@ const CartContextProvider = ({ children }) => {
 	useEffect(() => {
 		const fetchProductInfo = async () => {
 			let response = await axios
-				.post(`${base_url}/api/v1/Luxuriant/get_Products`, data, {
+				.post(`${base_url}/api/v1/Luxuriant/get_Products`, {
 					headers: {
 						"Content-Type": "application/json",
 					},
@@ -76,7 +76,6 @@ const CartContextProvider = ({ children }) => {
 				const data = response.data.products;
 				console.log(data);
 				setProductInfo(data);
-				productDetails = data;
 			} else if (response.data.message === "No Products found") {
 				setProductInfo([]);
 			}

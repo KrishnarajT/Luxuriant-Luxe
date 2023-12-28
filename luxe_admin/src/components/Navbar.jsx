@@ -8,6 +8,8 @@ import {
 	IconBoxSeam,
 	IconBrush,
 	IconLogout,
+	IconMail,
+	IconMailFast,
 	IconMenu2,
 	IconMoon,
 	IconShoppingCart,
@@ -94,6 +96,16 @@ export function Navbar(props) {
 							>
 								<IconBoxSeam className="w-6 h-6" />
 								Products
+							</NavLink>
+						</li>
+						<li className="text-md md:text-xl whitespace-nowrap flex-nowrap w-36">
+							<NavLink
+								to={"/emails"}
+								id="contact_element"
+								className="hover:text-black"
+							>
+								<IconMail className="w-6 h-6" />
+								Emails
 							</NavLink>
 						</li>
 					</ul>

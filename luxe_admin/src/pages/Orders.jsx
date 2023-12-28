@@ -325,11 +325,11 @@ const Orders = () => {
 			console.log("payment status not changed");
 
 			// show toast for 3 seconds
-			const mail_sent_toast = document.getElementById(
+			const mail_not_sent_toast = document.getElementById(
 				"mail_not_send_toast"
 			);
-			mail_sent_toast.innerHTML = "Could not Send Mail!";
-			mail_sent_toast.classList.remove("hidden");
+			mail_not_sent_toast.innerHTML = "Could not Send Mail!";
+			mail_not_sent_toast.classList.remove("hidden");
 			setTimeout(() => {
 				mail_sent_toast.classList.add("hidden");
 			}, 3000);
