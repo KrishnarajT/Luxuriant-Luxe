@@ -19,10 +19,12 @@ import About from "./About";
 import Products from "./Products";
 import Cart from "./Cart";
 import FAQ from "./FAQ";
+import { CartContext } from "../context/CartContext";
 
 const Home = () => {
 	const navigate = useNavigate();
 	const { theme } = React.useContext(ThemeContext);
+	const { productInfo } = React.useContext(CartContext);
 	useEffect(() => {
 		if (theme === "light") {
 			const light_button = document.getElementById("light_button");
@@ -31,6 +33,7 @@ const Home = () => {
 			const dark_button = document.getElementById("dark_button");
 			dark_button.click();
 		}
+		console.log(productInfo);
 	});
 	return (
 		<div className="">

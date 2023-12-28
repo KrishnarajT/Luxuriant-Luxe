@@ -13,11 +13,16 @@ import {
 	IconMoon,
 	IconPackage,
 	IconShoppingBag,
+	IconShoppingBagSearch,
 	IconShoppingCart,
 	IconSun,
 	IconUserBolt,
 } from "@tabler/icons-react";
 import "../css/Navbar.css";
+import { PhHandbagFill } from './ui/PhHandbagFill';
+import { SolarCosmeticBoldDuotone } from './ui/SolarCosmeticBoldDuotone';
+import { MaterialSymbolsLightFace2 } from './ui/MaterialSymbolsLightFace2';
+import { IconParkOutlineCosmeticBrush } from './ui/IconParkOutlineCosmeticBrush';
 
 export function Navbar(props) {
 	useEffect(() => {
@@ -46,20 +51,65 @@ export function Navbar(props) {
 				className={`navbar bg-base-100 text-base-content flex-row-reverse justify-end h-40 md:flex-row md:h-32`}
 			>
 				{/* maincontents */}
+				<div className="hidden md:flex text-base-content">
+					<ul className="menu menu-horizontal text-base-content px-1">
+						<li>
+							<details>
+								<summary className="text-3xl text-base-content">
+									<PhHandbagFill className="w-10 h-10 text-base-content" />
+									Products
+								</summary>
+								<ul className="menu menu-horizontal px-1">
+									<li className="text-lg md:text-xl w-full">
+										<NavLink
+											to={"/products"}
+											id="contact_element"
+											className="hover:text-base-content text-2xl w-full"
+										>
+											<IconShoppingBagSearch className="w-10 h-10" />
+											Catalogue
+										</NavLink>
+									</li>
+									<li className="text-lg md:text-xl w-full">
+										<NavLink
+											to={"/hair"}
+											id="contact_element"
+											className="hover:text-base-content text-2xl w-full"
+										>
+											<MaterialSymbolsLightFace2 className="w-10 h-10" />
+											Hair
+										</NavLink>
+									</li>
+									<li className="text-lg md:text-xl w-full">
+										<NavLink
+											to={"/skin"}
+											id="contact_element"
+											className="hover:text-base-content text-2xl"
+										>
+											<IconParkOutlineCosmeticBrush className="w-10 h-10" />
+											Skin
+										</NavLink>
+									</li>
+									<li className="text-lg md:text-xl">
+										<NavLink
+											to={"/cosmetics"}
+											id="contact_element"
+											className="hover:text-base-content text-2xl"
+										>
+											<SolarCosmeticBoldDuotone className="w-10 h-10" />
+											Cosmetics
+										</NavLink>
+									</li>
+								</ul>
+							</details>
+						</li>
+					</ul>
+				</div>
 				<div
 					className="hidden text-base-content
 			   md:flex"
 				>
 					<ul className="menu menu-horizontal px-1">
-						<li className="text-lg md:text-xl">
-							<NavLink
-								to={"/products"}
-								id="contact_element"
-								className="hover:text-base-content"
-							>
-								<IconShoppingBag className="w-8 h-8" />
-							</NavLink>
-						</li>
 						<li className="text-lg md:text-xl">
 							<NavLink
 								to={"/about"}
@@ -139,7 +189,7 @@ export function Navbar(props) {
 							<li>
 								<details>
 									<summary>
-										<IconUserBolt className="w-8 h-8 text-base-content text-base-content" />
+										<IconUserBolt className="w-8 h-8 text-base-content" />
 									</summary>
 									<ul className="p-2 bg-base-100 text-base-content">
 										<li

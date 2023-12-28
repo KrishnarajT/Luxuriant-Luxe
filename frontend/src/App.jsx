@@ -3,11 +3,12 @@
 // made for luxuriant luxe.
 
 // react imports
-import {Route, Routes} from "react-router-dom";
-import {useEffect, useState} from "react";
+import { Route, Routes } from "react-router-dom";
+import React from "react";
+import { useEffect, useState } from "react";
 
 // import components
-import {Navbar} from "./components/Navbar";
+import { Navbar } from "./components/Navbar";
 
 // import contexts
 import ThemeContextProvider from "./context/ThemeContext";
@@ -21,29 +22,28 @@ import Cart from "./pages/Cart";
 
 function App() {
 	const [isNavbarPresent, setisNavbarPresent] = useState(true);
-	
+
 	useEffect(() => {
-		console.log(isNavbarPresent)
+		console.log(isNavbarPresent);
 	}, [isNavbarPresent]);
-	
+
 	return (
 		<ThemeContextProvider>
 			<CartContextProvider>
 				<div className="">
 					{isNavbarPresent ? (
-						<Navbar setisNavbarPresent={setisNavbarPresent}/>
+						<Navbar setisNavbarPresent={setisNavbarPresent} />
 					) : null}
 					<Routes>
-						<Route path="/" element={<Home/>}/>
-						<Route path="/about" element={<About/>}/>
-						<Route path="/products" element={<Products/>}/>
-						<Route path="/cart" element={<Cart/>}/>
+						<Route path="/" element={<Home />} />
+						<Route path="/about" element={<About />} />
+						<Route path="/products" element={<Products />} />
+						<Route path="/cart" element={<Cart />} />
 					</Routes>
 				</div>
 			</CartContextProvider>
 		</ThemeContextProvider>
 	);
 }
-
 
 export default App;
