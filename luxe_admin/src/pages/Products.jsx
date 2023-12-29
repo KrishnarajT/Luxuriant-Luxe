@@ -1,11 +1,12 @@
-import React, {useEffect, useState} from "react";
-import {ThemeContext} from "../context/ThemeContext";
-import {UserContext} from "../context/UserContext";
-import {BaseUrlContext} from "../context/BaseUrlContext";
+import React, { useEffect, useState } from "react";
+import { ThemeContext } from "../context/ThemeContext";
+import { UserContext } from "../context/UserContext";
+import { BaseUrlContext } from "../context/BaseUrlContext";
 import ScrollToTopButton from "../components/ui/ScrollToTopButton";
 import axios from "axios";
-import {DBInfoContext} from "../context/DBInfoContext.jsx";
-import {IconSearch} from "@tabler/icons-react";
+import { DBInfoContext } from "../context/DBInfoContext.jsx";
+import { IconSearch } from "@tabler/icons-react";
+import { Toaster, toast } from "react-hot-toast";
 
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 axios.defaults.headers.common["Access-Control-Allow-Methods"] =
@@ -14,47 +15,55 @@ axios.defaults.headers.common["Access-Control-Allow-Headers"] = "Content-Type";
 axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "true";
 
 const Products = () => {
-	const {theme} = React.useContext(ThemeContext);
-	const {userPassword, setUserPassword} = React.useContext(UserContext);
+	const { theme } = React.useContext(ThemeContext);
+	const { userPassword, setUserPassword } = React.useContext(UserContext);
 	const base_url = React.useContext(BaseUrlContext).baseUrl;
 	const [productDetails, setProductDetails] = React.useState(null);
 	const [searchTerm, setSearchTerm] = useState("");
-	
-	const {
-		productInfo, setProductInfo,
-	} = React.useContext(DBInfoContext);
-	
+
+	const { productInfo, setProductInfo } = React.useContext(DBInfoContext);
+
 	// this is how product details looks like
 	// [
-	// 	{
-	// 		"_id": "654cd992ae6a271afeed6b4c",
-	// 		"product_name": "Blue Jar",
-	// 		"product_cost": 100
-	// 	},
-	// 	{
-	// 		"_id": "654cd992ae6a271afeed6b4d",
-	// 		"product_name": "Purple Jar",
-	// 		"product_cost": 200
-	// 	},
-	// 	{
-	// 		"_id": "654cd992ae6a271afeed6b4e",
-	// 		"product_name": "Pink Jar",
-	// 		"product_cost": 300
-	// 	}
+	// 	{// product details looks like this:
+	// {
+	// 	product_name: "Product Name",
+	// 	product_description: "Product Description",
+	// 	product_cost: 100,
+	// 	product_image_links: ["image1", "image2"],
+	// 	product_category: ["Product Category", "Product Category 2"]
+	//  product_quantity: 100
+	// }
+	// {
+	// 	product_name: "Product Name",
+	// 	product_description: "Product Description",
+	// 	product_cost: 100,
+	// 	product_image_links: ["image1", "image2"],
+	// 	product_category: ["Product Category", "Product Category 2"]
+	//  product_quantity: 100
+	// }
+	// {
+	// 	product_name: "Product Name",
+	// 	product_description: "Product Description",
+	// 	product_cost: 100,
+	// 	product_image_links: ["image1", "image2"],
+	// 	product_category: ["Product Category", "Product Category 2"]
+	//  product_quantity: 100
+	// }
 	// ]
-	
+
 	const [apiCallMade, setApiCallMade] = useState(false);
 	let iSentOnce = false;
-	
+
 	const get_product_details = () => {
 		// get product details from the context.
 		setProductDetails(productInfo);
-		
+
 		if (productInfo.length === 0) {
 			console.log("productInfo is empty");
 		}
 	};
-	
+
 	useEffect(() => {
 		if (theme === "light") {
 			const light_button = document.getElementById("light_button");
@@ -73,7 +82,7 @@ const Products = () => {
 			}
 		}
 	}, []);
-	
+
 	function filterProductDetails() {
 		if (productDetails === null) {
 			return [];
@@ -82,14 +91,54 @@ const Products = () => {
 			if (searchTerm === "") {
 				return product;
 			} else if (
-				product.product_name ? product.product_name.toLowerCase()
-						.includes(searchTerm.toLowerCase())
+				product.product_name
+					? product.product_name
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
 					: false
 			) {
 				return product;
 			} else if (
-				product.product_cost ? product.product_cost.toString().toLowerCase()
-						.includes(searchTerm.toLowerCase())
+				product.product_description
+					? product.product_description
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
+					: false
+			) {
+				return product;
+			} else if (
+				product.product_cost
+					? product.product_cost
+							.toString()
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
+					: false
+			) {
+				return product;
+			} else if (
+				product.product_image_links
+					? product.product_image_links
+							.join(" ")
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
+					: false
+			) {
+				return product;
+			} else if (
+				product.product_category
+					? product.product_category
+							.join(" ")
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
+					: false
+			) {
+				return product;
+			} else if (
+				product.product_quantity
+					? product.product_quantity
+							.toString()
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
 					: false
 			) {
 				return product;
@@ -98,14 +147,35 @@ const Products = () => {
 			}
 		});
 	}
-	
+
+	// function to update all the product details
+	const updateProductDetails = () => {
+		axios
+			.post(base_url + "/api/v1/Luxuriant/update_multiple_products", {
+				password: userPassword,
+				product_details: productDetails,
+			})
+			.then((response) => {
+				if (response.data.message === "success") {
+					toast.success("Product details updated successfully");
+				} else {
+					toast.error("Product details update failed");
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+				toast.error("Product details update failed due to errors. ");
+			});
+	};
+
 	return (
 		<div className="h-screen">
+			<Toaster />
+
 			<div className="flex justify-center m-4">
-				<div className="text-4xl bulgatti my-6">Our Products</div>
-				{" "}
+				<div className="text-4xl bulgatti my-6">Our Products</div>{" "}
 			</div>
-			
+
 			{/* Add Search bar */}
 			<div className="flex justify-center">
 				<div className="flex justify-center items-center">
@@ -121,25 +191,50 @@ const Products = () => {
 								setSearchTerm(e.target.value);
 							}}
 						/>
-						<IconSearch className="w-8 h-8"/>
+						<IconSearch className="w-8 h-8" />
 					</div>
 				</div>
 			</div>
-			
+
+			{/* Add a Save button */}
+			<div className="flex justify-center mt-6">
+				<button
+					className="btn btn-primary btn-md"
+					onClick={() => {
+						updateProductDetails();
+					}}
+				>
+					Save Changes
+				</button>
+			</div>
+
 			<div className="overflow-x-auto p-10">
-				{productDetails === null ||
-				productDetails.length === 0 ? (
+				{productDetails === null || productDetails.length === 0 ? (
 					<div className="flex justify-center">
 						{/*<div> Loading Products</div>*/}
 						<div className="flex justify-center">
-							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-								<path fill="currentColor"
-								      d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
-								      opacity=".25"/>
-								<path fill="currentColor"
-								      d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z">
-									<animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite" type="rotate"
-									                  values="0 12 12;360 12 12"/>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="32"
+								height="32"
+								viewBox="0 0 24 24"
+							>
+								<path
+									fill="currentColor"
+									d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
+									opacity=".25"
+								/>
+								<path
+									fill="currentColor"
+									d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z"
+								>
+									<animateTransform
+										attributeName="transform"
+										dur="0.75s"
+										repeatCount="indefinite"
+										type="rotate"
+										values="0 12 12;360 12 12"
+									/>
 								</path>
 							</svg>
 						</div>
@@ -147,30 +242,159 @@ const Products = () => {
 				) : (
 					<table className="table text-xl outline outline-1 ">
 						<thead className="text-xl ">
-						<tr className="border-neutral border-b-1 bg-base-300 text-base-content">
-							<th></th>
-							<th>Name</th>
-							<th>Cost</th>
-						</tr>
+							<tr className="border-neutral border-b-1 bg-base-300 text-base-content">
+								<th></th>
+								<th>Name</th>
+								<th>Description</th>
+								<th>Cost</th>
+								<th>Images</th>
+								<th>Category</th>
+								<th>Quantity</th>
+							</tr>
 						</thead>
 						<tbody>
-						{
-							filterProductDetails().map((product, index) => {
-									return (
-										<tr key={index} className="hover border-accent border-t-1">
-											<td>{index + 1}</td>
-											<td>{product.product_name}</td>
-											<td>{product.product_cost}</td>
-										</tr>
-									);
-								}
-							)}
+							{filterProductDetails().map((product, index) => {
+								return (
+									<tr
+										key={index}
+										className="hover border-accent border-t-1"
+									>
+										<td>{index + 1}</td>
+										<td>
+											<input
+												type="text"
+												value={product.product_name}
+												onChange={(e) => {
+													setProductDetails(
+														(
+															prevProductDetails
+														) => {
+															return prevProductDetails.map(
+																(product) => {
+																	if (
+																		product._id ===
+																		product._id
+																	) {
+																		return {
+																			...product,
+																			product_name:
+																				e
+																					.target
+																					.value,
+																		};
+																	}
+																	return product;
+																}
+															);
+														}
+													);
+													console.log(productDetails);
+												}}
+											/>
+										</td>
+										<td>
+											<input
+												type="text"
+												value={
+													product.product_description
+												}
+												onChange={(e) => {
+													const updatedProduct = {
+														...product,
+													};
+													updatedProduct.product_description =
+														e.target.value;
+													updateProduct(
+														index,
+														updatedProduct
+													);
+												}}
+											/>
+										</td>
+										<td>
+											<input
+												type="text"
+												value={product.product_cost}
+												onChange={(e) => {
+													const updatedProduct = {
+														...product,
+													};
+													updatedProduct.product_cost =
+														e.target.value;
+													updateProduct(
+														index,
+														updatedProduct
+													);
+												}}
+											/>
+										</td>
+										<td>
+											<input
+												type="text"
+												value={product.product_image_links.join(
+													", "
+												)}
+												onChange={(e) => {
+													const updatedProduct = {
+														...product,
+													};
+													updatedProduct.product_image_links =
+														e.target.value.split(
+															", "
+														);
+													updateProduct(
+														index,
+														updatedProduct
+													);
+												}}
+											/>
+										</td>
+										<td>
+											<input
+												type="text"
+												value={product.product_category.join(
+													", "
+												)}
+												onChange={(e) => {
+													const updatedProduct = {
+														...product,
+													};
+													updatedProduct.product_category =
+														e.target.value.split(
+															", "
+														);
+													updateProduct(
+														index,
+														updatedProduct
+													);
+												}}
+											/>
+										</td>
+										<td>
+											<input
+												type="text"
+												value={product.product_quantity}
+												onChange={(e) => {
+													const updatedProduct = {
+														...product,
+													};
+													updatedProduct.product_quantity =
+														e.target.value;
+													updateProduct(
+														index,
+														updatedProduct
+													);
+												}}
+											/>
+										</td>
+									</tr>
+								);
+							})}
 						</tbody>
 					</table>
-				)
-				}
+				)}
 			</div>
-			<ScrollToTopButton/>
+			<ScrollToTopButton />
 		</div>
 	);
 };
