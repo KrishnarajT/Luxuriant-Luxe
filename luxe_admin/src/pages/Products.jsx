@@ -21,6 +21,7 @@ const Products = () => {
 	const base_url = React.useContext(BaseUrlContext).baseUrl;
 	const [productDetails, setProductDetails] = React.useState(null);
 	const [searchTerm, setSearchTerm] = useState("");
+	const [productToDelete, setProductToDelete] = useState(null);
 	const [addProductDetails, setAddProductDetails] = useState({
 		product_name: "",
 		product_description: "",
@@ -227,11 +228,17 @@ const Products = () => {
 	};
 
 	// function to delete a product
-	const delete_and_refresh_products = (id) => {
+	const delete_and_refresh_products = () => {
+		console.log("deleting product with id: " + productToDelete);
+		// make sure productToDelete is not null
+		if (productToDelete === null) {
+			toast.error("Product deletion failed");
+			return;
+		}
 		axios
 			.post(base_url + "/api/v1/Luxuriant/delete_product", {
 				password: userPassword,
-				product_id: id,
+				product_id: productToDelete,
 			})
 			.then((response) => {
 				if (response.data.message === "success") {
@@ -604,9 +611,16 @@ const Products = () => {
 											<button
 												className="btn btn-error btn-md p-2"
 												onClick={() => {
-													delete_and_refresh_products(
+													// set the product id to delete
+													setProductToDelete(
 														product._id
 													);
+													// show a modal to delete the product
+													const modal =
+														document.getElementById(
+															"delete_product_modal"
+														);
+													modal.showModal();
 												}}
 											>
 												<IconTrash className="w-8 h-8" />
@@ -737,6 +751,28 @@ const Products = () => {
 								}}
 							>
 								Add Product
+							</button>
+						</form>
+					</div>
+				</div>
+			</dialog>
+			{/* create another dialog for asking the user if they are sure to delete the product.  */}
+			<dialog id="delete_product_modal" className="modal">
+				<div className="modal-box bg-base-100 text-base-content">
+					<h3 className="font-bold text-lg">Delete Product</h3>
+					<p className="py-4">
+						Are you sure you want to delete this product? This
+						action cannot be undone. Hit Escape to Cancel.
+					</p>
+					<div className="modal-action">
+						<form method="dialog">
+							<button
+								className="btn m-2 btn-primary"
+								onClick={() => {
+									delete_and_refresh_products();
+								}}
+							>
+								Delete Product
 							</button>
 						</form>
 					</div>
