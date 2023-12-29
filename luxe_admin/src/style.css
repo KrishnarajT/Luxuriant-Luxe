@@ -3010,6 +3010,10 @@ html {
   color: hsl(var(--bc) / 0.6);
 }
 
+.textarea-bordered {
+  --tw-border-opacity: 0.2;
+}
+
 .textarea:focus {
   outline-style: solid;
   outline-width: 2px;
@@ -3082,14 +3086,6 @@ html {
   width: 320px;
 }
 
-.btn-sm {
-  height: 2rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  min-height: 2rem;
-  font-size: 0.875rem;
-}
-
 .btn-md {
   height: 3rem;
   padding-left: 1rem;
@@ -3106,12 +3102,6 @@ html {
   font-size: 1.125rem;
 }
 
-.btn-square:where(.btn-sm) {
-  height: 2rem;
-  width: 2rem;
-  padding: 0px;
-}
-
 .btn-square:where(.btn-md) {
   height: 3rem;
   width: 3rem;
@@ -3121,13 +3111,6 @@ html {
 .btn-square:where(.btn-lg) {
   height: 4rem;
   width: 4rem;
-  padding: 0px;
-}
-
-.btn-circle:where(.btn-sm) {
-  height: 2rem;
-  width: 2rem;
-  border-radius: 9999px;
   padding: 0px;
 }
 
@@ -3472,10 +3455,6 @@ html {
   display: none;
 }
 
-.h-10 {
-  height: 2.5rem;
-}
-
 .h-12 {
   height: 3rem;
 }
@@ -3510,10 +3489,6 @@ html {
 
 .w-1\/2 {
   width: 50%;
-}
-
-.w-10 {
-  width: 2.5rem;
 }
 
 .w-12 {
@@ -3559,6 +3534,35 @@ html {
 
 .w-full {
   width: 100%;
+}
+
+.min-w-20 {
+  min-width: 5rem;
+}
+
+.min-w-fit {
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+
+.min-w-48 {
+  min-width: 12rem;
+}
+
+.min-w-3 {
+  min-width: 0.75rem;
+}
+
+.min-w-32 {
+  min-width: 8rem;
+}
+
+.min-w-28 {
+  min-width: 7rem;
+}
+
+.min-w-24 {
+  min-width: 6rem;
 }
 
 .max-w-xs {

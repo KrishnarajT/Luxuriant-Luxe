@@ -17,10 +17,18 @@ axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "true";
 
 const Products = () => {
 	const { theme } = React.useContext(ThemeContext);
-	const { userPassword, setUserPassword } = React.useContext(UserContext);
+	const { userPassword } = React.useContext(UserContext);
 	const base_url = React.useContext(BaseUrlContext).baseUrl;
 	const [productDetails, setProductDetails] = React.useState(null);
 	const [searchTerm, setSearchTerm] = useState("");
+	const [addProductDetails, setAddProductDetails] = useState({
+		product_name: "",
+		product_description: "",
+		product_cost: 0,
+		product_image_links: [],
+		product_category: [],
+		product_quantity: 0,
+	});
 
 	const { productInfo, setProductInfo } = React.useContext(DBInfoContext);
 
@@ -239,6 +247,38 @@ const Products = () => {
 			});
 	};
 
+	// function to add a new product
+	const addNewProduct = () => {
+		// make sure none of the fields of addProductDetails is empty
+		if (
+			addProductDetails.product_name === "" ||
+			addProductDetails.product_description === "" ||
+			addProductDetails.product_cost === 0 ||
+			addProductDetails.product_image_links.length === 0 ||
+			addProductDetails.product_category.length === 0 ||
+			addProductDetails.product_quantity === 0
+		) {
+			toast.error("Please fill all the fields");
+			return;
+		}
+		axios
+			.post(base_url + "/api/v1/Luxuriant/add_product", {
+				password: userPassword,
+				product_details: addProductDetails,
+			})
+			.then((response) => {
+				if (response.data.message === "success") {
+					toast.success("Product added successfully");
+					fetch_products_from_server();
+				} else {
+					toast.error("Product addition failed");
+				}
+			})
+			.catch((error) => {
+				console.log(error);
+				toast.error("Product addition failed due to errors. ");
+			});
+	};
 	return (
 		<div className="h-screen">
 			<Toaster />
@@ -291,17 +331,10 @@ const Products = () => {
 				<button
 					className="btn btn-accent btn-md"
 					onClick={() => {
-						setProductDetails([
-							...productDetails,
-							{
-								product_name: "",
-								product_description: "",
-								product_cost: 0,
-								product_image_links: [],
-								product_category: [],
-								product_quantity: 0,
-							},
-						]);
+						// show a modal to add a new product
+						const modal =
+							document.getElementById("add_product_modal");
+						modal.showModal();
 					}}
 				>
 					<IconPlus className="w-8 h-8" />
@@ -346,8 +379,12 @@ const Products = () => {
 								<th></th>
 								<th>Name</th>
 								<th>Description</th>
+								<th>Real Results Description</th>
+								<th>How to Use Instructions</th>
 								<th>Cost</th>
-								<th>Images</th>
+								<th>Desc. Images</th>
+								<th>Real Results Images</th>
+								<th>How to use Images</th>
 								<th>Category</th>
 								<th>Quantity</th>
 								<th>Delete</th>
@@ -379,8 +416,46 @@ const Products = () => {
 													);
 													console.log(productDetails);
 												}}
-												className="input input-bordered w-full max-w-xs input-accent text-lg"
+												className="input input-bordered w-full min-w-48 input-accent text-lg"
 											/>
+										</td>
+										<td>
+											<textarea
+												className="textarea textarea-accent text-lg"
+												value={
+													product.product_description
+												}
+												onChange={(e) => {
+													const updatedProduct = {
+														...product,
+													};
+													updatedProduct.product_description =
+														e.target.value;
+													updateProduct(
+														index,
+														updatedProduct
+													);
+												}}
+											></textarea>
+										</td>
+										<td>
+											<textarea
+												className="textarea textarea-accent text-lg"
+												value={
+													product.product_description
+												}
+												onChange={(e) => {
+													const updatedProduct = {
+														...product,
+													};
+													updatedProduct.product_description =
+														e.target.value;
+													updateProduct(
+														index,
+														updatedProduct
+													);
+												}}
+											></textarea>
 										</td>
 										<td>
 											<textarea
@@ -416,8 +491,52 @@ const Products = () => {
 														updatedProduct
 													);
 												}}
-												className="input input-bordered w-full max-w-xs input-secondary text-lg"
+												className="input input-bordered w-full min-w-28	input-secondary text-lg"
 											/>
+										</td>
+										<td>
+											<textarea
+												className="textarea textarea-accent text-lg"
+												placeholder="Enter image links separated by commas"
+												value={product.product_image_links.join(
+													", "
+												)}
+												onChange={(e) => {
+													const updatedProduct = {
+														...product,
+													};
+													updatedProduct.product_image_links =
+														e.target.value.split(
+															", "
+														);
+													updateProduct(
+														index,
+														updatedProduct
+													);
+												}}
+											></textarea>
+										</td>
+										<td>
+											<textarea
+												className="textarea textarea-accent text-lg"
+												placeholder="Enter image links separated by commas"
+												value={product.product_image_links.join(
+													", "
+												)}
+												onChange={(e) => {
+													const updatedProduct = {
+														...product,
+													};
+													updatedProduct.product_image_links =
+														e.target.value.split(
+															", "
+														);
+													updateProduct(
+														index,
+														updatedProduct
+													);
+												}}
+											></textarea>
 										</td>
 										<td>
 											<textarea
@@ -478,7 +597,7 @@ const Products = () => {
 														updatedProduct
 													);
 												}}
-												className="input input-bordered w-full max-w-xs input-secondary text-lg"
+												className="input input-bordered w-full min-w-28 input-secondary text-lg"
 											/>
 										</td>
 										<td>
@@ -501,6 +620,128 @@ const Products = () => {
 				)}
 			</div>
 			<ScrollToTopButton />
+			<dialog id="add_product_modal" className="modal">
+				<div className="modal-box bg-base-100 text-base-content">
+					<h3 className="font-bold text-lg">Add a New Product</h3>
+					<p className="py-4">
+						Fill All of the following Fields to Add a New Product.
+						Hit Escape to Cancel.
+					</p>
+
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">Product Name</span>
+						</label>
+						<input
+							type="text"
+							placeholder="Product Name"
+							className="input input-accent input-bordered"
+							onChange={(e) => {
+								setAddProductDetails({
+									...addProductDetails,
+									product_name: e.target.value,
+								});
+							}}
+						/>
+					</div>
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">
+								Product Description
+							</span>
+						</label>
+						<textarea
+							placeholder="Product Description"
+							className="textarea textarea-accent textarea-bordered"
+							onChange={(e) => {
+								setAddProductDetails({
+									...addProductDetails,
+									product_description: e.target.value,
+								});
+							}}
+						></textarea>
+					</div>
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">Product Cost</span>
+						</label>
+						<input
+							type="number"
+							placeholder="Product Cost"
+							className="input input-accent input-bordered"
+							onChange={(e) => {
+								setAddProductDetails({
+									...addProductDetails,
+									product_cost: e.target.value,
+								});
+							}}
+						/>
+					</div>
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">Product Images</span>
+						</label>
+						<textarea
+							placeholder="Product Images"
+							className="textarea textarea-accent textarea-bordered"
+							onChange={(e) => {
+								setAddProductDetails({
+									...addProductDetails,
+									product_image_links:
+										e.target.value.split(", "),
+								});
+							}}
+						></textarea>
+					</div>
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">Product Category</span>
+						</label>
+						<textarea
+							placeholder="Product Category"
+							className="textarea textarea-accent textarea-bordered"
+							onChange={(e) => {
+								setAddProductDetails({
+									...addProductDetails,
+									product_category:
+										e.target.value.split(", "),
+								});
+							}}
+						></textarea>
+					</div>
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">Product Quantity</span>
+						</label>
+						<input
+							type="number"
+							placeholder="Product Quantity"
+							className="input input-accent input-bordered"
+							onChange={(e) => {
+								setAddProductDetails({
+									...addProductDetails,
+									product_quantity: e.target.value,
+								});
+							}}
+						/>
+					</div>
+					<div className="modal-action">
+						<form method="dialog">
+							<button
+								className="btn m-2 btn-primary"
+								onClick={() => {
+									// send api call to server to add a new product.
+									addNewProduct();
+									// fetch product details from server.
+									// fetch_products_from_server();
+								}}
+							>
+								Add Product
+							</button>
+						</form>
+					</div>
+				</div>
+			</dialog>
 		</div>
 	);
 };
