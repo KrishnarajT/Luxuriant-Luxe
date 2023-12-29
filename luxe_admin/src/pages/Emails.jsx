@@ -18,27 +18,54 @@ const Emails = () => {
 	const { theme } = React.useContext(ThemeContext);
 	const { userPassword } = React.useContext(UserContext);
 	const base_url = React.useContext(BaseUrlContext).baseUrl;
+	const [subject, setSubject] = useState("");
+	const [content, setContent] = useState("");
 	const { customerInfo } = React.useContext(DBInfoContext);
 	const [batches, setBatches] = useState([]);
-	const [batchLimit, setBatchLimit] = useState(175);
+	const [batchLimit, setBatchLimit] = useState(150);
 	const [EmailBatch, setEmailBatch] = useState([]);
 
 	const SendEmails = async () => {
+		// make sure subect and content is not empty, otherwise send a toast error
+		if (subject === "" || content === "") {
+			toast.error("Subject or Content is empty");
+			return;
+		}
+		// if no batch is selected, as in EmailBatch is empty, send a toast error
+		if (EmailBatch.length === 0) {
+			toast.error("No Batch Selected");
+			return;
+		}
 		// send emails to all customers in the batch via backend api call.
 		// the backend api call will send emails to all customers in the batch
 
 		const data = {
 			password: userPassword,
+			subject: subject,
+			content: content,
+			customer_details: EmailBatch,
 		};
 
+		// log everything
+		console.log("Sending Emails");
+		console.log(data);
+
+		// send a loading toast
+		toast.loading("Sending Emails");
 		// get all products
 		let response = await axios
-			.post(`${base_url}/api/v1/Luxuriant/get_Products`, data, {
-				headers: {
-					"Content-Type": "application/json",
-				},
-			})
+			.post(
+				`${base_url}/api/v1/Luxuriant/send_subscription_emails`,
+				data,
+				{
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+			)
 			.then((response) => {
+				// dismiss loading toast
+				toast.dismiss();
 				return response;
 			})
 			.catch((error) => {
@@ -77,6 +104,19 @@ const Emails = () => {
 
 	const makeCustomerBatches = () => {
 		// divide into batches of batchlimit, add each customer to a batch, and add batches to the batches array defined in usestate
+
+		// batches looks like this:
+		// [
+		// 	{
+		// 		name: "John Doe",
+		// 		email: "johndoe@example",
+		// 	},
+		// 	{
+		// 		name: "Jane Doe",
+		// 		email: "janedoe@example",
+		// 	},
+		// ];
+
 		let batches = [];
 		let batch = [];
 		let batchCount = 0;
@@ -86,8 +126,11 @@ const Emails = () => {
 				batch = [];
 				batchCount = 0;
 			}
-			if (customer.customer_email) {
-				batch.push(customer.customer_email);
+			if (customer.customer_email && customer.customer_name) {
+				batch.push({
+					name: customer.customer_name,
+					email: customer.customer_email,
+				});
 				batchCount++;
 			}
 		});
@@ -130,6 +173,10 @@ const Emails = () => {
 				<div className="flex justify-center m-4 items-center">
 					<input
 						type="text"
+						value={subject}
+						onChange={(e) => {
+							setSubject(e.target.value);
+						}}
 						className="input input-bordered w-fit text-2xl input-primary"
 						placeholder="Enter Subject of Email"
 					/>
@@ -144,6 +191,10 @@ const Emails = () => {
 					<textarea
 						className="textarea textarea-primary p-2 m-2 w-full rounded-xl text-2xl"
 						placeholder="Enter Content of Email"
+						value={content}
+						onChange={(e) => {
+							setContent(e.target.value);
+						}}
 					></textarea>
 				</div>
 			</div>

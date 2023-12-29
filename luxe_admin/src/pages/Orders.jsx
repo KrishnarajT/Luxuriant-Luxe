@@ -5,6 +5,8 @@ import { BaseUrlContext } from "../context/BaseUrlContext";
 import ScrollToTopButton from "../components/ui/ScrollToTopButton";
 import { DBInfoContext } from "../context/DBInfoContext.jsx";
 
+import { Toaster, toast } from "react-hot-toast";
+
 import axios from "axios";
 import { IconRefresh, IconSearch } from "@tabler/icons-react";
 
@@ -32,10 +34,10 @@ axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "true";
 
 const Orders = () => {
 	const { theme } = React.useContext(ThemeContext);
-	const { userPassword, setUserPassword } = React.useContext(UserContext);
+	const { userPassword } = React.useContext(UserContext);
 	const base_url = React.useContext(BaseUrlContext).baseUrl;
 	const [orderDetails, setOrderDetails] = React.useState(null);
-	const [customerDetails, setCustomerDetails] = React.useState(null);
+	const [setCustomerDetails] = React.useState(null);
 	const [apiCallMade, setApiCallMade] = useState(false);
 	const {
 		orderInfo,
@@ -43,7 +45,6 @@ const Orders = () => {
 		customerInfo,
 		setCustomerInfo,
 		productInfo,
-		setProductInfo,
 	} = React.useContext(DBInfoContext);
 	const [searchTerm, setSearchTerm] = useState("");
 	const [currentOrderIdToSendMainTo, setCurrentOrderIdToSendMainTo] =
@@ -268,11 +269,7 @@ const Orders = () => {
 		}
 
 		// show loader for sending mail
-		const mail_toast_text = document.getElementById("mail_toast_text");
-		mail_toast_text.innerHTML = "Sending Mail...";
-		// show toast until stopped later
-		const mail_sent_toast = document.getElementById("mail_sent_toast");
-		mail_sent_toast.classList.remove("hidden");
+		toast.loading("Sending Mail");
 
 		let response = await axios
 			.post(
@@ -311,30 +308,18 @@ const Orders = () => {
 				return customer._id === customer_id;
 			})[0].customer_name;
 
-			// change innerhtml for mail_toast_text
-			const mail_toast_text = document.getElementById("mail_toast_text");
-			mail_toast_text.innerHTML = "Mail Sent to " + customer_name + "!";
-			// show toast for 3 seconds
-			const mail_sent_toast = document.getElementById("mail_sent_toast");
-			mail_sent_toast.classList.remove("hidden");
-			setTimeout(() => {
-				mail_sent_toast.classList.add("hidden");
-			}, 3000);
+			// send toast that mail was sent
+			// dismiss loading toast
+			toast.dismiss();
+			// send a toast that emails were sent
+			toast.success("Email sent to " + customer_name);
 			// await fetch_order_from_server();
 		} else {
 			console.log("payment status not changed");
-
-			// show toast for 3 seconds
-			const mail_not_sent_toast = document.getElementById(
-				"mail_not_send_toast"
-			);
-			mail_not_sent_toast.innerHTML = "Could not Send Mail!";
-			mail_not_sent_toast.classList.remove("hidden");
-			setTimeout(() => {
-				mail_sent_toast.classList.add("hidden");
-			}, 3000);
-			const mail_sent_toast = document.getElementById("mail_sent_toast");
-			mail_sent_toast.classList.remove("hidden");
+			// dismiss loading toast
+			toast.dismiss();
+			// send a toast message saying couldnt send emails
+			toast.error("Couldnt send email");
 		}
 	};
 
@@ -440,6 +425,7 @@ const Orders = () => {
 
 	return (
 		<div className="min-h-screen">
+			<Toaster />
 			<div className="flex justify-center m-4">
 				<div className="text-4xl bulgatti my-6">Our Orders</div>{" "}
 			</div>
@@ -546,7 +532,7 @@ const Orders = () => {
 															order.payment_status ===
 															"paid"
 														}
-														className="checkbox shadow shadow-primary shadow-lg"
+														className="checkbox shadow-sm shadow-accent"
 														onChange={() => {
 															// call the modal
 															setCurrentOrderIdToSendMainTo(
@@ -600,55 +586,6 @@ const Orders = () => {
 					</div>
 				</div>
 			</dialog>
-
-			<div className="flex justify-center toast-center toast">
-				<div
-					className="alert alert-success hidden transform-gpu transition-all duration-300 flex gap-4"
-					id="mail_sent_toast"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="32"
-						height="32"
-						viewBox="0 0 24 24"
-					>
-						<path
-							fill="currentColor"
-							d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
-							opacity=".25"
-						/>
-						<path
-							fill="currentColor"
-							d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z"
-						>
-							<animateTransform
-								attributeName="transform"
-								dur="0.75s"
-								repeatCount="indefinite"
-								type="rotate"
-								values="0 12 12;360 12 12"
-							/>
-						</path>
-					</svg>
-					<span id="mail_toast_text">Mail Sent!</span>
-				</div>
-			</div>
-
-			<div className="flex justify-center toast-center toast">
-				<div
-					className="alert alert-error hidden transform-gpu transition-all duration-300 flex gap-4"
-					id="mail_not_send_toast"
-				>
-					{/*<svg xmlns="http://www.w3.org/2000/svg" className="stroke-current shrink-0 h-6 w-6" fill="none"*/}
-					{/*     viewBox="0 0 24 24">*/}
-					{/*	<path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"*/}
-					{/*	      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>*/}
-					{/*</svg>*/}
-					<span id="mail_not_sent_toast_text">
-						Could not Send Mail!
-					</span>
-				</div>
-			</div>
 		</div>
 	);
 };
