@@ -141,7 +141,7 @@ const Customers = () => {
 			<div className="flex justify-center m-4">
 				<div className="text-4xl bulgatti my-6">Our Customers</div>
 			</div>
-			
+
 			{/* Add Search bar */}
 			<div className="flex justify-center gap-4">
 				<div className="flex justify-center items-center">
@@ -157,34 +157,48 @@ const Customers = () => {
 								setSearchTerm(e.target.value);
 							}}
 						/>
-						<IconSearch className="w-8 h-8"/>
+						<IconSearch className="w-8 h-8" />
 					</div>
 				</div>
 				<div>
-					<button className="btn btn-sm bg-primary text-primary-content" onClick={
-						() => {
+					<button
+						className="btn btn-md bg-primary text-primary-content mx-4 p-2"
+						onClick={() => {
 							fetch_customer_from_server();
-						}
-					}>
-						<IconRefresh className="w-8 h-8"/>
+						}}
+					>
+						<IconRefresh className="w-8 h-8" />
 					</button>
 				</div>
 			</div>
-			
+
 			<div className="overflow-x-auto p-8">
-				{customerDetails === null ||
-				customerDetails.length === 0 ? (
+				{customerDetails === null || customerDetails.length === 0 ? (
 					<div className="flex justify-center">
 						{/*<div> Loading Products</div>*/}
 						<div className="flex justify-center">
-							<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24">
-								<path fill="currentColor"
-								      d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
-								      opacity=".25"/>
-								<path fill="currentColor"
-								      d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z">
-									<animateTransform attributeName="transform" dur="0.75s" repeatCount="indefinite" type="rotate"
-									                  values="0 12 12;360 12 12"/>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="32"
+								height="32"
+								viewBox="0 0 24 24"
+							>
+								<path
+									fill="currentColor"
+									d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,19a8,8,0,1,1,8-8A8,8,0,0,1,12,20Z"
+									opacity=".25"
+								/>
+								<path
+									fill="currentColor"
+									d="M12,4a8,8,0,0,1,7.89,6.7A1.53,1.53,0,0,0,21.38,12h0a1.5,1.5,0,0,0,1.48-1.75,11,11,0,0,0-21.72,0A1.5,1.5,0,0,0,2.62,12h0a1.53,1.53,0,0,0,1.49-1.3A8,8,0,0,1,12,4Z"
+								>
+									<animateTransform
+										attributeName="transform"
+										dur="0.75s"
+										repeatCount="indefinite"
+										type="rotate"
+										values="0 12 12;360 12 12"
+									/>
 								</path>
 							</svg>
 						</div>
@@ -192,37 +206,40 @@ const Customers = () => {
 				) : (
 					<table className="table text-xl outline outline-1 ">
 						<thead className="text-xl">
-						<tr className="border-neutral border-b-1 bg-base-300 text-base-content">
-							<th></th>
-							<th>Customer Name</th>
-							<th>Customer Email</th>
-							<th>Customer Address</th>
-							<th>Customer Phone</th>
-							<th>Customer Id</th>
-						</tr>
+							<tr className="border-neutral border-b-1 bg-base-300 text-base-content">
+								<th></th>
+								<th>Customer Name</th>
+								<th>Customer Email</th>
+								<th>Customer Address</th>
+								<th>Customer Phone</th>
+								<th>Customer Id</th>
+							</tr>
 						</thead>
 						<tbody>
-						{
-							filtered_customer_details(customerDetails).map((customer, index) => {
-								return (
-									<tr key={index} className="hover border-accent border-t-1">
-										<td>{index + 1}</td>
-										<td>{customer.customer_name}</td>
-										<td>{customer.customer_email}</td>
-										<td className="w-64">{customer.customer_address}</td>
-										<td>{customer.customer_phone}</td>
-										<td>{customer._id}</td>
-									</tr>
-								);
-							})
-						}
-						
+							{filtered_customer_details(customerDetails).map(
+								(customer, index) => {
+									return (
+										<tr
+											key={index}
+											className="hover border-accent border-t-1"
+										>
+											<td>{index + 1}</td>
+											<td>{customer.customer_name}</td>
+											<td>{customer.customer_email}</td>
+											<td className="w-64">
+												{customer.customer_address}
+											</td>
+											<td>{customer.customer_phone}</td>
+											<td>{customer._id}</td>
+										</tr>
+									);
+								}
+							)}
 						</tbody>
 					</table>
-				)
-				}
+				)}
 			</div>
-			<ScrollToTopButton/>
+			<ScrollToTopButton />
 		</div>
 	);
 };

@@ -449,7 +449,7 @@ const Orders = () => {
 				</div>
 				<div>
 					<button
-						className="btn btn-sm bg-primary text-primary-content"
+						className="btn btn-md bg-primary text-primary-content mx-4 p-2"
 						onClick={() => {
 							fetch_customer_from_server();
 							fetch_order_from_server();
