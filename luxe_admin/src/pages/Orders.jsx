@@ -95,6 +95,7 @@ const Orders = () => {
 		// <th>Order Time</th>
 		// <th>Customer ID</th>
 		// <th>Order Cost</th>
+		// <th>Points Used</th>
 		// <th>Payment Status</th>
 		// <th>Products</th>
 		// <th>Products</th>
@@ -115,6 +116,12 @@ const Orders = () => {
 		// Then change the order cost to a more readable one from "400" to "400 INR"
 		for (let i = 0; i < orderDetails.length; i++) {
 			orderDetails[i].order_cost = orderDetails[i].order_cost + " INR";
+		}
+
+		// convert points used to a string if its not already
+		for (let i = 0; i < orderDetails.length; i++) {
+			orderDetails[i].points_used =
+				orderDetails[i].points_used.toString();
 		}
 
 		// Then change the order details to a more readable one from
@@ -410,6 +417,22 @@ const Orders = () => {
 					: false
 			) {
 				return order;
+			} else if (
+				order.customer_address
+					? order.customer_address
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
+					: false
+			) {
+				return order;
+			} else if (
+				order.points_used
+					? order.points_used
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
+					: false
+			) {
+				return order;
 			}
 			return false;
 		});
@@ -492,10 +515,10 @@ const Orders = () => {
 								<th>Customer Name</th>
 								<th>Customer Address</th>
 								<th>Order Cost</th>
+								<th>Points Used</th>
 								<th>Payment Status</th>
 								<th>Order Details</th>
-								<th>Order ID</th>
-								<th>Customer ID</th>
+								<th>Order ID, Customer ID</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -511,6 +534,7 @@ const Orders = () => {
 										<td>{order.customer_name}</td>
 										<td>{order.customer_address}</td>
 										<td>{order.order_cost}</td>
+										<td>{order.points_used}</td>
 										<td>
 											<div className="flex justify-center gap-4">
 												<div>
@@ -541,8 +565,9 @@ const Orders = () => {
 											</div>
 										</td>
 										<td>{order.order_details}</td>
-										<td>{order._id}</td>
-										<td>{order.customer_id}</td>
+										<td>
+											{order._id}, {order.customer_id}
+										</td>
 									</tr>
 								);
 							})}
