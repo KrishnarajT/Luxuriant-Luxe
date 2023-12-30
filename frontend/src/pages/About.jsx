@@ -97,7 +97,7 @@ const About = () => {
 					<div className="md:flex-1 md:flex md:p-4 md:justify-end p-4">
 						<div className="rounded-3xl flex items-center 2xl:w-1/2">
 							<img
-								src={product_3_image_3}
+								src={box_images[0]}
 								alt=""
 								className="rounded-3xl w-full"
 							/>
@@ -137,7 +137,7 @@ const About = () => {
 					<div className="md:flex-1 md:flex md:p-4 md:justify-start p-4">
 						<div className="rounded-3xl flex items-center 2xl:w-1/2">
 							<img
-								src={product_1_image_1}
+								src={box_images[1]}
 								alt=""
 								className="rounded-3xl"
 							/>
@@ -179,7 +179,7 @@ const About = () => {
 					<div className="md:flex-1 md:flex md:p-4 md:justify-start p-4">
 						<div className="rounded-3xl flex items-center 2xl:w-1/2">
 							<img
-								src={product_1_image_1}
+								src={box_images[2]}
 								alt=""
 								className="rounded-3xl"
 							/>
@@ -210,7 +210,7 @@ const About = () => {
 					<div className="md:flex-1 md:flex md:p-4 md:justify-end p-4">
 						<div className="rounded-3xl flex items-center 2xl:w-1/2">
 							<img
-								src={product_3_image_1}
+								src={box_images[3]}
 								alt=""
 								className="rounded-3xl"
 							/>
@@ -350,18 +350,18 @@ const About = () => {
 				Founders
 				<div className="flex flex-col gap-4 md:flex-row md:justify-center">
 					<div className="flex justify-center mt-4">
-						<div
+						<img
 							src={creator_images[0]}
-							className="w-screen h-64 snap-center self-center
+							className="w-screen h-64 snap-center self-center md:m-4 rounded-2xl
 							md:w-80 md:h-80 bg-no-repeat bg-contain bg-center"
-						></div>
+						></img>
 					</div>
 					<div className="flex justify-center mt-4">
-						<div
+						<img
 							src={creator_images[1]}
-							className="w-screen h-64 snap-center self-center
+							className="w-screen h-64 snap-center self-center md:m-4 rounded-2xl
 							md:w-80 md:h-80 bg-no-repeat bg-contain bg-center"
-						></div>
+						></img>
 					</div>
 				</div>
 				<div className="text-xl mt-4 cardo p-4 m-5 text-center md:w-4/5">
@@ -390,12 +390,14 @@ const About = () => {
 					You can Also DM us on our Instagram!
 				</div>
 				<div className="flex justify-center mt-4">
-					<div
-						id={
-							theme === "light" ? "insta_code" : "insta_code_dark"
+					<img
+						src={
+							theme === "light"
+								? social_and_payment_images[0]
+								: social_and_payment_images[1]	
 						}
-						className="w-screen h-96 bg-center snap-center self-center"
-					></div>
+						className="w-fit h-96 bg-center snap-center self-center"
+					></img>
 				</div>
 			</section>
 			{isAboutPage ? (

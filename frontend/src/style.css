@@ -9178,6 +9178,10 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media (min-width: 720px) {
+  .md\:m-4 {
+    margin: 1rem;
+  }
+
   .md\:mx-20 {
     margin-left: 5rem;
     margin-right: 5rem;

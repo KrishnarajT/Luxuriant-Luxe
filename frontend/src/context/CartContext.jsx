@@ -34,26 +34,7 @@ const CartContextProvider = ({ children }) => {
 				});
 			console.log(response.data);
 			console.log(response);
-			if (response.data.message === "simulation") {
-				const data = [
-					{
-						_id: "654cd992ae6a271afeed6b4c",
-						product_name: "Blue Jar",
-						product_cost: 100,
-					},
-					{
-						_id: "654cd992ae6a271afeed6b4d",
-						product_name: "Purple Jar",
-						product_cost: 200,
-					},
-					{
-						_id: "654cd992ae6a271afeed6b4e",
-						product_name: "Pink Jar",
-						product_cost: 300,
-					},
-				];
-				setProductInfo(data);
-			} else if (response.data.message === "Success") {
+			if (response.data.message === "Success") {
 				const data = response.data.products;
 				console.log(data);
 				setProductInfo(data);

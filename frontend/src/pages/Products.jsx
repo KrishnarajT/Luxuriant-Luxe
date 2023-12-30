@@ -107,7 +107,14 @@ const Products = () => {
 				{/* images */}
 				<div className="my-6 mt-10 max-w-7xl flex justify-center max-h-[40rem] md:gap-16 md:flex-1">
 					<div className="w-3/4 mt-4">
-						{<ProductCarousel images={product_1_images} />}
+						{
+							<ProductCarousel
+								images={
+									productInfo[0].product_image_links
+										.description_images
+								}
+							/>
+						}
 					</div>
 				</div>
 			</section>
@@ -120,7 +127,14 @@ const Products = () => {
 				<div className="text-4xl dancing my-6 mb-3">Oily Skin</div>
 				<div className="my-6 mt-10 max-w-7xl flex justify-center max-h-[40rem] md:gap-16">
 					<div className="w-3/4 mt-4">
-						{<ProductCarousel images={product_1_images} />}
+						{
+							<ProductCarousel
+								images={
+									productInfo[0].product_image_links
+										.description_images
+								}
+							/>
+						}
 					</div>
 				</div>
 				<div className="text-xl mt-4 cardo text-center">
@@ -201,7 +215,14 @@ const Products = () => {
 				{/* images */}
 				<div className="my-6 mt-10 max-w-7xl flex justify-center max-h-[40rem] md:gap-16 md:flex-1">
 					<div className="w-3/4 mt-4">
-						{<ProductCarousel images={product_2_images} />}
+						{
+							<ProductCarousel
+								images={
+									productInfo[0].product_image_links
+										.description_images
+								}
+							/>
+						}
 					</div>
 				</div>
 			</section>
@@ -218,7 +239,14 @@ const Products = () => {
 						className="w-screen h-64 bg-center snap-center self-center my-4"
 					></div>
 				</div> */}
-				{<ProductCarousel images={product_2_images} />}
+				{
+					<ProductCarousel
+						images={
+							productInfo[0].product_image_links
+								.description_images
+						}
+					/>
+				}
 
 				<div className="text-xl mt-4 cardo text-center">
 					Our body cleanser is dedicated to rejuvenate and make your
@@ -293,7 +321,14 @@ const Products = () => {
 				{/* images */}
 				<div className="my-6 mt-10 max-w-7xl flex justify-center max-h-[40rem] md:gap-16 md:flex-1">
 					<div className="w-3/4 mt-4">
-						{<ProductCarousel images={product_3_images} />}
+						{
+							<ProductCarousel
+								images={
+									productInfo[0].product_image_links
+										.description_images
+								}
+							/>
+						}
 					</div>
 				</div>
 			</section>
@@ -310,7 +345,14 @@ const Products = () => {
 						className="w-screen h-64 bg-center snap-center self-center my-4"
 					></div>
 				</div> */}
-				{<ProductCarousel images={product_3_images} />}
+				{
+					<ProductCarousel
+						images={
+							productInfo[0].product_image_links
+								.description_images
+						}
+					/>
+				}
 
 				<div className="text-xl mt-4 cardo text-center ">
 					A perfect balance of essential oils and natural smoothness
