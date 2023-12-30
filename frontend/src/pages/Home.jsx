@@ -55,9 +55,9 @@ const Home = () => {
 
 			<div className="ribbon color"></div>
 
-			{/* <section className="mt-16" id="productssection">
+			<section className="mt-16" id="productssection">
 				<Products />
-			</section> */}
+			</section>
 
 			<div className="my-12">
 				<div className="ribbon color"></div>
