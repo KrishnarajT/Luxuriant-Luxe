@@ -316,7 +316,7 @@ const Products = () => {
 			toast.error("No recent changes have been made");
 			return;
 		}
-
+		console.log("updating product details", productDetails);
 		axios
 			.post(base_url + "/api/v1/Luxuriant/update_multiple_products", {
 				password: userPassword,
@@ -405,6 +405,7 @@ const Products = () => {
 				toast.error("Product addition failed due to errors. ");
 			});
 	};
+
 	return (
 		<div className="h-screen">
 			<Toaster />
@@ -635,10 +636,17 @@ const Products = () => {
 													const updatedProduct = {
 														...product,
 													};
+													// console.log e.target.value
+													console.log(e.target.value);
+													// remove \n and split to get an array of links
+													const links = e.target.value
+														.replace(/\n/g, "")
+														.split(", ");
+													console.log(
+														links[0].split(",")
+													);
 													updatedProduct.product_image_links.description_images =
-														e.target.value.split(
-															", "
-														);
+														links[0].split(",");
 													updateProduct(
 														index,
 														updatedProduct
@@ -658,9 +666,9 @@ const Products = () => {
 														...product,
 													};
 													updatedProduct.product_image_links.real_results_images =
-														e.target.value.split(
-															", "
-														);
+														e.target.value
+															.split(", ")[0]
+															.split(",");
 													updateProduct(
 														index,
 														updatedProduct
@@ -680,9 +688,9 @@ const Products = () => {
 														...product,
 													};
 													updatedProduct.product_image_links.how_to_use_images =
-														e.target.value.split(
-															", "
-														);
+														e.target.value
+															.split(", ")[0]
+															.split(",");
 													updateProduct(
 														index,
 														updatedProduct
@@ -694,9 +702,7 @@ const Products = () => {
 											<textarea
 												className="textarea textarea-accent text-lg"
 												placeholder="Enter categories separated by commas"
-												value={product.product_category.join(
-													", "
-												)}
+												value={product.product_category}
 												onChange={(e) => {
 													const updatedProduct = {
 														...product,
