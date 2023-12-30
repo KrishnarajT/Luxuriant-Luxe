@@ -43,7 +43,7 @@ export function Navbar(props) {
 	return (
 		<div className="z-50">
 			<div
-				className={`navbar bg-primary text-primary-content flex-row-reverse justify-between
+				className={`navbar bg-base-200 text-base-content flex-row-reverse justify-between
 			md:flex-row`}
 			>
 				{/* name */}
@@ -71,7 +71,7 @@ export function Navbar(props) {
 							<NavLink
 								to={"/orders"}
 								id="contact_element"
-								className="hover:text-black"
+								className="hover:text-base-content"
 							>
 								<IconShoppingCart className="w-6 h-6" />
 								Orders
@@ -82,7 +82,7 @@ export function Navbar(props) {
 							<NavLink
 								to={"/customers"}
 								id="contact_element"
-								className="hover:text-black"
+								className="hover:text-base-content"
 							>
 								<IconUsers className="w-6 h-6" />
 								Customers
@@ -92,7 +92,7 @@ export function Navbar(props) {
 							<NavLink
 								to={"/products"}
 								id="contact_element"
-								className="hover:text-black"
+								className="hover:text-base-content"
 							>
 								<IconBoxSeam className="w-6 h-6" />
 								Products
@@ -102,7 +102,7 @@ export function Navbar(props) {
 							<NavLink
 								to={"/emails"}
 								id="contact_element"
-								className="hover:text-black"
+								className="hover:text-base-content"
 							>
 								<IconMail className="w-6 h-6" />
 								Emails
@@ -118,7 +118,7 @@ export function Navbar(props) {
 								<NavLink
 									to={"/cart"}
 									id="contact_element"
-									className="hover:text-black"
+									className="hover:text-base-content"
 								>
 									<IconShoppingCart className="w-8 h-8" />
 								</NavLink>
@@ -144,7 +144,7 @@ export function Navbar(props) {
 								<li className="text-lg md:text-xl">
 									<button className="btn btn-ghost rounded-btn">
 										<IconSun
-											className="w-8 h-8 text-text hover:text-text"
+											className="w-8 h-8 text-base-content hover:text-base-content"
 											onClick={() => {
 												setTheme("light");
 											}}
@@ -167,14 +167,14 @@ export function Navbar(props) {
 										{/*	<NavLink*/}
 										{/*		to={"/cart"}*/}
 										{/*		id="contact_element"*/}
-										{/*		className="hover:text-black"*/}
+										{/*		className="hover:text-base-content"*/}
 										{/*	>*/}
 										{/*		<IconGardenCart className="w-8 h-8"/>*/}
 										{/*		Cart*/}
 										{/*	</NavLink>*/}
 										{/*</li>*/}
 										<li
-											className="text-lg hover:text-black"
+											className="text-lg hover:text-base-content"
 											onClick={() => {
 												handleLogout();
 											}}
@@ -193,7 +193,7 @@ export function Navbar(props) {
 					<ul className="menu menu-horizontal px-1 w-fit">
 						<li>
 							<details className="w-fit">
-								<summary className="text-md md:text-xl hover:text-black">
+								<summary className="text-md md:text-xl hover:text-base-content">
 									<IconMenu2 className="w-6 h-6" />
 								</summary>
 								<ul className="p-2 bg-base-100 text-base-content z-50 flex flex-wrap flex-col w-fit gap-2">
@@ -201,7 +201,7 @@ export function Navbar(props) {
 										<NavLink
 											to={"/orders"}
 											id="contact_element"
-											className="hover:text-black"
+											className="hover:text-base-content"
 										>
 											<IconShoppingCart className="w-6 h-6" />
 											Orders
@@ -212,7 +212,7 @@ export function Navbar(props) {
 										<NavLink
 											to={"/customers"}
 											id="contact_element"
-											className="hover:text-black"
+											className="hover:text-base-content"
 										>
 											<IconUsers className="w-6 h-6" />
 											Customers
@@ -222,7 +222,7 @@ export function Navbar(props) {
 										<NavLink
 											to={"/products"}
 											id="contact_element"
-											className="hover:text-black"
+											className="hover:text-base-content"
 										>
 											<IconBoxSeam className="w-6 h-6" />
 											Products
@@ -230,7 +230,7 @@ export function Navbar(props) {
 									</li>
 									<li className="menu menu-horizontal px-1 py-0 ">
 										<details>
-											<summary className="text-md md:text-xl hover:text-black">
+											<summary className="text-md md:text-xl hover:text-base-content">
 												<IconBrush className="w-6 h-6" />
 												Theme
 											</summary>
@@ -264,7 +264,7 @@ export function Navbar(props) {
 									</li>
 									<li className="menu menu-horizontal px-1 py-0">
 										<details>
-											<summary className="text-md md:text-xl hover:text-black">
+											<summary className="text-md md:text-xl hover:text-base-content">
 												<IconUserBolt className="w-6 h-6" />
 												Account
 											</summary>
@@ -273,7 +273,7 @@ export function Navbar(props) {
 												{/*	<NavLink*/}
 												{/*		to={"/cart"}*/}
 												{/*		id="contact_element"*/}
-												{/*		className="hover:text-black"*/}
+												{/*		className="hover:text-base-content"*/}
 												{/*	>*/}
 												{/*		<IconGardenCart className="w-6 h-6"/>*/}
 												{/*		Cart*/}
@@ -283,7 +283,7 @@ export function Navbar(props) {
 													<NavLink
 														to={"/"}
 														id="contact_element"
-														className="hover:text-black"
+														className="hover:text-base-content"
 														onClick={() => {
 															props.setisNavbarPresent(
 																false

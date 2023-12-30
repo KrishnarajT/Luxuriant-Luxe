@@ -389,14 +389,6 @@ const Orders = () => {
 			) {
 				return order;
 			} else if (
-				order.payment_status
-					? order.payment_status
-							.toLowerCase()
-							.includes(searchTerm.toLowerCase())
-					: false
-			) {
-				return order;
-			} else if (
 				order.order_details
 					? order.order_details
 							.toLowerCase()

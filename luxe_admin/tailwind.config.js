@@ -1,19 +1,26 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-	content: ["./src/App.jsx", "./src/main.jsx", "./src/components/**/*.jsx", './src/pages/*.jsx', './index.html', './src/components/ui/*.jsx'],
+	content: [
+		"./src/App.jsx",
+		"./src/main.jsx",
+		"./src/components/**/*.jsx",
+		"./src/pages/*.jsx",
+		"./index.html",
+		"./src/components/ui/*.jsx",
+	],
 	theme: {
 		extend: {
 			colors: {
-				'text_light': '#231010',
-				'background_light': '#f6eaea',
-				'primary_light': '#e89293',
-				'secondary_light': '#e9cece',
-				'accent': '#eb5959',
-				'text_dark': '#efdcdc',
-				'background_dark': '#181616',
-				'primary_dark': '#c58a8a',
-				'secondary_dark': '#140404',
-				'accent_dark': '#f26c6c',
+				text: "#000000",
+				background: "#ffffff",
+				primary: "#200d0d",
+				secondary: "#eabfbf",
+				accent: "#eb5959",
+				text_dark: "#ddd8d8",
+				background_dark: "#151414",
+				primary_dark: "#f6e3e3",
+				secondary_dark: "#eabfbf",
+				accent_dark: "#eb5959",
 			},
 		},
 	},
@@ -23,12 +30,12 @@ module.exports = {
 		themes: [
 			{
 				MyLight: {
-					text: '#231010',
-					'base-100': '#f6eaea',
-					primary: '#e89293',
-					secondary: '#e9cece',
-					neutral: '#a2494a',
-					accent: '#eb5959',
+					text: "#000000",
+					"base-100": "#ffffff",
+					primary: "#200d0d",
+					secondary: "#eabfbf",
+					neutral: "#a2494a",
+					accent: "#eb5959",
 					info: "#5699eb",
 					success: "#37e1cd",
 					warning: "#eabe10",
@@ -45,11 +52,11 @@ module.exports = {
 					// "--tab-radius": "0.5rem", // border radius of tabs
 				},
 				MyDark: {
-					primary: "#c58a8a",
-					secondary: "#140404",
+					primary: "#f6e3e3",
+					secondary: "#eabfbf",
 					accent: "#eb5959",
 					neutral: "#f26c6c",
-					"base-100": "#181616",
+					"base-100": "#151414",
 					info: "#5699eb",
 					success: "#37e1cd",
 					warning: "#eabe10",
@@ -94,8 +101,8 @@ module.exports = {
 			"coffee",
 			"winter",
 		],
-		
-		darkTheme: "dark", // name of one of the included themes for dark mode
+
+		darkTheme: "MyDark", // name of one of the included themes for dark mode
 		base: true, // applies background color and foreground color for root element by default
 		styled: true, // include daisyUI colors and design decisions for all components
 		utils: true, // adds responsive and modifier utility classes

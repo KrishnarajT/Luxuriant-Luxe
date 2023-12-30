@@ -22,11 +22,20 @@ const Products = () => {
 	const [productDetails, setProductDetails] = React.useState(null);
 	const [searchTerm, setSearchTerm] = useState("");
 	const [productToDelete, setProductToDelete] = useState(null);
+	const [recentChanges, setRecentChanges] = useState(false);
 	const [addProductDetails, setAddProductDetails] = useState({
 		product_name: "",
-		product_description: "",
+		product_description: {
+			product_description: "",
+			real_results_description: "",
+			how_to_use_description: "",
+		},
 		product_cost: 0,
-		product_image_links: [],
+		product_image_links: {
+			description_images: [],
+			real_results_images: [],
+			how_to_use_images: [],
+		},
 		product_category: [],
 		product_quantity: 0,
 	});
@@ -37,29 +46,53 @@ const Products = () => {
 	// [
 	// 	{// product details looks like this:
 	// {
-	// 	product_name: "Product Name",
-	// 	product_description: "Product Description",
-	// 	product_cost: 100,
-	// 	product_image_links: ["image1", "image2"],
-	// 	product_category: ["Product Category", "Product Category 2"]
-	//  product_quantity: 100
-	// }
+	// 	"product_name": "Product Name 3",
+	// 	"product_description": {
+	// 	    "product_description": "product_description",
+	// 	    "real_results_description": "real results are so and so",
+	// 	    "how_to_use_description": "how to use the product. "
+	// 	},
+	// 	"product_cost": 100,
+	// 	"product_image_links": {
+	// 	    "description_images": ["image1", "image2"],
+	// 	    "real_results_images": ["image1", "image2"],
+	// 	    "how_to_use_images": ["image1", "image2"]
+	// 	},
+	// 	"product_category": ["Product Category", "Product Category 2"],
+	// 	"product_quantity": 100
+	// },
 	// {
-	// 	product_name: "Product Name",
-	// 	product_description: "Product Description",
-	// 	product_cost: 100,
-	// 	product_image_links: ["image1", "image2"],
-	// 	product_category: ["Product Category", "Product Category 2"]
-	//  product_quantity: 100
-	// }
+	// 	"product_name": "Product Name 3",
+	// 	"product_description": {
+	// 	    "product_description": "product_description",
+	// 	    "real_results_description": "real results are so and so",
+	// 	    "how_to_use_description": "how to use the product. "
+	// 	},
+	// 	"product_cost": 100,
+	// 	"product_image_links": {
+	// 	    "description_images": ["image1", "image2"],
+	// 	    "real_results_images": ["image1", "image2"],
+	// 	    "how_to_use_images": ["image1", "image2"]
+	// 	},
+	// 	"product_category": ["Product Category", "Product Category 2"],
+	// 	"product_quantity": 100
+	// },
 	// {
-	// 	product_name: "Product Name",
-	// 	product_description: "Product Description",
-	// 	product_cost: 100,
-	// 	product_image_links: ["image1", "image2"],
-	// 	product_category: ["Product Category", "Product Category 2"]
-	//  product_quantity: 100
-	// }
+	// 	"product_name": "Product Name 3",
+	// 	"product_description": {
+	// 	    "product_description": "product_description",
+	// 	    "real_results_description": "real results are so and so",
+	// 	    "how_to_use_description": "how to use the product. "
+	// 	},
+	// 	"product_cost": 100,
+	// 	"product_image_links": {
+	// 	    "description_images": ["image1", "image2"],
+	// 	    "real_results_images": ["image1", "image2"],
+	// 	    "how_to_use_images": ["image1", "image2"]
+	// 	},
+	// 	"product_category": ["Product Category", "Product Category 2"],
+	// 	"product_quantity": 100
+	// },
 	// ]
 
 	const [apiCallMade, setApiCallMade] = useState(false);
@@ -151,7 +184,23 @@ const Products = () => {
 				return product;
 			} else if (
 				product.product_description
-					? product.product_description
+					? product.product_description.product_description
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
+					: false
+			) {
+				return product;
+			} else if (
+				product.product_description
+					? product.product_description.real_results_description
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
+					: false
+			) {
+				return product;
+			} else if (
+				product.product_description
+					? product.product_description.how_to_use_description
 							.toLowerCase()
 							.includes(searchTerm.toLowerCase())
 					: false
@@ -168,7 +217,25 @@ const Products = () => {
 				return product;
 			} else if (
 				product.product_image_links
-					? product.product_image_links
+					? product.product_image_links.description_images
+							.join(" ")
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
+					: false
+			) {
+				return product;
+			} else if (
+				product.product_image_links
+					? product.product_image_links.real_results_images
+							.join(" ")
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
+					: false
+			) {
+				return product;
+			} else if (
+				product.product_image_links
+					? product.product_image_links.how_to_use_images
 							.join(" ")
 							.toLowerCase()
 							.includes(searchTerm.toLowerCase())
@@ -201,6 +268,36 @@ const Products = () => {
 
 	// function to update all the product details
 	const updateProductDetails = () => {
+		// make sure none of the fields of productDetails is empty
+		if (
+			productDetails === null ||
+			productDetails.length === 0 ||
+			productDetails[0].product_name === "" ||
+			productDetails[0].product_description.product_description === "" ||
+			productDetails[0].product_description.real_results_description ===
+				"" ||
+			productDetails[0].product_description.how_to_use_description ===
+				"" ||
+			productDetails[0].product_cost === 0 ||
+			productDetails[0].product_image_links.description_images.length ===
+				0 ||
+			productDetails[0].product_image_links.real_results_images.length ===
+				0 ||
+			productDetails[0].product_image_links.how_to_use_images.length ===
+				0 ||
+			productDetails[0].product_category.length === 0 ||
+			productDetails[0].product_quantity === 0
+		) {
+			toast.error("Please fill all the fields");
+			return;
+		}
+
+		// check if recent changes have been made
+		if (recentChanges === false) {
+			toast.error("No recent changes have been made");
+			return;
+		}
+
 		axios
 			.post(base_url + "/api/v1/Luxuriant/update_multiple_products", {
 				password: userPassword,
@@ -209,6 +306,8 @@ const Products = () => {
 			.then((response) => {
 				if (response.data.message === "success") {
 					toast.success("Product details updated successfully");
+					setProductInfo(productDetails);
+					setRecentChanges(false);
 				} else {
 					toast.error("Product details update failed");
 				}
@@ -225,6 +324,7 @@ const Products = () => {
 		let updatedProductDetails = [...productDetails];
 		updatedProductDetails[index] = updatedProduct;
 		setProductDetails(updatedProductDetails);
+		setRecentChanges(true);
 	};
 
 	// function to delete a product
@@ -431,12 +531,13 @@ const Products = () => {
 												className="textarea textarea-accent text-lg"
 												value={
 													product.product_description
+														.product_description
 												}
 												onChange={(e) => {
 													const updatedProduct = {
 														...product,
 													};
-													updatedProduct.product_description =
+													updatedProduct.product_description.product_description =
 														e.target.value;
 													updateProduct(
 														index,
@@ -450,12 +551,13 @@ const Products = () => {
 												className="textarea textarea-accent text-lg"
 												value={
 													product.product_description
+														.real_results_description
 												}
 												onChange={(e) => {
 													const updatedProduct = {
 														...product,
 													};
-													updatedProduct.product_description =
+													updatedProduct.product_description.real_results_description =
 														e.target.value;
 													updateProduct(
 														index,
@@ -469,12 +571,13 @@ const Products = () => {
 												className="textarea textarea-accent text-lg"
 												value={
 													product.product_description
+														.how_to_use_description
 												}
 												onChange={(e) => {
 													const updatedProduct = {
 														...product,
 													};
-													updatedProduct.product_description =
+													updatedProduct.product_description.how_to_use_description =
 														e.target.value;
 													updateProduct(
 														index,
@@ -505,14 +608,14 @@ const Products = () => {
 											<textarea
 												className="textarea textarea-accent text-lg"
 												placeholder="Enter image links separated by commas"
-												value={product.product_image_links.join(
+												value={product.product_image_links.description_images.join(
 													", "
 												)}
 												onChange={(e) => {
 													const updatedProduct = {
 														...product,
 													};
-													updatedProduct.product_image_links =
+													updatedProduct.product_image_links.description_images =
 														e.target.value.split(
 															", "
 														);
@@ -527,14 +630,14 @@ const Products = () => {
 											<textarea
 												className="textarea textarea-accent text-lg"
 												placeholder="Enter image links separated by commas"
-												value={product.product_image_links.join(
+												value={product.product_image_links.real_results_images.join(
 													", "
 												)}
 												onChange={(e) => {
 													const updatedProduct = {
 														...product,
 													};
-													updatedProduct.product_image_links =
+													updatedProduct.product_image_links.real_results_images =
 														e.target.value.split(
 															", "
 														);
@@ -549,14 +652,14 @@ const Products = () => {
 											<textarea
 												className="textarea textarea-accent text-lg"
 												placeholder="Enter image links separated by commas"
-												value={product.product_image_links.join(
+												value={product.product_image_links.how_to_use_images.join(
 													", "
 												)}
 												onChange={(e) => {
 													const updatedProduct = {
 														...product,
 													};
-													updatedProduct.product_image_links =
+													updatedProduct.product_image_links.how_to_use_images =
 														e.target.value.split(
 															", "
 														);
@@ -668,10 +771,62 @@ const Products = () => {
 							placeholder="Product Description"
 							className="textarea textarea-accent textarea-bordered"
 							onChange={(e) => {
+								let new_product_description = {
+									...addProductDetails.product_description,
+									product_description: e.target.value,
+								};
 								setAddProductDetails({
 									...addProductDetails,
-									product_description: e.target.value,
+									product_description:
+										new_product_description,
 								});
+								console.log(addProductDetails);
+							}}
+						></textarea>
+					</div>
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">
+								Real Results Description
+							</span>
+						</label>
+						<textarea
+							placeholder="Product Description"
+							className="textarea textarea-accent textarea-bordered"
+							onChange={(e) => {
+								let new_product_description = {
+									...addProductDetails.product_description,
+									real_results_description: e.target.value,
+								};
+								setAddProductDetails({
+									...addProductDetails,
+									product_description:
+										new_product_description,
+								});
+								console.log(addProductDetails);
+							}}
+						></textarea>
+					</div>
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">
+								How to Use Description
+							</span>
+						</label>
+						<textarea
+							placeholder="Product Description"
+							className="textarea textarea-accent textarea-bordered"
+							onChange={(e) => {
+								let new_product_description = {
+									...addProductDetails.product_description,
+									how_to_use_description: e.target.value,
+								};
+								setAddProductDetails({
+									...addProductDetails,
+									product_description:
+										new_product_description,
+								});
+								console.log(addProductDetails);
 							}}
 						></textarea>
 					</div>
@@ -693,23 +848,78 @@ const Products = () => {
 					</div>
 					<div className="form-control">
 						<label className="label">
-							<span className="label-text">Product Images</span>
+							<span className="label-text">
+								Product Images (Comma Separated)
+							</span>
 						</label>
 						<textarea
 							placeholder="Product Images"
 							className="textarea textarea-accent textarea-bordered"
 							onChange={(e) => {
+								let new_product_image_links = {
+									...addProductDetails.product_image_links,
+									description_images:
+										e.target.value.split(", "),
+								};
 								setAddProductDetails({
 									...addProductDetails,
 									product_image_links:
-										e.target.value.split(", "),
+										new_product_image_links,
 								});
 							}}
 						></textarea>
 					</div>
 					<div className="form-control">
 						<label className="label">
-							<span className="label-text">Product Category</span>
+							<span className="label-text">
+								Real Results Images (Comma Separated)
+							</span>
+						</label>
+						<textarea
+							placeholder="Product Images"
+							className="textarea textarea-accent textarea-bordered"
+							onChange={(e) => {
+								let new_product_image_links = {
+									...addProductDetails.product_image_links,
+									real_results_images:
+										e.target.value.split(", "),
+								};
+								setAddProductDetails({
+									...addProductDetails,
+									product_image_links:
+										new_product_image_links,
+								});
+							}}
+						></textarea>
+					</div>
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">
+								How to use Images (Comma Separated)
+							</span>
+						</label>
+						<textarea
+							placeholder="Product Images"
+							className="textarea textarea-accent textarea-bordered"
+							onChange={(e) => {
+								let new_product_image_links = {
+									...addProductDetails.product_image_links,
+									how_to_use_images:
+										e.target.value.split(", "),
+								};
+								setAddProductDetails({
+									...addProductDetails,
+									product_image_links:
+										new_product_image_links,
+								});
+							}}
+						></textarea>
+					</div>
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">
+								Product Category (Comma Separated)
+							</span>
 						</label>
 						<textarea
 							placeholder="Product Category"
