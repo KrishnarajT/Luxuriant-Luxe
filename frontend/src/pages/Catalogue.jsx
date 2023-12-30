@@ -62,13 +62,13 @@ const Catalogue = () => {
 
 			{/* Hair */}
 
-			{productInfo[0] && (
+			{/* {productInfo[0] && (
 				<ProductCarousel
 					images={
 						productInfo[0].product_image_links.description_images
 					}
 				/>
-			)}
+			)} */}
 
 			{/* Skin */}
 

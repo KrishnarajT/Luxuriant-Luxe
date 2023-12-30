@@ -72,7 +72,7 @@ export function Navbar(props) {
 									</li>
 									<li className="text-lg md:text-xl w-full">
 										<NavLink
-											to={"/hair"}
+											to={"/category/hair"}
 											id="contact_element"
 											className="hover:text-base-content text-2xl w-full"
 										>
@@ -82,7 +82,7 @@ export function Navbar(props) {
 									</li>
 									<li className="text-lg md:text-xl w-full">
 										<NavLink
-											to={"/skin"}
+											to={"/category/skin"}
 											id="contact_element"
 											className="hover:text-base-content text-2xl"
 										>
@@ -92,7 +92,7 @@ export function Navbar(props) {
 									</li>
 									<li className="text-lg md:text-xl">
 										<NavLink
-											to={"/cosmetics"}
+											to={"/category/cosmetics"}
 											id="contact_element"
 											className="hover:text-base-content text-2xl"
 										>

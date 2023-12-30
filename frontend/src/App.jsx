@@ -20,6 +20,8 @@ import About from "./pages/About";
 import Products from "./pages/Products";
 import Cart from "./pages/Cart";
 import Catalogue from "./pages/Catalogue";
+import Category from "./pages/Category";
+import Product from "./pages/Product";
 
 function App() {
 	const [isNavbarPresent, setisNavbarPresent] = useState(true);
@@ -40,6 +42,8 @@ function App() {
 						<Route path="/about" element={<About />} />
 						<Route path="/catalogue" element={<Catalogue />} />
 						<Route path="/cart" element={<Cart />} />
+						<Route path="/category/:type" element={<Category />} />
+						<Route path="/product/:id" element={<Product />} />
 					</Routes>
 				</div>
 			</CartContextProvider>
