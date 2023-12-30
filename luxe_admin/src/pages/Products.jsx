@@ -38,6 +38,7 @@ const Products = () => {
 		},
 		product_category: [],
 		product_quantity: 0,
+		points_awarded: 0,
 	});
 
 	const { productInfo, setProductInfo } = React.useContext(DBInfoContext);
@@ -254,6 +255,24 @@ const Products = () => {
 			} else if (
 				product.product_quantity
 					? product.product_quantity
+							.toString()
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
+					: false
+			) {
+				return product;
+			} else if (
+				product._id
+					? product._id
+							.toString()
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
+					: false
+			) {
+				return product;
+			} else if (
+				product.points_awarded
+					? product.points_awarded
 							.toString()
 							.toLowerCase()
 							.includes(searchTerm.toLowerCase())
@@ -494,6 +513,7 @@ const Products = () => {
 								<th>How to use Images</th>
 								<th>Category</th>
 								<th>Quantity</th>
+								<th>Points</th>
 								<th>Delete</th>
 							</tr>
 						</thead>
@@ -701,6 +721,24 @@ const Products = () => {
 														...product,
 													};
 													updatedProduct.product_quantity =
+														e.target.value;
+													updateProduct(
+														index,
+														updatedProduct
+													);
+												}}
+												className="input input-bordered w-full min-w-28 input-secondary text-lg"
+											/>
+										</td>
+										<td>
+											<input
+												type="number"
+												value={product.points_awarded}
+												onChange={(e) => {
+													const updatedProduct = {
+														...product,
+													};
+													updatedProduct.points_awarded =
 														e.target.value;
 													updateProduct(
 														index,

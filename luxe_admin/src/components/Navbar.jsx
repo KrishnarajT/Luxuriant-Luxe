@@ -9,7 +9,6 @@ import {
 	IconBrush,
 	IconLogout,
 	IconMail,
-	IconMailFast,
 	IconMenu2,
 	IconMoon,
 	IconShoppingCart,
@@ -67,7 +66,7 @@ export function Navbar(props) {
 			   md:flex"
 				>
 					<ul className="menu menu-horizontal px-1">
-						<li className="text-md md:text-xl">
+						<li className="text-md md:text-xl mx-1">
 							<NavLink
 								to={"/orders"}
 								id="contact_element"
@@ -78,7 +77,7 @@ export function Navbar(props) {
 							</NavLink>
 						</li>
 
-						<li className="text-md md:text-xl">
+						<li className="text-md md:text-xl mx-1">
 							<NavLink
 								to={"/customers"}
 								id="contact_element"
@@ -88,7 +87,7 @@ export function Navbar(props) {
 								Customers
 							</NavLink>
 						</li>
-						<li className="text-md md:text-xl whitespace-nowrap flex-nowrap w-36">
+						<li className="text-md md:text-xl whitespace-nowrap flex-nowrap w-36 mx-1">
 							<NavLink
 								to={"/products"}
 								id="contact_element"
@@ -98,7 +97,7 @@ export function Navbar(props) {
 								Products
 							</NavLink>
 						</li>
-						<li className="text-md md:text-xl whitespace-nowrap flex-nowrap w-36">
+						<li className="text-md md:text-xl whitespace-nowrap flex-nowrap w-36 mx-1">
 							<NavLink
 								to={"/emails"}
 								id="contact_element"
@@ -218,7 +217,7 @@ export function Navbar(props) {
 											Customers
 										</NavLink>
 									</li>
-									<li className="text-md md:text-xl whitespace-nowrap flex-nowrap w-36">
+									<li className="text-md md:text-xl whitespace-nowrap flex-nowrap w-36 mx-1">
 										<NavLink
 											to={"/products"}
 											id="contact_element"

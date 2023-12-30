@@ -16,7 +16,7 @@ axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "true";
 
 const Customers = () => {
 	const {theme} = React.useContext(ThemeContext);
-	const {userPassword, setUserPassword} = React.useContext(UserContext);
+	const {userPassword} = React.useContext(UserContext);
 	const base_url = React.useContext(BaseUrlContext).baseUrl;
 	const [customerDetails, setCustomerDetails] = React.useState(null);
 	const [apiCallMade, setApiCallMade] = useState(false);
