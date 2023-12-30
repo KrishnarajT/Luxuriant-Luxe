@@ -4,11 +4,11 @@ const FAQ = () => {
 	return (
 		<div className="flex flex-col gap-4 w-full items-center justify-center">
 			<section
-				className="flex flex-col p-4 m-8 justify-center items-center text-4xl bulgatti
+				className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
 				md:text-6xl  my-12"
 				id="intro"
 			>
-				Faq
+				FAQ
 			</section>
 			<div className="md: w-3/4">
 				<div className="collapse bg-base-200 my-5">

@@ -42,11 +42,11 @@ const Products = () => {
 	return (
 		<div id="products_div">
 			<section
-				className="flex flex-col p-4 m-8 justify-center items-center text-4xl bulgatti
+				className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
 				md:text-6xl "
 				id="intro"
 			>
-				Our Products
+				OUR PRODUCTS
 			</section>
 
 			<section

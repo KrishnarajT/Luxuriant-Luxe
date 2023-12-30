@@ -58,8 +58,8 @@ const About = () => {
 				className="flex flex-col p-4 m-8 justify-center items-center"
 				id="intro"
 			>
-				<div className="text-4xl xl:text-6xl lg:text-5xl bulgatti my-6 mb-3">
-					About Us
+				<div className="text-4xl xl:text-6xl lg:text-5xl bodoni my-6 mb-3">
+					ABOUT US
 				</div>
 
 				<p
@@ -224,7 +224,7 @@ const About = () => {
 				className="flex flex-col p-2 m-8 justify-center items-center md:hidden"
 				id="intro"
 			>
-				<div className="text-4xl md:text-5xl bulgatti my-6">
+				<div className="text-4xl md:text-5xl bodoni my-6">
 					Only Premium
 				</div>
 
@@ -249,7 +249,7 @@ const About = () => {
 				className="flex flex-col p-2 m-8 justify-center items-center md:hidden"
 				id="intro"
 			>
-				<div className="text-4xl md:text-5xl bulgatti my-6">
+				<div className="text-4xl md:text-5xl bodoni my-6">
 					Authenticity in Beauty
 				</div>
 
@@ -275,10 +275,10 @@ const About = () => {
 			</section>
 
 			<section
-				className="flex flex-col p-4 m-8 justify-center items-center text-4xl md:text-5xl bulgatti"
+				className="flex flex-col p-4 m-8 justify-center items-center text-4xl md:text-5xl bodoni"
 				id="intro"
 			>
-				Your Box!
+				YOUR BOX
 				<div className="my-6 mt-10 max-w-7xl flex justify-center max-h-[40rem] md:gap-16">
 					<div className="w-3/4 mt-4">
 						{<ProductCarousel images={box_images} />}
@@ -292,7 +292,7 @@ const About = () => {
 				className="flex flex-col p-2 m-8 justify-center items-center md:hidden"
 				id="intro"
 			>
-				<div className="text-4xl md:text-5xl bulgatti my-6 text-center">
+				<div className="text-4xl md:text-5xl bodoni my-6 text-center">
 					Why are we special?
 				</div>
 
@@ -322,7 +322,7 @@ const About = () => {
 			</section>
 
 			<section
-				className="flex flex-col p-4 m-8 justify-center items-center text-4xl md:text-5xl bulgatti md:hidden"
+				className="flex flex-col p-4 m-8 justify-center items-center text-4xl md:text-5xl bodoni md:hidden"
 				id="intro"
 			>
 				Origins
@@ -344,10 +344,10 @@ const About = () => {
 			</section>
 
 			<section
-				className="flex flex-col p-4 m-8 justify-center items-center text-4xl md:text-5xl bulgatti"
+				className="flex flex-col p-4 m-8 justify-center items-center text-4xl md:text-5xl bodoni"
 				id="intro"
 			>
-				Founders
+				FOUNDERS
 				<div className="flex flex-col gap-4 md:flex-row md:justify-center">
 					<div className="flex justify-center mt-4">
 						<img
@@ -378,10 +378,10 @@ const About = () => {
 				</div>
 			</section>
 			<section
-				className="flex flex-col p-4 m-8 justify-center items-center text-4xl md:text-5xl bulgatti"
+				className="flex flex-col p-4 m-8 justify-center items-center text-4xl md:text-5xl bodoni"
 				id="intro"
 			>
-				Get in Touch!
+				GET IN TOUCH
 				<div className="text-xl mt-10 cardo text-center md:w-3/4 md:text-3xl">
 					For any queries, Feel Free to Call, or Whatsapp us anytime!
 					We assure you that we will get back to you in 24 hours!
