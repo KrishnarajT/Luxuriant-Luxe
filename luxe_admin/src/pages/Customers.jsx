@@ -1,12 +1,11 @@
-import React, {useEffect, useState} from "react";
-import {ThemeContext} from "../context/ThemeContext";
-import {UserContext} from "../context/UserContext";
-import {BaseUrlContext} from "../context/BaseUrlContext";
+import React, { useEffect, useState } from "react";
+import { ThemeContext } from "../context/ThemeContext";
+import { UserContext } from "../context/UserContext";
+import { BaseUrlContext } from "../context/BaseUrlContext";
 import ScrollToTopButton from "../components/ui/ScrollToTopButton";
 import axios from "axios";
-import {DBInfoContext} from "../context/DBInfoContext.jsx";
-import {IconRefresh, IconSearch} from "@tabler/icons-react";
-
+import { DBInfoContext } from "../context/DBInfoContext.jsx";
+import { IconRefresh, IconSearch } from "@tabler/icons-react";
 
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 axios.defaults.headers.common["Access-Control-Allow-Methods"] =
@@ -15,38 +14,39 @@ axios.defaults.headers.common["Access-Control-Allow-Headers"] = "Content-Type";
 axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "true";
 
 const Customers = () => {
-	const {theme} = React.useContext(ThemeContext);
-	const {userPassword} = React.useContext(UserContext);
+	const { theme } = React.useContext(ThemeContext);
+	const { userPassword } = React.useContext(UserContext);
 	const base_url = React.useContext(BaseUrlContext).baseUrl;
 	const [customerDetails, setCustomerDetails] = React.useState(null);
 	const [apiCallMade, setApiCallMade] = useState(false);
 	const [searchTerm, setSearchTerm] = useState("");
-	
+
 	let iSentOnce = false;
-	
-	const {
-		customerInfo, setCustomerInfo,
-	} = React.useContext(DBInfoContext);
-	
-	
+
+	const { customerInfo, setCustomerInfo } = React.useContext(DBInfoContext);
+
 	// customer details is a list of such objects
 	// 	customer_id: 1,
 	//    customer_name: "some name",
 	//    customer_address: "some address",
 	//    customer_email: "some email",
 	//    customer_phone: "some phone"
-	
-	
+	// 		customer_points: 0
+
 	const fetch_customer_from_server = async () => {
 		// get all orders
 		let response = await axios
-			.post(`${base_url}/api/v1/Luxuriant/get_customers`, {
-				password: userPassword,
-			}, {
-				headers: {
-					"Content-Type": "application/json",
+			.post(
+				`${base_url}/api/v1/Luxuriant/get_customers`,
+				{
+					password: userPassword,
 				},
-			})
+				{
+					headers: {
+						"Content-Type": "application/json",
+					},
+				}
+			)
 			.then((response) => {
 				return response;
 			})
@@ -66,18 +66,17 @@ const Customers = () => {
 			const data = response.data.customers;
 			console.log(data);
 			setCustomerInfo(data);
-			setCustomerDetails(data)
+			setCustomerDetails(data);
 		} else if (response.data.message === "No Orders found") {
 			setCustomerInfo([]);
 			setCustomerDetails([]);
 		}
 	};
-	
-	
+
 	const get_customer_details = async () => {
 		setCustomerDetails(customerInfo);
 	};
-	
+
 	useEffect(() => {
 		if (theme === "light") {
 			const light_button = document.getElementById("light_button");
@@ -96,46 +95,57 @@ const Customers = () => {
 			}
 		}
 	}, []);
-	
+
 	function filtered_customer_details(customerDetails) {
 		return customerDetails.filter((customer) => {
 			if (searchTerm === "") {
 				return customer;
 			} else if (
-				customer.customer_name ? customer.customer_name.toLowerCase()
-						.includes(searchTerm.toLowerCase())
+				customer.customer_name
+					? customer.customer_name
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
 					: false
 			) {
 				return customer;
 			} else if (
-				customer.customer_email ? customer.customer_email.toLowerCase()
-						.includes(searchTerm.toLowerCase())
+				customer.customer_email
+					? customer.customer_email
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
 					: false
 			) {
 				return customer;
 			} else if (
-				customer.customer_address ? customer.customer_address.toLowerCase()
-						.includes(searchTerm.toLowerCase())
+				customer.customer_address
+					? customer.customer_address
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
 					: false
 			) {
 				return customer;
 			} else if (
-				customer.customer_phone ? customer.customer_phone.toLowerCase()
-						.includes(searchTerm.toLowerCase())
+				customer.customer_phone
+					? customer.customer_phone
+							.toLowerCase()
+							.includes(searchTerm.toLowerCase())
 					: false
 			) {
 				return customer;
 			} else if (
-				customer._id
+				customer._id.toLowerCase().includes(searchTerm.toLowerCase())
+			) {
+				return customer;
+			} else if (
+				customer.customer_points
 					.toLowerCase()
 					.includes(searchTerm.toLowerCase())
 			) {
 				return customer;
 			}
 		});
-		
 	}
-	
+
 	return (
 		<div className="min-h-screen">
 			<div className="flex justify-center m-4">
@@ -212,6 +222,7 @@ const Customers = () => {
 								<th>Customer Email</th>
 								<th>Customer Address</th>
 								<th>Customer Phone</th>
+								<th>Customer Points</th>
 								<th>Customer Id</th>
 							</tr>
 						</thead>
@@ -230,6 +241,7 @@ const Customers = () => {
 												{customer.customer_address}
 											</td>
 											<td>{customer.customer_phone}</td>
+											<td>{customer.customer_points}</td>
 											<td>{customer._id}</td>
 										</tr>
 									);
