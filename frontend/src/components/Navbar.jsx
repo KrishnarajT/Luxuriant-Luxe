@@ -62,7 +62,7 @@ export function Navbar(props) {
 								<ul className="menu menu-horizontal px-1">
 									<li className="text-lg md:text-xl w-full">
 										<NavLink
-											to={"/products"}
+											to={"/catalogue"}
 											id="contact_element"
 											className="hover:text-base-content text-2xl w-full"
 										>

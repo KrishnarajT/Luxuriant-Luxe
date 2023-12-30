@@ -9,15 +9,106 @@ const CartContextProvider = ({ children }) => {
 	const base_url = React.useContext(BaseUrlContext).baseUrl;
 	const [cart, setCart] = useState([]);
 	const [productInfo, setProductInfo] = useState([]);
+	const [HairProducts, setHairProducts] = useState([]);
+	const [SkinProducts, setSkinProducts] = useState([]);
+	const [CosmeticsProducts, setCosmeticsProducts] = useState([]);
+	const [HolidayProducts, setHolidayProducts] = useState([]);
+	const [FeaturedProducts, setFeaturedProducts] = useState([]);
+	const [EssentialsProducts, setEssentialsProducts] = useState([]);
+
+	// product info is a list of objects like these.
+	// 	{
+	//     "_id": "654cd992ae6a271afeed6b4e",
+	//     "product_name": "Product Name 2",
+	//     "product_cost": 100,
+	//     "product_image_links": {
+	//         "description_images": [
+	//             "https://i.imgur.com/CXToepvh.pnghttps://i.imgur.com/9fCsEDah.png",
+	//             "https://i.imgur.com/Y0axnEdh.png",
+	//             "https://i.imgur.com/h9ro4hNh.png",
+	//             "https://i.imgur.com/ZrHcLSBh.png",
+	//             "https://i.imgur.com/HGtISq0h.png",
+	//             "https://i.imgur.com/jxbpxRgh.png",
+	//             "https://i.imgur.com/UcwrTi6h.png",
+	//             "https://i.imgur.com/kpXJbXhh.png",
+	//             "https://i.imgur.com/E5NqNVRh.png"
+	//         ],
+	//         "real_results_images": [
+	//             "image1",
+	//             "image2"
+	//         ],
+	//         "how_to_use_images": [
+	//             "image1",
+	//             "image2"
+	//         ]
+	//     },
+	//     "product_category": [
+	//         "Product Category",
+	//         "Product Category 2"
+	//     ],
+	//     "product_quantity": 100,
+	//     "product_description": {
+	//         "product_description": "this is pink jar",
+	//         "real_results_description": "real results are so and so",
+	//         "how_to_use_description": "how to use the product. "
+	//     },
+	//     "points_awarded": 500
+	// }
+	const segregateProducts = async () => {
+		for (let i = 0; i < productInfo.length; i++) {
+			const categories = productInfo[i].product_category;
+			// convert all categories to lowercase
+			for (let j = 0; j < categories.length; j++) {
+				categories[j] = categories[j].toLowerCase();
+			}
+			console.log(categories);
+			if (categories.includes("Holiday")) {
+				setHolidayProducts((oldArray) => [...oldArray, productInfo[i]]);
+			}
+			if (categories.includes("Featured")) {
+				setFeaturedProducts((oldArray) => [
+					...oldArray,
+					productInfo[i],
+				]);
+			}
+			if (categories.includes("Essentials")) {
+				setEssentialsProducts((oldArray) => [
+					...oldArray,
+					productInfo[i],
+				]);
+			}
+			if (categories.includes("Hair")) {
+				setHairProducts((oldArray) => [...oldArray, productInfo[i]]);
+			}
+			if (categories.includes("Skin")) {
+				setSkinProducts((oldArray) => [...oldArray, productInfo[i]]);
+			}
+			if (categories.includes("Cosmetics")) {
+				setCosmeticsProducts((oldArray) => [
+					...oldArray,
+					productInfo[i],
+				]);
+			}
+		}
+	};
+
 	const fetchProductInfo = async () => {
-		let response = await axios
+		await axios
 			.post(`${base_url}/api/v1/Luxuriant/get_products`, {
 				headers: {
 					"Content-Type": "application/json",
 				},
 			})
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
+				if (response.data.message === "Success") {
+					const data = response.data.products;
+					// console.log(data);
+					setProductInfo(data);
+					segregateProducts();
+				} else if (response.data.message === "No Products found") {
+					setProductInfo([]);
+				}
 				return response;
 			})
 			.catch((error) => {
@@ -29,18 +120,23 @@ const CartContextProvider = ({ children }) => {
 					},
 				};
 			});
-		console.log(response.data);
-		console.log(response);
-		if (response.data.message === "Success") {
-			const data = response.data.products;
-			console.log(data);
-			setProductInfo(data);
-		} else if (response.data.message === "No Products found") {
-			setProductInfo([]);
-		}
 	};
 	useEffect(() => {
-		fetchProductInfo();
+		const fetchproducts = async () => {
+			await fetchProductInfo();
+			console.log("productInfo", productInfo);
+			await segregateProducts();
+			// log the segregated products
+			console.log("HolidayProducts", HolidayProducts);
+			console.log("FeaturedProducts", FeaturedProducts);
+			console.log("EssentialsProducts", EssentialsProducts);
+			console.log("HairProducts", HairProducts);
+			console.log("SkinProducts", SkinProducts);
+			console.log("CosmeticsProducts", CosmeticsProducts);
+			// all products
+			console.log("productInfo", productInfo);
+		};
+		fetchproducts();
 	}, []);
 
 	const addToCart = (item) => {
@@ -171,7 +267,6 @@ const CartContextProvider = ({ children }) => {
 		<CartContext.Provider
 			value={{
 				cart,
-				fetchProductInfo: fetchProductInfo,
 				addToCart: addToCart,
 				removeFromCart: removeFromCart,
 				productInfo,
@@ -180,6 +275,12 @@ const CartContextProvider = ({ children }) => {
 				IncreaseProductQuantity: IncreaseProductQuantity,
 				DecreaseProductQuantity: DecreaseProductQuantity,
 				getCart: getCart,
+				HolidayProducts,
+				FeaturedProducts,
+				EssentialsProducts,
+				HairProducts,
+				SkinProducts,
+				CosmeticsProducts,
 			}}
 		>
 			{children}

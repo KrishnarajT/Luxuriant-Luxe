@@ -16,15 +16,21 @@ import {
 import ScrollToTopButton from "../components/ui/ScrollToTopButton";
 import slideshowhtml from "../components/slideshow.html";
 import About from "./About";
-import Products from "./Products";
-import Cart from "./Cart";
 import FAQ from "./FAQ";
 import { CartContext } from "../context/CartContext";
+import Catalogue from "./Catalogue";
 
 const Home = () => {
 	const navigate = useNavigate();
 	const { theme } = React.useContext(ThemeContext);
-	const { productInfo } = React.useContext(CartContext);
+	const { productInfo,
+		HairProducts,
+		SkinProducts,
+		CosmeticsProducts,
+		EssentialsProducts,
+		HolidayProducts,
+		FeaturedProducts,
+	} = React.useContext(CartContext);
 	useEffect(() => {
 		if (theme === "light") {
 			const light_button = document.getElementById("light_button");
@@ -34,6 +40,12 @@ const Home = () => {
 			dark_button.click();
 		}
 		console.log(productInfo);
+		console.log(HairProducts);
+		console.log(SkinProducts);
+		console.log(CosmeticsProducts);
+		console.log(EssentialsProducts);
+		console.log(HolidayProducts);
+		console.log(FeaturedProducts);
 	});
 	return (
 		<div className="">
@@ -56,7 +68,7 @@ const Home = () => {
 			<div className="ribbon color"></div>
 
 			<section className="mt-16" id="productssection">
-				<Products />
+				<Catalogue />
 			</section>
 
 			<div className="my-12">

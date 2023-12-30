@@ -9415,6 +9415,11 @@ body::-webkit-scrollbar-thumb {
     line-height: 1;
   }
 
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
   .md\:normal-case {
     text-transform: none;
   }

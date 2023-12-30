@@ -304,8 +304,7 @@ const Products = () => {
 				0 ||
 			productDetails[0].product_image_links.how_to_use_images.length ===
 				0 ||
-			productDetails[0].product_category.length === 0 ||
-			productDetails[0].product_quantity === 0
+			productDetails[0].product_category.length === 0
 		) {
 			toast.error("Please fill all the fields");
 			return;
@@ -316,6 +315,34 @@ const Products = () => {
 			toast.error("No recent changes have been made");
 			return;
 		}
+
+		// clean the product details by changing all product categories with the clean array function.
+		let cleaned_product_details = [...productDetails];
+		console.log(cleaned_product_details);
+		for (let i = 0; i < cleaned_product_details.length; i++) {
+			cleaned_product_details[i].product_category = clean_array(
+				cleaned_product_details[i].product_category
+			);
+			cleaned_product_details[i].product_image_links.description_images =
+				clean_array(
+					cleaned_product_details[i].product_image_links
+						.description_images
+				);
+			cleaned_product_details[i].product_image_links.real_results_images =
+				clean_array(
+					cleaned_product_details[i].product_image_links
+						.real_results_images
+				);
+			cleaned_product_details[i].product_image_links.how_to_use_images =
+				clean_array(
+					cleaned_product_details[i].product_image_links
+						.how_to_use_images
+				);
+		}
+		// update productDetails
+		setProductDetails(cleaned_product_details);
+
+		// send the product details to the server
 		console.log("updating product details", productDetails);
 		axios
 			.post(base_url + "/api/v1/Luxuriant/update_multiple_products", {
@@ -404,6 +431,36 @@ const Products = () => {
 				console.log(error);
 				toast.error("Product addition failed due to errors. ");
 			});
+	};
+
+	// function to clean array regardless of how badly the string is formatted
+	const clean_array = (unformated_string) => {
+		// if the string is empty, return an empty array
+		if (unformated_string === "") {
+			return [];
+		}
+		// if its an array, return the array
+		if (Array.isArray(unformated_string)) {
+			return unformated_string;
+		}
+		// remove all trailing and leading spaces
+		let cleaned_string = unformated_string.trim();
+		// remove all \n
+		cleaned_string = cleaned_string.replace(/\n/g, "");
+		// remove all \t
+		cleaned_string = cleaned_string.replace(/\t/g, "");
+		// split the string based on commas
+		let cleaned_array = cleaned_string.split(",");
+		// remove all empty strings
+		cleaned_array = cleaned_array.filter((item) => {
+			return item !== "";
+		});
+		// trim each item in the array
+		cleaned_array = cleaned_array.map((item) => {
+			return item.trim();
+		});
+		console.log(cleaned_array);
+		return cleaned_array;
 	};
 
 	return (
@@ -629,9 +686,10 @@ const Products = () => {
 											<textarea
 												className="textarea textarea-accent text-lg"
 												placeholder="Enter image links separated by commas"
-												value={product.product_image_links.description_images.join(
-													", "
-												)}
+												value={
+													product.product_image_links
+														.description_images
+												}
 												onChange={(e) => {
 													const updatedProduct = {
 														...product,
@@ -658,17 +716,16 @@ const Products = () => {
 											<textarea
 												className="textarea textarea-accent text-lg"
 												placeholder="Enter image links separated by commas"
-												value={product.product_image_links.real_results_images.join(
-													", "
-												)}
+												value={
+													product.product_image_links
+														.real_results_images
+												}
 												onChange={(e) => {
 													const updatedProduct = {
 														...product,
 													};
 													updatedProduct.product_image_links.real_results_images =
-														e.target.value
-															.split(", ")[0]
-															.split(",");
+														e.target.value;
 													updateProduct(
 														index,
 														updatedProduct
@@ -680,17 +737,16 @@ const Products = () => {
 											<textarea
 												className="textarea textarea-accent text-lg"
 												placeholder="Enter image links separated by commas"
-												value={product.product_image_links.how_to_use_images.join(
-													", "
-												)}
+												value={
+													product.product_image_links
+														.how_to_use_images
+												}
 												onChange={(e) => {
 													const updatedProduct = {
 														...product,
 													};
 													updatedProduct.product_image_links.how_to_use_images =
-														e.target.value
-															.split(", ")[0]
-															.split(",");
+														e.target.value;
 													updateProduct(
 														index,
 														updatedProduct
@@ -708,9 +764,7 @@ const Products = () => {
 														...product,
 													};
 													updatedProduct.product_category =
-														e.target.value.split(
-															", "
-														);
+														e.target.value;
 													updateProduct(
 														index,
 														updatedProduct

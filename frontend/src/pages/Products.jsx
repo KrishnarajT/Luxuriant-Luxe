@@ -43,10 +43,10 @@ const Products = () => {
 		<div id="products_div">
 			<section
 				className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
-				md:text-6xl "
+				md:text-5xl"
 				id="intro"
 			>
-				OUR PRODUCTS
+				BROWSE OUR CATALOGUE
 			</section>
 
 			<section
