@@ -54,39 +54,41 @@ const CartContextProvider = ({ children }) => {
 	//     },
 	//     "points_awarded": 500
 	// }
-	const segregateProducts = async () => {
-		for (let i = 0; i < productInfo.length; i++) {
-			const categories = productInfo[i].product_category;
+	const segregateProducts = async (data) => {
+
+		for (let i = 0; i < data.length; i++) {
+			const categories = data[i].product_category;
 			// convert all categories to lowercase
 			for (let j = 0; j < categories.length; j++) {
 				categories[j] = categories[j].toLowerCase();
 			}
 			console.log(categories);
-			if (categories.includes("Holiday")) {
-				setHolidayProducts((oldArray) => [...oldArray, productInfo[i]]);
+			if (categories.includes("holiday")) {
+				setHolidayProducts((oldArray) => [...oldArray, data[i]]);
 			}
-			if (categories.includes("Featured")) {
+			if (categories.includes("featured")) {
 				setFeaturedProducts((oldArray) => [
 					...oldArray,
-					productInfo[i],
+					data[i],
 				]);
 			}
-			if (categories.includes("Essentials")) {
+			if (categories.includes("essentials")) {
 				setEssentialsProducts((oldArray) => [
 					...oldArray,
-					productInfo[i],
+					data[i],
 				]);
 			}
-			if (categories.includes("Hair")) {
-				setHairProducts((oldArray) => [...oldArray, productInfo[i]]);
+			if (categories.includes("hair")) {
+				console.log("found a product with hair")
+				setHairProducts((oldArray) => [...oldArray, data[i]]);
 			}
-			if (categories.includes("Skin")) {
-				setSkinProducts((oldArray) => [...oldArray, productInfo[i]]);
+			if (categories.includes("skin")) {
+				setSkinProducts((oldArray) => [...oldArray, data[i]]);
 			}
-			if (categories.includes("Cosmetics")) {
+			if (categories.includes("cosmetics")) {
 				setCosmeticsProducts((oldArray) => [
 					...oldArray,
-					productInfo[i],
+					data[i],
 				]);
 			}
 		}
@@ -105,7 +107,7 @@ const CartContextProvider = ({ children }) => {
 					const data = response.data.products;
 					// console.log(data);
 					setProductInfo(data);
-					segregateProducts();
+					segregateProducts(data);
 				} else if (response.data.message === "No Products found") {
 					setProductInfo([]);
 				}
