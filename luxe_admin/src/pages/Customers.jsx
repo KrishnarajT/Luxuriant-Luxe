@@ -5,7 +5,8 @@ import { BaseUrlContext } from "../context/BaseUrlContext";
 import ScrollToTopButton from "../components/ui/ScrollToTopButton";
 import axios from "axios";
 import { DBInfoContext } from "../context/DBInfoContext.jsx";
-import { IconRefresh, IconSearch } from "@tabler/icons-react";
+import { IconRefresh, IconSearch, IconTrash } from "@tabler/icons-react";
+import { Toaster, toast } from "react-hot-toast";
 
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 axios.defaults.headers.common["Access-Control-Allow-Methods"] =
@@ -20,6 +21,7 @@ const Customers = () => {
 	const [customerDetails, setCustomerDetails] = React.useState(null);
 	const [apiCallMade, setApiCallMade] = useState(false);
 	const [searchTerm, setSearchTerm] = useState("");
+	const [customertoDelete, setCustomerToDelete] = useState(null);
 
 	let iSentOnce = false;
 
@@ -148,6 +150,7 @@ const Customers = () => {
 
 	return (
 		<div className="min-h-screen">
+			<Toaster />
 			<div className="flex justify-center m-4">
 				<div className="text-4xl bulgatti my-6">Our Customers</div>
 			</div>
@@ -224,6 +227,7 @@ const Customers = () => {
 								<th>Customer Phone</th>
 								<th>Customer Points</th>
 								<th>Customer Id</th>
+								<th>Delete</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -243,6 +247,23 @@ const Customers = () => {
 											<td>{customer.customer_phone}</td>
 											<td>{customer.customer_points}</td>
 											<td>{customer._id}</td>
+											<td>
+												<button
+													className="btn btn-error btn-md p-2"
+													onClick={() => {
+														setCustomerToDelete(
+															customer._id
+														);
+														const modal =
+															document.getElementById(
+																"delete_customer_modal"
+															);
+														modal.showModal();
+													}}
+												>
+													<IconTrash className="w-8 h-8" />
+												</button>
+											</td>
 										</tr>
 									);
 								}
@@ -252,6 +273,68 @@ const Customers = () => {
 				)}
 			</div>
 			<ScrollToTopButton />
+
+			{/* Modal to delete customer */}
+
+			<dialog id="delete_customer_modal" className="modal">
+				<div className="modal-box bg-secondary text-secondary-content">
+					<h3 className="font-bold text-lg">Are you Sure?</h3>
+					<p className="py-4">
+						Are you sure you want to delete this customer?
+					</p>
+					<div className="modal-action">
+						<form method="dialog">
+							{/* if there is a button in form, it will close the modal */}
+							<button className="btn m-2">No</button>
+							<button
+								className="btn m-2"
+								onClick={() => {
+									// delete the customer
+									// send mail to customer
+									axios
+										.post(
+											`${base_url}/api/v1/Luxuriant/delete_customer`,
+											{
+												password: userPassword,
+												customer_id: customertoDelete,
+											},
+											{
+												headers: {
+													"Content-Type":
+														"application/json",
+												},
+											}
+										)
+										.then((response) => {
+											console.log(response.data);
+											if (
+												response.data.message ===
+												"success"
+											) {
+												fetch_customer_from_server();
+												toast.success(
+													"Customer Deleted"
+												);
+											} else {
+												toast.error(
+													"Couldnt delete customer"
+												);
+											}
+										})
+										.catch((error) => {
+											console.error(error);
+											toast.error(
+												"Couldnt delete customer, Check Server. "
+											);
+										});
+								}}
+							>
+								Yes! Delete Customer!
+							</button>
+						</form>
+					</div>
+				</div>
+			</dialog>
 		</div>
 	);
 };
