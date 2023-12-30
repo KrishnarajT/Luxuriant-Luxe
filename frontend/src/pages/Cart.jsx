@@ -20,11 +20,8 @@ import {
 } from "@tabler/icons-react";
 import ScrollToTopButton from "../components/ui/ScrollToTopButton";
 import { BaseUrlContext } from "../context/BaseUrlContext";
-import blue_image from "../../assets/images/blue.png";
-import pink_image from "../../assets/images/pink.png";
-import purple_image from "../../assets/images/purple.png";
-
 import axios from "axios";
+const qr_code_image = "https://i.imgur.com/ObMvMPQh.jpg";
 
 axios.defaults.headers.common["Access-Control-Allow-Origin"] =
 	"http://localhost:5173";
@@ -537,7 +534,7 @@ const Cart = () => {
 					</div>
 					<div className="flex justify-center">
 						<div
-							id="qr_code"
+							src={qr_code_image}
 							className="w-screen h-96 bg-center snap-center self-center"
 						></div>
 					</div>

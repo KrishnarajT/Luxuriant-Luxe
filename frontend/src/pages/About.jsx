@@ -14,30 +14,26 @@ import {
 } from "@tabler/icons-react";
 import ScrollToTopButton from "../components/ui/ScrollToTopButton";
 import { useLocation } from "react-router-dom";
-import product_3_image_3 from "../../assets/images/product_carousel/3/03.webp";
-import product_1_image_1 from "../../assets/images/product_carousel/1/00.jpg";
-import product_3_image_1 from "../../assets/images/product_carousel/3/01.webp";
 import { ProductCarousel } from "../components/ui/ProductCarousel";
-
-// imporing box images.
-import box_image_1 from "../../assets/images/box/01.webp";
-import box_image_2 from "../../assets/images/box/02.webp";
-import box_image_3 from "../../assets/images/box/03.webp";
-import box_image_4 from "../../assets/images/box/04.webp";
-import box_image_5 from "../../assets/images/box/05.webp";
-import box_image_6 from "../../assets/images/box/06.webp";
-import box_image_7 from "../../assets/images/box/07.webp";
-import box_image_8 from "../../assets/images/box/08.webp";
-
+const creator_images = [
+	"https://i.imgur.com/t6211Pkh.png",
+	"https://i.imgur.com/ggqaFhch.png",
+];
+const social_and_payment_images = [
+	"https://i.imgur.com/bJgaHuhh.png",
+	"https://i.imgur.com/F3JCT3eh.jpg",
+	"https://i.imgur.com/LSILcLLh.jpg",
+	"https://i.imgur.com/ObMvMPQh.jpg",
+];
 const box_images = [
-	box_image_1,
-	box_image_2,
-	box_image_3,
-	box_image_4,
-	box_image_5,
-	box_image_6,
-	box_image_7,
-	box_image_8,
+	"https://i.imgur.com/p73AT9Gh.jpg",
+	"https://i.imgur.com/mc7C7XUh.jpg",
+	"https://i.imgur.com/eMlg0UHh.jpg",
+	"https://i.imgur.com/ZPiMKFbh.jpg",
+	"https://i.imgur.com/YdT2wHuh.jpg",
+	"https://i.imgur.com/l37Q3LVh.jpg",
+	"https://i.imgur.com/znpMKO4h.jpg",
+	"https://i.imgur.com/iqcG17th.jpg",
 ];
 
 const About = () => {
@@ -332,8 +328,10 @@ const About = () => {
 				Origins
 				<div className="flex justify-center mt-4">
 					<div
-						id={
-							theme === "light" ? "insta_code" : "insta_code_dark"
+						src={
+							theme === "light"
+								? social_and_payment_images[0]
+								: social_and_payment_images[1]
 						}
 						className="w-screen h-64 bg-center snap-center self-center"
 					></div>
@@ -353,24 +351,16 @@ const About = () => {
 				<div className="flex flex-col gap-4 md:flex-row md:justify-center">
 					<div className="flex justify-center mt-4">
 						<div
-							id={
-								theme === "light"
-									? "insta_code"
-									: "insta_code_dark"
-							}
-							className="w-screen h-64 bg-center snap-center self-center
-							md:w-80 md:h-80"
+							src={creator_images[0]}
+							className="w-screen h-64 snap-center self-center
+							md:w-80 md:h-80 bg-no-repeat bg-contain bg-center"
 						></div>
 					</div>
 					<div className="flex justify-center mt-4">
 						<div
-							id={
-								theme === "light"
-									? "insta_code"
-									: "insta_code_dark"
-							}
-							className="w-screen h-64 bg-center snap-center self-center
-							md:w-80 md:h-80"
+							src={creator_images[1]}
+							className="w-screen h-64 snap-center self-center
+							md:w-80 md:h-80 bg-no-repeat bg-contain bg-center"
 						></div>
 					</div>
 				</div>

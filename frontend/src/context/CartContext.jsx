@@ -8,31 +8,12 @@ export const CartContext = createContext(undefined);
 const CartContextProvider = ({ children }) => {
 	const base_url = React.useContext(BaseUrlContext).baseUrl;
 	const [cart, setCart] = useState([]);
-	const [productInfo, setProductInfo] = useState([
-		{
-			product_id: "654cd992ae6a271afeed6b4c",
-			product_name: "Blue Jar",
-			product_image: "../../assets/images/blue.png",
-			product_cost: 100,
-		},
-		{
-			product_id: "654cd992ae6a271afeed6b4e",
-			product_name: "Pink Jar",
-			product_image: "../../assets/images/pink.png",
-			product_cost: 100,
-		},
-		{
-			product_id: "654cd992ae6a271afeed6b4d",
-			product_name: "Purple Jar",
-			product_image: "../../assets/images/purple.png",
-			product_cost: 100,
-		},
-	]);
+	const [productInfo, setProductInfo] = useState([]);
 
 	useEffect(() => {
 		const fetchProductInfo = async () => {
 			let response = await axios
-				.post(`${base_url}/api/v1/Luxuriant/get_Products`, {
+				.post(`${base_url}/api/v1/Luxuriant/get_products`, {
 					headers: {
 						"Content-Type": "application/json",
 					},
@@ -115,7 +96,7 @@ const CartContextProvider = ({ children }) => {
 				cart.push(item);
 			}
 		}
-
+		setCart(cart);
 		// set the cart in the local storage
 		localStorage.setItem("cart", JSON.stringify(cart));
 	};
@@ -155,7 +136,7 @@ const CartContextProvider = ({ children }) => {
 				// if the item is not in the cart, do nothing
 			}
 		}
-
+		setCart(cart);
 		// set the cart in the local storage
 		localStorage.setItem("cart", JSON.stringify(cart));
 	};
@@ -165,6 +146,7 @@ const CartContextProvider = ({ children }) => {
 		cart.splice(0, cart.length);
 		// set the cart in the local storage
 		localStorage.setItem("cart", JSON.stringify(cart));
+		setCart(cart);
 	};
 
 	const getCartTotal = () => {
@@ -184,6 +166,7 @@ const CartContextProvider = ({ children }) => {
 		}
 		// set the cart in the local storage
 		localStorage.setItem("cart", JSON.stringify(cart));
+		setCart(cart);
 	};
 
 	const DecreaseProductQuantity = (product_id) => {
@@ -199,6 +182,7 @@ const CartContextProvider = ({ children }) => {
 		}
 		// set the cart in the local storage
 		localStorage.setItem("cart", JSON.stringify(cart));
+		setCart(cart);
 	};
 
 	const getCart = () => {

@@ -20,62 +20,6 @@ import { CartContext } from "../context/CartContext";
 import { useLocation } from "react-router-dom";
 import { ProductCarousel } from "../components/ui/ProductCarousel";
 
-import product_1_image_1 from "../../assets/images/product_carousel/1/00.jpg";
-import product_1_image_2 from "../../assets/images/product_carousel/1/01.webp";
-import product_1_image_3 from "../../assets/images/product_carousel/1/02.webp";
-import product_1_image_4 from "../../assets/images/product_carousel/1/03.webp";
-import product_1_image_5 from "../../assets/images/product_carousel/1/04.webp";
-import product_1_image_6 from "../../assets/images/product_carousel/1/05.webp";
-import product_1_image_7 from "../../assets/images/product_carousel/1/06.webp";
-import product_1_image_8 from "../../assets/images/product_carousel/1/07.webp";
-import product_1_image_9 from "../../assets/images/product_carousel/1/08.webp";
-
-import product_2_image_1 from "../../assets/images/product_carousel/1/01.webp";
-import product_2_image_2 from "../../assets/images/product_carousel/2/02.webp";
-import product_2_image_3 from "../../assets/images/product_carousel/2/03.webp";
-import product_2_image_4 from "../../assets/images/product_carousel/2/04.webp";
-import product_2_image_5 from "../../assets/images/product_carousel/2/05.webp";
-import product_2_image_6 from "../../assets/images/product_carousel/2/07.webp";
-
-import product_3_image_1 from "../../assets/images/product_carousel/3/01.webp";
-import product_3_image_2 from "../../assets/images/product_carousel/3/02.webp";
-import product_3_image_3 from "../../assets/images/product_carousel/3/03.webp";
-import product_3_image_4 from "../../assets/images/product_carousel/3/04.webp";
-import product_3_image_5 from "../../assets/images/product_carousel/3/05.webp";
-import product_3_image_6 from "../../assets/images/product_carousel/3/06.webp";
-import product_3_image_7 from "../../assets/images/product_carousel/3/07.webp";
-
-const product_1_images = [
-	product_1_image_1,
-	product_1_image_2,
-	product_1_image_3,
-	product_1_image_4,
-	product_1_image_5,
-	product_1_image_6,
-	product_1_image_7,
-	product_1_image_8,
-	product_1_image_9,
-];
-
-const product_2_images = [
-	product_2_image_1,
-	product_2_image_2,
-	product_2_image_3,
-	product_2_image_4,
-	product_2_image_5,
-	product_2_image_6,
-];
-
-const product_3_images = [
-	product_3_image_1,
-	product_3_image_2,
-	product_3_image_3,
-	product_3_image_4,
-	product_3_image_5,
-	product_3_image_6,
-	product_3_image_7,
-];
-
 const Products = () => {
 	const navigate = useNavigate();
 	const { theme } = React.useContext(ThemeContext);
