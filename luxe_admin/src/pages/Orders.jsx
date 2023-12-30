@@ -8,7 +8,7 @@ import { DBInfoContext } from "../context/DBInfoContext.jsx";
 import { Toaster, toast } from "react-hot-toast";
 
 import axios from "axios";
-import { IconRefresh, IconSearch } from "@tabler/icons-react";
+import { IconRefresh, IconSearch, IconTrash } from "@tabler/icons-react";
 
 import { format, isValid, parse } from "date-fns";
 
@@ -39,6 +39,7 @@ const Orders = () => {
 	const [orderDetails, setOrderDetails] = React.useState(null);
 	const [setCustomerDetails] = React.useState(null);
 	const [apiCallMade, setApiCallMade] = useState(false);
+	const [orderToDelete, setOrderToDelete] = useState("");
 	const {
 		orderInfo,
 		setOrderInfo,
@@ -120,8 +121,12 @@ const Orders = () => {
 
 		// convert points used to a string if its not already
 		for (let i = 0; i < orderDetails.length; i++) {
-			orderDetails[i].points_used =
-				orderDetails[i].points_used.toString();
+			if (orderDetails[i].points_used) {
+				if (typeof orderDetails[i].points_used !== "string") {
+					orderDetails[i].points_used =
+						orderDetails[i].points_used.toString();
+				}
+			}
 		}
 
 		// Then change the order details to a more readable one from
@@ -519,6 +524,7 @@ const Orders = () => {
 								<th>Payment Status</th>
 								<th>Order Details</th>
 								<th>Order ID, Customer ID</th>
+								<th>Delete</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -568,6 +574,23 @@ const Orders = () => {
 										<td>
 											{order._id}, {order.customer_id}
 										</td>
+										<td>
+											<button
+												className="btn btn-error btn-md p-2"
+												onClick={() => {
+													// set the product id to delete
+													setOrderToDelete(order._id);
+													// show a modal to delete the product
+													const modal =
+														document.getElementById(
+															"delete_order_modal"
+														);
+													modal.showModal();
+												}}
+											>
+												<IconTrash className="w-8 h-8" />
+											</button>
+										</td>
 									</tr>
 								);
 							})}
@@ -598,6 +621,64 @@ const Orders = () => {
 								}}
 							>
 								Yes! Send Mail!
+							</button>
+						</form>
+					</div>
+				</div>
+			</dialog>
+			{/* modal to confirm deletion */}
+			<dialog id="delete_order_modal" className="modal">
+				<div className="modal-box bg-secondary text-secondary-content">
+					<h3 className="font-bold text-lg">Are you Sure?</h3>
+					<p className="py-4">
+						Are you sure you want to delete this order?
+					</p>
+					<div className="modal-action">
+						<form method="dialog">
+							{/* if there is a button in form, it will close the modal */}
+							<button className="btn m-2">No</button>
+							<button
+								className="btn m-2"
+								onClick={() => {
+									// delete the order
+									// send mail to customer
+									axios
+										.post(
+											`${base_url}/api/v1/Luxuriant/delete_order`,
+											{
+												password: userPassword,
+												order_id: orderToDelete,
+											},
+											{
+												headers: {
+													"Content-Type":
+														"application/json",
+												},
+											}
+										)
+										.then((response) => {
+											console.log(response.data);
+											if (
+												response.data.message ===
+												"success"
+											) {
+												fetch_order_from_server();
+												toast.success("Order Deleted");
+											} else {
+												toast.error(
+													"Couldnt delete order"
+												);
+											}
+										})
+										.catch((error) => {
+											console.error(error);
+											toast.error(
+												"Couldnt delete order, Check Server. "
+											);
+										});
+								}}
+							>
+								Yes! Delete Order!
 							</button>
 						</form>
 					</div>

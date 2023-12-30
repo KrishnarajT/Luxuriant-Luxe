@@ -348,7 +348,7 @@ const Login = (props) => {
 									className="w-12 h-12 m-4"
 								></div>
 								<div className="text-center flex justify-center items-center w-full">
-									<div className="text-4xl text-primary-content prata">
+									<div className="text-4xl text-secondary-content prata">
 										Luxuriant Luxe Admin Page
 									</div>
 								</div>
@@ -356,13 +356,13 @@ const Login = (props) => {
 						</div>
 						<div className="mt-10 px-12 sm:px-24 md:px-48 lg:px-12 lg:mt-16 xl:px-24 xl:max-w-2xl">
 							<h2
-								className="text-center text-4xl text-primary-content font-display font-semibold lg:text-left xl:text-5xl
+								className="text-center text-4xl text-secondary-content font-display font-semibold lg:text-left xl:text-5xl
               xl:text-bold"
 							>
 								Log in
 							</h2>
 							<div
-								className="text-center text-xl text-secondary font-display font-semibold lg:text-left xl:text-xl
+								className="text-center text-xl text-primary font-display font-semibold lg:text-left xl:text-xl
               xl:text-bold rubik pt-3"
 							>
 								<span className="italic">
@@ -379,7 +379,7 @@ const Login = (props) => {
 								<form onSubmit={handleSubmit}>
 									<div className="mt-8">
 										<div className="flex justify-between items-center">
-											<div className="text-2xl font-bold text-primary-content bg-transparent tracking-wide">
+											<div className="text-2xl font-bold text-base-content bg-transparent tracking-wide">
 												Master Password
 											</div>
 											<div>
