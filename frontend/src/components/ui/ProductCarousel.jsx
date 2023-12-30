@@ -8,7 +8,9 @@ import {
 } from "@tabler/icons-react";
 
 export function ProductCarousel(props) {
-	const images = props.images;
+	let images = props.images;
+	// make sure none of the images are empty, if so ingore them in the array
+	images = images.filter((image) => image !== "");
 	return (
 		<Carousel
 			className="rounded-xl"

@@ -9,40 +9,37 @@ const CartContextProvider = ({ children }) => {
 	const base_url = React.useContext(BaseUrlContext).baseUrl;
 	const [cart, setCart] = useState([]);
 	const [productInfo, setProductInfo] = useState([]);
-
-	useEffect(() => {
-		const fetchProductInfo = async () => {
-			let response = await axios
-				.post(`${base_url}/api/v1/Luxuriant/get_products`, {
-					headers: {
-						"Content-Type": "application/json",
+	const fetchProductInfo = async () => {
+		let response = await axios
+			.post(`${base_url}/api/v1/Luxuriant/get_products`, {
+				headers: {
+					"Content-Type": "application/json",
+				},
+			})
+			.then((response) => {
+				console.log(response);
+				return response;
+			})
+			.catch((error) => {
+				console.error(error);
+				alert("server not running! a simulated response is being sent");
+				return {
+					data: {
+						message: "simulation",
 					},
-				})
-				.then((response) => {
-					return response;
-				})
-				.catch((error) => {
-					console.error(error);
-					alert(
-						"server not running! a simulated response is being sent"
-					);
-					return {
-						data: {
-							message: "simulation",
-						},
-					};
-				});
-			console.log(response.data);
-			console.log(response);
-			if (response.data.message === "Success") {
-				const data = response.data.products;
-				console.log(data);
-				setProductInfo(data);
-			} else if (response.data.message === "No Products found") {
-				setProductInfo([]);
-			}
-		};
-
+				};
+			});
+		console.log(response.data);
+		console.log(response);
+		if (response.data.message === "Success") {
+			const data = response.data.products;
+			console.log(data);
+			setProductInfo(data);
+		} else if (response.data.message === "No Products found") {
+			setProductInfo([]);
+		}
+	};
+	useEffect(() => {
 		fetchProductInfo();
 	}, []);
 
@@ -174,6 +171,7 @@ const CartContextProvider = ({ children }) => {
 		<CartContext.Provider
 			value={{
 				cart,
+				fetchProductInfo: fetchProductInfo,
 				addToCart: addToCart,
 				removeFromCart: removeFromCart,
 				productInfo,
