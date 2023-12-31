@@ -47,7 +47,9 @@ import {
 
 export function EcommerceCard(props) {
 	return (
-		<Card className="w-80 m-4 hover:scale-105 transition-all duration-300 bg-white text-black">
+		<Card
+			className={`w-80 m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text}`}
+		>
 			<CardHeader
 				shadow={true}
 				floated={false}
@@ -63,7 +65,7 @@ export function EcommerceCard(props) {
 				<div className="mb-2 flex items-center justify-between">
 					<Typography
 						color="blue-gray"
-						className="font-medium text-xl text-black"
+						className={`font-medium text-xl ${props.text}`}
 					>
 						{props.name}
 					</Typography>
@@ -74,7 +76,7 @@ export function EcommerceCard(props) {
 				<Typography
 					variant="small"
 					color="gray"
-					className="font-normal opacity-75 break-words max-h-10 min-h-10 text-black"
+					className={`font-normal opacity-75 break-words max-h-10 min-h-10 ${props.text}`}
 				>
 					{props.description.substring(0, 100)}...
 				</Typography>
@@ -83,7 +85,7 @@ export function EcommerceCard(props) {
 				<Button
 					ripple={true}
 					fullWidth={true}
-					className="bg-black text-white shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100 text-xl"
+					className="bg-white text-black shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100 text-xl"
 				>
 					Add to Cart ₹{props.price}
 				</Button>

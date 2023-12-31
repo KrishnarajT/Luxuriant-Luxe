@@ -5216,6 +5216,11 @@ details.collapse summary::-webkit-details-marker {
   background-color: rgb(255 235 59 / 0.2);
 }
 
+.bg-catalogue_bg {
+  --tw-bg-opacity: 1;
+  background-color: rgb(202 143 109 / var(--tw-bg-opacity));
+}
+
 .bg-opacity-60 {
   --tw-bg-opacity: 0.6;
 }
@@ -5616,6 +5621,11 @@ details.collapse summary::-webkit-details-marker {
 .py-4 {
   padding-top: 1rem;
   padding-bottom: 1rem;
+}
+
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
 }
 
 .\!pr-7 {

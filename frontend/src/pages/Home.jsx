@@ -117,17 +117,16 @@ const Home = () => {
 			</section>
 
 			<section className="flex flex-col w-screen my-6 ">
-				<div className="flex justify-between flex-row">
+				<div className="flex justify-center flex-row">
 					<div
 						className="p-4 m-8 justify-center items-start text-4xl forum
 				md:text-7xl"
 					>
-						LUXURIANT LUXE{" "}
-						<span className="text-accent forum mx-4 italic">
-							Featured Products
+						<span className="text-accent dmsans mx-4 text-center">
+							FEATURED ORGANIC CLEANSERS
 						</span>
 					</div>
-					<div>
+					{/* <div>
 						<button
 							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
 							onClick={() => {
@@ -136,16 +135,16 @@ const Home = () => {
 						>
 							Shop All <IconArrowUpRight className="w-8 h-8" />
 						</button>
-					</div>
+					</div> */}
 				</div>
 
-				<div className="text-4xl px-16 cardo py-4">
+				{/* <div className="text-4xl px-16 cardo py-4">
 					These are the products that are essential for your daily
 					skin. They are recommended by our experts and are the best
 					in the market. These are the products that are essential for
 					your daily skin. They are recommended by our experts and are
 					the best in the market.
-				</div>
+				</div> */}
 				<div className="flex justify-center w-full">
 					<div className="w-full mx-4">
 						{FeaturedProducts && (
@@ -153,28 +152,27 @@ const Home = () => {
 						)}
 					</div>
 				</div>
-				<div className="flex justify-center w-10/12 self-center">
+				{/* <div className="flex justify-center w-10/12 self-center">
 					<div className="text-4xl px-16 dmsans py-4 text-center ">
 						As the originators and proprietors of the brand, we
 						serve as the primary users and assessors of our product.
 						We assure you that we utilize only the finest quality
 						ingredients. <br /> - Luxe official
 					</div>
-				</div>
+				</div> */}
 			</section>
 
 			<section className="flex flex-col w-screen my-6 ">
-				<div className="flex justify-between flex-row">
+				<div className="flex justify-center flex-row">
 					<div
-						className="p-4 m-8 justify-center items-start text-4xl forum
+						className="p-4 m-8 justify-center text-center items-center text-4xl forum
 				md:text-7xl"
 					>
-						LUXURIANT LUXE{" "}
-						<span className="text-accent forum mx-4 italic">
-							Holiday Special
+						<span className="text-accent dmsans mx-4 text-center">
+							HOLIDAY GIFT SETS
 						</span>
 					</div>
-					<div>
+					{/* <div>
 						<button
 							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
 							onClick={() => {
@@ -183,14 +181,7 @@ const Home = () => {
 						>
 							Shop All
 						</button>
-					</div>
-				</div>
-				<div className="text-2xl px-16 cardo py-4 italic">
-					These are the products that are essential for your daily
-					skin. They are recommended by our experts and are the best
-					in the market. These are the products that are essential for
-					your daily skin. They are recommended by our experts and are
-					the best in the market.
+					</div> */}
 				</div>
 				<div className="flex justify-center w-full">
 					<div className="w-full mx-4">
@@ -199,14 +190,14 @@ const Home = () => {
 						)}
 					</div>
 				</div>
-				<div className="flex justify-center w-10/12 self-center">
+				{/* <div className="flex justify-center w-10/12 self-center">
 					<div className="text-4xl px-16 dmsans py-4 text-center ">
 						As the originators and proprietors of the brand, we
 						serve as the primary users and assessors of our product.
 						We assure you that we utilize only the finest quality
 						ingredients. <br /> - Luxe official
 					</div>
-				</div>
+				</div> */}
 			</section>
 
 			{/* <section className="mt-16" id="productssection">
