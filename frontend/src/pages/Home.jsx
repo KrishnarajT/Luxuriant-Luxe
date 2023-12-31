@@ -19,11 +19,13 @@ import About from "./About";
 import FAQ from "./FAQ";
 import { CartContext } from "../context/CartContext";
 import Catalogue from "./Catalogue";
+import { DisplayCarousal } from "../components/ui/DisplayCarousal";
 
 const Home = () => {
 	const navigate = useNavigate();
 	const { theme } = React.useContext(ThemeContext);
-	const { productInfo,
+	const {
+		productInfo,
 		HairProducts,
 		SkinProducts,
 		CosmeticsProducts,
@@ -67,9 +69,28 @@ const Home = () => {
 
 			<div className="ribbon color"></div>
 
-			<section className="mt-16" id="productssection">
-				<Catalogue />
+			<section className="flex flex-col bg-base-200 w-screen">
+				<div
+					className="p-4 m-8 justify-center items-start text-4xl bodoni
+				md:text-5xl"
+				>
+					LUXURIANT LUXE{" "}
+					<span className="text-accent bodoni mx-4 italic">
+						Essentials
+					</span>
+				</div>
+				<div className="flex justify-center w-full">
+					<div className="w-full mx-4">
+						{CosmeticsProducts && (
+							<DisplayCarousal products={CosmeticsProducts} />
+						)}
+					</div>
+				</div>
 			</section>
+
+			{/* <section className="mt-16" id="productssection">
+				<Catalogue />
+			</section> */}
 
 			<div className="my-12">
 				<div className="ribbon color"></div>

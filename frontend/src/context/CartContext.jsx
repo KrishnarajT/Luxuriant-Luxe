@@ -55,7 +55,21 @@ const CartContextProvider = ({ children }) => {
 	//     "points_awarded": 500
 	// }
 	const segregateProducts = async (data) => {
-
+		// if no data return
+		if (data === undefined) {
+			return;
+		}
+		// if any of the other products list exists, then return
+		if (
+			HolidayProducts.length !== 0 ||
+			FeaturedProducts.length !== 0 ||
+			EssentialsProducts.length !== 0 ||
+			HairProducts.length !== 0 ||
+			SkinProducts.length !== 0 ||
+			CosmeticsProducts.length !== 0
+		) {
+			return;
+		}
 		for (let i = 0; i < data.length; i++) {
 			const categories = data[i].product_category;
 			// convert all categories to lowercase
@@ -64,32 +78,59 @@ const CartContextProvider = ({ children }) => {
 			}
 			console.log(categories);
 			if (categories.includes("holiday")) {
-				setHolidayProducts((oldArray) => [...oldArray, data[i]]);
+				// make sure that the product is not already in the list
+				if (
+					!HolidayProducts.some(
+						(product) => product._id === data[i]._id
+					)
+				) {
+					setHolidayProducts((oldArray) => [...oldArray, data[i]]);
+				}
 			}
 			if (categories.includes("featured")) {
-				setFeaturedProducts((oldArray) => [
-					...oldArray,
-					data[i],
-				]);
+				// make sure that the product is not already in the list
+				if (
+					!FeaturedProducts.some(
+						(product) => product._id === data[i]._id
+					)
+				) {
+					setFeaturedProducts((oldArray) => [...oldArray, data[i]]);
+				}
 			}
 			if (categories.includes("essentials")) {
-				setEssentialsProducts((oldArray) => [
-					...oldArray,
-					data[i],
-				]);
+				// make sure the product is not already in the list
+				if (
+					!EssentialsProducts.some(
+						(product) => product._id === data[i]._id
+					)
+				) {
+					setEssentialsProducts((oldArray) => [...oldArray, data[i]]);
+				}
 			}
 			if (categories.includes("hair")) {
-				console.log("found a product with hair")
-				setHairProducts((oldArray) => [...oldArray, data[i]]);
+				console.log("found a product with hair");
+				if (
+					!HairProducts.some((product) => product._id === data[i]._id)
+				) {
+					setHairProducts((oldArray) => [...oldArray, data[i]]);
+				}
 			}
 			if (categories.includes("skin")) {
-				setSkinProducts((oldArray) => [...oldArray, data[i]]);
+				if (
+					!SkinProducts.some((product) => product._id === data[i]._id)
+				) {
+					setSkinProducts((oldArray) => [...oldArray, data[i]]);
+				}
 			}
 			if (categories.includes("cosmetics")) {
-				setCosmeticsProducts((oldArray) => [
-					...oldArray,
-					data[i],
-				]);
+				console.log("found a product with cosmetics", i);
+				if (
+					!CosmeticsProducts.some(
+						(product) => product._id === data[i]._id
+					)
+				) {
+					setCosmeticsProducts((oldArray) => [...oldArray, data[i]]);
+				}
 			}
 		}
 	};
@@ -126,17 +167,17 @@ const CartContextProvider = ({ children }) => {
 	useEffect(() => {
 		const fetchproducts = async () => {
 			await fetchProductInfo();
-			console.log("productInfo", productInfo);
+			// console.log("productInfo", productInfo);
 			await segregateProducts();
 			// log the segregated products
-			console.log("HolidayProducts", HolidayProducts);
-			console.log("FeaturedProducts", FeaturedProducts);
-			console.log("EssentialsProducts", EssentialsProducts);
-			console.log("HairProducts", HairProducts);
-			console.log("SkinProducts", SkinProducts);
-			console.log("CosmeticsProducts", CosmeticsProducts);
-			// all products
-			console.log("productInfo", productInfo);
+			// console.log("HolidayProducts", HolidayProducts);
+			// console.log("FeaturedProducts", FeaturedProducts);
+			// console.log("EssentialsProducts", EssentialsProducts);
+			// console.log("HairProducts", HairProducts);
+			// console.log("SkinProducts", SkinProducts);
+			// console.log("CosmeticsProducts", CosmeticsProducts);
+			// // all products
+			// console.log("productInfo", productInfo);
 		};
 		fetchproducts();
 	}, []);
