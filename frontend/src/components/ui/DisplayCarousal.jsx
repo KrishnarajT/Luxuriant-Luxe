@@ -7,6 +7,8 @@ import {
 	IconMoodSadFilled,
 } from "@tabler/icons-react";
 import { EcommerceCard } from "./EcommerceCard";
+import MaterialSymbolsArrowBackIos from "./MaterialSymbolsArrowBackIos";
+import MaterialSymbolsArrowForwardIos from "./MaterialSymbolsArrowForwardIos";
 
 // Products is a list of such objects.
 // {
@@ -64,38 +66,37 @@ export function DisplayCarousal(props) {
 	console.log("products after editing", products);
 	return (
 		<Carousel
-			className="rounded-xl py-2 glass"
-			autoplay={true}
+			className="rounded-xl py-2 bg-white"
+			// autoplay={true}
 			autoplayDelay={5000}
 			loop={true}
 			prevArrow={({ handlePrev }) => (
-				<IconButton
-					variant="text"
-					color="white"
-					size="lg"
+				// <IconButton
+				// 	variant="text"
+				// 	// color="white"
+				// 	// size="lg"
+				// 	onClick={handlePrev}
+				// 	className="!absolute top-2/4 left-6 -translate-y-2/4 w-24 h-24"
+				// >
+				<MaterialSymbolsArrowBackIos
+					className="text-black w-24 h-24 !absolute top-2/4 left-6 -translate-y-2/4 "
 					onClick={handlePrev}
-					className="!absolute top-2/4 left-4 -translate-y-2/4 bg-white opacity-40"
-				>
-					<IconCaretLeftFilled className="text-black" />
-				</IconButton>
+				/>
+				// </IconButton>
 			)}
 			nextArrow={({ handleNext }) => (
-				<IconButton
-					variant="text"
-					color="white"
-					size="lg"
+				<MaterialSymbolsArrowForwardIos
+					className="text-black w-24 h-24 !absolute top-2/4 !right-4 -translate-y-2/4"
 					onClick={handleNext}
-					className="!absolute top-2/4 !right-4 -translate-y-2/4 p-4 bg-white opacity-40 glass"
-				>
-					<IconCaretRightFilled className="text-black" />
-				</IconButton>
+				/>
 			)}
+			navigation={false}
 		>
 			{/* displaying product cards */}
 			{products.map((product) => {
 				return (
 					<div
-						className={`flex flex-row px-16 ${
+						className={`flex flex-row mx-24 bg-gradient-to-r from-catalogue_bg to-black glass ${
 							product.length < 3
 								? "justify-start"
 								: "justify-center"

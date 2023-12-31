@@ -23,6 +23,7 @@ module.exports = withMT({
 				primary_dark: "#f6e3e3",
 				secondary_dark: "#e3d1bc",
 				accent_dark: "#eb5959",
+				catalogue_bg: "#ca8f6d",
 			},
 		},
 	},

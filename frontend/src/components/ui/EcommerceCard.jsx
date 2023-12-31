@@ -47,30 +47,34 @@ import {
 
 export function EcommerceCard(props) {
 	return (
-		<Card className="w-80 m-4">
-			<CardHeader shadow={false} floated={false} className="h-72">
+		<Card className="w-80 m-4 hover:scale-105 transition-all duration-300 bg-white text-black">
+			<CardHeader
+				shadow={true}
+				floated={false}
+				className="h-60 rounded-none"
+			>
 				<img
 					src={props.image}
 					alt="card-image"
-					className="h-full w-full object-cover"
+					className="h-full w-full object-cover rounded-none"
 				/>
 			</CardHeader>
 			<CardBody>
 				<div className="mb-2 flex items-center justify-between">
 					<Typography
 						color="blue-gray"
-						className="font-medium text-xl"
+						className="font-medium text-xl text-black"
 					>
 						{props.name}
 					</Typography>
-					<Typography color="blue-gray" className="font-medium">
+					{/* <Typography color="blue-gray" className="font-medium">
 						₹{props.price}
-					</Typography>
+					</Typography> */}
 				</div>
 				<Typography
 					variant="small"
 					color="gray"
-					className="font-normal opacity-75 break-words max-h-12"
+					className="font-normal opacity-75 break-words max-h-10 min-h-10 text-black"
 				>
 					{props.description.substring(0, 100)}...
 				</Typography>
@@ -79,9 +83,9 @@ export function EcommerceCard(props) {
 				<Button
 					ripple={true}
 					fullWidth={true}
-					className="bg-secondary text-secondary-content shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
+					className="bg-black text-white shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100 text-xl"
 				>
-					Add to Cart
+					Add to Cart ₹{props.price}
 				</Button>
 			</CardFooter>
 		</Card>

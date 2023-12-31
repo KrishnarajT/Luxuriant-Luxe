@@ -127,6 +127,14 @@ body::-webkit-scrollbar-thumb {
     font-family: 'cardo', serif;
 }
 
+.forum {
+    font-family: 'Forum', serif;
+}
+
+.dmsans {
+    font-family: 'DM Sans', sans-serif;
+}
+
 #qr_code {
     background-image: url("../assets/images/Removal-68.png");
     background-repeat: no-repeat;
