@@ -79,6 +79,14 @@ const Home = () => {
 						Essentials
 					</span>
 				</div>
+
+				<div className="text-2xl px-16 cardo py-4">
+					These are the products that are essential for your daily
+					skin. They are recommended by our experts and are the best
+					in the market. These are the products that are essential for
+					your daily skin. They are recommended by our experts and are
+					the best in the market.
+				</div>
 				<div className="flex justify-center w-full">
 					<div className="w-full mx-4">
 						{EssentialsProducts && (
@@ -98,6 +106,13 @@ const Home = () => {
 						Featured Products
 					</span>
 				</div>
+				<div className="text-2xl px-16 cardo py-4">
+					These are the products that are essential for your daily
+					skin. They are recommended by our experts and are the best
+					in the market. These are the products that are essential for
+					your daily skin. They are recommended by our experts and are
+					the best in the market.
+				</div>
 				<div className="flex justify-center w-full">
 					<div className="w-full mx-4">
 						{FeaturedProducts && (
@@ -116,6 +131,13 @@ const Home = () => {
 					<span className="text-accent bodoni mx-4 italic">
 						Holiday Special
 					</span>
+				</div>
+				<div className="text-2xl px-16 cardo py-4">
+					These are the products that are essential for your daily
+					skin. They are recommended by our experts and are the best
+					in the market. These are the products that are essential for
+					your daily skin. They are recommended by our experts and are
+					the best in the market.
 				</div>
 				<div className="flex justify-center w-full">
 					<div className="w-full mx-4">
