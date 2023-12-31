@@ -19,12 +19,21 @@ import ScrollToTopButton from "../components/ui/ScrollToTopButton";
 import { CartContext } from "../context/CartContext";
 import { useLocation } from "react-router-dom";
 import { ProductCarousel } from "../components/ui/ProductCarousel";
+import { DisplayCarousal } from "../components/ui/DisplayCarousal";
 
 const Catalogue = () => {
 	const navigate = useNavigate();
 	const { theme } = React.useContext(ThemeContext);
-	let { addToCart, productInfo } =
-		React.useContext(CartContext);
+	const {
+		productInfo,
+		HairProducts,
+		SkinProducts,
+		CosmeticsProducts,
+		EssentialsProducts,
+		HolidayProducts,
+		FeaturedProducts,
+	} = React.useContext(CartContext);
+
 	const location = useLocation();
 	const isProductsPage = location.pathname === "/products";
 
@@ -60,19 +69,337 @@ const Catalogue = () => {
 				</div>
 			</section>
 
+			{/* All Products */}
+
+			<section className="flex flex-col w-screen my-6 ">
+				<div className="flex justify-between flex-row">
+					<div
+						className="p-4 m-18 mx-16 justify-center items-start text-4xl forum
+				md:text-7xl"
+					>
+						<span className="text-accent bodoni mx-4 text-center">
+							All Products
+						</span>
+					</div>
+					<div>
+						<button
+							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
+							onClick={() => {
+								navigate("/category/all");
+							}}
+						>
+							Shop All <IconArrowUpRight className="w-8 h-8" />
+						</button>
+					</div>
+				</div>
+
+				<div className="text-4xl px-24 cardo py-4">
+					A collection of all our products.
+				</div>
+				<div className="flex justify-center w-full">
+					<div className="w-full mx-4">
+						{productInfo && (
+							<DisplayCarousal products={productInfo} />
+						)}
+					</div>
+				</div>
+				{/* <div className="flex justify-center w-10/12 self-center">
+					<div className="text-4xl px-16 dmsans py-4 text-center ">
+						As the originators and proprietors of the brand, we
+						serve as the primary users and assessors of our product.
+						We assure you that we utilize only the finest quality
+						ingredients. <br /> - Luxe official
+					</div>
+				</div> */}
+			</section>
+
 			{/* Hair */}
 
-			{/* {productInfo[0] && (
-				<ProductCarousel
-					images={
-						productInfo[0].product_image_links.description_images
-					}
-				/>
-			)} */}
+			<section className="flex flex-col w-screen my-6 ">
+				<div className="flex justify-between flex-row">
+					<div
+						className="p-4 m-18 mx-16 justify-center items-start text-4xl forum
+				md:text-7xl"
+					>
+						<span className="text-accent bodoni mx-4 text-center">
+							LL Hair
+						</span>
+					</div>
+					<div>
+						<button
+							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
+							onClick={() => {
+								navigate("/category/hair");
+							}}
+						>
+							Shop All <IconArrowUpRight className="w-8 h-8" />
+						</button>
+					</div>
+				</div>
+
+				<div className="text-4xl px-24 cardo py-4">
+					These are the products that are essential for your daily
+					skin. They are recommended by our experts and are the best
+					in the market. These are the products that are essential for
+					your daily skin. They are recommended by our experts and are
+					the best in the market.
+				</div>
+				<div className="flex justify-center w-full">
+					<div className="w-full mx-4">
+						{HairProducts && (
+							<DisplayCarousal products={HairProducts} />
+						)}
+					</div>
+				</div>
+				{/* <div className="flex justify-center w-10/12 self-center">
+					<div className="text-4xl px-16 dmsans py-4 text-center ">
+						As the originators and proprietors of the brand, we
+						serve as the primary users and assessors of our product.
+						We assure you that we utilize only the finest quality
+						ingredients. <br /> - Luxe official
+					</div>
+				</div> */}
+			</section>
 
 			{/* Skin */}
 
+			<section className="flex flex-col w-screen my-6 ">
+				<div className="flex justify-between flex-row">
+					<div
+						className="p-4 m-8 mx-16 justify-center items-start text-4xl forum
+				md:text-7xl"
+					>
+						<span className="text-accent bodoni mx-4 text-center">
+							LL Skin
+						</span>
+					</div>
+					<div>
+						<button
+							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
+							onClick={() => {
+								navigate("/category/skin");
+							}}
+						>
+							Shop All <IconArrowUpRight className="w-8 h-8" />
+						</button>
+					</div>
+				</div>
+
+				<div className="text-4xl px-24 cardo py-4">
+					These are the products that are essential for your daily
+					skin. They are recommended by our experts and are the best
+					in the market. These are the products that are essential for
+					your daily skin. They are recommended by our experts and are
+					the best in the market.
+				</div>
+				<div className="flex justify-center w-full">
+					<div className="w-full mx-4">
+						{SkinProducts && (
+							<DisplayCarousal products={SkinProducts} />
+						)}
+					</div>
+				</div>
+				{/* <div className="flex justify-center w-10/12 self-center">
+					<div className="text-4xl px-16 dmsans py-4 text-center ">
+						As the originators and proprietors of the brand, we
+						serve as the primary users and assessors of our product.
+						We assure you that we utilize only the finest quality
+						ingredients. <br /> - Luxe official
+					</div>
+				</div> */}
+			</section>
+
 			{/* Cosmetics */}
+
+			<section className="flex flex-col w-screen my-6 ">
+				<div className="flex justify-between flex-row">
+					<div
+						className="p-4 m-8 mx-16 justify-center items-start text-4xl forum
+				md:text-7xl"
+					>
+						<span className="text-accent bodoni mx-4 text-center">
+							LL Cosmetics
+						</span>
+					</div>
+					<div>
+						<button
+							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
+							onClick={() => {
+								navigate("/category/cosmetics");
+							}}
+						>
+							Shop All <IconArrowUpRight className="w-8 h-8" />
+						</button>
+					</div>
+				</div>
+
+				<div className="text-4xl px-24 cardo py-4">
+					These are the products that are essential for your daily
+					skin. They are recommended by our experts and are the best
+					in the market. These are the products that are essential for
+					your daily skin. They are recommended by our experts and are
+					the best in the market.
+				</div>
+				<div className="flex justify-center w-full">
+					<div className="w-full mx-4">
+						{CosmeticsProducts && (
+							<DisplayCarousal products={CosmeticsProducts} />
+						)}
+					</div>
+				</div>
+				{/* <div className="flex justify-center w-10/12 self-center">
+					<div className="text-4xl px-16 dmsans py-4 text-center ">
+						As the originators and proprietors of the brand, we
+						serve as the primary users and assessors of our product.
+						We assure you that we utilize only the finest quality
+						ingredients. <br /> - Luxe official
+					</div>
+				</div> */}
+			</section>
+
+			{/* Essentials */}
+
+			<section className="flex flex-col w-screen my-6 ">
+				<div className="flex justify-between flex-row">
+					<div
+						className="p-4 m-8 mx-16 justify-center items-start text-4xl forum
+				md:text-7xl"
+					>
+						<span className="text-accent bodoni mx-4 text-center">
+							LL Essentials
+						</span>
+					</div>
+					<div>
+						<button
+							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
+							onClick={() => {
+								navigate("/category/essentials");
+							}}
+						>
+							Shop All <IconArrowUpRight className="w-8 h-8" />
+						</button>
+					</div>
+				</div>
+
+				<div className="text-4xl px-24 cardo py-4">
+					These are the products that are essential for your daily
+					skin. They are recommended by our experts and are the best
+					in the market. These are the products that are essential for
+					your daily skin. They are recommended by our experts and are
+					the best in the market.
+				</div>
+				<div className="flex justify-center w-full">
+					<div className="w-full mx-4">
+						{EssentialsProducts && (
+							<DisplayCarousal products={EssentialsProducts} />
+						)}
+					</div>
+				</div>
+				{/* <div className="flex justify-center w-10/12 self-center">
+					<div className="text-4xl px-16 dmsans py-4 text-center ">
+						As the originators and proprietors of the brand, we
+						serve as the primary users and assessors of our product.
+						We assure you that we utilize only the finest quality
+						ingredients. <br /> - Luxe official
+					</div>
+				</div> */}
+			</section>
+
+			{/* Featured Organic Cleansers */}
+
+			<section className="flex flex-col w-screen my-6 ">
+				<div className="flex justify-between flex-row">
+					<div
+						className="p-4 m-8 mx-16 justify-center items-start text-4xl forum
+				md:text-7xl"
+					>
+						<span className="text-accent bodoni mx-4 text-center">
+							Featured Orgnanic Cleansers
+						</span>
+					</div>
+					<div>
+						<button
+							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
+							onClick={() => {
+								navigate("/category/featured");
+							}}
+						>
+							Shop All <IconArrowUpRight className="w-8 h-8" />
+						</button>
+					</div>
+				</div>
+
+				<div className="text-4xl px-24 cardo py-4">
+					These are the products that are essential for your daily
+					skin. They are recommended by our experts and are the best
+					in the market. These are the products that are essential for
+					your daily skin. They are recommended by our experts and are
+					the best in the market.
+				</div>
+				<div className="flex justify-center w-full">
+					<div className="w-full mx-4">
+						{FeaturedProducts && (
+							<DisplayCarousal products={FeaturedProducts} />
+						)}
+					</div>
+				</div>
+				{/* <div className="flex justify-center w-10/12 self-center">
+					<div className="text-4xl px-16 dmsans py-4 text-center ">
+						As the originators and proprietors of the brand, we
+						serve as the primary users and assessors of our product.
+						We assure you that we utilize only the finest quality
+						ingredients. <br /> - Luxe official
+					</div>
+				</div> */}
+			</section>
+
+			{/* Holiday Special */}
+
+			<section className="flex flex-col w-screen my-6 ">
+				<div className="flex justify-between flex-row">
+					<div
+						className="p-4 m-8 mx-16 justify-center items-start text-4xl forum
+				md:text-7xl"
+					>
+						<span className="text-accent bodoni mx-4 text-center">
+							Holiday Specials
+						</span>
+					</div>
+					<div>
+						<button
+							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
+							onClick={() => {
+								navigate("/category/holiday");
+							}}
+						>
+							Shop All <IconArrowUpRight className="w-8 h-8" />
+						</button>
+					</div>
+				</div>
+
+				<div className="text-4xl px-24 cardo py-4">
+					These are the products that are essential for your daily
+					skin. They are recommended by our experts and are the best
+					in the market. These are the products that are essential for
+					your daily skin. They are recommended by our experts and are
+					the best in the market.
+				</div>
+				<div className="flex justify-center w-full">
+					<div className="w-full mx-4">
+						{HolidayProducts && (
+							<DisplayCarousal products={HolidayProducts} />
+						)}
+					</div>
+				</div>
+				{/* <div className="flex justify-center w-10/12 self-center">
+					<div className="text-4xl px-16 dmsans py-4 text-center ">
+						As the originators and proprietors of the brand, we
+						serve as the primary users and assessors of our product.
+						We assure you that we utilize only the finest quality
+						ingredients. <br /> - Luxe official
+					</div>
+				</div> */}
+			</section>
 
 			{/* Cart Button */}
 

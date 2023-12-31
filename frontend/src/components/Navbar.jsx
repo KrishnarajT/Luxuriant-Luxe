@@ -77,7 +77,7 @@ export function Navbar(props) {
 											className="hover:text-base-content text-2xl w-full"
 										>
 											<MaterialSymbolsLightFace2 className="w-10 h-10" />
-											Hair
+											LL Hair
 										</NavLink>
 									</li>
 									<li className="text-lg md:text-xl w-full">
@@ -87,7 +87,7 @@ export function Navbar(props) {
 											className="hover:text-base-content text-2xl"
 										>
 											<IconParkOutlineCosmeticBrush className="w-10 h-10" />
-											Skin
+											LL Skin
 										</NavLink>
 									</li>
 									<li className="text-lg md:text-xl">
@@ -97,7 +97,7 @@ export function Navbar(props) {
 											className="hover:text-base-content text-2xl"
 										>
 											<SolarCosmeticBoldDuotone className="w-10 h-10" />
-											Cosmetics
+											LL Cosmetics
 										</NavLink>
 									</li>
 								</ul>

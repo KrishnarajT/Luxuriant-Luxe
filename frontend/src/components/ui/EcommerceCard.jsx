@@ -48,7 +48,7 @@ import {
 export function EcommerceCard(props) {
 	return (
 		<Card
-			className={`w-80 m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text}`}
+			className={`w-80 m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
 		>
 			<CardHeader
 				shadow={true}

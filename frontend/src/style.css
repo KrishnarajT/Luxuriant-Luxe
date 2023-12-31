@@ -3696,6 +3696,10 @@ details.collapse summary::-webkit-details-marker {
   margin: 2rem;
 }
 
+.m-16 {
+  margin: 4rem;
+}
+
 .mx-0 {
   margin-left: 0px;
   margin-right: 0px;
@@ -3754,6 +3758,16 @@ details.collapse summary::-webkit-details-marker {
 .mx-24 {
   margin-left: 6rem;
   margin-right: 6rem;
+}
+
+.mx-10 {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.mx-12 {
+  margin-left: 3rem;
+  margin-right: 3rem;
 }
 
 .-ml-1 {
@@ -5626,6 +5640,11 @@ details.collapse summary::-webkit-details-marker {
 .py-10 {
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
+}
+
+.px-24 {
+  padding-left: 6rem;
+  padding-right: 6rem;
 }
 
 .\!pr-7 {
