@@ -69,7 +69,7 @@ const Home = () => {
 
 			<div className="ribbon color"></div>
 
-			<section className="flex flex-col bg-base-200 w-screen">
+			<section className="flex flex-col w-screen my-6">
 				<div
 					className="p-4 m-8 justify-center items-start text-4xl bodoni
 				md:text-5xl"
@@ -81,8 +81,46 @@ const Home = () => {
 				</div>
 				<div className="flex justify-center w-full">
 					<div className="w-full mx-4">
-						{CosmeticsProducts && (
-							<DisplayCarousal products={CosmeticsProducts} />
+						{EssentialsProducts && (
+							<DisplayCarousal products={EssentialsProducts} />
+						)}
+					</div>
+				</div>
+			</section>
+
+			<section className="flex flex-col outline w-screen my-6">
+				<div
+					className="p-4 m-8 justify-center items-start text-4xl bodoni
+				md:text-5xl"
+				>
+					LUXURIANT LUXE{" "}
+					<span className="text-accent bodoni mx-4 italic">
+						Featured Products
+					</span>
+				</div>
+				<div className="flex justify-center w-full">
+					<div className="w-full mx-4">
+						{FeaturedProducts && (
+							<DisplayCarousal products={FeaturedProducts} />
+						)}
+					</div>
+				</div>
+			</section>
+
+			<section className="flex flex-col w-screen my-6">
+				<div
+					className="p-4 m-8 justify-center items-start text-4xl bodoni
+				md:text-5xl"
+				>
+					LUXURIANT LUXE{" "}
+					<span className="text-accent bodoni mx-4 italic">
+						Holiday Special
+					</span>
+				</div>
+				<div className="flex justify-center w-full">
+					<div className="w-full mx-4">
+						{HolidayProducts && (
+							<DisplayCarousal products={HolidayProducts} />
 						)}
 					</div>
 				</div>

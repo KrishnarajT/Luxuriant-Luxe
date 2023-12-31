@@ -64,7 +64,7 @@ export function DisplayCarousal(props) {
 	console.log("products after editing", products);
 	return (
 		<Carousel
-			className="rounded-xl py-2 bg-opacity-20 glass"
+			className="rounded-xl py-2 glass"
 			autoplay={true}
 			autoplayDelay={5000}
 			loop={true}

@@ -1047,6 +1047,22 @@ const Products = () => {
 							}}
 						/>
 					</div>
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">Points Awarded</span>
+						</label>
+						<input
+							type="number"
+							placeholder="Points Awarded"
+							className="input input-accent input-bordered"
+							onChange={(e) => {
+								setAddProductDetails({
+									...addProductDetails,
+									points_awarded: e.target.value,
+								});
+							}}
+						/>
+					</div>
 					<div className="modal-action">
 						<form method="dialog">
 							<button
