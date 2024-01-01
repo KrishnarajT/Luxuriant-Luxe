@@ -1161,588 +1161,767 @@ const Products = () => {
 							</span>
 						</div>
 					</div>
+
+					{/* Add Volumes */}
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">Product Volume 1</span>
+						</label>
+						<input
+							type="number"
+							placeholder="Product Volume 1 (10ml etc)"
+							className="input input-accent input-bordered"
+							onChange={(e) => {
+								let product_volume = {
+									volume_index: 0,
+									volume: e.target.value,
+								};
+								let new_product_volumes = [
+									...addProductDetails.product_volume,
+									product_volume,
+								];
+								setAddProductDetails({
+									...addProductDetails,
+									product_volumes: new_product_volumes,
+								});
+							}}
+						/>
+					</div>
+
 					{/* Add 7 textboxes for shades.  */}
-					{/* shade 0 */}
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 1 Name (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="Shade color 1, leave if product doesnt have shades"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[0],
-									shade_index: 0,
-									shade_name: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 1 Image (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="imgur or any image link, just 1"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[0],
-									shade_index: 0,
-									shade_image: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 1 Number (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="imgur or any image link, just 1"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[0],
-									shade_index: 0,
-									shade_image: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
 
-					{/* shade 1 */}
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 2 Name (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="Shade color 1, leave if product doesnt have shades"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[1],
-									shade_index: 1,
-									shade_name: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 2 Image (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="imgur or any image link, just 1"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[1],
-									shade_index: 1,
-									shade_image: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 2 Number (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="imgur or any image link, just 1"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[1],
-									shade_index: 1,
-									shade_number: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
+					{addProductDetails.shades_present && (
+						<div>
+							{/* shade 0 */}
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 1 Name (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="Shade color 1, leave if product doesnt have shades"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[0],
+											shade_index: 0,
+											shade_name: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 0
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 1 Image (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="imgur or any image link, just 1"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[0],
+											shade_index: 0,
+											shade_image: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 0
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 1 Number (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="imgur or any image link, just 1"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[0],
+											shade_index: 0,
+											shade_image: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 0
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
 
-					{/* shade 2 */}
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 3 Name (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="Shade color 2, leave if product doesnt have shades"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[2],
-									shade_index: 2,
-									shade_name: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 3 Image (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="imgur or any image link, just 2"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[2],
-									shade_index: 2,
-									shade_image: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 3 Number (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="imgur or any image link, just 2"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[2],
-									shade_index: 2,
-									shade_number: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
+							{/* shade 1 */}
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 2 Name (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="Shade color 1, leave if product doesnt have shades"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[1],
+											shade_index: 1,
+											shade_name: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 1
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 2 Image (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="imgur or any image link, just 1"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[1],
+											shade_index: 1,
+											shade_image: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 1
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 2 Number (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="imgur or any image link, just 1"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[1],
+											shade_index: 1,
+											shade_number: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 1
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
 
-					{/* shade 3 */}
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 4 Name (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="Shade color 3, leave if product doesnt have shades"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[3],
-									shade_index: 3,
-									shade_name: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 4 Image (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="imgur or any image link, just 3"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[3],
-									shade_index: 3,
-									shade_image: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 4 Number (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="imgur or any image link, just 3"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[3],
-									shade_index: 3,
-									shade_number: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
+							{/* shade 2 */}
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 3 Name (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="Shade color 2, leave if product doesnt have shades"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[2],
+											shade_index: 2,
+											shade_name: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 2
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 3 Image (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="imgur or any image link, just 2"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[2],
+											shade_index: 2,
+											shade_image: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 2
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 3 Number (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="imgur or any image link, just 2"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[2],
+											shade_index: 2,
+											shade_number: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 2
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
 
-					{/* shade 4 */}
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 5 Name (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="Shade color 4, leave if product doesnt have shades"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[4],
-									shade_index: 4,
-									shade_name: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 5 Image (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="imgur or any image link, just 4"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[4],
-									shade_index: 4,
-									shade_image: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 5 Number (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="imgur or any image link, just 4"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[4],
-									shade_index: 4,
-									shade_number: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
+							{/* shade 3 */}
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 4 Name (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="Shade color 3, leave if product doesnt have shades"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[3],
+											shade_index: 3,
+											shade_name: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 3
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 4 Image (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="imgur or any image link, just 3"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[3],
+											shade_index: 3,
+											shade_image: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 3
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 4 Number (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="imgur or any image link, just 3"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[3],
+											shade_index: 3,
+											shade_number: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 3
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
 
-					{/* shade 5 (6) */}
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 6 Name (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="Shade color 5, leave if product doesnt have shades"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[5],
-									shade_index: 5,
-									shade_name: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 6 Image (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="imgur or any image link, just 5"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[5],
-									shade_index: 5,
-									shade_image: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 6 Number (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="imgur or any image link, just 5"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[5],
-									shade_index: 5,
-									shade_number: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
+							{/* shade 4 */}
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 5 Name (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="Shade color 4, leave if product doesnt have shades"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[4],
+											shade_index: 4,
+											shade_name: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 4
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 5 Image (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="imgur or any image link, just 4"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[4],
+											shade_index: 4,
+											shade_image: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 4
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 5 Number (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="imgur or any image link, just 4"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[4],
+											shade_index: 4,
+											shade_number: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 4
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
 
-					{/* shade 6 (7) */}
+							{/* shade 5 (6) */}
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 6 Name (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="Shade color 5, leave if product doesnt have shades"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[5],
+											shade_index: 5,
+											shade_name: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 5
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 6 Image (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="imgur or any image link, just 5"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[5],
+											shade_index: 5,
+											shade_image: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 5
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 6 Number (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="imgur or any image link, just 5"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[5],
+											shade_index: 5,
+											shade_number: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 5
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
 
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 7 Name (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="Shade color 6, leave if product doesnt have shades"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[6],
-									shade_index: 6,
-									shade_name: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 7 Image (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="imgur or any image link, just 6"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[6],
-									shade_index: 6,
-									shade_image: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Shade 7 Number (leave if absent)
-							</span>
-						</label>
-						<input
-							type="text"
-							placeholder="imgur or any image link, just 6"
-							className="input input-accent input-bordered"
-							onChange={(e) => {
-								let product_shade = {
-									...addProductDetails.product_shades[6],
-									shade_index: 6,
-									shade_number: e.target.value,
-								};
-								let new_product_shades = [
-									...addProductDetails.product_shades,
-									product_shade,
-								];
-								setAddProductDetails({
-									...addProductDetails,
-									product_shades: new_product_shades,
-								});
-							}}
-						/>
-					</div>
+							{/* shade 6 (7) */}
+
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 7 Name (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="Shade color 6, leave if product doesnt have shades"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[6],
+											shade_index: 6,
+											shade_name: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 6
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 7 Image (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="imgur or any image link, just 6"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[6],
+											shade_index: 6,
+											shade_image: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 6
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text">
+										Shade 7 Number (leave if absent)
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="imgur or any image link, just 6"
+									className="input input-accent input-bordered"
+									onChange={(e) => {
+										let product_shade = {
+											...addProductDetails
+												.product_shades[6],
+											shade_index: 6,
+											shade_number: e.target.value,
+										};
+										let new_product_shades = [
+											...addProductDetails.product_shades.filter(
+												(item) => {
+													return (
+														item.shade_index !== 6
+													);
+												}
+											),
+											product_shade,
+										];
+										setAddProductDetails({
+											...addProductDetails,
+											product_shades: new_product_shades,
+										});
+									}}
+								/>
+							</div>
+						</div>
+					)}
 
 					<div className="modal-action">
 						<form method="dialog">
