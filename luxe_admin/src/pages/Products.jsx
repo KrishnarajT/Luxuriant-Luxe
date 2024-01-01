@@ -91,7 +91,7 @@ const Products = () => {
 				shade_color: "",
 			},
 		],
-		product_volume: [
+		product_volumes: [
 			{
 				volume_index: 0,
 				volume: 0,
@@ -1163,13 +1163,14 @@ const Products = () => {
 					</div>
 
 					{/* Add Volumes */}
+					{/* volume 1 */}
 					<div className="form-control">
 						<label className="label">
 							<span className="label-text">Product Volume 1</span>
 						</label>
 						<input
 							type="number"
-							placeholder="Product Volume 1 (10ml etc)"
+							placeholder="Product Volume"
 							className="input input-accent input-bordered"
 							onChange={(e) => {
 								let product_volume = {
@@ -1177,7 +1178,161 @@ const Products = () => {
 									volume: e.target.value,
 								};
 								let new_product_volumes = [
-									...addProductDetails.product_volume,
+									...addProductDetails.product_volumes.filter(
+										(item) => {
+											return item.volume_index !== 0;
+										}
+									),
+									product_volume,
+								];
+								setAddProductDetails({
+									...addProductDetails,
+									product_volumes: new_product_volumes,
+								});
+							}}
+						/>
+					</div>
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">
+								Product Volume 1 Cost
+							</span>
+						</label>
+						<input
+							type="number"
+							placeholder="Product Volume"
+							className="input input-accent input-bordered"
+							onChange={(e) => {
+								let product_volume = {
+									volume_index: 0,
+									volume_cost: e.target.value,
+								};
+								let new_product_volumes = [
+									...addProductDetails.product_volumes.filter(
+										(item) => {
+											return item.volume_index !== 0;
+										}
+									),
+									product_volume,
+								];
+								setAddProductDetails({
+									...addProductDetails,
+									product_volumes: new_product_volumes,
+								});
+							}}
+						/>
+					</div>
+
+					{/* volume 2 */}
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">Product Volume 2</span>
+						</label>
+						<input
+							type="number"
+							placeholder="Product Volume"
+							className="input input-accent input-bordered"
+							onChange={(e) => {
+								let product_volume = {
+									volume_index: 1,
+									volume: e.target.value,
+								};
+								let new_product_volumes = [
+									...addProductDetails.product_volumes.filter(
+										(item) => {
+											return item.volume_index !== 1;
+										}
+									),
+									product_volume,
+								];
+								setAddProductDetails({
+									...addProductDetails,
+									product_volumes: new_product_volumes,
+								});
+							}}
+						/>
+					</div>
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">
+								Product Volume 2 Cost
+							</span>
+						</label>
+						<input
+							type="number"
+							placeholder="Product Volume"
+							className="input input-accent input-bordered"
+							onChange={(e) => {
+								let product_volume = {
+									volume_index: 1,
+									volume_cost: e.target.value,
+								};
+								let new_product_volumes = [
+									...addProductDetails.product_volumes.filter(
+										(item) => {
+											return item.volume_index !== 1;
+										}
+									),
+									product_volume,
+								];
+								setAddProductDetails({
+									...addProductDetails,
+									product_volumes: new_product_volumes,
+								});
+							}}
+						/>
+					</div>
+
+					{/* volume 3 */}
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">Product Volume 3</span>
+						</label>
+						<input
+							type="number"
+							placeholder="Product Volume"
+							className="input input-accent input-bordered"
+							onChange={(e) => {
+								let product_volume = {
+									volume_index: 2,
+									volume: e.target.value,
+								};
+								let new_product_volumes = [
+									...addProductDetails.product_volumes.filter(
+										(item) => {
+											return item.volume_index !== 2;
+										}
+									),
+									product_volume,
+								];
+								setAddProductDetails({
+									...addProductDetails,
+									product_volumes: new_product_volumes,
+								});
+							}}
+						/>
+					</div>
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">
+								Product Volume 3 Cost
+							</span>
+						</label>
+						<input
+							type="number"
+							placeholder="Product Volume"
+							className="input input-accent input-bordered"
+							onChange={(e) => {
+								let product_volume = {
+									volume_index: 2,
+									volume_cost: e.target.value,
+								};
+								let new_product_volumes = [
+									...addProductDetails.product_volumes.filter(
+										(item) => {
+											return item.volume_index !== 2;
+										}
+									),
 									product_volume,
 								];
 								setAddProductDetails({
