@@ -73,7 +73,7 @@ const Category = () => {
 					{currentCategoryProducts.map((product) => {
 						return (
 							<EcommerceCard
-								color="bg-catalogue_bg"
+								color="bg-base-200"
 								text="text-black"
 								cart_color="bg-black"
 								cart_text="text-white"

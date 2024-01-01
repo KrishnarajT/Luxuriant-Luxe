@@ -9,6 +9,7 @@ import {
 import React from "react";
 import { CartContext } from "../../context/CartContext";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 // Products is a list of such objects.
 // {
 //     "_id": "654cd992ae6a271afeed6b4d",
@@ -49,9 +50,13 @@ import { toast } from "react-hot-toast";
 
 export function EcommerceCard(props) {
 	const { addToCart } = React.useContext(CartContext);
+	const navigate = useNavigate();
 	return (
 		<Card
 			className={`w-80 m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
+			onClick={() => {
+				navigate(`/product/${props.id}`);
+			}}
 		>
 			<CardHeader
 				shadow={true}
