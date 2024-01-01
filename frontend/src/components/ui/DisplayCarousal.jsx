@@ -66,8 +66,8 @@ export function DisplayCarousal(props) {
 	console.log("products after editing", products);
 	return (
 		<Carousel
-			className="rounded-xl py-2 bg-white"
-			// autoplay={true}
+			className="rounded-xl py-2 bg-base-100"
+			autoplay={true}
 			autoplayDelay={5000}
 			loop={true}
 			prevArrow={({ handlePrev }) => (
@@ -98,7 +98,7 @@ export function DisplayCarousal(props) {
 					<div className="mx-24 flex flex-row gap-0">
 						
 						<div
-							className={`flex flex-row  bg-catalogue_bg py-10 flex-1 ${
+							className={`flex flex-row bg-catalogue_bg py-10 flex-1 ${
 								product.length < 3
 									? "justify-start"
 									: "justify-center"
