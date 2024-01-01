@@ -23,6 +23,7 @@ const Home = () => {
 		EssentialsProducts,
 		HolidayProducts,
 		FeaturedProducts,
+		setCurrentCategoryProducts,
 	} = React.useContext(CartContext);
 	useEffect(() => {
 		if (theme === "light") {
@@ -75,6 +76,7 @@ const Home = () => {
 						<button
 							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
 							onClick={() => {
+								setCurrentCategoryProducts(EssentialsProducts);
 								navigate("/category/essentials");
 							}}
 						>
@@ -117,25 +119,23 @@ const Home = () => {
 							FEATURED ORGANIC CLEANSERS
 						</span>
 					</div>
-					{/* <div>
+				</div>
+				<div className="flex flex-col">
+					<div className="text-2xl text-center px-16 cardo italic w-full">
+						From us to your loved ones - XOXO
+					</div>
+					<div className="self-center">
 						<button
-							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
+							className="text-accent underline btn btn-ghost btn-lg forum text-4xl my-2"
 							onClick={() => {
-								navigate("/category/essentials");
+								setCurrentCategoryProducts(FeaturedProducts);
+								navigate("/category/featured");
 							}}
 						>
-							Shop All <IconArrowUpRight className="w-8 h-8" />
+							Shop All
 						</button>
-					</div> */}
+					</div>
 				</div>
-
-				{/* <div className="text-4xl px-16 cardo py-4">
-					These are the products that are essential for your daily
-					skin. They are recommended by our experts and are the best
-					in the market. These are the products that are essential for
-					your daily skin. They are recommended by our experts and are
-					the best in the market.
-				</div> */}
 				<div className="flex justify-center w-full">
 					<div className="w-full mx-4">
 						{FeaturedProducts && (
@@ -163,16 +163,22 @@ const Home = () => {
 							HOLIDAY GIFT SETS
 						</span>
 					</div>
-					{/* <div>
+				</div>
+				<div className="flex flex-col">
+					<div className="text-2xl text-center px-16 cardo italic w-full">
+						From us to your loved ones - XOXO
+					</div>
+					<div className="self-center">
 						<button
-							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
+							className="text-accent underline btn btn-ghost btn-lg forum text-4xl my-2"
 							onClick={() => {
-								navigate("/category/essentials");
+								setCurrentCategoryProducts(HolidayProducts);
+								navigate("/category/holiday");
 							}}
 						>
 							Shop All
 						</button>
-					</div> */}
+					</div>
 				</div>
 				<div className="flex justify-center w-full">
 					<div className="w-full mx-4">
