@@ -86,9 +86,9 @@ const Catalogue = () => {
 						<button
 							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
 							onClick={() => {
+								setCurrentCategoryProducts(productInfo);
 								navigate({
 									pathname: "/category/all",
-									state: { products: productInfo },
 								});
 							}}
 						>
@@ -133,7 +133,6 @@ const Catalogue = () => {
 						<button
 							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
 							onClick={() => {
-								console.log(HolidayProducts);
 								setCurrentCategoryProducts(HairProducts);
 								navigate({
 									pathname: "/category/hair",
@@ -185,9 +184,9 @@ const Catalogue = () => {
 						<button
 							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
 							onClick={() => {
+								setCurrentCategoryProducts(SkinProducts);
 								navigate({
 									pathname: "/category/skin",
-									state: { products: SkinProducts },
 								});
 							}}
 						>
@@ -236,9 +235,9 @@ const Catalogue = () => {
 						<button
 							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
 							onClick={() => {
+								setCurrentCategoryProducts(CosmeticsProducts);
 								navigate({
 									pathname: "/category/cosmetics",
-									state: { products: CosmeticsProducts },
 								});
 							}}
 						>
@@ -287,9 +286,9 @@ const Catalogue = () => {
 						<button
 							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
 							onClick={() => {
+								setCurrentCategoryProducts(EssentialsProducts);
 								navigate({
 									pathname: "/category/essentials",
-									state: { products: EssentialsProducts },
 								});
 							}}
 						>
@@ -338,9 +337,8 @@ const Catalogue = () => {
 						<button
 							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
 							onClick={() => {
-								navigate("/category/featured", {
-									state: { products: FeaturedProducts },
-								});
+								setCurrentCategoryProducts(FeaturedProducts);
+								navigate("/category/featured");
 							}}
 						>
 							Shop All <IconArrowUpRight className="w-8 h-8" />
@@ -388,9 +386,8 @@ const Catalogue = () => {
 						<button
 							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
 							onClick={() => {
-								navigate("/category/holiday", {
-									state: { products: HolidayProducts },
-								});
+								setCurrentCategoryProducts(HolidayProducts);
+								navigate("/category/holiday");
 							}}
 						>
 							Shop All <IconArrowUpRight className="w-8 h-8" />
