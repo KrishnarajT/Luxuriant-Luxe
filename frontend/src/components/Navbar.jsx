@@ -66,7 +66,10 @@ export function Navbar(props) {
 					<ul className="menu menu-horizontal text-base-content px-1">
 						<li>
 							<details>
-								<summary className="text-3xl text-base-content">
+								<summary
+									className="text-3xl text-base-content"
+									id="products_summary"
+								>
 									<PhHandbagFill className="w-10 h-10 text-base-content" />
 									Products
 								</summary>
@@ -77,6 +80,11 @@ export function Navbar(props) {
 											id="contact_element"
 											className="hover:text-base-content text-2xl w-full"
 											onClick={() => {
+												const products_summary =
+													document.getElementById(
+														"products_summary"
+													);
+												products_summary.click();
 												setCurrentCategoryProducts(
 													productInfo
 												);
@@ -92,6 +100,11 @@ export function Navbar(props) {
 											id="contact_element"
 											className="hover:text-base-content text-2xl w-full"
 											onClick={() => {
+												const products_summary =
+													document.getElementById(
+														"products_summary"
+													);
+												products_summary.click();
 												setCurrentCategoryProducts(
 													HairProducts
 												);
@@ -107,6 +120,11 @@ export function Navbar(props) {
 											id="contact_element"
 											className="hover:text-base-content text-2xl"
 											onClick={() => {
+												const products_summary =
+													document.getElementById(
+														"products_summary"
+													);
+												products_summary.click();
 												setCurrentCategoryProducts(
 													SkinProducts
 												);
@@ -122,6 +140,13 @@ export function Navbar(props) {
 											id="contact_element"
 											className="hover:text-base-content text-2xl"
 											onClick={() => {
+												// collapse this menu
+												// click on products summary again
+												const products_summary =
+													document.getElementById(
+														"products_summary"
+													);
+												products_summary.click();
 												setCurrentCategoryProducts(
 													CosmeticsProducts
 												);

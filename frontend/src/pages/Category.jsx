@@ -50,6 +50,8 @@ const Category = () => {
 	const { currentCategoryProducts } = React.useContext(CartContext);
 	useEffect(() => {
 		console.log("Product Details", currentCategoryProducts);
+		// scroll to top on load
+		window.scrollTo(0, 0);
 	}, [currentCategoryProducts]);
 
 	// Use the 'type' parameter and 'location.state' in your component logic
