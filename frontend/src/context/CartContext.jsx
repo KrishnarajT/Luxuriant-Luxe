@@ -15,6 +15,7 @@ const CartContextProvider = ({ children }) => {
 	const [HolidayProducts, setHolidayProducts] = useState([]);
 	const [FeaturedProducts, setFeaturedProducts] = useState([]);
 	const [EssentialsProducts, setEssentialsProducts] = useState([]);
+	const [currentCategoryProducts, setCurrentCategoryProducts] = useState([]);
 
 	// product info is a list of objects like these.
 	// 	{
@@ -324,6 +325,8 @@ const CartContextProvider = ({ children }) => {
 				HairProducts,
 				SkinProducts,
 				CosmeticsProducts,
+				setCurrentCategoryProducts,
+				currentCategoryProducts,
 			}}
 		>
 			{children}
