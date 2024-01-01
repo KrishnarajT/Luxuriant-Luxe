@@ -2,6 +2,8 @@ import React from "react";
 import { useEffect } from "react";
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
+import { EcommerceCard } from "../components/ui/EcommerceCard";
+import Footer from "../components/ui/Footer";
 
 // product info is a list of objects like these.
 // 	{
@@ -54,15 +56,36 @@ const Category = () => {
 
 	return (
 		<div>
-			<h1>Category: {type}</h1>
-			{/* Rest of your component */}
-			<button
-				onClick={() =>
-					navigate("/product/1", { state: { productId: 1 } })
-				}
+			<section
+				className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
+				md:text-4xl"
+				id="intro"
 			>
-				Product 1
-			</button>
+				{type.toUpperCase()} PRODUCTS
+			</section>
+
+			{/* section of cards that have all products */}
+
+			<section className="flex flex-wrap justify-center items-center">
+				{currentCategoryProducts.map((product) => {
+					return (
+						<EcommerceCard
+							color="bg-black"
+							text="text-white"
+							image={
+								product.product_image_links.description_images
+							}
+							name={product.product_name}
+							price={product.product_cost}
+							description={
+								product.product_description.product_description
+							}
+							points={product.points_awarded}
+						/>
+					);
+				})}
+			</section>
+			<Footer />
 		</div>
 	);
 };
