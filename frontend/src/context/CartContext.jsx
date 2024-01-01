@@ -195,28 +195,28 @@ const CartContextProvider = ({ children }) => {
 		// card is a list
 		// item is a dictionary
 
-		if (cart.length === 0) {
-			// if the cart is empty, add the item to the cart
-			cart.push(item);
-		} else {
-			// if the cart is not empty, check if the item is in the cart
-			let found = false;
-			for (let i = 0; i < cart.length; i++) {
-				if (cart[i].product_id === item.product_id) {
-					// if the item is in the cart, increase the quantity
-					cart[i].quantity += 1;
-					found = true;
-					break;
-				}
-			}
-			if (!found) {
-				// if the item is not in the cart, add the item to the cart
-				cart.push(item);
-			}
-		}
-		setCart(cart);
-		// set the cart in the local storage
-		localStorage.setItem("cart", JSON.stringify(cart));
+		// if (cart.length === 0) {
+		// 	// if the cart is empty, add the item to the cart
+		// 	cart.push(item);
+		// } else {
+		// 	// if the cart is not empty, check if the item is in the cart
+		// 	let found = false;
+		// 	for (let i = 0; i < cart.length; i++) {
+		// 		if (cart[i].product_id === item.product_id) {
+		// 			// if the item is in the cart, increase the quantity
+		// 			cart[i].quantity += 1;
+		// 			found = true;
+		// 			break;
+		// 		}
+		// 	}
+		// 	if (!found) {
+		// 		// if the item is not in the cart, add the item to the cart
+		// 		cart.push(item);
+		// 	}
+		// }
+		// setCart(cart);
+		// // set the cart in the local storage
+		// localStorage.setItem("cart", JSON.stringify(cart));
 	};
 
 	const removeFromCart = (item) => {

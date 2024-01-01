@@ -22,7 +22,7 @@ import Cart from "./pages/Cart";
 import Catalogue from "./pages/Catalogue";
 import Category from "./pages/Category";
 import Product from "./pages/Product";
-
+import { Toaster } from "react-hot-toast";
 function App() {
 	const [isNavbarPresent, setisNavbarPresent] = useState(true);
 
@@ -34,6 +34,7 @@ function App() {
 		<ThemeContextProvider>
 			<CartContextProvider>
 				<div className="">
+					<Toaster />
 					{isNavbarPresent ? (
 						<Navbar setisNavbarPresent={setisNavbarPresent} />
 					) : null}

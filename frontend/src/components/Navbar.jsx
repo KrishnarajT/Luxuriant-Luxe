@@ -11,7 +11,6 @@ import {
 	IconLogout,
 	IconMenu2,
 	IconMoon,
-	IconPackage,
 	IconShoppingBag,
 	IconShoppingBagSearch,
 	IconShoppingCart,
@@ -67,13 +66,13 @@ export function Navbar(props) {
 						<li>
 							<details>
 								<summary
-									className="text-3xl text-base-content"
+									className="text-3xl text-base-content z-50"
 									id="products_summary"
 								>
 									<PhHandbagFill className="w-10 h-10 text-base-content" />
 									Products
 								</summary>
-								<ul className="menu menu-horizontal px-1">
+								<ul className="menu menu-horizontal px-1 z-50">
 									<li className="text-lg md:text-xl w-full">
 										<NavLink
 											to={"/catalogue"}
@@ -134,7 +133,7 @@ export function Navbar(props) {
 											LL Skin
 										</NavLink>
 									</li>
-									<li className="text-lg md:text-xl">
+									<li className="text-lg md:text-xl ">
 										<NavLink
 											to={"/category/cosmetics"}
 											id="contact_element"
@@ -172,7 +171,7 @@ export function Navbar(props) {
 								id="contact_element"
 								className="hover:text-base-content"
 							>
-								<IconInfoCircle className="w-8 h-8" />
+								<IconInfoCircle className="w-12 h-12" />
 							</NavLink>
 						</li>
 					</ul>
@@ -205,10 +204,10 @@ export function Navbar(props) {
 									id="contact_element"
 									className="hover:text-base-content text-base-content"
 								>
-									<IconShoppingCart className="w-8 h-8" />
+									<IconShoppingCart className="w-12 h-12" />
 								</NavLink>
 							</li>
-
+							{/* 
 							{theme === "light" ? (
 								<li className="text-lg md:text-xl">
 									<button
@@ -218,7 +217,7 @@ export function Navbar(props) {
 										}}
 									>
 										<IconMoon
-											className="w-8 h-8"
+											className="w-12 h-12"
 											onClick={() => {
 												setTheme("dark");
 											}}
@@ -229,14 +228,14 @@ export function Navbar(props) {
 								<li className="text-lg md:text-xl">
 									<button className="btn btn-ghost rounded-btn">
 										<IconSun
-											className="w-8 h-8 text-base-content hover:text-base-content"
+											className="w-12 h-12 text-base-content hover:text-base-content"
 											onClick={() => {
 												setTheme("light");
 											}}
 										/>
 									</button>
-								</li>
-							)}
+								</li> 
+							)}*/}
 						</ul>
 					</div>
 					{/* Profile */}
@@ -245,7 +244,7 @@ export function Navbar(props) {
 							<li>
 								<details>
 									<summary>
-										<IconUserBolt className="w-8 h-8 text-base-content" />
+										<IconUserBolt className="w-12 h-12 text-base-content" />
 									</summary>
 									<ul className="p-2 bg-base-100 text-base-content">
 										<li

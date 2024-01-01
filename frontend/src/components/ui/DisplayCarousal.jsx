@@ -103,6 +103,8 @@ export function DisplayCarousal(props) {
 								<EcommerceCard
 									color="bg-black"
 									text="text-white"
+									cart_color="bg-white"
+									cart_text="text-black"
 									image={
 										product[0].product_image_links
 											.description_images[0]
@@ -120,6 +122,8 @@ export function DisplayCarousal(props) {
 								<EcommerceCard
 									color="bg-black"
 									text="text-white"
+									cart_color="bg-white"
+									cart_text="text-black"
 									image={
 										product[1].product_image_links
 											.description_images[0]
@@ -145,6 +149,8 @@ export function DisplayCarousal(props) {
 								<EcommerceCard
 									color="bg-catalogue_bg"
 									text="text-black"
+									cart_color="bg-white"
+									cart_text="text-black"
 									image={
 										product[2].product_image_links
 											.description_images[0]
@@ -162,6 +168,8 @@ export function DisplayCarousal(props) {
 								<EcommerceCard
 									color="bg-catalogue_bg"
 									text="text-black"
+									cart_color="bg-white"
+									cart_text="text-black"
 									image={
 										product[2].product_image_links
 											.description_images[0]

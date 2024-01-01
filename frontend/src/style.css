@@ -4430,6 +4430,10 @@ details.collapse summary::-webkit-details-marker {
           appearance: none;
 }
 
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -4476,6 +4480,10 @@ details.collapse summary::-webkit-details-marker {
 
 .justify-between {
   justify-content: space-between;
+}
+
+.justify-items-start {
+  justify-items: start;
 }
 
 .gap-0 {
@@ -5488,6 +5496,10 @@ details.collapse summary::-webkit-details-marker {
   padding: 2.5rem;
 }
 
+.p-16 {
+  padding: 4rem;
+}
+
 .p-2 {
   padding: 0.5rem;
 }
@@ -6154,6 +6166,16 @@ details.collapse summary::-webkit-details-marker {
 .text-yellow-900 {
   --tw-text-opacity: 1;
   color: rgb(245 127 23 / var(--tw-text-opacity));
+}
+
+.text-primary {
+  --tw-text-opacity: 1;
+  color: rgb(32 13 13 / var(--tw-text-opacity));
+}
+
+.text-catalogue_bg {
+  --tw-text-opacity: 1;
+  color: rgb(202 143 109 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -9324,6 +9346,16 @@ body::-webkit-scrollbar-thumb {
   color: rgb(96 125 139 / var(--tw-text-opacity));
 }
 
+@media (min-width: 540px) {
+  .sm\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sm\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (min-width: 720px) {
   .md\:m-4 {
     margin: 1rem;
@@ -9430,6 +9462,10 @@ body::-webkit-scrollbar-thumb {
 
   .md\:flex-1 {
     flex: 1 1 0%;
+  }
+
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .md\:flex-row {
@@ -9582,6 +9618,14 @@ body::-webkit-scrollbar-thumb {
     max-width: 75%;
   }
 
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
   .lg\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
@@ -9599,6 +9643,10 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media (min-width: 1140px) {
+  .xl\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
   .xl\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;

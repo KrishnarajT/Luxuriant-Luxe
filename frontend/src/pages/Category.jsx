@@ -48,6 +48,7 @@ const Category = () => {
 	const { type } = useParams();
 	const navigate = useNavigate();
 	const { currentCategoryProducts } = React.useContext(CartContext);
+
 	useEffect(() => {
 		console.log("Product Details", currentCategoryProducts);
 		// scroll to top on load
@@ -67,26 +68,33 @@ const Category = () => {
 			</section>
 
 			{/* section of cards that have all products */}
-
-			<section className="flex flex-wrap justify-center items-center">
-				{currentCategoryProducts.map((product) => {
-					return (
-						<EcommerceCard
-							color="bg-black"
-							text="text-white"
-							image={
-								product.product_image_links.description_images
-							}
-							name={product.product_name}
-							price={product.product_cost}
-							description={
-								product.product_description.product_description
-							}
-							points={product.points_awarded}
-						/>
-					);
-				})}
+			<section className="flex justify-center p-16">
+				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-5 justify-items-start">
+					{currentCategoryProducts.map((product) => {
+						return (
+							<EcommerceCard
+								color="bg-catalogue_bg"
+								text="text-black"
+								cart_color="bg-black"
+								cart_text="text-white"
+								image={
+									product.product_image_links
+										.description_images
+								}
+								name={product.product_name}
+								price={product.product_cost}
+								description={
+									product.product_description
+										.product_description
+								}
+								points={product.points_awarded}
+								id={product._id}
+							/>
+						);
+					})}
+				</div>
 			</section>
+
 			<Footer />
 		</div>
 	);

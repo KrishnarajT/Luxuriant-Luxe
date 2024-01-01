@@ -74,13 +74,13 @@ const Home = () => {
 					</div>
 					<div>
 						<button
-							className="text-accent underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
+							className="text-catalogue_bg underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
 							onClick={() => {
 								setCurrentCategoryProducts(EssentialsProducts);
 								navigate("/category/essentials");
 							}}
 						>
-							Shop All <IconArrowUpRight className="w-8 h-8" />
+							Shop All
 						</button>
 					</div>
 				</div>
@@ -115,7 +115,7 @@ const Home = () => {
 						className="p-4 m-8 justify-center items-start text-4xl forum
 				md:text-7xl"
 					>
-						<span className="text-accent dmsans mx-4 text-center">
+						<span className="text-primary dmsans mx-4 text-center">
 							FEATURED ORGANIC CLEANSERS
 						</span>
 					</div>
@@ -126,7 +126,7 @@ const Home = () => {
 					</div>
 					<div className="self-center">
 						<button
-							className="text-accent underline btn btn-ghost btn-lg forum text-4xl my-2"
+							className="text-catalogue_bg underline btn btn-ghost btn-lg forum text-4xl my-2"
 							onClick={() => {
 								setCurrentCategoryProducts(FeaturedProducts);
 								navigate("/category/featured");
@@ -159,7 +159,7 @@ const Home = () => {
 						className="p-4 m-8 justify-center text-center items-center text-4xl forum
 				md:text-7xl"
 					>
-						<span className="text-accent dmsans mx-4 text-center">
+						<span className="text-primary dmsans mx-4 text-center">
 							HOLIDAY GIFT SETS
 						</span>
 					</div>
@@ -170,7 +170,7 @@ const Home = () => {
 					</div>
 					<div className="self-center">
 						<button
-							className="text-accent underline btn btn-ghost btn-lg forum text-4xl my-2"
+							className="text-catalogue_bg underline btn btn-ghost btn-lg forum text-4xl my-2"
 							onClick={() => {
 								setCurrentCategoryProducts(HolidayProducts);
 								navigate("/category/holiday");
