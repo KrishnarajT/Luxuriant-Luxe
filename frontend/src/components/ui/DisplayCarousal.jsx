@@ -96,13 +96,8 @@ export function DisplayCarousal(props) {
 			{products.map((product) => {
 				return (
 					<div className="mx-24 flex flex-row gap-0">
-						
 						<div
-							className={`flex flex-row bg-catalogue_bg py-10 flex-1 ${
-								product.length < 3
-									? "justify-start"
-									: "justify-center"
-							} gap-4`}
+							className={`flex flex-row bg-catalogue_bg py-10 flex-1 justify-center gap-4`}
 						>
 							{product[0] && (
 								<EcommerceCard

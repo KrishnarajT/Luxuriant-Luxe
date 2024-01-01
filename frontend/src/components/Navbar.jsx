@@ -19,12 +19,23 @@ import {
 	IconUserBolt,
 } from "@tabler/icons-react";
 import "../css/Navbar.css";
-import { PhHandbagFill } from './ui/PhHandbagFill';
-import { SolarCosmeticBoldDuotone } from './ui/SolarCosmeticBoldDuotone';
-import { MaterialSymbolsLightFace2 } from './ui/MaterialSymbolsLightFace2';
-import { IconParkOutlineCosmeticBrush } from './ui/IconParkOutlineCosmeticBrush';
+import { PhHandbagFill } from "./ui/PhHandbagFill";
+import { SolarCosmeticBoldDuotone } from "./ui/SolarCosmeticBoldDuotone";
+import { MaterialSymbolsLightFace2 } from "./ui/MaterialSymbolsLightFace2";
+import { IconParkOutlineCosmeticBrush } from "./ui/IconParkOutlineCosmeticBrush";
+import { CartContext } from "../context/CartContext";
 
 export function Navbar(props) {
+	const {
+		productInfo,
+		HairProducts,
+		SkinProducts,
+		CosmeticsProducts,
+		EssentialsProducts,
+		HolidayProducts,
+		FeaturedProducts,
+		setCurrentCategoryProducts,
+	} = React.useContext(CartContext);
 	useEffect(() => {
 		themeChange(false);
 	}, []);
@@ -65,6 +76,11 @@ export function Navbar(props) {
 											to={"/catalogue"}
 											id="contact_element"
 											className="hover:text-base-content text-2xl w-full"
+											onClick={() => {
+												setCurrentCategoryProducts(
+													productInfo
+												);
+											}}
 										>
 											<IconShoppingBagSearch className="w-10 h-10" />
 											Catalogue
@@ -75,6 +91,11 @@ export function Navbar(props) {
 											to={"/category/hair"}
 											id="contact_element"
 											className="hover:text-base-content text-2xl w-full"
+											onClick={() => {
+												setCurrentCategoryProducts(
+													HairProducts
+												);
+											}}
 										>
 											<MaterialSymbolsLightFace2 className="w-10 h-10" />
 											LL Hair
@@ -85,6 +106,11 @@ export function Navbar(props) {
 											to={"/category/skin"}
 											id="contact_element"
 											className="hover:text-base-content text-2xl"
+											onClick={() => {
+												setCurrentCategoryProducts(
+													SkinProducts
+												);
+											}}
 										>
 											<IconParkOutlineCosmeticBrush className="w-10 h-10" />
 											LL Skin
@@ -95,6 +121,11 @@ export function Navbar(props) {
 											to={"/category/cosmetics"}
 											id="contact_element"
 											className="hover:text-base-content text-2xl"
+											onClick={() => {
+												setCurrentCategoryProducts(
+													CosmeticsProducts
+												);
+											}}
 										>
 											<SolarCosmeticBoldDuotone className="w-10 h-10" />
 											LL Cosmetics

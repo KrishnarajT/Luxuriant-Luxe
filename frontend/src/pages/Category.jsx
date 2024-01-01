@@ -63,27 +63,6 @@ const Category = () => {
 			>
 				Product 1
 			</button>
-			{currentCategoryProducts &&
-				currentCategoryProducts.map((product) => (
-					<div key={product._id}>
-						<h1>{product.product_name}</h1>
-						<h3>{product.product_cost}</h3>
-						<h3>{product.product_quantity}</h3>
-						<h3>
-							{product.product_description.product_description}
-						</h3>
-						<h3>
-							{
-								product.product_description
-									.real_results_description
-							}
-						</h3>
-						<h3>
-							{product.product_description.how_to_use_description}
-						</h3>
-						<h3>{product.points_awarded}</h3>
-					</div>
-				))}
 		</div>
 	);
 };
