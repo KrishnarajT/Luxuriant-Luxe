@@ -631,1034 +631,1004 @@ const Products = () => {
 						</div>
 					</div>
 				) : (
-					<table className="table text-xl outline outline-1 ">
-						<thead className="text-xl ">
-							<tr className="border-neutral border-b-1 bg-base-300 text-base-content">
-								<th></th>
-								<th>Name</th>
-								<th>Description</th>
-								<th>Real Results Description</th>
-								<th>How to Use Instructions</th>
-								<th>Cost</th>
-								<th>Desc. Images</th>
-								<th>Real Results Images</th>
-								<th>How to use Images</th>
-								<th>Category</th>
-								<th>Quantity</th>
-								<th>Points</th>
-								<th>Volume 1</th>
-								<th>Volume 2</th>
-								<th>Volume 3</th>
-								<th>Volume 4</th>
-								<th>Shade 1</th>
-								<th>Shade 2</th>
-								<th>Shade 3</th>
-								<th>Shade 4</th>
-								<th>Shade 5</th>
-								<th>Shade 6</th>
-								<th>Shade 7</th>
-								<th>Delete</th>
-							</tr>
-						</thead>
-						<tbody>
-							{filterProductDetails().map((product, index) => {
-								return (
-									<tr
-										key={index}
-										id={product.product_id}
-										className="hover border-accent border-t-1"
-									>
-										<td>{index + 1}</td>
-										<td>
-											<input
-												type="text"
-												value={product.product_name}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-														product_name:
-															e.target.value,
-													};
-													// update productDetails based on matching id
-													updateProduct(
-														index,
-														updatedProduct
+					<div className="flex flex-row justify-center items-center">
+						{filterProductDetails().map((product, index) => {
+							return (
+								<div
+									key={index}
+									id={product.product_id}
+									className="hover border-accent border-t-1 flex flex-col items-start justify-center p-4 bg-base-200"
+								>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										{index + 1}
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										<input
+											type="text"
+											value={product.product_name}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+													product_name:
+														e.target.value,
+												};
+												// update productDetails based on matching id
+												updateProduct(
+													index,
+													updatedProduct
+												);
+												console.log(productDetails);
+											}}
+											className="input input-bordered w-full min-w-48 input-accent text-lg"
+										/>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										<textarea
+											className="textarea textarea-accent text-lg"
+											value={
+												product.product_description
+													.product_description
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_description.product_description =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+										></textarea>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										<textarea
+											className="textarea textarea-accent text-lg"
+											value={
+												product.product_description
+													.real_results_description
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_description.real_results_description =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+										></textarea>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										<textarea
+											className="textarea textarea-accent text-lg"
+											value={
+												product.product_description
+													.how_to_use_description
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_description.how_to_use_description =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+										></textarea>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										<input
+											type="number"
+											value={product.product_cost}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_cost =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full min-w-28	input-secondary text-lg"
+										/>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										<textarea
+											className="textarea textarea-accent text-lg"
+											placeholder="Enter image links separated by commas"
+											value={
+												product.product_image_links
+													.description_images
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												// console.log e.target.value
+												console.log(e.target.value);
+												// remove \n and split to get an array of links
+												const links = e.target.value
+													.replace(/\n/g, "")
+													.split(", ");
+												console.log(
+													links[0].split(",")
+												);
+												updatedProduct.product_image_links.description_images =
+													links[0].split(",");
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+										></textarea>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										<textarea
+											className="textarea textarea-accent text-lg"
+											placeholder="Enter image links separated by commas"
+											value={
+												product.product_image_links
+													.real_results_images
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_image_links.real_results_images =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+										></textarea>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										<textarea
+											className="textarea textarea-accent text-lg"
+											placeholder="Enter image links separated by commas"
+											value={
+												product.product_image_links
+													.how_to_use_images
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_image_links.how_to_use_images =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+										></textarea>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										<textarea
+											className="textarea textarea-accent text-lg"
+											placeholder="Enter categories separated by commas"
+											value={product.product_category}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_category =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+										></textarea>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										<input
+											type="number"
+											value={product.product_quantity}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_quantity =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full min-w-28 input-secondary text-lg"
+										/>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										<input
+											type="number"
+											value={product.points_awarded}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.points_awarded =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full min-w-28 input-secondary text-lg"
+										/>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										ML:
+										<input
+											type="number"
+											value={
+												product.product_volumes[0]
+													.volume
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_volumes[0].volume =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full min-w-28 input-secondary text-lg"
+										/>
+										Cost:
+										<input
+											type="number"
+											value={
+												product.product_volumes[0]
+													.volume_cost
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_volumes[0].volume_cost =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full min-w-28 input-secondary text-lg"
+										/>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										ML:
+										<input
+											type="number"
+											value={
+												product.product_volumes[1]
+													.volume
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_volumes[1].volume =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full min-w-28 input-secondary text-lg"
+										/>
+										Cost:
+										<input
+											type="number"
+											value={
+												product.product_volumes[1]
+													.volume_cost
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_volumes[1].volume_cost =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full min-w-28 input-secondary text-lg"
+										/>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										ML:
+										<input
+											type="number"
+											value={
+												product.product_volumes[2]
+													.volume
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_volumes[2].volume =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full min-w-28 input-secondary text-lg"
+										/>
+										Cost:
+										<input
+											type="number"
+											value={
+												product.product_volumes[2]
+													.volume_cost
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_volumes[2].volume_cost =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full min-w-28 input-secondary text-lg"
+										/>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										ML:
+										<input
+											type="number"
+											value={
+												product.product_volumes[3]
+													.volume
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_volumes[3].volume =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full min-w-28 input-secondary text-lg"
+										/>
+										Cost:
+										<input
+											type="number"
+											value={
+												product.product_volumes[3]
+													.volume_cost
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_volumes[3].volume_cost =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full min-w-28 input-secondary text-lg"
+										/>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										Name:
+										<input
+											type="text"
+											value={
+												product.product_shades[0]
+													.shade_name
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[0].shade_name =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Color:
+										<input
+											type="text"
+											value={
+												product.product_shades[0]
+													.shade_color
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[0].shade_color =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Image link:
+										<input
+											type="text"
+											value={
+												product.product_shades[0]
+													.shade_image
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[0].shade_image =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Shade Number:
+										<input
+											type="number"
+											value={
+												product.product_shades[0]
+													.shade_number
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[0].shade_number =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										Name:
+										<input
+											type="text"
+											value={
+												product.product_shades[1]
+													.shade_name
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[1].shade_name =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Color:
+										<input
+											type="text"
+											value={
+												product.product_shades[1]
+													.shade_color
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[1].shade_color =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Image Link
+										<input
+											type="text"
+											value={
+												product.product_shades[1]
+													.shade_image
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[1].shade_image =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Shade Number
+										<input
+											type="number"
+											value={
+												product.product_shades[1]
+													.shade_number
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[1].shade_number =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										Name:
+										<input
+											type="text"
+											value={
+												product.product_shades[2]
+													.shade_name
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[2].shade_name =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Color:
+										<input
+											type="text"
+											value={
+												product.product_shades[2]
+													.shade_color
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[2].shade_color =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Image link:
+										<input
+											type="text"
+											value={
+												product.product_shades[2]
+													.shade_image
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[2].shade_image =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Shade Number
+										<input
+											type="number"
+											value={
+												product.product_shades[2]
+													.shade_number
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[2].shade_number =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										Name:
+										<input
+											type="text"
+											value={
+												product.product_shades[3]
+													.shade_name
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[3].shade_name =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Color:
+										<input
+											type="text"
+											value={
+												product.product_shades[3]
+													.shade_color
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[3].shade_color =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Image Link
+										<input
+											type="text"
+											value={
+												product.product_shades[3]
+													.shade_image
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[3].shade_image =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Shade Number:
+										<input
+											type="number"
+											value={
+												product.product_shades[3]
+													.shade_number
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[3].shade_number =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										Name:
+										<input
+											type="text"
+											value={
+												product.product_shades[4]
+													.shade_name
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[4].shade_name =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Color:
+										<input
+											type="text"
+											value={
+												product.product_shades[4]
+													.shade_color
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[4].shade_color =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Image Link:
+										<input
+											type="text"
+											value={
+												product.product_shades[4]
+													.shade_image
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[4].shade_image =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Shade Number:
+										<input
+											type="number"
+											value={
+												product.product_shades[4]
+													.shade_number
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[4].shade_number =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										Name:
+										<input
+											type="text"
+											value={
+												product.product_shades[5]
+													.shade_name
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[5].shade_name =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Color:
+										<input
+											type="text"
+											value={
+												product.product_shades[5]
+													.shade_color
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[5].shade_color =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Image Link:
+										<input
+											type="text"
+											value={
+												product.product_shades[5]
+													.shade_image
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[5].shade_image =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Shade Number:
+										<input
+											type="number"
+											value={
+												product.product_shades[5]
+													.shade_number
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[5].shade_number =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										Name:
+										<input
+											type="text"
+											value={
+												product.product_shades[6]
+													.shade_name
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[6].shade_name =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Color:
+										<input
+											type="text"
+											value={
+												product.product_shades[6]
+													.shade_color
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[6].shade_color =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Image Link:
+										<input
+											type="text"
+											value={
+												product.product_shades[6]
+													.shade_image
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[6].shade_image =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+										Shade Number:
+										<input
+											type="number"
+											value={
+												product.product_shades[6]
+													.shade_number
+											}
+											onChange={(e) => {
+												const updatedProduct = {
+													...product,
+												};
+												updatedProduct.product_shades[6].shade_number =
+													e.target.value;
+												updateProduct(
+													index,
+													updatedProduct
+												);
+											}}
+											className="input input-bordered w-full input-secondary text-lg"
+										/>
+									</div>
+									<div className="m-2 p-2 bg-base-300 rounded-xl">
+										<button
+											className="btn btn-error btn-md p-2"
+											onClick={() => {
+												// set the product id to delete
+												setProductToDelete(product._id);
+												// show a modal to delete the product
+												const modal =
+													document.getElementById(
+														"delete_product_modal"
 													);
-													console.log(productDetails);
-												}}
-												className="input input-bordered w-full min-w-48 input-accent text-lg"
-											/>
-										</td>
-										<td>
-											<textarea
-												className="textarea textarea-accent text-lg"
-												value={
-													product.product_description
-														.product_description
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_description.product_description =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-											></textarea>
-										</td>
-										<td>
-											<textarea
-												className="textarea textarea-accent text-lg"
-												value={
-													product.product_description
-														.real_results_description
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_description.real_results_description =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-											></textarea>
-										</td>
-										<td>
-											<textarea
-												className="textarea textarea-accent text-lg"
-												value={
-													product.product_description
-														.how_to_use_description
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_description.how_to_use_description =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-											></textarea>
-										</td>
-										<td>
-											<input
-												type="number"
-												value={product.product_cost}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_cost =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full min-w-28	input-secondary text-lg"
-											/>
-										</td>
-										<td>
-											<textarea
-												className="textarea textarea-accent text-lg"
-												placeholder="Enter image links separated by commas"
-												value={
-													product.product_image_links
-														.description_images
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													// console.log e.target.value
-													console.log(e.target.value);
-													// remove \n and split to get an array of links
-													const links = e.target.value
-														.replace(/\n/g, "")
-														.split(", ");
-													console.log(
-														links[0].split(",")
-													);
-													updatedProduct.product_image_links.description_images =
-														links[0].split(",");
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-											></textarea>
-										</td>
-										<td>
-											<textarea
-												className="textarea textarea-accent text-lg"
-												placeholder="Enter image links separated by commas"
-												value={
-													product.product_image_links
-														.real_results_images
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_image_links.real_results_images =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-											></textarea>
-										</td>
-										<td>
-											<textarea
-												className="textarea textarea-accent text-lg"
-												placeholder="Enter image links separated by commas"
-												value={
-													product.product_image_links
-														.how_to_use_images
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_image_links.how_to_use_images =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-											></textarea>
-										</td>
-										<td>
-											<textarea
-												className="textarea textarea-accent text-lg"
-												placeholder="Enter categories separated by commas"
-												value={product.product_category}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_category =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-											></textarea>
-										</td>
-										<td>
-											<input
-												type="number"
-												value={product.product_quantity}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_quantity =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full min-w-28 input-secondary text-lg"
-											/>
-										</td>
-										<td>
-											<input
-												type="number"
-												value={product.points_awarded}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.points_awarded =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full min-w-28 input-secondary text-lg"
-											/>
-										</td>
-										<td>
-											ML:
-											<input
-												type="number"
-												value={
-													product.product_volumes[0]
-														.volume
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_volumes[0].volume =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full min-w-28 input-secondary text-lg"
-											/>
-											Cost:
-											<input
-												type="number"
-												value={
-													product.product_volumes[0]
-														.volume_cost
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_volumes[0].volume_cost =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full min-w-28 input-secondary text-lg"
-											/>
-										</td>
-										<td>
-											ML:
-											<input
-												type="number"
-												value={
-													product.product_volumes[1]
-														.volume
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_volumes[1].volume =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full min-w-28 input-secondary text-lg"
-											/>
-											Cost:
-											<input
-												type="number"
-												value={
-													product.product_volumes[1]
-														.volume_cost
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_volumes[1].volume_cost =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full min-w-28 input-secondary text-lg"
-											/>
-										</td>
-										<td>
-											ML:
-											<input
-												type="number"
-												value={
-													product.product_volumes[2]
-														.volume
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_volumes[2].volume =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full min-w-28 input-secondary text-lg"
-											/>
-											Cost:
-											<input
-												type="number"
-												value={
-													product.product_volumes[2]
-														.volume_cost
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_volumes[2].volume_cost =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full min-w-28 input-secondary text-lg"
-											/>
-										</td>
-										<td>
-											ML:
-											<input
-												type="number"
-												value={
-													product.product_volumes[3]
-														.volume
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_volumes[3].volume =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full min-w-28 input-secondary text-lg"
-											/>
-											Cost:
-											<input
-												type="number"
-												value={
-													product.product_volumes[3]
-														.volume_cost
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_volumes[3].volume_cost =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full min-w-28 input-secondary text-lg"
-											/>
-										</td>
-										<td>
-											Name:
-											<input
-												type="text"
-												value={
-													product.product_shades[0]
-														.shade_name
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[0].shade_name =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Color:
-											<input
-												type="text"
-												value={
-													product.product_shades[0]
-														.shade_color
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[0].shade_color =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Image link:
-											<input
-												type="text"
-												value={
-													product.product_shades[0]
-														.shade_image
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[0].shade_image =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Shade Number:
-											<input
-												type="number"
-												value={
-													product.product_shades[0]
-														.shade_number
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[0].shade_number =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-										</td>
-										<td>
-											Name:
-											<input
-												type="text"
-												value={
-													product.product_shades[1]
-														.shade_name
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[1].shade_name =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Color:
-											<input
-												type="text"
-												value={
-													product.product_shades[1]
-														.shade_color
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[1].shade_color =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Image Link
-											<input
-												type="text"
-												value={
-													product.product_shades[1]
-														.shade_image
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[1].shade_image =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Shade Number
-											<input
-												type="number"
-												value={
-													product.product_shades[1]
-														.shade_number
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[1].shade_number =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-										</td>
-										<td>
-											Name:
-											<input
-												type="text"
-												value={
-													product.product_shades[2]
-														.shade_name
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[2].shade_name =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Color:
-											<input
-												type="text"
-												value={
-													product.product_shades[2]
-														.shade_color
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[2].shade_color =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Image link:
-											<input
-												type="text"
-												value={
-													product.product_shades[2]
-														.shade_image
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[2].shade_image =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Shade Number
-											<input
-												type="number"
-												value={
-													product.product_shades[2]
-														.shade_number
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[2].shade_number =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-										</td>
-										<td>
-											Name:
-											<input
-												type="text"
-												value={
-													product.product_shades[3]
-														.shade_name
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[3].shade_name =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Color:
-											<input
-												type="text"
-												value={
-													product.product_shades[3]
-														.shade_color
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[3].shade_color =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Image Link
-											<input
-												type="text"
-												value={
-													product.product_shades[3]
-														.shade_image
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[3].shade_image =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Shade Number:
-											<input
-												type="number"
-												value={
-													product.product_shades[3]
-														.shade_number
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[3].shade_number =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-										</td>
-										<td>
-											Name:
-											<input
-												type="text"
-												value={
-													product.product_shades[4]
-														.shade_name
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[4].shade_name =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Color:
-											<input
-												type="text"
-												value={
-													product.product_shades[4]
-														.shade_color
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[4].shade_color =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Image Link:
-											<input
-												type="text"
-												value={
-													product.product_shades[4]
-														.shade_image
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[4].shade_image =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Shade Number:
-											<input
-												type="number"
-												value={
-													product.product_shades[4]
-														.shade_number
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[4].shade_number =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-										</td>
-										<td>
-											Name:
-											<input
-												type="text"
-												value={
-													product.product_shades[5]
-														.shade_name
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[5].shade_name =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Color:
-											<input
-												type="text"
-												value={
-													product.product_shades[5]
-														.shade_color
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[5].shade_color =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Image Link:
-											<input
-												type="text"
-												value={
-													product.product_shades[5]
-														.shade_image
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[5].shade_image =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Shade Number:
-											<input
-												type="number"
-												value={
-													product.product_shades[5]
-														.shade_number
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[5].shade_number =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-										</td>
-										<td>
-											Name:
-											<input
-												type="text"
-												value={
-													product.product_shades[6]
-														.shade_name
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[6].shade_name =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Color:
-											<input
-												type="text"
-												value={
-													product.product_shades[6]
-														.shade_color
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[6].shade_color =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Image Link:
-											<input
-												type="text"
-												value={
-													product.product_shades[6]
-														.shade_image
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[6].shade_image =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-											Shade Number:
-											<input
-												type="number"
-												value={
-													product.product_shades[6]
-														.shade_number
-												}
-												onChange={(e) => {
-													const updatedProduct = {
-														...product,
-													};
-													updatedProduct.product_shades[6].shade_number =
-														e.target.value;
-													updateProduct(
-														index,
-														updatedProduct
-													);
-												}}
-												className="input input-bordered w-full input-secondary text-lg"
-											/>
-										</td>
-										<td>
-											<button
-												className="btn btn-error btn-md p-2"
-												onClick={() => {
-													// set the product id to delete
-													setProductToDelete(
-														product._id
-													);
-													// show a modal to delete the product
-													const modal =
-														document.getElementById(
-															"delete_product_modal"
-														);
-													modal.showModal();
-												}}
-											>
-												<IconTrash className="w-8 h-8" />
-											</button>
-										</td>
-									</tr>
-								);
-							})}
-						</tbody>
-					</table>
+												modal.showModal();
+											}}
+										>
+											<IconTrash className="w-8 h-8" />
+										</button>
+									</div>
+								</div>
+							);
+						})}
+					</div>
 				)}
 			</div>
 			<ScrollToTopButton />

@@ -7,10 +7,12 @@ import { NavLink, useNavigate } from "react-router-dom";
 import {
 	IconBoxSeam,
 	IconBrush,
+	IconCategory,
 	IconLogout,
 	IconMail,
 	IconMenu2,
 	IconMoon,
+	IconQuestionMark,
 	IconShoppingCart,
 	IconSun,
 	IconUserBolt,
@@ -105,6 +107,26 @@ export function Navbar(props) {
 							>
 								<IconMail className="w-6 h-6" />
 								Emails
+							</NavLink>
+						</li>
+						<li className="text-md md:text-xl whitespace-nowrap flex-nowrap w-36 mx-1 ">
+							<NavLink
+								to={"/categories"}
+								id="contact_element"
+								className="hover:text-base-content"
+							>
+								<IconCategory className="w-6 h-6" />
+								Category
+							</NavLink>
+						</li>
+						<li className="text-md md:text-xl whitespace-nowrap flex-nowrap w-36 mx-1">
+							<NavLink
+								to={"/faqs"}
+								id="contact_element"
+								className="hover:text-base-content"
+							>
+								<IconQuestionMark className="w-6 h-6" />
+								FAQs
 							</NavLink>
 						</li>
 					</ul>

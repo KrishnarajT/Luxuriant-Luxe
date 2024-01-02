@@ -99,6 +99,11 @@ const Login = (props) => {
 				let current_product = productDetails.filter((product) => {
 					return product._id === product_id;
 				});
+				if (!current_product[0]) {
+					console.log("product not found");
+					order_details_string = "Product not found";
+					continue;
+				}
 				console.log("product", current_product);
 				order_details_string +=
 					quantity + " x " + current_product[0].product_name + ", ";
