@@ -629,10 +629,10 @@ const Products = () => {
 							return (
 								<table
 									key={index}
-									className="table table-compact table-zebra w-full"
+									className="table text-xl outline outline-1 "
 								>
-									<thead className="text-base-content rounded-full text-3xl outline">
-										<tr className="">
+									<thead className="text-xl">
+										<tr className="border-neutral border-b-1 bg-base-300 text-base-content">
 											<th>Product index</th>
 											<th>Product Name</th>
 										</tr>
@@ -642,7 +642,7 @@ const Products = () => {
 											(product, index) => (
 												<tr
 													key={index}
-													className="text-3xl hover:bg-base-200"
+													className="text-xl hover:bg-base-200"
 													onClick={() => {
 														navigate(
 															`/product/${product._id}`,

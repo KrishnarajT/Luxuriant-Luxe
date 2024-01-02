@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { DBInfoContext } from "../context/DBInfoContext";
 import { UserContext } from "../context/UserContext";
 import { BaseUrlContext } from "../context/BaseUrlContext";
@@ -86,7 +86,6 @@ const Product = () => {
 				toast.error("Product deletion failed due to errors. ");
 			});
 	};
-
 	// function to update all the product details
 	const updateProductDetails = () => {
 		// check if recent changes have been made

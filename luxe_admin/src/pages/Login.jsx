@@ -138,8 +138,15 @@ const Login = (props) => {
 	const [passwordError, setPasswordError] = useState("");
 	let productDetails = [];
 	let customerDetails = [];
-	const { setOrderInfo, setCustomerInfo, setProductInfo } =
-		React.useContext(DBInfoContext);
+	const {
+		setOrderInfo,
+		setCustomerInfo,
+		setProductInfo,
+		faqInfo,
+		setFaqInfo,
+		categoryInfo,
+		setCategoryInfo,
+	} = React.useContext(DBInfoContext);
 
 	let navigate = useNavigate();
 
@@ -262,6 +269,74 @@ const Login = (props) => {
 			setOrderInfo([]);
 		}
 
+		// Get all categories
+		response = await axios
+			.post(`${base_url}/api/v1/Luxuriant/get_categories`, data, {
+				headers: {
+					"Content-Type": "application/json",
+				},
+			})
+			.then((response) => {
+				return response;
+			})
+			.catch((error) => {
+				console.error(error);
+				alert("server not running! a simulated response is being sent");
+				return {
+					data: {
+						message: "simulation",
+					},
+				};
+			});
+		console.log(response.data);
+		if (response.data.message === "simulation") {
+			setCategoryInfo([]);
+		}
+		if (response.data.message === "Success") {
+			const data = response.data.categories;
+			console.log(data);
+			setCategoryInfo(data);
+		}
+		if (response.data.message === "No Categories found") {
+			setCategoryInfo([]);
+		} else {
+			setCategoryInfo([]);
+		}
+
+		// Get all FAQs
+		response = await axios
+			.post(`${base_url}/api/v1/Luxuriant/get_faqs`, data, {
+				headers: {
+					"Content-Type": "application/json",
+				},
+			})
+			.then((response) => {
+				return response;
+			})
+			.catch((error) => {
+				console.error(error);
+				alert("server not running! a simulated response is being sent");
+				return {
+					data: {
+						message: "simulation",
+					},
+				};
+			});
+		console.log(response.data);
+		if (response.data.message === "simulation") {
+			setFaqInfo([]);
+		}
+		if (response.data.message === "Success") {
+			const data = response.data.faqs;
+			console.log(data);
+			setFaqInfo(data);
+		}
+		if (response.data.message === "No FAQs found") {
+			setFaqInfo([]);
+		} else {
+			setFaqInfo([]);
+		}
+		
 		console.log("redirecting, after downloading all data");
 		props.setisNavbarPresent(true);
 		navigate("/orders");
