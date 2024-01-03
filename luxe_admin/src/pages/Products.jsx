@@ -32,6 +32,7 @@ const Products = () => {
 			real_results_description: "",
 			how_to_use_description: "",
 		},
+		product_ingredients: "",
 		product_cost: 0,
 		product_image_links: {
 			description_images: [],

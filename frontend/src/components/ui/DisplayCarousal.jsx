@@ -95,95 +95,94 @@ export function DisplayCarousal(props) {
 			{/* displaying product cards */}
 			{products.map((product) => {
 				return (
-					<div className="mx-24 flex flex-row gap-0">
-						<div
-							className={`flex flex-row bg-catalogue_bg py-10 flex-1 justify-center gap-4`}
-						>
-							{product[0] && (
-								<EcommerceCard
-									color="bg-black"
-									text="text-white"
-									cart_color="bg-white"
-									cart_text="text-black"
-									image={
-										product[0].product_image_links
-											.description_images[0]
-									}
-									name={product[0].product_name}
-									price={product[0].product_cost}
-									description={
-										product[0].product_description
-											.product_description
-									}
-									points={product[0].points_awarded}
-								/>
-							)}
-							{product[1] && (
-								<EcommerceCard
-									color="bg-black"
-									text="text-white"
-									cart_color="bg-white"
-									cart_text="text-black"
-									image={
-										product[1].product_image_links
-											.description_images[0]
-									}
-									name={product[1].product_name}
-									price={product[1].product_cost}
-									description={
-										product[1].product_description
-											.product_description
-									}
-									points={product[1].points_awarded}
-								/>
-							)}
-						</div>
-						<div
-							className={`flex flex-row  bg-black py-10 flex-1 ${
-								product.length < 3
-									? "justify-start"
-									: "justify-center"
-							} gap-4`}
-						>
-							{product[2] && (
-								<EcommerceCard
-									color="bg-catalogue_bg"
-									text="text-black"
-									cart_color="bg-white"
-									cart_text="text-black"
-									image={
-										product[2].product_image_links
-											.description_images[0]
-									}
-									name={product[2].product_name}
-									price={product[2].product_cost}
-									description={
-										product[2].product_description
-											.product_description
-									}
-									points={product[2].points_awarded}
-								/>
-							)}
-							{product[3] && (
-								<EcommerceCard
-									color="bg-catalogue_bg"
-									text="text-black"
-									cart_color="bg-white"
-									cart_text="text-black"
-									image={
-										product[2].product_image_links
-											.description_images[0]
-									}
-									name={product[2].product_name}
-									price={product[2].product_cost}
-									description={
-										product[2].product_description
-											.product_description
-									}
-									points={product[2].points_awarded}
-								/>
-							)}
-						</div>
+					<div
+						className={`mx-24 flex flex-row gap-0 bg-pink-100 p-10 ${
+							product.length < 3
+								? "justify-start"
+								: "justify-center"
+						}`}
+					>
+						{product[0] && (
+							<EcommerceCard
+								color="bg-black"
+								text="text-white"
+								cart_color="bg-white"
+								cart_text="text-black"
+								id={product[0]._id}
+								image={
+									product[0].product_image_links
+										.description_images[0]
+								}
+								name={product[0].product_name}
+								price={product[0].product_cost}
+								description={
+									product[0].product_description
+										.product_description
+								}
+								points={product[0].points_awarded}
+							/>
+						)}
+						{product[1] && (
+							<EcommerceCard
+								color="bg-black"
+								text="text-white"
+								cart_color="bg-white"
+								cart_text="text-black"
+								id={product[1]._id}
+								image={
+									product[1].product_image_links
+										.description_images[0]
+								}
+								name={product[1].product_name}
+								price={product[1].product_cost}
+								description={
+									product[1].product_description
+										.product_description
+								}
+								points={product[1].points_awarded}
+							/>
+						)}
+
+						{product[2] && (
+							<EcommerceCard
+								color="bg-catalogue_bg"
+								text="text-black"
+								cart_color="bg-white"
+								cart_text="text-black"
+								id={product[2]._id}
+								image={
+									product[2].product_image_links
+										.description_images[0]
+								}
+								name={product[2].product_name}
+								price={product[2].product_cost}
+								description={
+									product[2].product_description
+										.product_description
+								}
+								points={product[2].points_awarded}
+							/>
+						)}
+						{product[3] && (
+							<EcommerceCard
+								color="bg-catalogue_bg"
+								text="text-black"
+								cart_color="bg-white"
+								cart_text="text-black"
+								id={product[3]._id}
+								image={
+									product[2].product_image_links
+										.description_images[0]
+								}
+								name={product[2].product_name}
+								price={product[2].product_cost}
+								description={
+									product[2].product_description
+										.product_description
+								}
+								points={product[2].points_awarded}
+							/>
+						)}
 					</div>
 				);
 			})}

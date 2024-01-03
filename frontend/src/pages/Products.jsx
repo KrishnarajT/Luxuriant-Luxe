@@ -90,7 +90,7 @@ const Products = () => {
 						onClick={() => {
 							// navigate("/cart");
 							addToCart({
-								product_id: productInfo[0].product_id,
+								_id: productInfo[0]._id,
 								cost: productInfo[0].product_cost,
 								quantity: 1,
 							});
@@ -154,7 +154,7 @@ const Products = () => {
 					onClick={() => {
 						// navigate("/cart");
 						addToCart({
-							product_id: productInfo[0].product_id,
+							_id: productInfo[0]._id,
 							cost: productInfo[0].product_cost,
 							quantity: 1,
 						});
@@ -198,7 +198,7 @@ const Products = () => {
 						onClick={() => {
 							// navigate("/cart");
 							addToCart({
-								product_id: productInfo[1].product_id,
+								_id: productInfo[1]._id,
 								cost: productInfo[1].product_cost,
 								quantity: 1,
 							});
@@ -264,7 +264,7 @@ const Products = () => {
 					onClick={() => {
 						// navigate("/cart");
 						addToCart({
-							product_id: productInfo[1].product_id,
+							_id: productInfo[1]._id,
 							cost: productInfo[1].product_cost,
 							quantity: 1,
 						});
@@ -304,7 +304,7 @@ const Products = () => {
 						onClick={() => {
 							// navigate("/cart");
 							addToCart({
-								product_id: productInfo[2].product_id,
+								_id: productInfo[2]._id,
 								cost: productInfo[2].product_cost,
 								quantity: 1,
 							});
@@ -368,7 +368,7 @@ const Products = () => {
 					onClick={() => {
 						// navigate("/cart");
 						addToCart({
-							product_id: productInfo[2].product_id,
+							_id: productInfo[2]._id,
 							cost: productInfo[2].product_cost,
 							quantity: 1,
 						});

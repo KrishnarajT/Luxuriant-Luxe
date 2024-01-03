@@ -1,5 +1,5 @@
 product table
-product_id (primary), product_name, product_cost
+\_id (primary), product_name, product_cost
 
 customer table
 customer_id, customer_name, customer_address, customer_email (primary), customer_phone
@@ -8,7 +8,7 @@ order table
 order_id (primary), order_date, order_cost, payment_status, customer_id
 
 order_details table
-order_id, product_id, quantity, price
+order_id, \_id, quantity, price
 
 routes
 
@@ -21,12 +21,12 @@ routes
    customer_name: "some name",
    products_ordered: [
    {
-   product_id: 1,
+   _id: 1,
    quantity: 2,
    cost: 100,
    },
    {
-   product_id: 2,
+   _id: 2,
    quantity: 1,
    cost: 200,
    }
@@ -76,50 +76,50 @@ routes
    output
    [
    {
-   product_id: 1,
+   _id: 1,
    product_name: "some name",
    product_cost: 100,
    },
    {
-   product_id: 2,
+   _id: 2,
    product_name: "some name",
    product_cost: 200,
    },
    ]
 4. /get_orders
 
-   input:
-   {
-   password: something
-   }
+    input:
+    {
+    password: something
+    }
 
-   output:
-   [
-   {
-   order_id: 1,
-   order_date: "some date",
-   order_cost: 400,
-   products: [product1, product2]
-   payment_status: "pending",
-   customer_id: 1,
-   customer_name: "some name",
-   customer_address: "some address",
-   customer_email: "some email",
-   customer_phone: "some phone"
-   },
-   {
-   order_id: 2,
-   order_date: "some date",
-   order_cost: 400,
-   products: [product1]
-   payment_status: "pending",
-   customer_id: 2,
-   customer_name: "some name",
-   customer_address: "some address",
-   customer_email: "some email",
-   customer_phone: "some phone"
-   },
-   ]
+    output:
+    [
+    {
+    order_id: 1,
+    order_date: "some date",
+    order_cost: 400,
+    products: [product1, product2]
+    payment_status: "pending",
+    customer_id: 1,
+    customer_name: "some name",
+    customer_address: "some address",
+    customer_email: "some email",
+    customer_phone: "some phone"
+    },
+    {
+    order_id: 2,
+    order_date: "some date",
+    order_cost: 400,
+    products: [product1]
+    payment_status: "pending",
+    customer_id: 2,
+    customer_name: "some name",
+    customer_address: "some address",
+    customer_email: "some email",
+    customer_phone: "some phone"
+    },
+    ]
 
 5. /change_payment_status
    input:

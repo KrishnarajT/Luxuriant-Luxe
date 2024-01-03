@@ -186,15 +186,13 @@ const CartContextProvider = ({ children }) => {
 	const addToCart = (item) => {
 		// item has the following structure:
 		// {
-		//     product_id: 1,
+		//     _id: 1,
 		//     cost: 100,
 		//     quantity: 1,
 		// }
-
 		// check if the item is already in the cart
 		// card is a list
 		// item is a dictionary
-
 		// if (cart.length === 0) {
 		// 	// if the cart is empty, add the item to the cart
 		// 	cart.push(item);
@@ -202,7 +200,7 @@ const CartContextProvider = ({ children }) => {
 		// 	// if the cart is not empty, check if the item is in the cart
 		// 	let found = false;
 		// 	for (let i = 0; i < cart.length; i++) {
-		// 		if (cart[i].product_id === item.product_id) {
+		// 		if (cart[i]._id === item._id) {
 		// 			// if the item is in the cart, increase the quantity
 		// 			cart[i].quantity += 1;
 		// 			found = true;
@@ -239,7 +237,7 @@ const CartContextProvider = ({ children }) => {
 			// if the cart is not empty, check if the item is in the cart
 			let found = false;
 			for (let i = 0; i < cart.length; i++) {
-				if (cart[i].product_id === item.product_id) {
+				if (cart[i]._id === item._id) {
 					// if the item is in the cart, decrease the quantity
 					cart[i].quantity -= 1;
 					if (cart[i].quantity === 0) {
@@ -275,9 +273,9 @@ const CartContextProvider = ({ children }) => {
 		return total;
 	};
 
-	const IncreaseProductQuantity = (product_id) => {
+	const IncreaseProductQuantity = (_id) => {
 		for (let i = 0; i < cart.length; i++) {
-			if (cart[i].product_id === product_id) {
+			if (cart[i]._id === _id) {
 				cart[i].quantity += 1;
 				break;
 			}
@@ -287,9 +285,9 @@ const CartContextProvider = ({ children }) => {
 		setCart(cart);
 	};
 
-	const DecreaseProductQuantity = (product_id) => {
+	const DecreaseProductQuantity = (_id) => {
 		for (let i = 0; i < cart.length; i++) {
-			if (cart[i].product_id === product_id) {
+			if (cart[i]._id === _id) {
 				cart[i].quantity -= 1;
 				if (cart[i].quantity === 0) {
 					// if the quantity is 0, remove the item from the cart

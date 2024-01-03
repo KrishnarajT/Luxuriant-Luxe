@@ -3056,6 +3056,14 @@ details.collapse summary::-webkit-details-marker {
   font-size: 0.875rem;
 }
 
+.btn-md {
+  height: 3rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  min-height: 3rem;
+  font-size: 0.875rem;
+}
+
 .btn-lg {
   height: 4rem;
   padding-left: 1.5rem;
@@ -3070,6 +3078,12 @@ details.collapse summary::-webkit-details-marker {
   padding: 0px;
 }
 
+.btn-square:where(.btn-md) {
+  height: 3rem;
+  width: 3rem;
+  padding: 0px;
+}
+
 .btn-square:where(.btn-lg) {
   height: 4rem;
   width: 4rem;
@@ -3079,6 +3093,13 @@ details.collapse summary::-webkit-details-marker {
 .btn-circle:where(.btn-sm) {
   height: 2rem;
   width: 2rem;
+  border-radius: 9999px;
+  padding: 0px;
+}
+
+.btn-circle:where(.btn-md) {
+  height: 3rem;
+  width: 3rem;
   border-radius: 9999px;
   padding: 0px;
 }
@@ -3476,6 +3497,10 @@ details.collapse summary::-webkit-details-marker {
   pointer-events: auto;
 }
 
+.visible {
+  visibility: visible;
+}
+
 .\!invisible {
   visibility: hidden !important;
 }
@@ -3694,6 +3719,10 @@ details.collapse summary::-webkit-details-marker {
 
 .m-8 {
   margin: 2rem;
+}
+
+.m-2 {
+  margin: 0.5rem;
 }
 
 .mx-0 {
@@ -4045,6 +4074,26 @@ details.collapse summary::-webkit-details-marker {
   max-height: 48px;
 }
 
+.max-h-7 {
+  max-height: 1.75rem;
+}
+
+.max-h-72 {
+  max-height: 18rem;
+}
+
+.max-h-\[30rem\] {
+  max-height: 30rem;
+}
+
+.max-h-\[34rem\] {
+  max-height: 34rem;
+}
+
+.max-h-\[42rem\] {
+  max-height: 42rem;
+}
+
 .min-h-10 {
   min-height: 2.5rem;
 }
@@ -4087,6 +4136,10 @@ details.collapse summary::-webkit-details-marker {
 
 .w-1\/4 {
   width: 25%;
+}
+
+.w-1\/5 {
+  width: 20%;
 }
 
 .w-10 {
@@ -4149,6 +4202,10 @@ details.collapse summary::-webkit-details-marker {
   width: 1rem;
 }
 
+.w-4\/5 {
+  width: 80%;
+}
+
 .w-5 {
   width: 1.25rem;
 }
@@ -4201,6 +4258,10 @@ details.collapse summary::-webkit-details-marker {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-96 {
+  width: 24rem;
 }
 
 .min-w-\[100vw\] {
@@ -4462,6 +4523,10 @@ details.collapse summary::-webkit-details-marker {
   align-items: flex-start;
 }
 
+.items-end {
+  align-items: flex-end;
+}
+
 .items-center {
   align-items: center;
 }
@@ -4618,6 +4683,10 @@ details.collapse summary::-webkit-details-marker {
 .divide-yellow-600 > :not([hidden]) ~ :not([hidden]) {
   --tw-divide-opacity: 1;
   border-color: rgb(253 216 53 / var(--tw-divide-opacity));
+}
+
+.self-start {
+  align-self: flex-start;
 }
 
 .self-center {
@@ -5137,6 +5206,11 @@ details.collapse summary::-webkit-details-marker {
   background-color: rgb(255 152 0 / 0.2);
 }
 
+.bg-pink-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 187 208 / var(--tw-bg-opacity));
+}
+
 .bg-pink-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(233 30 99 / var(--tw-bg-opacity));
@@ -5476,6 +5550,11 @@ details.collapse summary::-webkit-details-marker {
      object-position: center;
 }
 
+.object-top {
+  -o-object-position: top;
+     object-position: top;
+}
+
 .p-0 {
   padding: 0px;
 }
@@ -5518,6 +5597,10 @@ details.collapse summary::-webkit-details-marker {
 
 .p-6 {
   padding: 1.5rem;
+}
+
+.p-8 {
+  padding: 2rem;
 }
 
 .px-1 {
@@ -5583,11 +5666,6 @@ details.collapse summary::-webkit-details-marker {
 .py-1\.5 {
   padding-top: 0.375rem;
   padding-bottom: 0.375rem;
-}
-
-.py-10 {
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
 }
 
 .py-2 {
@@ -6454,6 +6532,10 @@ details.collapse summary::-webkit-details-marker {
   outline-width: 0px;
 }
 
+.outline-1 {
+  outline-width: 1px;
+}
+
 .filter {
   filter: var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow);
 }
@@ -6674,6 +6756,10 @@ body::-webkit-scrollbar-thumb {
 
 .dmsans {
   font-family: 'DM Sans', sans-serif;
+}
+
+.ptsans {
+  font-family: 'PT Sans', sans-serif;
 }
 
 #qr_code {
@@ -7884,6 +7970,16 @@ body::-webkit-scrollbar-thumb {
   background-color: rgb(255 235 59 / 0.1);
 }
 
+.hover\:bg-gray-100:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(245 245 245 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-black:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 0 0 / var(--tw-bg-opacity));
+}
+
 .hover\:bg-opacity-80:hover {
   --tw-bg-opacity: 0.8;
 }
@@ -7906,6 +8002,11 @@ body::-webkit-scrollbar-thumb {
 .hover\:text-light-blue-500:hover {
   --tw-text-opacity: 1;
   color: rgb(3 169 244 / var(--tw-text-opacity));
+}
+
+.hover\:text-white:hover {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
 .hover\:opacity-75:hover {

@@ -54,15 +54,15 @@ const Cart = () => {
 
 	const images = [
 		{
-			product_id: "654cd992ae6a271afeed6b4c",
+			_id: "654cd992ae6a271afeed6b4c",
 			product_image: blue_image,
 		},
 		{
-			product_id: "654cd992ae6a271afeed6b4e",
+			_id: "654cd992ae6a271afeed6b4e",
 			product_image: pink_image,
 		},
 		{
-			product_id: "654cd992ae6a271afeed6b4d",
+			_id: "654cd992ae6a271afeed6b4d",
 			product_image: purple_image,
 		},
 	];
@@ -212,8 +212,8 @@ const Cart = () => {
 										{
 											productInfo.filter((product) => {
 												return (
-													product.product_id ===
-													item.product_id
+													product._id ===
+													item._id
 												);
 											})[0].product_name
 										}
@@ -223,8 +223,8 @@ const Cart = () => {
 										{
 											productInfo.filter((product) => {
 												return (
-													product.product_id ===
-													item.product_id
+													product._id ===
+													item._id
 												);
 											})[0].product_cost
 										}
@@ -238,7 +238,7 @@ const Cart = () => {
 											className="btn btn-sm btn-accent text-accent-content"
 											onClick={() => {
 												IncreaseProductQuantity(
-													item.product_id
+													item._id
 												);
 												setCart(getCart());
 												setChange(
@@ -252,7 +252,7 @@ const Cart = () => {
 											className="btn btn-sm btn-accent text-accent-content"
 											onClick={() => {
 												DecreaseProductQuantity(
-													item.product_id
+													item._id
 												);
 												setCart(getCart());
 												setChange(
@@ -269,8 +269,8 @@ const Cart = () => {
 										src={
 											images.filter((product) => {
 												return (
-													product.product_id ===
-													item.product_id
+													product._id ===
+													item._id
 												);
 											})[0].product_image
 										}
@@ -325,8 +325,8 @@ const Cart = () => {
 													productInfo.filter(
 														(product) => {
 															return (
-																product.product_id ===
-																item.product_id
+																product._id ===
+																item._id
 															);
 														}
 													)[0].product_name
@@ -339,8 +339,8 @@ const Cart = () => {
 													productInfo.filter(
 														(product) => {
 															return (
-																product.product_id ===
-																item.product_id
+																product._id ===
+																item._id
 															);
 														}
 													)[0].product_cost
@@ -362,8 +362,8 @@ const Cart = () => {
 												productInfo.filter(
 													(product) => {
 														return (
-															product.product_id ===
-															item.product_id
+															product._id ===
+															item._id
 														);
 													}
 												)[0].product_cost *
