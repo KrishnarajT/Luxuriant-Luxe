@@ -13,6 +13,7 @@ import { IconRefresh } from "@tabler/icons-react";
 // 	"_id": "60f9b3b3e6c3a3b4b8f7b3b4",
 // 	"name": "Clothing",
 // 	"description": "Clothing",
+// 	"category_image": "https://i.imgur.com/1OcCQZS.png",
 // 	"sub_categories": [
 // 		{
 // 			sub_category_name: "T-Shirts",
@@ -23,7 +24,12 @@ import { IconRefresh } from "@tabler/icons-react";
 const Categories = () => {
 	const { categoryInfo, setCategoryInfo } = React.useContext(DBInfoContext);
 	const [showDialog, setShowDialog] = useState(false);
-	const [newCategory, setNewCategory] = useState({});
+	const [newCategory, setNewCategory] = useState({
+		category_name: "",
+		category_description: "",
+		category_image: "",
+		sub_categories: [],
+	});
 	const base_url = React.useContext(BaseUrlContext).baseUrl;
 	const { userPassword } = React.useContext(UserContext);
 	useEffect(() => {
@@ -67,6 +73,16 @@ const Categories = () => {
 	};
 
 	const handleAddCategory = async () => {
+		// make sure all fields are filled
+		if (
+			newCategory.category_name === "" ||
+			newCategory.category_description === "" ||
+			newCategory.category_image === ""
+		) {
+			toast.error("Please fill all fields");
+			return;
+		}
+		console.log(newCategory)
 		// send request to add new category
 		await axios
 			.post(
@@ -229,6 +245,19 @@ const Categories = () => {
 														e.target.value;
 												}}
 											/>
+											<h2 className="text-xl">
+												Category Image
+											</h2>
+											<input
+												className="input input-bordered w-full min-w-48 input-accent text-lg"
+												type="text"
+												value={category.category_image}
+												onChange={(e) => {
+													// Update the category_name value
+													category.category_name =
+														e.target.value;
+												}}
+											/>
 											<div className="card-actions">
 												<button
 													className="btn btn-secondary"
@@ -249,7 +278,7 @@ const Categories = () => {
 													className="btn btn-secondary"
 													onClick={() => {
 														handleDeleteCategory(
-															category.id
+															category._id
 														);
 													}}
 												>
@@ -344,6 +373,82 @@ const Categories = () => {
 					  })
 					: null}
 			</div>
+			{/* Modal for adding a category */}
+			<dialog id="my_modal_1" className="modal">
+				<div className="modal-box">
+					<h3 className="font-bold text-lg">Add Category</h3>
+					<p className="py-4">
+						Add just the name, image and description of the
+						category, Subcategories can be added later. You can add
+						multiple subcategories to a category.
+					</p>
+					<div className="modal-action justify-center">
+						<form method="dialog">
+							<label className="label">
+								Category Name
+								<input
+									className="input input-bordered w-full min-w-48 input-accent text-lg"
+									type="text"
+									value={newCategory.category_name}
+									onChange={(e) => {
+										console.log(newCategory)
+										// Update the category_name value
+										let newc = {
+											...newCategory,
+										};
+										newc.category_name = e.target.value;
+										setNewCategory(newc);
+									}}
+								/>
+							</label>
+							<label className="label">
+								Category Description
+								<input
+									className="input input-bordered w-full min-w-48 input-accent text-lg"
+									type="text"
+									value={newCategory.category_description}
+									onChange={(e) => {
+										// Update the category_description value
+										let newc = {
+											...newCategory,
+										};
+										newc.category_description =
+											e.target.value;
+										setNewCategory(newc);
+									}}
+								/>
+							</label>
+							<label className="label">
+								Category Image
+								<input
+									className="input input-bordered w-full min-w-48 input-accent text-lg"
+									type="text"
+									value={newCategory.category_image}
+									onChange={(e) => {
+										// Update the category_image value
+										let newc = {
+											...newCategory,
+										};
+										newc.category_image = e.target.value;
+										setNewCategory(newc);
+									}}
+								/>
+							</label>
+							<button
+								className="btn btn-primary m-4 self-center"
+								onClick={() => {
+									handleAddCategory();
+								}}
+							>
+								Add Category
+							</button>
+
+							{/* if there is a button in form, it will close the modal */}
+							<button className="btn">Close</button>
+						</form>
+					</div>
+				</div>
+			</dialog>
 		</div>
 	);
 };
