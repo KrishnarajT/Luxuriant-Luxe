@@ -177,6 +177,7 @@ const Products = () => {
 
 	const get_product_details = () => {
 		// get product details from the context.
+		console.log("getting product details")
 		setProductDetails(productInfo);
 
 		if (productInfo.length === 0) {
@@ -242,6 +243,7 @@ const Products = () => {
 				}
 			}
 		}
+		get_product_details();
 	}, []);
 
 	function filterProductDetails() {

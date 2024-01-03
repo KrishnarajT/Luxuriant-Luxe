@@ -133,7 +133,7 @@ const Product = () => {
 			.then((response) => {
 				if (response.data.message === "success") {
 					toast.success("Product details updated successfully");
-					setProductInfo(productDetails);
+					setProductInfo(updated_product_details);
 					setRecentChanges(false);
 				} else {
 					toast.error("Product details update failed");
