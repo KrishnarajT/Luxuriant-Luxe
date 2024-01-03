@@ -382,135 +382,167 @@ const Product = () => {
 							className="input input-bordered w-full min-w-28 input-secondary text-lg"
 						/>
 					</div>
-					<div className="text-xl m-4">Product Volumes</div>
-					<div className="bg-base-300 rounded-xl m-2 p-2">
-						ML:
+					<div className="text-xl m-4">
+						Does the Product have Volumes?
+					</div>
+					<div>
 						<input
-							type="number"
-							value={product.product_volumes[0].volume}
+							type="checkbox"
+							className="toggle toggle-secondary mx-4"
+							checked={product.volumes_present}
 							onChange={(e) => {
 								const updatedProduct = {
 									...product,
 								};
-								updatedProduct.product_volumes[0].volume =
-									e.target.value;
+								updatedProduct.volumes_present =
+									e.target.checked;
 								setProduct(updatedProduct);
 								setRecentChanges(true);
 							}}
-							className="input input-bordered w-full min-w-28 input-secondary text-lg"
-						/>
-						Cost:
-						<input
-							type="number"
-							value={product.product_volumes[0].volume_cost}
-							onChange={(e) => {
-								const updatedProduct = {
-									...product,
-								};
-								updatedProduct.product_volumes[0].volume_cost =
-									e.target.value;
-								setProduct(updatedProduct);
-								setRecentChanges(true);
-							}}
-							className="input input-bordered w-full min-w-28 input-secondary text-lg"
 						/>
 					</div>
-					<div className="bg-base-300 rounded-xl m-2 p-2">
-						ML:
-						<input
-							type="number"
-							value={product.product_volumes[1].volume}
-							onChange={(e) => {
-								const updatedProduct = {
-									...product,
-								};
-								updatedProduct.product_volumes[1].volume =
-									e.target.value;
-								setProduct(updatedProduct);
-								setRecentChanges(true);
-							}}
-							className="input input-bordered w-full min-w-28 input-secondary text-lg"
-						/>
-						Cost:
-						<input
-							type="number"
-							value={product.product_volumes[1].volume_cost}
-							onChange={(e) => {
-								const updatedProduct = {
-									...product,
-								};
-								updatedProduct.product_volumes[1].volume_cost =
-									e.target.value;
-								setProduct(updatedProduct);
-								setRecentChanges(true);
-							}}
-							className="input input-bordered w-full min-w-28 input-secondary text-lg"
-						/>
-					</div>
-					<div className="bg-base-300 rounded-xl m-2 p-2">
-						ML:
-						<input
-							type="number"
-							value={product.product_volumes[2].volume}
-							onChange={(e) => {
-								const updatedProduct = {
-									...product,
-								};
-								updatedProduct.product_volumes[2].volume =
-									e.target.value;
-								setProduct(updatedProduct);
-								setRecentChanges(true);
-							}}
-							className="input input-bordered w-full min-w-28 input-secondary text-lg"
-						/>
-						Cost:
-						<input
-							type="number"
-							value={product.product_volumes[2].volume_cost}
-							onChange={(e) => {
-								const updatedProduct = {
-									...product,
-								};
-								updatedProduct.product_volumes[2].volume_cost =
-									e.target.value;
-								setProduct(updatedProduct);
-								setRecentChanges(true);
-							}}
-							className="input input-bordered w-full min-w-28 input-secondary text-lg"
-						/>
-					</div>
-					<div className="bg-base-300 rounded-xl m-2 p-2">
-						ML:
-						<input
-							type="number"
-							value={product.product_volumes[3].volume}
-							onChange={(e) => {
-								const updatedProduct = {
-									...product,
-								};
-								updatedProduct.product_volumes[3].volume =
-									e.target.value;
-								setProduct(updatedProduct);
-								setRecentChanges(true);
-							}}
-							className="input input-bordered w-full min-w-28 input-secondary text-lg"
-						/>
-						Cost:
-						<input
-							type="number"
-							value={product.product_volumes[3].volume_cost}
-							onChange={(e) => {
-								const updatedProduct = {
-									...product,
-								};
-								updatedProduct.product_volumes[3].volume_cost =
-									e.target.value;
-								setProduct(updatedProduct);
-								setRecentChanges(true);
-							}}
-							className="input input-bordered w-full min-w-28 input-secondary text-lg"
-						/>
-					</div>
+					{product.volumes_present ? (
+						<div className="flex flex-wrap gap-4 p-8">
+							<div className="bg-base-300 rounded-xl m-2 p-2">
+								ML:
+								<input
+									type="number"
+									value={product.product_volumes[0].volume}
+									onChange={(e) => {
+										const updatedProduct = {
+											...product,
+										};
+										updatedProduct.product_volumes[0].volume =
+											e.target.value;
+										setProduct(updatedProduct);
+										setRecentChanges(true);
+									}}
+									className="input input-bordered w-full min-w-28 input-secondary text-lg"
+								/>
+								Cost:
+								<input
+									type="number"
+									value={
+										product.product_volumes[0].volume_cost
+									}
+									onChange={(e) => {
+										const updatedProduct = {
+											...product,
+										};
+										updatedProduct.product_volumes[0].volume_cost =
+											e.target.value;
+										setProduct(updatedProduct);
+										setRecentChanges(true);
+									}}
+									className="input input-bordered w-full min-w-28 input-secondary text-lg"
+								/>
+							</div>
+							<div className="bg-base-300 rounded-xl m-2 p-2">
+								ML:
+								<input
+									type="number"
+									value={product.product_volumes[1].volume}
+									onChange={(e) => {
+										const updatedProduct = {
+											...product,
+										};
+										updatedProduct.product_volumes[1].volume =
+											e.target.value;
+										setProduct(updatedProduct);
+										setRecentChanges(true);
+									}}
+									className="input input-bordered w-full min-w-28 input-secondary text-lg"
+								/>
+								Cost:
+								<input
+									type="number"
+									value={
+										product.product_volumes[1].volume_cost
+									}
+									onChange={(e) => {
+										const updatedProduct = {
+											...product,
+										};
+										updatedProduct.product_volumes[1].volume_cost =
+											e.target.value;
+										setProduct(updatedProduct);
+										setRecentChanges(true);
+									}}
+									className="input input-bordered w-full min-w-28 input-secondary text-lg"
+								/>
+							</div>
+							<div className="bg-base-300 rounded-xl m-2 p-2">
+								ML:
+								<input
+									type="number"
+									value={product.product_volumes[2].volume}
+									onChange={(e) => {
+										const updatedProduct = {
+											...product,
+										};
+										updatedProduct.product_volumes[2].volume =
+											e.target.value;
+										setProduct(updatedProduct);
+										setRecentChanges(true);
+									}}
+									className="input input-bordered w-full min-w-28 input-secondary text-lg"
+								/>
+								Cost:
+								<input
+									type="number"
+									value={
+										product.product_volumes[2].volume_cost
+									}
+									onChange={(e) => {
+										const updatedProduct = {
+											...product,
+										};
+										updatedProduct.product_volumes[2].volume_cost =
+											e.target.value;
+										setProduct(updatedProduct);
+										setRecentChanges(true);
+									}}
+									className="input input-bordered w-full min-w-28 input-secondary text-lg"
+								/>
+							</div>
+							<div className="bg-base-300 rounded-xl m-2 p-2">
+								ML:
+								<input
+									type="number"
+									value={product.product_volumes[3].volume}
+									onChange={(e) => {
+										const updatedProduct = {
+											...product,
+										};
+										updatedProduct.product_volumes[3].volume =
+											e.target.value;
+										setProduct(updatedProduct);
+										setRecentChanges(true);
+									}}
+									className="input input-bordered w-full min-w-28 input-secondary text-lg"
+								/>
+								Cost:
+								<input
+									type="number"
+									value={
+										product.product_volumes[3].volume_cost
+									}
+									onChange={(e) => {
+										const updatedProduct = {
+											...product,
+										};
+										updatedProduct.product_volumes[3].volume_cost =
+											e.target.value;
+										setProduct(updatedProduct);
+										setRecentChanges(true);
+									}}
+									className="input input-bordered w-full min-w-28 input-secondary text-lg"
+								/>
+							</div>
+						</div>
+					) : (
+						<div></div>
+					)}
 					<div className="text-xl m-4">
 						Does the Product have Shades?
 					</div>
@@ -531,8 +563,8 @@ const Product = () => {
 						/>
 					</div>
 					{product.shades_present ? (
-						<div>
-							<div className="bg-base-300 rounded-xl m-2 p-2">
+						<div className="flex flex-wrap gap-4 p-8">
+							<div className="bg-base-300 rounded-xl m-2 p-2 max-w-48">
 								Name:
 								<input
 									type="text"
@@ -554,6 +586,7 @@ const Product = () => {
 									value={
 										product.product_shades[0].shade_color
 									}
+									placeholder="hex without hash"
 									onChange={(e) => {
 										const updatedProduct = {
 											...product,
@@ -567,6 +600,7 @@ const Product = () => {
 								/>
 								Image link:
 								<input
+									placeholder="any link, img/gif"
 									type="text"
 									value={
 										product.product_shades[0].shade_image
@@ -600,7 +634,7 @@ const Product = () => {
 									className="input input-bordered w-full input-secondary text-lg"
 								/>
 							</div>
-							<div className="bg-base-300 rounded-xl m-2 p-2">
+							<div className="bg-base-300 rounded-xl m-2 p-2 max-w-48">
 								Name:
 								<input
 									type="text"
@@ -622,6 +656,7 @@ const Product = () => {
 									value={
 										product.product_shades[1].shade_color
 									}
+									placeholder="hex without hash"
 									onChange={(e) => {
 										const updatedProduct = {
 											...product,
@@ -635,6 +670,7 @@ const Product = () => {
 								/>
 								Image Link
 								<input
+									placeholder="any link, img/gif"
 									type="text"
 									value={
 										product.product_shades[1].shade_image
@@ -668,7 +704,7 @@ const Product = () => {
 									className="input input-bordered w-full input-secondary text-lg"
 								/>
 							</div>
-							<div className="bg-base-300 rounded-xl m-2 p-2">
+							<div className="bg-base-300 rounded-xl m-2 p-2 max-w-48">
 								Name:
 								<input
 									type="text"
@@ -690,6 +726,7 @@ const Product = () => {
 									value={
 										product.product_shades[2].shade_color
 									}
+									placeholder="hex without hash"
 									onChange={(e) => {
 										const updatedProduct = {
 											...product,
@@ -703,6 +740,7 @@ const Product = () => {
 								/>
 								Image link:
 								<input
+									placeholder="any link, img/gif"
 									type="text"
 									value={
 										product.product_shades[2].shade_image
@@ -736,7 +774,7 @@ const Product = () => {
 									className="input input-bordered w-full input-secondary text-lg"
 								/>
 							</div>
-							<div className="bg-base-300 rounded-xl m-2 p-2">
+							<div className="bg-base-300 rounded-xl m-2 p-2 max-w-48">
 								Name:
 								<input
 									type="text"
@@ -758,6 +796,7 @@ const Product = () => {
 									value={
 										product.product_shades[3].shade_color
 									}
+									placeholder="hex without hash"
 									onChange={(e) => {
 										const updatedProduct = {
 											...product,
@@ -772,6 +811,7 @@ const Product = () => {
 								Image Link
 								<input
 									type="text"
+									placeholder="any link, img/gif"
 									value={
 										product.product_shades[3].shade_image
 									}
@@ -804,7 +844,7 @@ const Product = () => {
 									className="input input-bordered w-full input-secondary text-lg"
 								/>
 							</div>
-							<div className="bg-base-300 rounded-xl m-2 p-2">
+							<div className="bg-base-300 rounded-xl m-2 p-2 max-w-48">
 								Name:
 								<input
 									type="text"
@@ -826,6 +866,7 @@ const Product = () => {
 									value={
 										product.product_shades[4].shade_color
 									}
+									placeholder="hex without hash"
 									onChange={(e) => {
 										const updatedProduct = {
 											...product,
@@ -839,6 +880,7 @@ const Product = () => {
 								/>
 								Image Link:
 								<input
+									placeholder="any link, img/gif"
 									type="text"
 									value={
 										product.product_shades[4].shade_image
@@ -872,7 +914,7 @@ const Product = () => {
 									className="input input-bordered w-full input-secondary text-lg"
 								/>
 							</div>
-							<div className="bg-base-300 rounded-xl m-2 p-2">
+							<div className="bg-base-300 rounded-xl m-2 p-2 max-w-48">
 								Name:
 								<input
 									type="text"
@@ -894,6 +936,7 @@ const Product = () => {
 									value={
 										product.product_shades[5].shade_color
 									}
+									placeholder="hex without hash"
 									onChange={(e) => {
 										const updatedProduct = {
 											...product,
@@ -907,6 +950,7 @@ const Product = () => {
 								/>
 								Image Link:
 								<input
+									placeholder="any link, img/gif"
 									type="text"
 									value={
 										product.product_shades[5].shade_image
@@ -940,7 +984,7 @@ const Product = () => {
 									className="input input-bordered w-full input-secondary text-lg"
 								/>
 							</div>
-							<div className="bg-base-300 rounded-xl m-2 p-2">
+							<div className="bg-base-300 rounded-xl m-2 p-2 max-w-48">
 								Name:
 								<input
 									type="text"
@@ -962,6 +1006,7 @@ const Product = () => {
 									value={
 										product.product_shades[6].shade_color
 									}
+									placeholder="hex without hash"
 									onChange={(e) => {
 										const updatedProduct = {
 											...product,
@@ -975,6 +1020,7 @@ const Product = () => {
 								/>
 								Image Link:
 								<input
+									placeholder="any link, img/gif"
 									type="text"
 									value={
 										product.product_shades[6].shade_image

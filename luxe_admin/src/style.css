@@ -4005,6 +4005,14 @@ html {
   max-width: 20rem;
 }
 
+.max-w-20 {
+  max-width: 5rem;
+}
+
+.max-w-48 {
+  max-width: 12rem;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
