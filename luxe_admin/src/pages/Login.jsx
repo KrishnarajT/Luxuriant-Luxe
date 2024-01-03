@@ -293,13 +293,12 @@ const Login = (props) => {
 			setCategoryInfo([]);
 		}
 		if (response.data.message === "Success") {
+			console.log("successfully got categories");
 			const data = response.data.categories;
 			console.log(data);
 			setCategoryInfo(data);
 		}
 		if (response.data.message === "No Categories found") {
-			setCategoryInfo([]);
-		} else {
 			setCategoryInfo([]);
 		}
 
@@ -333,10 +332,8 @@ const Login = (props) => {
 		}
 		if (response.data.message === "No FAQs found") {
 			setFaqInfo([]);
-		} else {
-			setFaqInfo([]);
 		}
-		
+
 		console.log("redirecting, after downloading all data");
 		props.setisNavbarPresent(true);
 		navigate("/orders");

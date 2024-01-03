@@ -16,7 +16,8 @@ axios.defaults.headers.common["Access-Control-Allow-Credentials"] = "true";
 
 const Product = () => {
 	let [product, setProduct] = useState(useLocation().state.product);
-	const { setProductInfo, productInfo } = React.useContext(DBInfoContext);
+	const { setProductInfo, productInfo, categoryInfo, setCategoryInfo } =
+		React.useContext(DBInfoContext);
 	const [productToDelete, setProductToDelete] = useState(null);
 	const { userPassword } = React.useContext(UserContext);
 	const base_url = React.useContext(BaseUrlContext).baseUrl;
@@ -27,6 +28,7 @@ const Product = () => {
 		console.log(product);
 		console.log(productDetails);
 		console.log(productInfo);
+		console.log(categoryInfo);
 	}, []);
 
 	// function to clean array regardless of how badly the string is formatted
