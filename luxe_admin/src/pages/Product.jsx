@@ -1420,6 +1420,9 @@ const Product = () => {
 							<IconTrash className="w-8 h-8" />
 						</button>
 					</div>
+					<div className="text-5xl m-4 text-red-500">
+						Make sure to save changes before leaving!
+					</div>
 				</div>
 			)}
 			{/* create another dialog for asking the user if they are sure to delete the product.  */}
