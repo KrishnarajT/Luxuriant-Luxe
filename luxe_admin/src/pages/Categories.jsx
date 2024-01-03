@@ -7,7 +7,7 @@ import axios from "axios";
 import { DBInfoContext } from "../context/DBInfoContext";
 import { BaseUrlContext } from "../context/BaseUrlContext";
 import { IconRefresh } from "@tabler/icons-react";
-
+import { v4 as uuidv4 } from "uuid";
 // categories looks like this
 // {
 // 	"_id": "60f9b3b3e6c3a3b4b8f7b3b4",
@@ -31,11 +31,13 @@ const Categories = () => {
 		sub_categories: [],
 	});
 	const base_url = React.useContext(BaseUrlContext).baseUrl;
+	const [categoryDetails, setcategoryDetails] = useState(categoryInfo);
 	const { userPassword } = React.useContext(UserContext);
 	useEffect(() => {
 		// log everything
 		// getCategoriesFromServer();
-		console.log("categories", categoryInfo);
+		setcategoryDetails(categoryInfo);
+		console.log("categories", categoryDetails);
 	}, []);
 
 	const getCategoriesFromServer = async () => {
@@ -55,6 +57,7 @@ const Categories = () => {
 			.then((response) => {
 				if (response.data.message === "Success") {
 					toast.success("Categories fetched successfully");
+					setcategoryDetails(response.data.categories);
 					setCategoryInfo(response.data.categories);
 				} else {
 					toast.error("Error fetching categories");
@@ -82,7 +85,7 @@ const Categories = () => {
 			toast.error("Please fill all fields");
 			return;
 		}
-		console.log(newCategory)
+		console.log(newCategory);
 		// send request to add new category
 		await axios
 			.post(
@@ -147,6 +150,9 @@ const Categories = () => {
 	};
 
 	const handleUpdateCategory = async (categoryId, updatedCategory) => {
+		console.log(categoryId, updatedCategory);
+		// filter id from updatedCategory
+		delete updatedCategory._id;
 		// send request to update category
 		await axios
 			.post(
@@ -208,8 +214,8 @@ const Categories = () => {
 
 			{/* show category section */}
 			<div>
-				{categoryInfo
-					? categoryInfo.map((category) => {
+				{categoryDetails
+					? categoryDetails.map((category) => {
 							return (
 								<div
 									className="flex justify-center m-4"
@@ -262,17 +268,19 @@ const Categories = () => {
 												<button
 													className="btn btn-secondary"
 													onClick={() => {
-														document
-															.getElementById(
-																"my_modal_2"
-															)
-															.showModal();
-														setNewCategory(
-															category
+														handleUpdateCategory(
+															category._id,
+															categoryDetails[
+																categoryDetails.findIndex(
+																	(c) =>
+																		c._id ===
+																		category._id
+																)
+															]
 														);
 													}}
 												>
-													Edit
+													Save Updated Category
 												</button>
 												<button
 													className="btn btn-secondary"
@@ -290,9 +298,35 @@ const Categories = () => {
 												<button
 													className="btn btn-primary"
 													onClick={() => {
-														console.log(
-															"category",
-															category
+														let newc = {
+															...category,
+														};
+														newc.sub_categories =
+															newc.sub_categories ||
+															[];
+														newc.sub_categories.push(
+															{
+																sub_category_id:
+																	uuidv4(),
+																sub_category_name:
+																	"",
+																sub_category_image:
+																	"",
+															}
+														);
+														// set categories to newc where newc._id === category._id
+														let newCategories = [
+															...categoryDetails,
+														];
+														newCategories[
+															newCategories.findIndex(
+																(c) =>
+																	c._id ===
+																	category._id
+															)
+														] = newc;
+														setcategoryDetails(
+															newCategories
 														);
 													}}
 												>
@@ -304,7 +338,8 @@ const Categories = () => {
 												<table className="table text-xl outline outline-1 ">
 													<thead className="text-xl">
 														<tr className="border-neutral border-b-1 bg-base-300 text-base-content">
-															<th>Subcategory</th>
+															<th>ID</th>
+															<th>Name</th>
 															<th>Image</th>
 															<th>Actions</th>
 														</tr>
@@ -318,9 +353,14 @@ const Categories = () => {
 																		return (
 																			<tr
 																				key={
-																					sub_category.sub_category_name
+																					sub_category.sub_category_id
 																				}
 																			>
+																				<td>
+																					{
+																						sub_category.sub_category_id
+																					}
+																				</td>
 																				<td>
 																					<input
 																						className="input input-bordered w-full min-w-48 input-accent text-lg"
@@ -331,9 +371,38 @@ const Categories = () => {
 																						onChange={(
 																							e
 																						) => {
-																							// Update the sub_category_name value
-																							sub_category.sub_category_name =
+																							// Update the sub_category_image value
+																							let newc =
+																								{
+																									...category,
+																								};
+																							newc.sub_categories[
+																								newc.sub_categories.findIndex(
+																									(
+																										s
+																									) =>
+																										s.sub_category_id ===
+																										sub_category.sub_category_id
+																								)
+																							].sub_category_name =
 																								e.target.value;
+																							let new_categories =
+																								[
+																									...categoryDetails,
+																								];
+																							new_categories[
+																								new_categories.findIndex(
+																									(
+																										c
+																									) =>
+																										c._id ===
+																										category._id
+																								)
+																							] =
+																								newc;
+																							setcategoryDetails(
+																								new_categories
+																							);
 																						}}
 																					/>
 																				</td>
@@ -348,13 +417,76 @@ const Categories = () => {
 																							e
 																						) => {
 																							// Update the sub_category_image value
-																							sub_category.sub_category_image =
+																							let newc =
+																								{
+																									...category,
+																								};
+																							newc.sub_categories[
+																								newc.sub_categories.findIndex(
+																									(
+																										s
+																									) =>
+																										s.sub_category_id ===
+																										sub_category.sub_category_id
+																								)
+																							].sub_category_image =
 																								e.target.value;
+																							let new_categories =
+																								[
+																									...categoryDetails,
+																								];
+																							new_categories[
+																								new_categories.findIndex(
+																									(
+																										c
+																									) =>
+																										c._id ===
+																										category._id
+																								)
+																							] =
+																								newc;
+																							setcategoryDetails(
+																								new_categories
+																							);
 																						}}
 																					/>
 																				</td>
 																				<td>
-																					<button className="btn btn-secondary">
+																					<button
+																						className="btn btn-secondary"
+																						onClick={() => {
+																							let newc =
+																								{
+																									...category,
+																								};
+																							newc.sub_categories =
+																								newc.sub_categories.filter(
+																									(
+																										s
+																									) =>
+																										s.sub_category_id !==
+																										sub_category.sub_category_id
+																								);
+																							// set categories to newc where newc._id === category._id
+																							let newCategories =
+																								[
+																									...categoryDetails,
+																								];
+																							newCategories[
+																								newCategories.findIndex(
+																									(
+																										c
+																									) =>
+																										c._id ===
+																										category._id
+																								)
+																							] =
+																								newc;
+																							setcategoryDetails(
+																								newCategories
+																							);
+																						}}
+																					>
 																						Delete
 																					</button>
 																				</td>
@@ -391,7 +523,7 @@ const Categories = () => {
 									type="text"
 									value={newCategory.category_name}
 									onChange={(e) => {
-										console.log(newCategory)
+										console.log(newCategory);
 										// Update the category_name value
 										let newc = {
 											...newCategory,
