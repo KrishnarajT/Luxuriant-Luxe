@@ -272,6 +272,24 @@ const Product = () => {
 							}}
 						></textarea>
 					</div>
+					<div className="text-xl m-4">
+						Product Details
+					</div>
+					<div className="bg-base-300 rounded-xl m-2 p-2">
+						<textarea
+							className="textarea textarea-accent text-lg"
+							value={product.product_details}
+							onChange={(e) => {
+								const updatedProduct = {
+									...product,
+								};
+								updatedProduct.product_details =
+									e.target.value;
+								setProduct(updatedProduct);
+								setRecentChanges(true);
+							}}
+						></textarea>
+					</div>
 					<div className="text-xl m-4">Product Cost</div>
 					<div className="bg-base-300 rounded-xl m-2 p-2">
 						<input

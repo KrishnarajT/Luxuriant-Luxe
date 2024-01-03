@@ -327,6 +327,9 @@ const Product = () => {
 													setSelectedProductShade(
 														shade
 													);
+													setSelectedImage(
+														shade.shade_image
+													);
 												}}
 											></div>
 										))}
@@ -438,10 +441,7 @@ const Product = () => {
 										.product_description !== "" && (
 										<div>
 											<div className="ptsans">
-												{
-													product.product_description
-														.product_description
-												}
+												{product.product_details}
 											</div>
 										</div>
 									)}
@@ -511,6 +511,8 @@ const Product = () => {
 						</div>
 					</div>
 				</div>
+				{/* Product Description */}
+
 				<Footer />
 			</div>
 		)

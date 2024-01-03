@@ -27,6 +27,7 @@ const Products = () => {
 	const [recentChanges, setRecentChanges] = useState(false);
 	const [addProductDetails, setAddProductDetails] = useState({
 		product_name: "",
+		product_details: "",
 		product_description: {
 			product_description: "",
 			real_results_description: "",
