@@ -224,6 +224,8 @@ const Products = () => {
 			console.log(data);
 			setProductInfo(data);
 			setProductDetails(data);
+			// toast
+			toast.success("Products fetched successfully");
 		} else if (response.data.message === "No Orders found") {
 			setProductInfo([]);
 			setProductDetails([]);

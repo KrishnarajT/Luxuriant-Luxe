@@ -5,8 +5,11 @@ import { useEffect } from "react";
 import { CartContext } from "../context/CartContext";
 import { useNavigate } from "react-router-dom";
 import { IconStarFilled, IconMinus, IconPlus } from "@tabler/icons-react";
-
-// import { hexToRgb } from "your-utils-library";
+import { ProductCarousel } from "../components/ui/ProductCarousel";
+import { Toaster, toast } from "react-hot-toast";
+import { v4 as uuidv4 } from "uuid";
+import axios from "axios";
+import { BaseUrlContext } from "../context/BaseUrlContext";
 // Product looks like this
 // {
 //     "_id": "6595006375792d7d0086f66e",
@@ -128,6 +131,8 @@ import { IconStarFilled, IconMinus, IconPlus } from "@tabler/icons-react";
 const Product = () => {
 	const { id } = useParams();
 	const { productInfo } = React.useContext(CartContext);
+	const base_url = React.useContext(BaseUrlContext).baseUrl;
+
 	const [product, setProduct] = React.useState(undefined);
 	const [selectedImage, setSelectedImage] = React.useState(undefined);
 	const [selectedVolume, setSelectedVolume] = React.useState(undefined);
@@ -139,6 +144,15 @@ const Product = () => {
 	const [ProductStars, setProductStars] = React.useState(0);
 	const [detailsVisible, setDetailsVisible] = React.useState(false);
 	const [ingredientsVisible, setIngredientsVisible] = React.useState(false);
+	const [productReviews, setProductReviews] = React.useState(undefined);
+	const [reviewToAdd, setReviewToAdd] = React.useState({
+		review: "",
+		rating: 0,
+		username: "",
+		visible: false,
+		review_date: "",
+		_id: "",
+	});
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -150,6 +164,7 @@ const Product = () => {
 
 	useEffect(() => {
 		if (product !== undefined) {
+			setProductReviews(product.product_reviews);
 			if (product.volumes_present) {
 				setSelectedVolume(product.product_volumes[0].volume);
 				setSelectedProductCost(product.product_volumes[0].volume_cost);
@@ -179,9 +194,51 @@ const Product = () => {
 			setProductStars(sum / visible_review_count);
 		}
 	}, [product]);
+
+	const handleAddReview = () => {
+		// set id
+		let new_review = {
+			...reviewToAdd,
+			review_date: new Date().toISOString().split("T")[0],
+			visible: false,
+			_id: uuidv4(),
+		};
+		// all reviews
+		let updatedReviews = [...productReviews, new_review];
+
+		console.log("reviewToAdd", reviewToAdd);
+		axios
+			.post(`${base_url}/api/v1/Luxuriant/add_review`, {
+				reviews: updatedReviews,
+				product_id: product._id,
+			})
+			.then((response) => {
+				console.log(response);
+				if (response.data.message === "Success") {
+					toast.success("Review Added!");
+				} else {
+					toast.error("Error Adding Review!");
+				}
+				// set reviewToAdd to Empty
+				setReviewToAdd({
+					review: "",
+					rating: 0,
+					username: "",
+					visible: false,
+					review_date: "",
+					_id: "",
+				});
+			})
+			.catch((error) => {
+				console.log(error);
+				toast.error("Error Adding Review!");
+			});
+	};
+
 	return (
 		product && (
 			<div>
+				<Toaster />
 				<div className="w-screen p-4 flex flex-row">
 					{/* images */}
 					<div className="flex-1 flex flex-row p-4">
@@ -511,8 +568,207 @@ const Product = () => {
 						</div>
 					</div>
 				</div>
-				{/* Product Description */}
+				<div className="flex flex-col gap-8">
+					{/* Product Description */}
+					<div className="flex flex-row justify-between">
+						{product.product_image_links && (
+							<div className="w-1/2 flex justify-center p-8 m-4">
+								<div className="aspect-square w-2/3">
+									<ProductCarousel
+										images={
+											product.product_image_links
+												.description_images
+										}
+									/>
+								</div>
+							</div>
+						)}
+						<div className="flex flex-col items-end p-8 m-4 mr-10 bg-base-200 rounded-3xl">
+							<div className="text-5xl ptsans font-bold uppercase">
+								Mystique Behind our admiration
+							</div>
+							<div className="text-4xl italic cardo my-8">
+								{
+									product.product_description
+										.product_description
+								}
+							</div>
+						</div>
+					</div>
 
+					{/* Real Results */}
+					<div className="flex flex-row-reverse justify-between">
+						{product.product_image_links && (
+							<div className="w-1/2 flex justify-center p-8 m-4">
+								<div className="aspect-square w-2/3">
+									<ProductCarousel
+										images={
+											product.product_image_links
+												.description_images
+										}
+									/>
+								</div>
+							</div>
+						)}
+						<div className="flex-1 flex justify-center">
+							<div className=" w-full flex flex-col items-start p-8 m-4 ml-20 bg-base-200 rounded-3xl">
+								<div className="text-5xl ptsans font-bold uppercase">
+									Real Results
+								</div>
+								<div className="text-4xl italic cardo my-8">
+									{
+										product.product_description
+											.real_results_description
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+
+					{/* How to Use */}
+					<div className="flex flex-row justify-between">
+						{product.product_image_links && (
+							<div className="w-1/2 flex justify-center p-8 m-4">
+								<div className="aspect-square w-2/3">
+									<ProductCarousel
+										images={
+											product.product_image_links
+												.description_images
+										}
+									/>
+								</div>
+							</div>
+						)}
+						<div className="flex-1 flex justify-center">
+							<div className=" w-full flex flex-col items-end p-8 m-4 mr-10 bg-base-200 rounded-3xl">
+								<div className="text-5xl ptsans font-bold uppercase">
+									How to Use
+								</div>
+								<div className="text-4xl italic cardo my-8">
+									{
+										product.product_description
+											.how_to_use_description
+									}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				{/* Reviews */}
+				<section
+					className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
+				md:text-5xl uppercase"
+					id="intro"
+				>
+					Reviews
+				</section>
+
+				{/* Review Cards */}
+				<div className="flex flex-col gap-4 p-4 m-4">
+					{productReviews &&
+						productReviews.map((review) => (
+							<div className="flex flex-col gap-4 p-4 m-4 bg-base-200 rounded-3xl">
+								<div className="flex flex-row justify-between">
+									<div className="text-2xl ptsans">
+										{review.username}
+									</div>
+									<div className="text-2xl ptsans">
+										{review.review_date}
+									</div>
+								</div>
+								<div className="flex flex-row justify-between">
+									<div className="text-2xl ptsans">
+										{review.review}
+									</div>
+									<div className="text-2xl ptsans">
+										{review.rating}
+									</div>
+								</div>
+							</div>
+						))}
+				</div>
+
+				{/* Add Review */}
+
+				<div className="flex flex-col gap-4 p-4 m-4 bg-base-200 rounded-3xl">
+					<div className="flex flex-row justify-between">
+						<div className="text-2xl ptsans">Add Review</div>
+					</div>
+					<div className="flex flex-row justify-between">
+						<div className="text-2xl ptsans">
+							<input
+								type="text"
+								className="input input-bordered"
+								placeholder="Username"
+								value={reviewToAdd.username}
+								onChange={(e) => {
+									setReviewToAdd({
+										...reviewToAdd,
+										username: e.target.value,
+									});
+								}}
+							/>
+						</div>
+						<div className="text-2xl ptsans">
+							<input
+								type="text"
+								className="input input-bordered"
+								placeholder="Review"
+								value={reviewToAdd.review}
+								onChange={(e) => {
+									setReviewToAdd({
+										...reviewToAdd,
+										review: e.target.value,
+									});
+								}}
+							/>
+						</div>
+						<div className="text-2xl ptsans">
+							<input
+								type="number"
+								className="input input-bordered"
+								placeholder="Rating"
+								max={5}
+								min={0}
+								value={reviewToAdd.rating}
+								onChange={(e) => {
+									setReviewToAdd({
+										...reviewToAdd,
+										rating: e.target.value,
+									});
+								}}
+							/>
+						</div>
+					</div>
+					<div className="flex flex-row justify-between">
+						<div className="text-2xl ptsans">
+							<button
+								className="btn btn-primary"
+								onClick={() => {
+									// make sure no fields are empty
+									if (
+										reviewToAdd.username === "" ||
+										reviewToAdd.review === "" ||
+										reviewToAdd.rating === ""
+									) {
+										toast.error("Please fill all fields!");
+										return;
+									}
+									// make id using uuid4
+									setReviewToAdd({
+										...reviewToAdd,
+										_id: uuidv4(),
+									});
+									// send api call
+									handleAddReview();
+								}}
+							>
+								Add Review
+							</button>
+						</div>
+					</div>
+				</div>
 				<Footer />
 			</div>
 		)

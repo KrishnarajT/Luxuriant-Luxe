@@ -197,7 +197,9 @@ const Product = () => {
 							className="input input-bordered w-full min-w-48 input-accent text-lg"
 						/>
 					</div>
-					<div className="text-xl m-4">Product Description</div>
+					<div className="text-xl m-4">
+						Product Description (Shown above real results)
+					</div>
 					<div className="bg-base-300 rounded-xl m-2 p-2">
 						<textarea
 							className="textarea textarea-accent text-lg"
@@ -273,7 +275,7 @@ const Product = () => {
 						></textarea>
 					</div>
 					<div className="text-xl m-4">
-						Product Details
+						Product Details (shown next to image in product page.)
 					</div>
 					<div className="bg-base-300 rounded-xl m-2 p-2">
 						<textarea
@@ -283,8 +285,7 @@ const Product = () => {
 								const updatedProduct = {
 									...product,
 								};
-								updatedProduct.product_details =
-									e.target.value;
+								updatedProduct.product_details = e.target.value;
 								setProduct(updatedProduct);
 								setRecentChanges(true);
 							}}
@@ -1211,7 +1212,9 @@ const Product = () => {
 								review: "",
 								rating: 0,
 								username: "",
-								review_date: new Date().toLocaleDateString(),
+								review_date: new Date()
+									.toISOString()
+									.split("T")[0],
 								_id: uuidv4(),
 							});
 							setProduct(updatedProduct);
@@ -1377,6 +1380,8 @@ const Product = () => {
 												<td>
 													<input
 														type="number"
+														max={5}
+														min={0}
 														value={review.rating}
 														onChange={(e) => {
 															const updatedProduct =
