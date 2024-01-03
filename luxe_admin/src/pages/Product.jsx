@@ -117,7 +117,8 @@ const Product = () => {
 
 		// update productDetails
 		const updated_product_details = productDetails.map((product) => {
-			if (product.product_id === cleaned_product_details.product_id) {
+			console.log(product._id, cleaned_product_details._id);
+			if (product._id === cleaned_product_details._id) {
 				return cleaned_product_details;
 			} else {
 				return product;

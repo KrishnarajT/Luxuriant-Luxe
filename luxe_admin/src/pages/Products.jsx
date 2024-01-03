@@ -178,7 +178,7 @@ const Products = () => {
 
 	const get_product_details = () => {
 		// get product details from the context.
-		console.log("getting product details");
+		console.log("setting product details", productInfo);
 		setProductDetails(productInfo);
 
 		if (productInfo.length === 0) {
