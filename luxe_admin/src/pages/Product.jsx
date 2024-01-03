@@ -7,6 +7,8 @@ import { BaseUrlContext } from "../context/BaseUrlContext";
 import axios from "axios";
 import { Toaster, toast } from "react-hot-toast";
 import { IconTrash } from "@tabler/icons-react";
+// import uuid
+import { v4 as uuidv4 } from "uuid";
 
 axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
 axios.defaults.headers.common["Access-Control-Allow-Methods"] =
@@ -23,6 +25,15 @@ const Product = () => {
 	const base_url = React.useContext(BaseUrlContext).baseUrl;
 	const [productDetails, setProductDetails] = React.useState(productInfo);
 	const [recentChanges, setRecentChanges] = React.useState(false);
+	// product reviews is a list of such objects
+	// {
+	// 	_id: "60f9b1b3e6b3a3b4b4f1b3b4",
+	// 	review_text: "This is a review",
+	// 	review_rating: 4,
+	// 	review_time: "2021-07-23T18:30:59.000Z",
+	//  username: "admin",
+	//  visible: false,
+	// }
 
 	useEffect(() => {
 		console.log(product);
@@ -153,7 +164,7 @@ const Product = () => {
 			<Toaster />
 
 			{/* Add a Save button */}
-			<div className="flex justify-center mt-6 gap-4">
+			<div className="flex justify-center mt-6 gap-4 m-4">
 				<button
 					className="btn btn-primary btn-md"
 					onClick={() => {
@@ -166,7 +177,7 @@ const Product = () => {
 			{product.length !== 0 && (
 				<div
 					id={product.product_id}
-					className="hover border-accent border-t-1 flex flex-col items-start justify-center p-4 bg-base-200"
+					className="hover border-accent border-t-1 flex flex-col items-start justify-center p-4 bg-base-200 m-10 rounded-xl"
 				>
 					<div className="text-xl m-4">Product Name</div>
 					<div className="bg-base-300 rounded-xl m-2 p-2">
@@ -1151,6 +1162,247 @@ const Product = () => {
 					) : (
 						<div></div>
 					)}
+
+					{/* Add a button to add a new review */}
+					<button
+						className="btn btn-primary btn-md m-4"
+						onClick={() => {
+							const updatedProduct = {
+								...product,
+							};
+							updatedProduct.product_reviews.push({
+								review: "",
+								rating: 0,
+								username: "",
+								review_date: new Date().toLocaleDateString(),
+								_id: uuidv4(),
+							});
+							setProduct(updatedProduct);
+							setRecentChanges(true);
+						}}
+					>
+						Add New Review
+					</button>
+					{/* Table to show product reviews in editable textboxes for rows */}
+					<div className="text-xl m-4">Product Reviews</div>
+					{product.product_reviews &&
+						// show the table if there are reviews
+						product.product_reviews.length !== 0 && (
+							<table className="table text-xl outline outline-1 ">
+								<thead className="text-xl">
+									<tr className="border-neutral border-b-1 bg-base-300 text-base-content">
+										<th>Review ID</th>
+										<th>Visible</th>
+										<th>Username</th>
+										<th>Review Date</th>
+										<th>Review</th>
+										<th>Rating</th>
+										<th>Delete</th>
+									</tr>
+								</thead>
+								<tbody>
+									{product.product_reviews.map((review) => {
+										return (
+											<tr
+												key={review._id}
+												className="hover:bg-base-300"
+											>
+												<td>{review._id}</td>
+												<td>
+													<input
+														type="checkbox"
+														className="toggle toggle-secondary mx-4"
+														checked={review.visible}
+														onChange={(e) => {
+															const updatedProduct =
+																{
+																	...product,
+																};
+															updatedProduct.product_reviews =
+																updatedProduct.product_reviews.map(
+																	(item) => {
+																		if (
+																			item._id ===
+																			review._id
+																		) {
+																			item.visible =
+																				e.target.checked;
+																		}
+																		return item;
+																	}
+																);
+															setProduct(
+																updatedProduct
+															);
+															setRecentChanges(
+																true
+															);
+														}}
+													/>
+												</td>
+												<td>
+													<input
+														type="text"
+														value={review.username}
+														onChange={(e) => {
+															const updatedProduct =
+																{
+																	...product,
+																};
+															updatedProduct.product_reviews =
+																updatedProduct.product_reviews.map(
+																	(item) => {
+																		if (
+																			item._id ===
+																			review._id
+																		) {
+																			item.username =
+																				e.target.value;
+																		}
+																		return item;
+																	}
+																);
+															setProduct(
+																updatedProduct
+															);
+															setRecentChanges(
+																true
+															);
+														}}
+														className="input input-bordered w-full min-w-28 input-secondary text-lg"
+													/>
+												</td>
+												<td>
+													<input
+														type="date"
+														value={
+															review.review_date
+														}
+														onChange={(e) => {
+															const updatedProduct =
+																{
+																	...product,
+																};
+															updatedProduct.product_reviews =
+																updatedProduct.product_reviews.map(
+																	(item) => {
+																		if (
+																			item._id ===
+																			review._id
+																		) {
+																			item.review_date =
+																				e.target.value;
+																		}
+																		return item;
+																	}
+																);
+															setProduct(
+																updatedProduct
+															);
+															setRecentChanges(
+																true
+															);
+														}}
+														className="input input-bordered w-full min-w-28 input-secondary text-lg"
+													/>
+												</td>
+												<td>
+													<textarea
+														className="textarea textarea-accent text-lg"
+														value={review.review}
+														onChange={(e) => {
+															const updatedProduct =
+																{
+																	...product,
+																};
+															updatedProduct.product_reviews =
+																updatedProduct.product_reviews.map(
+																	(item) => {
+																		if (
+																			item._id ===
+																			review._id
+																		) {
+																			item.review =
+																				e.target.value;
+																		}
+																		return item;
+																	}
+																);
+															setProduct(
+																updatedProduct
+															);
+															setRecentChanges(
+																true
+															);
+														}}
+													></textarea>
+												</td>
+												<td>
+													<input
+														type="number"
+														value={review.rating}
+														onChange={(e) => {
+															const updatedProduct =
+																{
+																	...product,
+																};
+															updatedProduct.product_reviews =
+																updatedProduct.product_reviews.map(
+																	(item) => {
+																		if (
+																			item._id ===
+																			review._id
+																		) {
+																			item.rating =
+																				e.target.value;
+																		}
+																		return item;
+																	}
+																);
+															setProduct(
+																updatedProduct
+															);
+															setRecentChanges(
+																true
+															);
+														}}
+														className="input input-bordered w-full min-w-28 input-secondary text-lg"
+													/>
+												</td>
+												<td>
+													<button
+														className="btn btn-error btn-md p-2"
+														onClick={() => {
+															const updatedProduct =
+																{
+																	...product,
+																};
+															updatedProduct.product_reviews =
+																updatedProduct.product_reviews.filter(
+																	(item) => {
+																		return (
+																			item._id !==
+																			review._id
+																		);
+																	}
+																);
+															setProduct(
+																updatedProduct
+															);
+															setRecentChanges(
+																true
+															);
+														}}
+													>
+														<IconTrash className="w-8 h-8" />
+													</button>
+												</td>
+											</tr>
+										);
+									})}
+								</tbody>
+							</table>
+						)}
 
 					<div className="bg-base-300 rounded-xl m-2 p-2">
 						<button

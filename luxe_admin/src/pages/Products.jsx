@@ -116,6 +116,7 @@ const Products = () => {
 				volume_cost: 0,
 			},
 		],
+		product_reviews: [],
 	});
 
 	const { productInfo, setProductInfo } = React.useContext(DBInfoContext);
