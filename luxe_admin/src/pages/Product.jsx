@@ -330,22 +330,114 @@ const Product = () => {
 							}}
 						></textarea>
 					</div>
-					<div className="text-xl m-4">Product Categories.</div>
+					<div className="text-xl m-4">Product Categories</div>
 					<div className="bg-base-300 rounded-xl m-2 p-2">
-						<textarea
-							className="textarea textarea-accent text-lg"
-							placeholder="Enter categories separated by commas"
-							value={product.product_category}
-							onChange={(e) => {
-								const updatedProduct = {
-									...product,
-								};
-								updatedProduct.product_category =
-									e.target.value;
-								setProduct(updatedProduct);
-								setRecentChanges(true);
-							}}
-						></textarea>
+						{/* Show a checkbox for all categories taken from categoryInfo */}
+						{categoryInfo.map((category) => {
+							return (
+								<div
+									key={category._id}
+									className="text-xl justify-between p-2 pb-0 flex"
+								>
+									<input
+										type="checkbox"
+										className="toggle toggle-secondary mx-4"
+										checked={product.product_category.includes(
+											category.category_name
+										)}
+										onChange={(e) => {
+											const updatedProduct = {
+												...product,
+											};
+											// if the checkbox is checked, add the category to the product category
+											if (e.target.checked) {
+												updatedProduct.product_category.push(
+													category.category_name
+												);
+											} else {
+												// if the checkbox is unchecked, remove the category from the product category
+												updatedProduct.product_category =
+													updatedProduct.product_category.filter(
+														(item) => {
+															return (
+																item !==
+																category.category_name
+															);
+														}
+													);
+											}
+											setProduct(updatedProduct);
+											setRecentChanges(true);
+										}}
+									/>
+									{category.category_name}
+
+									<div className="p-2 mt-4">
+										{/* similarly show subcategories of categories if the category is checked */}
+										{category.sub_categories &&
+											category.sub_categories.map(
+												(sub_category) => {
+													return (
+														<div
+															key={
+																sub_category._id
+															}
+															className="text-lg justify-between p-2 pb-0 flex"
+														>
+															<input
+																type="checkbox"
+																className="toggle toggle-secondary mx-4"
+																checked={product.product_category.includes(
+																	sub_category.sub_category_name
+																)}
+																onChange={(
+																	e
+																) => {
+																	const updatedProduct =
+																		{
+																			...product,
+																		};
+																	// if the checkbox is checked, add the category to the product category
+																	if (
+																		e.target
+																			.checked
+																	) {
+																		updatedProduct.product_category.push(
+																			sub_category.sub_category_name
+																		);
+																	} else {
+																		// if the checkbox is unchecked, remove the category from the product category
+																		updatedProduct.product_category =
+																			updatedProduct.product_category.filter(
+																				(
+																					item
+																				) => {
+																					return (
+																						item !==
+																						sub_category.sub_category_name
+																					);
+																				}
+																			);
+																	}
+																	setProduct(
+																		updatedProduct
+																	);
+																	setRecentChanges(
+																		true
+																	);
+																}}
+															/>
+															{
+																sub_category.sub_category_name
+															}
+														</div>
+													);
+												}
+											)}
+									</div>
+								</div>
+							);
+						})}
 					</div>
 					<div className="text-xl m-4">Product Quantity (Stock)</div>
 					<div className="bg-base-300 rounded-xl m-2 p-2">
