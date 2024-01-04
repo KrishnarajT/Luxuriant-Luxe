@@ -44,7 +44,7 @@ import Footer from "../components/ui/Footer";
 //     "points_awarded": 500
 // }
 
-const Category = () => {
+const SubCategory = () => {
 	const { type } = useParams();
 	const navigate = useNavigate();
 	const { currentCategoryProducts, removeDuplicates } =
@@ -69,12 +69,37 @@ const Category = () => {
 				{type.toUpperCase()} PRODUCTS
 			</section>
 
-      {/* section of cards that map to subcategories */}
-      
+			{/* section of cards that have all products */}
+			<section className="flex justify-center p-16">
+				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-5 justify-items-start">
+					{currentCategoryProducts.map((product) => {
+						return (
+							<EcommerceCard
+								color="bg-base-200"
+								text="text-black"
+								cart_color="bg-black"
+								cart_text="text-white"
+								image={
+									product.product_image_links
+										.description_images
+								}
+								name={product.product_name}
+								price={product.product_cost}
+								description={
+									product.product_description
+										.product_description
+								}
+								points={product.points_awarded}
+								id={product._id}
+							/>
+						);
+					})}
+				</div>
+			</section>
 
 			<Footer />
 		</div>
 	);
 };
 
-export default Category;
+export default SubCategory;

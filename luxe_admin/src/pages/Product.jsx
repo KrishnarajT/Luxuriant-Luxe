@@ -149,6 +149,7 @@ const Product = () => {
 					toast.success("Product details updated successfully");
 					setProductInfo(updated_product_details);
 					setRecentChanges(false);
+					navigate("/products");
 				} else {
 					toast.error("Product details update failed");
 				}
@@ -392,8 +393,8 @@ const Product = () => {
 									<input
 										type="checkbox"
 										className="toggle toggle-secondary mx-4"
-										checked={product.product_category.includes(
-											category.category_name
+										checked={product.product_category?.some(
+											(item) => item._id === category._id
 										)}
 										onChange={(e) => {
 											const updatedProduct = {
@@ -401,8 +402,17 @@ const Product = () => {
 											};
 											// if the checkbox is checked, add the category to the product category
 											if (e.target.checked) {
+												let category_without_subcat = {
+													...category,
+												};
+												category_without_subcat.sub_categories =
+													[];
 												updatedProduct.product_category.push(
-													category.category_name
+													category_without_subcat
+												);
+												console.log(
+													"added category",
+													updatedProduct
 												);
 											} else {
 												// if the checkbox is unchecked, remove the category from the product category
@@ -410,8 +420,8 @@ const Product = () => {
 													updatedProduct.product_category.filter(
 														(item) => {
 															return (
-																item !==
-																category.category_name
+																item._id !==
+																category._id
 															);
 														}
 													);
@@ -437,9 +447,30 @@ const Product = () => {
 															<input
 																type="checkbox"
 																className="toggle toggle-secondary mx-4"
-																checked={product.product_category.includes(
-																	sub_category.sub_category_name
-																)}
+																disabled={
+																	!product.product_category?.some(
+																		(
+																			item
+																		) =>
+																			item._id ===
+																			category._id
+																	)
+																}
+																checked={product.product_category
+																	?.filter(
+																		(
+																			item
+																		) =>
+																			item._id ===
+																			category._id
+																	)[0]
+																	?.sub_categories?.some(
+																		(
+																			item
+																		) =>
+																			item.sub_category_id ===
+																			sub_category.sub_category_id
+																	)}
 																onChange={(
 																	e
 																) => {
@@ -452,22 +483,75 @@ const Product = () => {
 																		e.target
 																			.checked
 																	) {
-																		updatedProduct.product_category.push(
-																			sub_category.sub_category_name
-																		);
-																	} else {
-																		// if the checkbox is unchecked, remove the category from the product category
-																		updatedProduct.product_category =
-																			updatedProduct.product_category.filter(
+																		updatedProduct.product_category
+																			.filter(
 																				(
 																					item
 																				) => {
+																					console.log(
+																						"item",
+																						item._id,
+																						category._id
+																					);
 																					return (
-																						item !==
-																						sub_category.sub_category_name
+																						item._id ===
+																						category._id
 																					);
 																				}
+																			)[0]
+																			.sub_categories?.push(
+																				sub_category
 																			);
+																		console.log(
+																			updatedProduct
+																		);
+																	} else {
+																		let new_subcat =
+																			updatedProduct.product_category
+																				.filter(
+																					(
+																						item
+																					) => {
+																						console.log(
+																							"item",
+																							item._id,
+																							category._id
+																						);
+																						return (
+																							item._id ===
+																							category._id
+																						);
+																					}
+																				)[0]
+																				.sub_categories?.filter(
+																					(
+																						item
+																					) => {
+																						return (
+																							item.sub_category_id !==
+																							sub_category.sub_category_id
+																						);
+																					}
+																				);
+																		updatedProduct.product_category.filter(
+																			(
+																				item
+																			) => {
+																				console.log(
+																					"item",
+																					item._id,
+																					category._id
+																				);
+																				return (
+																					item._id ===
+																					category._id
+																				);
+																			}
+																		)[0].sub_categories =
+																			new_subcat;
+																		console.log(
+																			updatedProduct
+																		);
 																	}
 																	setProduct(
 																		updatedProduct
