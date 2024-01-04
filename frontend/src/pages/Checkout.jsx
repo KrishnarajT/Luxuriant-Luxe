@@ -206,20 +206,16 @@ const Checkout = () => {
 	};
 
 	const addCustomer = async () => {
+		const data = {
+			customer_email: customerEmail,
+			customer_phone: customerPhone,
+			customer_address: customerAddress,
+			customer_name: customerName,
+			customer_points: currentCustomerPoints,
+			wantsSubscription: wantsSubscription,
+		};
 		const response = await axios
-			.post(
-				`${base_url}/api/v1/Luxuriant/add_customer_email`,
-				{},
-				{
-					params: {
-						customer_email: customerEmail,
-						wantsSubscription: wantsSubscription,
-						customer_phone: customerPhone,
-						customer_address: customerAddress,
-						customer_name: customerName,
-					},
-				}
-			)
+			.post(`${base_url}/api/v1/Luxuriant/add_customer_email`, { data })
 			.then((response) => {
 				return response;
 			})

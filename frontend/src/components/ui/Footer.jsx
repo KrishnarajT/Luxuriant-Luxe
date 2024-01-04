@@ -8,6 +8,7 @@ import {
 	IconPhoneCall,
 } from "@tabler/icons-react";
 import ScrollToTopButton from "./ScrollToTopButton";
+import { Toaster, toast } from "react-hot-toast";
 
 const Footer = () => {
 	const [customerEmail, setCustomerEmail] = React.useState("");
@@ -16,22 +17,24 @@ const Footer = () => {
 	const [customerName, setCustomerName] = React.useState("");
 	const [wantsSubscription, setWantsSubscription] = React.useState(false);
 	const [change, setChange] = React.useState(0);
+	const [currentCustomerPoints, setCurrentCustomerPoints] = React.useState(0);
 
 	const addCustomer = async () => {
+		// make sure email is not empty:
+		if (customerEmail === "") {
+			toast.error("Please enter your email!");
+			return;
+		}
+		const data = {
+			customer_email: customerEmail,
+			customer_phone: customerPhone,
+			customer_address: customerAddress,
+			customer_name: customerName,
+			customer_points: currentCustomerPoints,
+			wantsSubscription: wantsSubscription,
+		};
 		const response = await axios
-			.post(
-				`${base_url}/api/v1/Luxuriant/add_customer_email`,
-				{},
-				{
-					params: {
-						customer_email: customerEmail,
-						wantsSubscription: wantsSubscription,
-						customer_phone: customerPhone,
-						customer_address: customerAddress,
-						customer_name: customerName,
-					},
-				}
-			)
+			.post(`${base_url}/api/v1/Luxuriant/add_customer_email`, { data })
 			.then((response) => {
 				return response;
 			})
@@ -59,6 +62,7 @@ const Footer = () => {
 
 	return (
 		<footer className="footer footer-center p-10 bg-secondary bottom-0 text-secondary-content">
+			<Toaster />
 			<aside>
 				<div
 					id="luxelogo"
