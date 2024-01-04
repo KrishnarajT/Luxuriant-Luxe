@@ -1,9 +1,63 @@
-import React from 'react';
-import { IconBrandFacebook, IconBrandInstagram, IconBrandLinkedin, IconBrandWhatsapp, IconMail, IconPhoneCall } from '@tabler/icons-react';
-import ScrollToTopButton from './ScrollToTopButton';
+import React from "react";
+import {
+	IconBrandFacebook,
+	IconBrandInstagram,
+	IconBrandLinkedin,
+	IconBrandWhatsapp,
+	IconMail,
+	IconPhoneCall,
+} from "@tabler/icons-react";
+import ScrollToTopButton from "./ScrollToTopButton";
 
 const Footer = () => {
-  return (
+	const [customerEmail, setCustomerEmail] = React.useState("");
+	const [customerPhone, setCustomerPhone] = React.useState("");
+	const [customerAddress, setCustomerAddress] = React.useState("");
+	const [customerName, setCustomerName] = React.useState("");
+	const [wantsSubscription, setWantsSubscription] = React.useState(false);
+	const [change, setChange] = React.useState(0);
+
+	const addCustomer = async () => {
+		const response = await axios
+			.post(
+				`${base_url}/api/v1/Luxuriant/add_customer_email`,
+				{},
+				{
+					params: {
+						customer_email: customerEmail,
+						wantsSubscription: wantsSubscription,
+						customer_phone: customerPhone,
+						customer_address: customerAddress,
+						customer_name: customerName,
+					},
+				}
+			)
+			.then((response) => {
+				return response;
+			})
+			.catch((error) => {
+				console.error(error);
+				alert("server not running! a simulated response is being sent");
+				return {
+					data: {
+						message: "simulation",
+					},
+				};
+			});
+		console.log(response.data);
+
+		if (response.data.message === "simulation") {
+			alert("Simulation Response, Added order");
+		} else if (response.data.message === "Success") {
+			toast.success("You are Successfully Subscribed!");
+			clearCart();
+			setChange(1);
+		} else if (response.data.message === "Failure") {
+			toast.error("Could not Subscribe!");
+		}
+	};
+
+	return (
 		<footer className="footer footer-center p-10 bg-secondary bottom-0 text-secondary-content">
 			<aside>
 				<div
@@ -23,6 +77,33 @@ const Footer = () => {
 					<a className="link">Terms and Conditions</a>
 					<a className="link">Refund and Return Policy</a>
 					<a className="link">Shipping Policy</a>
+				</div>
+				<div>
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">
+								Subscribe to our newsletter
+							</span>
+						</label>
+						<div className="relative">
+							<input
+								type="text"
+								placeholder="email"
+								className="w-full pr-16 input input-primary input-bordered"
+								onChange={(e) => {
+									setCustomerEmail(e.target.value);
+								}}
+							/>
+							<button
+								className="absolute top-0 right-0 rounded-l-none btn btn-primary"
+								onClick={() => {
+									addCustomer();
+								}}
+							>
+								Subscribe
+							</button>
+						</div>
+					</div>
 				</div>
 			</aside>
 			<nav className="text-secondary-content">
@@ -69,7 +150,7 @@ const Footer = () => {
 				</div>
 			</nav>
 		</footer>
-  );
+	);
 };
 
 export default Footer;

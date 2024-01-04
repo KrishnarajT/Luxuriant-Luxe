@@ -75,6 +75,7 @@ const Checkout = () => {
 	const [address, setAddress] = React.useState("");
 	const [apartment, setApartment] = React.useState("");
 	const [phone, setPhone] = React.useState("");
+	const [wantsSubscription, setWantsSubscription] = React.useState(false);
 
 	const checkValidity = () => {
 		// check that none of the things are null
@@ -172,6 +173,78 @@ const Checkout = () => {
 		}
 	};
 
+	const getCustomerPoints = async () => {
+		const response = await axios
+			.get(`${base_url}/api/v1/Luxuriant/get_customer_points`, {
+				params: {
+					customer_email: customerEmail,
+				},
+			})
+			.then((response) => {
+				return response;
+			})
+			.catch((error) => {
+				console.error(error);
+				alert("server not running! a simulated response is being sent");
+				return {
+					data: {
+						message: "simulation",
+					},
+				};
+			});
+		console.log(response.data);
+
+		if (response.data.message === "simulation") {
+			alert("Simulation Response, Added order");
+		} else if (response.data.message === "Success") {
+			toast.success("Order Placed Successfully!");
+			clearCart();
+			setChange(1);
+		} else if (response.data.message === "Failure") {
+			toast.error("Order Failed!");
+		}
+	};
+
+	const addCustomer = async () => {
+		const response = await axios
+			.post(
+				`${base_url}/api/v1/Luxuriant/add_customer_email`,
+				{},
+				{
+					params: {
+						customer_email: customerEmail,
+						wantsSubscription: wantsSubscription,
+						customer_phone: customerPhone,
+						customer_address: customerAddress,
+						customer_name: customerName,
+					},
+				}
+			)
+			.then((response) => {
+				return response;
+			})
+			.catch((error) => {
+				console.error(error);
+				alert("server not running! a simulated response is being sent");
+				return {
+					data: {
+						message: "simulation",
+					},
+				};
+			});
+		console.log(response.data);
+
+		if (response.data.message === "simulation") {
+			alert("Simulation Response, Added order");
+		} else if (response.data.message === "Success") {
+			toast.success("You are Successfully Subscribed!");
+			clearCart();
+			setChange(1);
+		} else if (response.data.message === "Failure") {
+			toast.error("Could not Subscribe!");
+		}
+	};
+
 	return (
 		<div>
 			<Toaster />
@@ -218,7 +291,11 @@ const Checkout = () => {
 								<input
 									type="checkbox"
 									className="checkbox"
+									value={wantsSubscription}
 									onClick={() => {
+										setWantsSubscription(
+											!wantsSubscription
+										);
 										console.log("checkbox clicked");
 									}}
 								/>

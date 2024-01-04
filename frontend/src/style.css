@@ -2372,6 +2372,16 @@ details.collapse summary::-webkit-details-marker {
   outline-color: hsl(var(--bc) / 0.2);
 }
 
+.input-primary {
+  --tw-border-opacity: 1;
+  border-color: hsl(var(--p) / var(--tw-border-opacity));
+}
+
+.input-primary:focus,
+    .input-primary:focus-within {
+  outline-color: hsl(var(--p) / 1);
+}
+
 .input-disabled,
   .input:disabled,
   .input[disabled] {
@@ -5799,6 +5809,10 @@ details.collapse summary::-webkit-details-marker {
 
 .pt-px {
   padding-top: 1px;
+}
+
+.pr-16 {
+  padding-right: 4rem;
 }
 
 .text-left {
