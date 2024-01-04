@@ -24,6 +24,7 @@ import Category from "./pages/Category";
 import Product from "./pages/Product";
 import { Toaster } from "react-hot-toast";
 import SideCart from "./pages/SideCart";
+import SubCategory from "./pages/SubCategory";
 function App() {
 	const [isNavbarPresent, setisNavbarPresent] = useState(true);
 
@@ -46,6 +47,7 @@ function App() {
 						<Route path="/checkout" element={<Checkout />} />
 						<Route path="/category/:type" element={<Category />} />
 						<Route path="/product/:id" element={<Product />} />
+						<Route path="/sub_category" element={<SubCategory />} />
 					</Routes>
 				</div>
 			</CartContextProvider>

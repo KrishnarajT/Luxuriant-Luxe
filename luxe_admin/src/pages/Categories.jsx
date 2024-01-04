@@ -224,7 +224,7 @@ const Categories = () => {
 									<div className="card shadow-lg compact bg-base-300 text-base-content">
 										<div className="card-body">
 											<h2 className="card-title">
-												{category.category_name}
+												Category Name
 											</h2>
 											<input
 												className="input input-bordered w-full min-w-48 input-accent text-lg"
@@ -234,6 +234,20 @@ const Categories = () => {
 													// Update the category_name value
 													category.category_name =
 														e.target.value;
+													// change category details
+													let newCategories = [
+														...categoryDetails,
+													];
+													newCategories[
+														newCategories.findIndex(
+															(c) =>
+																c._id ===
+																category._id
+														)
+													] = category;
+													setcategoryDetails(
+														newCategories
+													);
 												}}
 											/>
 											<div className="text-xl">
@@ -249,6 +263,20 @@ const Categories = () => {
 													// Update the category_description value
 													category.category_description =
 														e.target.value;
+													// change category details
+													let newCategories = [
+														...categoryDetails,
+													];
+													newCategories[
+														newCategories.findIndex(
+															(c) =>
+																c._id ===
+																category._id
+														)
+													] = category;
+													setcategoryDetails(
+														newCategories
+													);
 												}}
 											/>
 											<h2 className="text-xl">
@@ -260,8 +288,22 @@ const Categories = () => {
 												value={category.category_image}
 												onChange={(e) => {
 													// Update the category_name value
-													category.category_name =
+													category.category_image =
 														e.target.value;
+													// change category details
+													let newCategories = [
+														...categoryDetails,
+													];
+													newCategories[
+														newCategories.findIndex(
+															(c) =>
+																c._id ===
+																category._id
+														)
+													] = category;
+													setcategoryDetails(
+														newCategories
+													);
 												}}
 											/>
 											<div className="card-actions">

@@ -77,6 +77,10 @@ export function Navbar(props) {
 									<li className="text-lg md:text-xl w-full">
 										<NavLink
 											to={"/category/hair"}
+											state={{
+												currentCategoryProducts:
+													HairProducts,
+											}}
 											id="contact_element"
 											className="hover:text-base-content text-2xl w-full"
 											onClick={() => {
@@ -97,6 +101,10 @@ export function Navbar(props) {
 									<li className="text-lg md:text-xl w-full">
 										<NavLink
 											to={"/category/skin"}
+											state={{
+												currentCategoryProducts:
+													SkinProducts,
+											}}
 											id="contact_element"
 											className="hover:text-base-content text-2xl"
 											onClick={() => {
@@ -117,6 +125,10 @@ export function Navbar(props) {
 									<li className="text-lg md:text-xl ">
 										<NavLink
 											to={"/category/cosmetics"}
+											state={{
+												currentCategoryProducts:
+													CosmeticsProducts,
+											}}
 											id="contact_element"
 											className="hover:text-base-content text-2xl"
 											onClick={() => {
@@ -144,9 +156,7 @@ export function Navbar(props) {
 				<div
 					className="hidden text-base-content
 			   md:flex"
-				>
-					
-				</div>
+				></div>
 
 				{/* name */}
 				<div className="flex w-screen md:w-fit md:pl-0 md:display justify-center mr-8 md:flex-row md:flex-1 md:mr-0">
@@ -265,7 +275,7 @@ export function Navbar(props) {
 											Products
 										</NavLink>
 									</li>
-									
+
 									<li className="text-md md:text-xl">
 										<IconShoppingCart className="w-6 h-6 drawer-button drawer-toggle" />
 										Cart

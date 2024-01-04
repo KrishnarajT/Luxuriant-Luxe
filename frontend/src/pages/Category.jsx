@@ -4,6 +4,8 @@ import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import { EcommerceCard } from "../components/ui/EcommerceCard";
 import Footer from "../components/ui/Footer";
+import axios from "axios";
+import { BaseUrlContext } from "../context/BaseUrlContext";
 
 // product info is a list of objects like these.
 // 	{
@@ -47,9 +49,10 @@ import Footer from "../components/ui/Footer";
 const Category = () => {
 	const { type } = useParams();
 	const navigate = useNavigate();
-	const { currentCategoryProducts, removeDuplicates } =
+	const location = useLocation();
+	const { categories, currentCategoryProducts } =
 		React.useContext(CartContext);
-
+	const [currentCategory, setCurrentCategory] = React.useState(undefined);
 	useEffect(() => {
 		// console.log("Product Details", currentCategoryProducts);
 		// scroll to top on load
@@ -57,20 +60,121 @@ const Category = () => {
 		// removeDuplicates();
 	}, [currentCategoryProducts]);
 
-	// Use the 'type' parameter and 'location.state' in your component logic
+	useEffect(() => {
+		setCurrentCategory(
+			categories.filter((category) => category.category_name === type)[0]
+		);
+	}, [type, categories]);
 
+	// Use the 'type' parameter and 'location.state' in your component logic
+	let isValidHttpUrl = (string) => {
+		let url;
+
+		try {
+			url = new URL(string);
+		} catch (_) {
+			return false;
+		}
+
+		return url.protocol === "http:" || url.protocol === "https:";
+	};
 	return (
 		<div>
-			<section
-				className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
+			{currentCategory !== undefined ? (
+				<div>
+					<div>
+						<img
+							src={
+								isValidHttpUrl(
+									currentCategory.category_image
+								)
+									? currentCategory.category_image
+									: "path/to/default/image.jpg"
+							}
+							alt="banner"
+							className="w-full h-96 object-cover object-center"
+							onError={(e) => {
+								e.target.onerror = null;
+								e.target.src =
+									"https://source.unsplash.com/random";
+							}}
+						/>
+					</div>
+					<section
+						className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
 				md:text-4xl"
-				id="intro"
-			>
-				{type.toUpperCase()} PRODUCTS
-			</section>
+						id="intro"
+					>
+						{currentCategory.category_name.toUpperCase()} PRODUCTS
+					</section>
 
-      {/* section of cards that map to subcategories */}
-      
+					{/* section of cards that map to subcategories */}
+					<section className="flex flex-col items-center justify-center">
+						<div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+							{currentCategory.sub_categories?.map(
+								(sub_category) => {
+									return (
+										<div className="card w-96 bg-base-100 shadow-xl image-full">
+											<figure>
+												<img
+													src={
+														sub_category.sub_category_image
+													}
+												/>
+											</figure>
+											<div className="card-body">
+												<h2 className="card-title">
+													{
+														sub_category.sub_category_name
+													}
+												</h2>
+												<div className="card-actions justify-end">
+													<button
+														className="btn btn-primary"
+														onClick={() => {
+															navigate(
+																`/sub_category`,
+																{
+																	state: {
+																		currentSubCategoryProducts:
+																			currentCategoryProducts,
+																	},
+																}
+															);
+														}}
+													>
+														Visit
+													</button>
+												</div>
+											</div>
+										</div>
+									);
+								}
+							)}
+						</div>
+					</section>
+				</div>
+			) : (
+				<div>
+					<section
+						className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
+				md:text-4xl"
+						id="intro"
+					>
+						{type.toUpperCase()} PRODUCTS
+					</section>
+					<div className="flex flex-col items-center justify-center">
+						<img
+							src="https://source.unsplash.com/random"
+							alt="banner"
+							className="w-full h-96 object-cover object-center"
+						/>
+						<h1 className="text-3xl font-bold text-center">
+							No products found in this category
+						</h1>
+					</div>
+				</div>
+			)}
 
 			<Footer />
 		</div>

@@ -45,17 +45,23 @@ import Footer from "../components/ui/Footer";
 // }
 
 const SubCategory = () => {
-	const { type } = useParams();
 	const navigate = useNavigate();
-	const { currentCategoryProducts, removeDuplicates } =
-		React.useContext(CartContext);
+	const { removeDuplicates } = React.useContext(CartContext);
+	const location = useLocation();
+	const [currentSubCategoryProducts, setCurrentSubCategoryProducts] =
+		React.useState(undefined);
 
 	useEffect(() => {
-		// console.log("Product Details", currentCategoryProducts);
+		// console.log("Product Details", currentSubCategoryProducts);
 		// scroll to top on load
 		window.scrollTo(0, 0);
 		// removeDuplicates();
-	}, [currentCategoryProducts]);
+		setCurrentSubCategoryProducts(
+			location.state.currentSubCategoryProducts
+		);
+		console.log(location.state)
+		console.log(location.state.currentSubCategoryProducts);
+	}, [currentSubCategoryProducts]);
 
 	// Use the 'type' parameter and 'location.state' in your component logic
 
@@ -66,34 +72,35 @@ const SubCategory = () => {
 				md:text-4xl"
 				id="intro"
 			>
-				{type.toUpperCase()} PRODUCTS
+				PRODUCTS
 			</section>
 
 			{/* section of cards that have all products */}
 			<section className="flex justify-center p-16">
 				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-5 justify-items-start">
-					{currentCategoryProducts.map((product) => {
-						return (
-							<EcommerceCard
-								color="bg-base-200"
-								text="text-black"
-								cart_color="bg-black"
-								cart_text="text-white"
-								image={
-									product.product_image_links
-										.description_images
-								}
-								name={product.product_name}
-								price={product.product_cost}
-								description={
-									product.product_description
-										.product_description
-								}
-								points={product.points_awarded}
-								id={product._id}
-							/>
-						);
-					})}
+					{currentSubCategoryProducts &&
+						currentSubCategoryProducts.map((product) => {
+							return (
+								<EcommerceCard
+									color="bg-base-200"
+									text="text-black"
+									cart_color="bg-black"
+									cart_text="text-white"
+									image={
+										product.product_image_links
+											.description_images
+									}
+									name={product.product_name}
+									price={product.product_cost}
+									description={
+										product.product_description
+											.product_description
+									}
+									points={product.points_awarded}
+									id={product._id}
+								/>
+							);
+						})}
 				</div>
 			</section>
 

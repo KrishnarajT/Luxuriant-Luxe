@@ -18,6 +18,7 @@ const CartContextProvider = ({ children }) => {
 	const [SampleProducts, setSampleProducts] = useState([]);
 	const [currentCategoryProducts, setCurrentCategoryProducts] = useState([]);
 	const [beforeCheckoutProduct, setBeforeCheckoutProduct] = useState([]);
+	const [categories, setCategories] = useState([]);
 
 	// product info is a list of objects like these.
 	// 	{
@@ -45,10 +46,63 @@ const CartContextProvider = ({ children }) => {
 	//             "image2"
 	//         ]
 	//     },
-	//     "product_category": [
-	//         "Product Category",
-	//         "Product Category 2"
-	//     ],
+	//     "product_category":
+	// [
+	// 	"hair",
+	// 	"asdfaasd",
+	// 	"asdf",
+	// 	"asdfasd",
+	// 	{
+	// 		_id: "659426913d6d0c66098a62fe",
+	// 		category_image: "some image",
+	// 		category_description: "category_description",
+	// 		sub_categories: [
+	// 			{
+	// 				sub_category_id: "68ecb1f5-16e4-4f9c-ac7d-08d0b7753761",
+	// 				sub_category_name: "asdf",
+	// 				sub_category_image: "asdf",
+	// 			},
+	// 		],
+	// 		category_name: "hair",
+	// 	},
+	// 	{
+	// 		_id: "6596d0118507d2288ac82287",
+	// 		category_name: "skin",
+	// 		category_description: "skin products",
+	// 		category_image: "some image",
+	// 		sub_categories: [
+	// 			{
+	// 				sub_category_id: "db500377-64c0-4106-ac6b-3439586334ca",
+	// 				sub_category_name: "qwer",
+	// 				sub_category_image: "qwer",
+	// 			},
+	// 		],
+	// 	},
+	// 	{
+	// 		_id: "6596d01b8507d2288ac82288",
+	// 		category_name: "cosmetics",
+	// 		category_description: "cosmetics products",
+	// 		sub_categories: [
+	// 			{
+	// 				sub_category_id: "6cea4d8e-980b-489e-803a-c87f66c9ca80",
+	// 				sub_category_name: "fghjfghj",
+	// 				sub_category_image: "fghj",
+	// 			},
+	// 		],
+	// 	},
+	// 	{
+	// 		_id: "6596d0398507d2288ac82289",
+	// 		category_name: "essentials",
+	// 		category_description: "essentials products",
+	// 		sub_categories: [],
+	// 	},
+	// 	{
+	// 		_id: "6596d04f8507d2288ac8228b",
+	// 		category_name: "holiday",
+	// 		category_description: "holiday products",
+	// 		sub_categories: [],
+	// 	},
+	// ];
 	//     "product_quantity": 100,
 	//     "product_description": {
 	//         "product_description": "this is pink jar",
@@ -57,6 +111,7 @@ const CartContextProvider = ({ children }) => {
 	//     },
 	//     "points_awarded": 500
 	// }
+
 	const segregateProducts = async (data) => {
 		// if no data return
 		if (data === undefined) {
@@ -86,9 +141,23 @@ const CartContextProvider = ({ children }) => {
 		let beforeCheckoutProducts = [];
 		// loop through the products, and add them to the local array if they arent already present there.
 		for (let i = 0; i < data.length; i++) {
+			// only get category_name from all elements from the product_category_array
+			let product_category = [];
+			for (let j = 0; j < data[i].product_category.length; j++) {
+				if (data[i].product_category.length !== 0) {
+					product_category.push(
+						data[i].product_category[j].category_name
+					);
+				}
+			}
+			// clean up product category to remove undefined things
+			product_category = product_category.filter(
+				(category) => category !== undefined
+			);
+			console.log(product_category);
 			// if the product is a holiday product, add it to the holiday products array only if the holiday product array doesnt already have it. And make sure to ignore case
 			if (
-				data[i].product_category.some(
+				product_category.some(
 					(category) => category.toLowerCase() === "holiday"
 				)
 			) {
@@ -102,7 +171,7 @@ const CartContextProvider = ({ children }) => {
 			}
 			// if the product is a featured product, add it to the featured products array only if the featured product array doesnt already have it. And make sure to ignore case
 			if (
-				data[i].product_category.some(
+				product_category.some(
 					(category) => category.toLowerCase() === "featured"
 				)
 			) {
@@ -116,7 +185,7 @@ const CartContextProvider = ({ children }) => {
 			}
 			// if the product is a essentials product, add it to the essentials products array only if the essentials product array doesnt already have it. And make sure to ignore case
 			if (
-				data[i].product_category.some(
+				product_category.some(
 					(category) => category.toLowerCase() === "essentials"
 				)
 			) {
@@ -130,7 +199,7 @@ const CartContextProvider = ({ children }) => {
 			}
 			// if the product is a hair product, add it to the hair products array only if the hair product array doesnt already have it. And make sure to ignore case
 			if (
-				data[i].product_category.some(
+				product_category.some(
 					(category) => category.toLowerCase() === "hair"
 				)
 			) {
@@ -142,7 +211,7 @@ const CartContextProvider = ({ children }) => {
 			}
 			// if the product is a skin product, add it to the skin products array only if the skin product array doesnt already have it. And make sure to ignore case
 			if (
-				data[i].product_category.some(
+				product_category.some(
 					(category) => category.toLowerCase() === "skin"
 				)
 			) {
@@ -154,7 +223,7 @@ const CartContextProvider = ({ children }) => {
 			}
 			// if the product is a cosmetics product, add it to the cosmetics products array only if the cosmetics product array doesnt already have it. And make sure to ignore case
 			if (
-				data[i].product_category.some(
+				product_category.some(
 					(category) => category.toLowerCase() === "cosmetics"
 				)
 			) {
@@ -168,7 +237,7 @@ const CartContextProvider = ({ children }) => {
 			}
 			// if the product is a sample product, add it to the sample products array only if the sample product array doesnt already have it. And make sure to ignore case
 			if (
-				data[i].product_category.some(
+				product_category.some(
 					(category) => category.toLowerCase() === "sample"
 				)
 			) {
@@ -182,7 +251,7 @@ const CartContextProvider = ({ children }) => {
 			}
 			// if the product is a before checkout product, add it to the before checkout products array only if the before checkout product array doesnt already have it. And make sure to ignore case
 			if (
-				data[i].product_category.some(
+				product_category.some(
 					(category) => category.toLowerCase() === "beforecheckout"
 				)
 			) {
@@ -235,9 +304,33 @@ const CartContextProvider = ({ children }) => {
 				};
 			});
 	};
+
+	const fetchCategoriesInfo = async () => {
+		await axios
+			.post(`${base_url}/api/v1/Luxuriant/get_categories`, {
+				headers: {
+					"Content-Type": "application/json",
+				},
+			})
+			.then((response) => {
+				// console.log(response);
+				if (response.data.message === "Success") {
+					const data = response.data.categories;
+					// console.log(data);
+					setCategories(data);
+				} else if (response.data.message === "No Products found") {
+					setCategories([]);
+				}
+				return response;
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	};
 	useEffect(() => {
 		const fetchproducts = async () => {
 			await fetchProductInfo();
+			await fetchCategoriesInfo();
 			// console.log("productInfo", productInfo);
 			await segregateProducts();
 			// await removeDuplicates();
@@ -400,6 +493,7 @@ const CartContextProvider = ({ children }) => {
 				setCurrentCategoryProducts,
 				currentCategoryProducts,
 				beforeCheckoutProduct,
+				categories,
 			}}
 		>
 			{children}

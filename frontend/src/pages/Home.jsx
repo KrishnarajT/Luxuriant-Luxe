@@ -77,7 +77,12 @@ const Home = () => {
 							className="text-catalogue_bg underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
 							onClick={() => {
 								setCurrentCategoryProducts(EssentialsProducts);
-								navigate("/category/essentials");
+								navigate("/category/essentials", {
+									state: {
+										currentCategoryProducts:
+											EssentialsProducts,
+									},
+								});
 							}}
 						>
 							Shop All
@@ -129,7 +134,12 @@ const Home = () => {
 							className="text-catalogue_bg underline btn btn-ghost btn-lg forum text-4xl my-2"
 							onClick={() => {
 								setCurrentCategoryProducts(FeaturedProducts);
-								navigate("/category/featured");
+								navigate("/category/featured", {
+									state: {
+										currentCategoryProducts:
+											FeaturedProducts,
+									},
+								});
 							}}
 						>
 							Shop All
@@ -173,7 +183,12 @@ const Home = () => {
 							className="text-catalogue_bg underline btn btn-ghost btn-lg forum text-4xl my-2"
 							onClick={() => {
 								setCurrentCategoryProducts(HolidayProducts);
-								navigate("/category/holiday");
+								navigate("/category/holiday", {
+									state: {
+										currentCategoryProducts:
+											HolidayProducts,
+									},
+								});
 							}}
 						>
 							Shop All
