@@ -15,7 +15,9 @@ const CartContextProvider = ({ children }) => {
 	const [HolidayProducts, setHolidayProducts] = useState([]);
 	const [FeaturedProducts, setFeaturedProducts] = useState([]);
 	const [EssentialsProducts, setEssentialsProducts] = useState([]);
+	const [SampleProducts, setSampleProducts] = useState([]);
 	const [currentCategoryProducts, setCurrentCategoryProducts] = useState([]);
+	const [beforeCheckoutProduct, setBeforeCheckoutProduct] = useState([]);
 
 	// product info is a list of objects like these.
 	// 	{
@@ -67,7 +69,9 @@ const CartContextProvider = ({ children }) => {
 			EssentialsProducts.length !== 0 ||
 			HairProducts.length !== 0 ||
 			SkinProducts.length !== 0 ||
-			CosmeticsProducts.length !== 0
+			CosmeticsProducts.length !== 0 ||
+			SampleProducts.length !== 0 ||
+			currentCategoryProducts.length !== 0
 		) {
 			return;
 		}
@@ -133,9 +137,116 @@ const CartContextProvider = ({ children }) => {
 					setCosmeticsProducts((oldArray) => [...oldArray, data[i]]);
 				}
 			}
+			if (categories.includes("sample")) {
+				if (
+					!SampleProducts.some(
+						(product) => product._id === data[i]._id
+					)
+				) {
+					setSampleProducts((oldArray) => [...oldArray, data[i]]);
+				}
+			}
+			if (categories.includeS("before_checkout")) {
+				if (
+					!beforeCheckoutProduct.some(
+						(product) => product._id === data[i]._id
+					)
+				) {
+					setBeforeCheckoutProduct((oldArray) => [
+						...oldArray,
+						data[i],
+					]);
+				}
+			}
 		}
-	};
+		// before leaving, make sure there are no duplicates in any of the categories.
+		// remove duplicates from holiday products
+		let uniqueHolidayProducts = [];
+		for (let i = 0; i < HolidayProducts.length; i++) {
+			if (
+				!uniqueHolidayProducts.some(
+					(product) => product._id === HolidayProducts[i]._id
+				)
+			) {
+				uniqueHolidayProducts.push(HolidayProducts[i]);
+			}
+		}
+		setHolidayProducts(uniqueHolidayProducts);
+		// remove duplicates from the rest
 
+		// remove duplicates from featured products
+		let uniqueFeaturedProducts = [];
+		for (let i = 0; i < FeaturedProducts.length; i++) {
+			if (
+				!uniqueFeaturedProducts.some(
+					(product) => product._id === FeaturedProducts[i]._id
+				)
+			) {
+				uniqueFeaturedProducts.push(FeaturedProducts[i]);
+			}
+		}
+		setFeaturedProducts(uniqueFeaturedProducts);
+		// remove duplicates from essentials products
+		let uniqueEssentialsProducts = [];
+		for (let i = 0; i < EssentialsProducts.length; i++) {
+			if (
+				!uniqueEssentialsProducts.some(
+					(product) => product._id === EssentialsProducts[i]._id
+				)
+			) {
+				uniqueEssentialsProducts.push(EssentialsProducts[i]);
+			}
+		}
+		setEssentialsProducts(uniqueEssentialsProducts);
+		// remove duplicates from hair products
+		let uniqueHairProducts = [];
+		for (let i = 0; i < HairProducts.length; i++) {
+			if (
+				!uniqueHairProducts.some(
+					(product) => product._id === HairProducts[i]._id
+				)
+			) {
+				uniqueHairProducts.push(HairProducts[i]);
+			}
+		}
+		setHairProducts(uniqueHairProducts);
+		// remove duplicates from skin products
+		let uniqueSkinProducts = [];
+		for (let i = 0; i < SkinProducts.length; i++) {
+			if (
+				!uniqueSkinProducts.some(
+					(product) => product._id === SkinProducts[i]._id
+				)
+			) {
+				uniqueSkinProducts.push(SkinProducts[i]);
+			}
+		}
+		setSkinProducts(uniqueSkinProducts);
+		// remove duplicates from cosmetics products
+		let uniqueCosmeticsProducts = [];
+		for (let i = 0; i < CosmeticsProducts.length; i++) {
+			if (
+				!uniqueCosmeticsProducts.some(
+					(product) => product._id === CosmeticsProducts[i]._id
+				)
+			) {
+				uniqueCosmeticsProducts.push(CosmeticsProducts[i]);
+			}
+		}
+		setCosmeticsProducts(uniqueCosmeticsProducts);
+		// remove duplicates from sample products
+		let uniqueSampleProducts = [];
+		for (let i = 0; i < SampleProducts.length; i++) {
+			if (
+				!uniqueSampleProducts.some(
+					(product) => product._id === SampleProducts[i]._id
+				)
+			) {
+				uniqueSampleProducts.push(SampleProducts[i]);
+			}
+		}
+		setSampleProducts(uniqueSampleProducts);
+	};
 	const fetchProductInfo = async () => {
 		await axios
 			.post(`${base_url}/api/v1/Luxuriant/get_products`, {
@@ -323,8 +434,11 @@ const CartContextProvider = ({ children }) => {
 				HairProducts,
 				SkinProducts,
 				CosmeticsProducts,
+				SampleProducts,
+				setSampleProducts,
 				setCurrentCategoryProducts,
 				currentCategoryProducts,
+				beforeCheckoutProduct,
 			}}
 		>
 			{children}

@@ -199,13 +199,16 @@ export function Navbar(props) {
 					<div className="hidden md:flex">
 						<ul className="menu menu-horizontal px-1">
 							<li className="text-lg md:text-xl">
-								<NavLink
-									to={"/cart"}
-									id="contact_element"
-									className="hover:text-base-content text-base-content"
+								<label
+									id="cartlabel"
+									htmlFor="my-drawer"
+									className="drawer-button w-fit bg-transparent text-transparent border-none"
 								>
-									<IconShoppingCart className="w-12 h-12" />
-								</NavLink>
+									<img
+										src="https://img.icons8.com/ios-filled/100/shopping-bag.png"
+										className="w-12 h-12"
+									/>
+								</label>
 							</li>
 							{/* 
 							{theme === "light" ? (
@@ -302,14 +305,8 @@ export function Navbar(props) {
 										</NavLink>
 									</li>
 									<li className="text-md md:text-xl">
-										<NavLink
-											to={"/cart"}
-											id="contact_element"
-											className="hover:text-base-content"
-										>
-											<IconShoppingCart className="w-6 h-6" />
-											Cart
-										</NavLink>
+										<IconShoppingCart className="w-6 h-6 drawer-button drawer-toggle" />
+										Cart
 									</li>
 									<li className="menu menu-horizontal px-1 py-0 ">
 										<details>

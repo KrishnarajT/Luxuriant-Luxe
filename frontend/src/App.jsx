@@ -18,11 +18,12 @@ import CartContextProvider from "./context/CartContext";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Products from "./pages/Products";
-import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
 import Catalogue from "./pages/Catalogue";
 import Category from "./pages/Category";
 import Product from "./pages/Product";
 import { Toaster } from "react-hot-toast";
+import SideCart from "./pages/SideCart";
 function App() {
 	const [isNavbarPresent, setisNavbarPresent] = useState(true);
 
@@ -38,11 +39,12 @@ function App() {
 					{isNavbarPresent ? (
 						<Navbar setisNavbarPresent={setisNavbarPresent} />
 					) : null}
+					<SideCart />
 					<Routes>
 						<Route path="/" element={<Home />} />
 						<Route path="/about" element={<About />} />
 						<Route path="/catalogue" element={<Catalogue />} />
-						<Route path="/cart" element={<Cart />} />
+						<Route path="/cart" element={<Checkout />} />
 						<Route path="/category/:type" element={<Category />} />
 						<Route path="/product/:id" element={<Product />} />
 					</Routes>
