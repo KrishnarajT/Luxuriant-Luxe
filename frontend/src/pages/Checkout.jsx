@@ -16,8 +16,11 @@ import {
 } from "@tabler/icons-react";
 import ScrollToTopButton from "../components/ui/ScrollToTopButton";
 import { BaseUrlContext } from "../context/BaseUrlContext";
+import { Toaster, toast } from "react-hot-toast";
+
 import axios from "axios";
 import Footer from "../components/ui/Footer";
+import Cart from "./Cart";
 const qr_code_image = "https://i.imgur.com/ObMvMPQh.jpg";
 
 axios.defaults.headers.common["Access-Control-Allow-Origin"] =
@@ -63,7 +66,16 @@ const Checkout = () => {
 	const [customerName, setCustomerName] = React.useState("");
 	const [currentCustomerId, setCurrentCustomerId] = React.useState("");
 	const [currentCustomerPoints, setCurrentCustomerPoints] = React.useState(0);
-	
+	const [currentCustomerOrderCost, setCurrentCustomerOrderCost] =
+		React.useState(0);
+	const [country, setCountry] = React.useState("");
+	const [region, setRegion] = React.useState("");
+	const [firstName, setFirstName] = React.useState("");
+	const [lastName, setLastName] = React.useState("");
+	const [address, setAddress] = React.useState("");
+	const [apartment, setApartment] = React.useState("");
+	const [phone, setPhone] = React.useState("");
+
 	const checkValidity = () => {
 		// check that none of the things are null
 		if (
@@ -152,212 +164,192 @@ const Checkout = () => {
 		if (response.data.message === "simulation") {
 			alert("Simulation Response, Added order");
 		} else if (response.data.message === "Success") {
-			const alert = document.getElementById("added_order");
-			alert.classList.remove("hidden");
-			setTimeout(() => {
-				alert.classList.add("hidden");
-			}, 3000);
+			toast.success("Order Placed Successfully!");
 			clearCart();
 			setChange(1);
 		} else if (response.data.message === "Failure") {
-			const alert = document.getElementById("added_order_failed");
-			alert.classList.remove("hidden");
-			setTimeout(() => {
-				alert.classList.add("hidden");
-			}, 3000);
+			toast.error("Order Failed!");
 		}
 	};
 
 	return (
 		<div>
+			<Toaster />
 			<section
-				className="flex flex-col p-4 m-8 justify-center items-center text-5xl bulgatti"
+				className="flex flex-col p-4 m-8 justify-center items-center text-5xl bodoni"
 				id="intro"
 			>
-				Cart
+				Checkout and Shipping
 			</section>
 
-			{cart.length !== 0 ? (
-				<section
-					className="flex flex-col justify-center items-center m-4 rounded-2xl gap-6 p-2"
-					id="intro"
-					key={change}
-				>
-					{cart.map((item) => {
-						return (
-							<div className="flex justify-between items-center gap-4 w-full px-4 pt-4 bg-base-200 rounded-2xl">
-								<div className="">
-									<div className="text-2xl cardo my-1">
-										{
-											productInfo.filter((product) => {
-												return (
-													product._id ===
-													item._id
-												);
-											})[0].product_name
-										}
-									</div>
-									<div className="text-sm cardo my-1">
-										Cost: &#8377;{" "}
-										{
-											productInfo.filter((product) => {
-												return (
-													product._id ===
-													item._id
-												);
-											})[0].product_cost
-										}
-									</div>
-									<div className="text-sm cardo my-1">
-										Quantity: {item.quantity}
-									</div>
+			<div className="flex flex-row gap-4">
+				<div className="flex-1 flex flex-col p-4">
+					<div className="flex justify-center uppercase ml-4">
+						<div className="text-4xl bodoni font-semibold">
+							Contact
+						</div>
+					</div>
 
-									<div className="flex flex-row items-center gap-4 my-4 mx-0">
-										<button
-											className="btn btn-sm btn-accent text-accent-content"
-											onClick={() => {
-												IncreaseProductQuantity(
-													item._id
-												);
-												setCart(getCart());
-												setChange(
-													(change) => change + 1
-												);
-											}}
-										>
-											<IconPlus className="w-4 h-4" />
-										</button>
-										<button
-											className="btn btn-sm btn-accent text-accent-content"
-											onClick={() => {
-												DecreaseProductQuantity(
-													item._id
-												);
-												setCart(getCart());
-												setChange(
-													(change) => change - 1
-												);
-											}}
-										>
-											<IconMinus className="w-4 h-4" />
-										</button>
-									</div>
-								</div>
-								<div className="flex justify-center items-center align-middle">
-									<img
-										src={
-											images.filter((product) => {
-												return (
-													product._id ===
-													item._id
-												);
-											})[0].product_image
-										}
-										alt={item.name}
-										className="w-32 rounded-2xl"
-									/>
-								</div>
-							</div>
-						);
-					})}
-				</section>
-			) : (
-				<div className="text-center flex flex-col justify-center items-center m-8 text-accent">
-					<IconShoppingCartHeart className="w-24 h-24" />
-					<div className="text-2xl cardo my-2">
-						Your cart is empty.
+					{/* Enter customer email */}
+					<div className="form-control">
+						<label className="label">
+							<span className="label-text">Your Email</span>
+						</label>
+						<label className="input-group">
+							<span>
+								<IconMail className="w-4 h-4" />
+							</span>
+							<input
+								type="text"
+								placeholder="Enter your email"
+								className="input input-bordered"
+								value={customerEmail}
+								onChange={(event) => {
+									setCustomerEmail(event.target.value);
+								}}
+							/>
+						</label>
+						{/* Checkbox for sending subscription mail */}
+						<div className="form-control mt-4">
+							<label className="cursor-pointer label">
+								<span className="label-text">
+									Subscribe to our newsletter?
+								</span>
+								<input
+									type="checkbox"
+									className="checkbox"
+									onClick={() => {
+										console.log("checkbox clicked");
+									}}
+								/>
+							</label>
+						</div>
+					</div>
+					<div className="flex justify-center uppercase ml-4">
+						<div className="text-4xl bodoni font-semibold">
+							Shipping Address
+						</div>
+					</div>
+
+					<div className="flex flex-col">
+						{/* Country, Region */}
+						<div className="form-control">
+							<label className="label">
+								<span className="label-text">Country</span>
+							</label>
+							<input
+								type="text"
+								placeholder="Enter your country"
+								className="input input-bordered"
+								value={country}
+								onChange={(event) => {
+									setCountry(event.target.value);
+								}}
+							/>
+						</div>
+
+						<div className="form-control">
+							<label className="label">
+								<span className="label-text">Region</span>
+							</label>
+							<input
+								type="text"
+								placeholder="Enter your region"
+								className="input input-bordered"
+								value={region}
+								onChange={(event) => {
+									setRegion(event.target.value);
+								}}
+							/>
+						</div>
+
+						{/* First Name, Last Name in different fields */}
+						<div className="form-control">
+							<label className="label">
+								<span className="label-text">First Name</span>
+							</label>
+							<input
+								type="text"
+								placeholder="Enter your first name"
+								className="input input-bordered"
+								value={firstName}
+								onChange={(event) => {
+									setFirstName(event.target.value);
+								}}
+							/>
+						</div>
+
+						<div className="form-control">
+							<label className="label">
+								<span className="label-text">Last Name</span>
+							</label>
+							<input
+								type="text"
+								placeholder="Enter your last name"
+								className="input input-bordered"
+								value={lastName}
+								onChange={(event) => {
+									setLastName(event.target.value);
+								}}
+							/>
+						</div>
+
+						{/* Address */}
+						<div className="form-control">
+							<label className="label">
+								<span className="label-text">Address</span>
+							</label>
+							<input
+								type="text"
+								placeholder="Enter your address"
+								className="input input-bordered"
+								value={address}
+								onChange={(event) => {
+									setAddress(event.target.value);
+								}}
+							/>
+						</div>
+
+						{/* Apartment, Building */}
+						<div className="form-control">
+							<label className="label">
+								<span className="label-text">
+									Apartment/Building
+								</span>
+							</label>
+							<input
+								type="text"
+								placeholder="Enter your apartment or building"
+								className="input input-bordered"
+								value={apartment}
+								onChange={(event) => {
+									setApartment(event.target.value);
+								}}
+							/>
+						</div>
+
+						{/* Phone */}
+						<div className="form-control">
+							<label className="label">
+								<span className="label-text">Phone</span>
+							</label>
+							<input
+								type="text"
+								placeholder="Enter your phone number"
+								className="input input-bordered"
+								value={phone}
+								onChange={(event) => {
+									setPhone(event.target.value);
+								}}
+							/>
+						</div>
 					</div>
 				</div>
-			)}
-			{cart.length !== 0 ? (
-				<section
-					className="flex flex-col p-4 justify-center items-center"
-					id="intro"
-				>
-					<div
-						className="flex flex-col p-4 m-8 justify-center items-center text-3xl bulgatti"
-						id="intro"
-					>
-						Invoice
-					</div>
-					<div className="overflow-x-auto">
-						<table className="table">
-							{/* head */}
-							<thead>
-								<tr>
-									<th>No.</th>
-									<th>Name</th>
-									<th>Quantity</th>
-									<th>Cost</th>
-								</tr>
-							</thead>
-							<tbody>
-								{cart.map((item) => {
-									return (
-										<tr className="text-md">
-											<td>
-												{/*	serial number*/}
-												{cart.indexOf(item) + 1}
-											</td>
-											<td>
-												{
-													productInfo.filter(
-														(product) => {
-															return (
-																product._id ===
-																item._id
-															);
-														}
-													)[0].product_name
-												}
-											</td>
-											<td>{item.quantity}</td>
-											<td>
-												&#8377;
-												{
-													productInfo.filter(
-														(product) => {
-															return (
-																product._id ===
-																item._id
-															);
-														}
-													)[0].product_cost
-												}
-											</td>
-										</tr>
-									);
-								})}
-								{/* display total. */}
-								<tr>
-									<td></td>
-									<td></td>
-									<td>Total</td>
-									<td>
-										&#8377;
-										{cart.reduce((total, item) => {
-											return (
-												total +
-												productInfo.filter(
-													(product) => {
-														return (
-															product._id ===
-															item._id
-														);
-													}
-												)[0].product_cost *
-													item.quantity
-											);
-										}, 0)}
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
-				</section>
-			) : (
-				<div></div>
-			)}
+				<div className="flex flex-col flex-1">
+					<Cart />
+				</div>
+			</div>
+
 			{cart.length !== 0 ? (
 				<section
 					className="flex flex-col p-4 justify-center items-center"
@@ -473,7 +465,7 @@ const Checkout = () => {
 						id="buy_now_button"
 						onClick={() => {
 							console.log(
-								"buy not clicked. send some api calls. "
+								"buy now clicked. send some api calls. "
 							);
 
 							if (checkValidity()) {
@@ -542,101 +534,6 @@ const Checkout = () => {
 			)}
 
 			<Footer />
-			<div className="flex justify-center toast-center toast">
-				<div
-					className="alert alert-success hidden transform-gpu transition-all duration-300 flex gap-4"
-					id="placing_order"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						width="32"
-						height="32"
-						viewBox="0 0 24 24"
-					>
-						<path
-							fill="currentColor"
-							d="M12,1A11,11,0,1,0,23,12,11,11,0,0,0,12,1Zm0,20a9,9,0,1,1,9-9A9,9,0,0,1,12,21Z"
-						/>
-						<rect
-							width="2"
-							height="7"
-							x="11"
-							y="6"
-							fill="currentColor"
-							rx="1"
-						>
-							<animateTransform
-								attributeName="transform"
-								dur="9s"
-								repeatCount="indefinite"
-								type="rotate"
-								values="0 12 12;360 12 12"
-							/>
-						</rect>
-						<rect
-							width="2"
-							height="9"
-							x="11"
-							y="11"
-							fill="currentColor"
-							rx="1"
-						>
-							<animateTransform
-								attributeName="transform"
-								dur="0.75s"
-								repeatCount="indefinite"
-								type="rotate"
-								values="0 12 12;360 12 12"
-							/>
-						</rect>
-					</svg>
-					<span>Placing Your Order!</span>
-				</div>
-			</div>
-
-			<div className="flex justify-center toast-center toast">
-				<div
-					className="alert alert-success hidden transform-gpu transition-all duration-300 flex gap-4"
-					id="added_order"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						className="stroke-current shrink-0 h-6 w-6"
-						fill="none"
-						viewBox="0 0 24 24"
-					>
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							strokeWidth="2"
-							d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-						/>
-					</svg>
-					<span>Order Placed Successfully!</span>
-				</div>
-			</div>
-
-			<div className="flex justify-center toast-center toast">
-				<div
-					className="alert alert-success hidden transform-gpu transition-all duration-300 flex gap-4"
-					id="added_order_failed"
-				>
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						className="stroke-current shrink-0 h-6 w-6"
-						fill="none"
-						viewBox="0 0 24 24"
-					>
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							strokeWidth="2"
-							d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
-						/>
-					</svg>
-					<span>Could not Place Order! Please Contact Us!</span>
-				</div>
-			</div>
 		</div>
 	);
 };

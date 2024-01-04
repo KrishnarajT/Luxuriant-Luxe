@@ -8,6 +8,7 @@ import { IconMinus, IconPlus } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { DisplayCarousal } from "../components/ui/DisplayCarousal";
+import { Toaster, toast } from "react-hot-toast";
 
 const random_image_link =
 	"https://images.unsplash.com/photo-1643185450492-6ba77dea00f6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29zbWV0aWNzfGVufDB8fDB8fHww";
@@ -51,7 +52,8 @@ const Cart = () => {
 		}
 	}, [getCart()]);
 	return (
-		<div>
+    <div>
+      <Toaster />
 			<div className="flex justify-center uppercase ml-4">
 				<div className="text-4xl bodoni font-semibold">Cart</div>
 			</div>
