@@ -75,178 +75,137 @@ const CartContextProvider = ({ children }) => {
 		) {
 			return;
 		}
+		// make local arrays for these categories
+		let holidayProducts = [];
+		let featuredProducts = [];
+		let essentialsProducts = [];
+		let hairProducts = [];
+		let skinProducts = [];
+		let cosmeticsProducts = [];
+		let sampleProducts = [];
+		let beforeCheckoutProducts = [];
+		// loop through the products, and add them to the local array if they arent already present there.
 		for (let i = 0; i < data.length; i++) {
-			const categories = data[i].product_category;
-			// convert all categories to lowercase
-			for (let j = 0; j < categories.length; j++) {
-				categories[j] = categories[j].toLowerCase();
-			}
-			console.log(categories);
-			if (categories.includes("holiday")) {
-				// make sure that the product is not already in the list
+			// if the product is a holiday product, add it to the holiday products array only if the holiday product array doesnt already have it. And make sure to ignore case
+			if (
+				data[i].product_category.some(
+					(category) => category.toLowerCase() === "holiday"
+				)
+			) {
 				if (
-					!HolidayProducts.some(
+					!holidayProducts.some(
 						(product) => product._id === data[i]._id
 					)
 				) {
-					setHolidayProducts((oldArray) => [...oldArray, data[i]]);
+					holidayProducts.push(data[i]);
 				}
 			}
-			if (categories.includes("featured")) {
-				// make sure that the product is not already in the list
+			// if the product is a featured product, add it to the featured products array only if the featured product array doesnt already have it. And make sure to ignore case
+			if (
+				data[i].product_category.some(
+					(category) => category.toLowerCase() === "featured"
+				)
+			) {
 				if (
-					!FeaturedProducts.some(
+					!featuredProducts.some(
 						(product) => product._id === data[i]._id
 					)
 				) {
-					setFeaturedProducts((oldArray) => [...oldArray, data[i]]);
+					featuredProducts.push(data[i]);
 				}
 			}
-			if (categories.includes("essentials")) {
-				// make sure the product is not already in the list
+			// if the product is a essentials product, add it to the essentials products array only if the essentials product array doesnt already have it. And make sure to ignore case
+			if (
+				data[i].product_category.some(
+					(category) => category.toLowerCase() === "essentials"
+				)
+			) {
 				if (
-					!EssentialsProducts.some(
+					!essentialsProducts.some(
 						(product) => product._id === data[i]._id
 					)
 				) {
-					setEssentialsProducts((oldArray) => [...oldArray, data[i]]);
+					essentialsProducts.push(data[i]);
 				}
 			}
-			if (categories.includes("hair")) {
-				console.log("found a product with hair");
+			// if the product is a hair product, add it to the hair products array only if the hair product array doesnt already have it. And make sure to ignore case
+			if (
+				data[i].product_category.some(
+					(category) => category.toLowerCase() === "hair"
+				)
+			) {
 				if (
-					!HairProducts.some((product) => product._id === data[i]._id)
+					!hairProducts.some((product) => product._id === data[i]._id)
 				) {
-					setHairProducts((oldArray) => [...oldArray, data[i]]);
+					hairProducts.push(data[i]);
 				}
 			}
-			if (categories.includes("skin")) {
+			// if the product is a skin product, add it to the skin products array only if the skin product array doesnt already have it. And make sure to ignore case
+			if (
+				data[i].product_category.some(
+					(category) => category.toLowerCase() === "skin"
+				)
+			) {
 				if (
-					!SkinProducts.some((product) => product._id === data[i]._id)
+					!skinProducts.some((product) => product._id === data[i]._id)
 				) {
-					setSkinProducts((oldArray) => [...oldArray, data[i]]);
+					skinProducts.push(data[i]);
 				}
 			}
-			if (categories.includes("cosmetics")) {
-				console.log("found a product with cosmetics", i);
+			// if the product is a cosmetics product, add it to the cosmetics products array only if the cosmetics product array doesnt already have it. And make sure to ignore case
+			if (
+				data[i].product_category.some(
+					(category) => category.toLowerCase() === "cosmetics"
+				)
+			) {
 				if (
-					!CosmeticsProducts.some(
+					!cosmeticsProducts.some(
 						(product) => product._id === data[i]._id
 					)
 				) {
-					setCosmeticsProducts((oldArray) => [...oldArray, data[i]]);
+					cosmeticsProducts.push(data[i]);
 				}
 			}
-			if (categories.includes("sample")) {
+			// if the product is a sample product, add it to the sample products array only if the sample product array doesnt already have it. And make sure to ignore case
+			if (
+				data[i].product_category.some(
+					(category) => category.toLowerCase() === "sample"
+				)
+			) {
 				if (
-					!SampleProducts.some(
+					!sampleProducts.some(
 						(product) => product._id === data[i]._id
 					)
 				) {
-					setSampleProducts((oldArray) => [...oldArray, data[i]]);
+					sampleProducts.push(data[i]);
 				}
 			}
-			if (categories.includeS("before_checkout")) {
+			// if the product is a before checkout product, add it to the before checkout products array only if the before checkout product array doesnt already have it. And make sure to ignore case
+			if (
+				data[i].product_category.some(
+					(category) => category.toLowerCase() === "beforecheckout"
+				)
+			) {
 				if (
-					!beforeCheckoutProduct.some(
+					!beforeCheckoutProducts.some(
 						(product) => product._id === data[i]._id
 					)
 				) {
-					setBeforeCheckoutProduct((oldArray) => [
-						...oldArray,
-						data[i],
-					]);
+					beforeCheckoutProducts.push(data[i]);
 				}
 			}
 		}
-		// before leaving, make sure there are no duplicates in any of the categories.
-		// remove duplicates from holiday products
-		let uniqueHolidayProducts = [];
-		for (let i = 0; i < HolidayProducts.length; i++) {
-			if (
-				!uniqueHolidayProducts.some(
-					(product) => product._id === HolidayProducts[i]._id
-				)
-			) {
-				uniqueHolidayProducts.push(HolidayProducts[i]);
-			}
-		}
-		setHolidayProducts(uniqueHolidayProducts);
-		// remove duplicates from the rest
-
-		// remove duplicates from featured products
-		let uniqueFeaturedProducts = [];
-		for (let i = 0; i < FeaturedProducts.length; i++) {
-			if (
-				!uniqueFeaturedProducts.some(
-					(product) => product._id === FeaturedProducts[i]._id
-				)
-			) {
-				uniqueFeaturedProducts.push(FeaturedProducts[i]);
-			}
-		}
-		setFeaturedProducts(uniqueFeaturedProducts);
-		// remove duplicates from essentials products
-		let uniqueEssentialsProducts = [];
-		for (let i = 0; i < EssentialsProducts.length; i++) {
-			if (
-				!uniqueEssentialsProducts.some(
-					(product) => product._id === EssentialsProducts[i]._id
-				)
-			) {
-				uniqueEssentialsProducts.push(EssentialsProducts[i]);
-			}
-		}
-		setEssentialsProducts(uniqueEssentialsProducts);
-		// remove duplicates from hair products
-		let uniqueHairProducts = [];
-		for (let i = 0; i < HairProducts.length; i++) {
-			if (
-				!uniqueHairProducts.some(
-					(product) => product._id === HairProducts[i]._id
-				)
-			) {
-				uniqueHairProducts.push(HairProducts[i]);
-			}
-		}
-		setHairProducts(uniqueHairProducts);
-		// remove duplicates from skin products
-		let uniqueSkinProducts = [];
-		for (let i = 0; i < SkinProducts.length; i++) {
-			if (
-				!uniqueSkinProducts.some(
-					(product) => product._id === SkinProducts[i]._id
-				)
-			) {
-				uniqueSkinProducts.push(SkinProducts[i]);
-			}
-		}
-		setSkinProducts(uniqueSkinProducts);
-		// remove duplicates from cosmetics products
-		let uniqueCosmeticsProducts = [];
-		for (let i = 0; i < CosmeticsProducts.length; i++) {
-			if (
-				!uniqueCosmeticsProducts.some(
-					(product) => product._id === CosmeticsProducts[i]._id
-				)
-			) {
-				uniqueCosmeticsProducts.push(CosmeticsProducts[i]);
-			}
-		}
-		setCosmeticsProducts(uniqueCosmeticsProducts);
-		// remove duplicates from sample products
-		let uniqueSampleProducts = [];
-		for (let i = 0; i < SampleProducts.length; i++) {
-			if (
-				!uniqueSampleProducts.some(
-					(product) => product._id === SampleProducts[i]._id
-				)
-			) {
-				uniqueSampleProducts.push(SampleProducts[i]);
-			}
-		}
-		setSampleProducts(uniqueSampleProducts);
+		// set the arrays
+		setHolidayProducts(holidayProducts);
+		setFeaturedProducts(featuredProducts);
+		setEssentialsProducts(essentialsProducts);
+		setHairProducts(hairProducts);
+		setSkinProducts(skinProducts);
+		setCosmeticsProducts(cosmeticsProducts);
+		setSampleProducts(sampleProducts);
+		setBeforeCheckoutProduct(beforeCheckoutProducts);
 	};
+
 	const fetchProductInfo = async () => {
 		await axios
 			.post(`${base_url}/api/v1/Luxuriant/get_products`, {
@@ -281,6 +240,7 @@ const CartContextProvider = ({ children }) => {
 			await fetchProductInfo();
 			// console.log("productInfo", productInfo);
 			await segregateProducts();
+			// await removeDuplicates();
 			// log the segregated products
 			// console.log("HolidayProducts", HolidayProducts);
 			// console.log("FeaturedProducts", FeaturedProducts);
@@ -292,6 +252,7 @@ const CartContextProvider = ({ children }) => {
 			// console.log("productInfo", productInfo);
 		};
 		fetchproducts();
+		// removeDuplicates();
 	}, []);
 
 	const addToCart = (item) => {

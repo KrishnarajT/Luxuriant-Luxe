@@ -205,13 +205,13 @@ const Home = () => {
 				<div className="ribbon color"></div>
 			</div>
 
-			<section>
+			{/* <section>
 				<About />
-			</section>
+			</section> */}
 
-			<section>
+			{/* <section>
 				<FAQ />
-			</section>
+			</section> */}
 
 			<Footer />
 			{/* <div className="my-12"> */}

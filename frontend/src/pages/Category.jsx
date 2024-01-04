@@ -47,12 +47,14 @@ import Footer from "../components/ui/Footer";
 const Category = () => {
 	const { type } = useParams();
 	const navigate = useNavigate();
-	const { currentCategoryProducts } = React.useContext(CartContext);
+	const { currentCategoryProducts, removeDuplicates } =
+		React.useContext(CartContext);
 
 	useEffect(() => {
-		console.log("Product Details", currentCategoryProducts);
+		// console.log("Product Details", currentCategoryProducts);
 		// scroll to top on load
 		window.scrollTo(0, 0);
+		// removeDuplicates();
 	}, [currentCategoryProducts]);
 
 	// Use the 'type' parameter and 'location.state' in your component logic

@@ -43,7 +43,7 @@ const Cart = () => {
 			// set random image to the first image of the first product in the cart
 			// if the cart is empty, or the image is empty, then set the image to a random image
 			if (cart.length > 0 && cart[0].images.length > 0) {
-				setRandomImageToDisplayTop(cart[0].images[0]);
+				setRandomImageToDisplayTop(cart[0].product_image_links.description_images[0]);
 			} else {
 				setRandomImageToDisplayTop(random_image_link);
 			}
@@ -71,7 +71,7 @@ const Cart = () => {
 							<div className="flex justify-between">
 								<div className="flex justify-center">
 									<img
-										src={product.images[0]}
+										src={product.product_image_links.description_images[0]}
 										className="w-24 h-24 object-center object-cover my-2"
 									/>
 								</div>
@@ -149,7 +149,7 @@ const Cart = () => {
 						return (
 							<div className="flex justify-center">
 								<img
-									src={product.images[0]}
+									src={product.product_image_links.description_images[0]}
 									className="w-24 h-24 object-center object-cover my-2"
 								/>
 							</div>
@@ -177,11 +177,11 @@ const Cart = () => {
 				</div>
 			</div>
 			{/* Bath Truffle Routine which is a product, image, name, details and cost are displayed, there is also add button */}
-			{beforeCheckoutProduct.length > 0 ? (
+			{/* {beforeCheckoutProduct.length > 0 ? (
 				<div className="flex justify-center">
 					<div className="flex justify-center">
 						<img
-							src={beforeCheckoutProduct.images[0]}
+							src={beforeCheckoutProduct.product_image_links.description_images[0]}
 							className="w-24 h-24 object-center object-cover my-2"
 						/>
 					</div>
@@ -196,13 +196,12 @@ const Cart = () => {
 						</div>
 					</div>
 					<div className="flex flex-row gap-3 items-center my-2">
-						{/* Add to cart button with cost */}
 						<button className="btn btn-md btn-primary text-xl">
 							Add to Cart ₹{selectedProductCost}
 						</button>
 					</div>
 				</div>
-			) : null}
+			) : null} */}
 			{/* Show Estimated Total */}
 			<div className="flex justify-center uppercase ml-4">
 				<div className="text-2xl bodoni font-semibold">

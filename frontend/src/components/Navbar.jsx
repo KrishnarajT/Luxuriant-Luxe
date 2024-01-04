@@ -34,6 +34,7 @@ export function Navbar(props) {
 		HolidayProducts,
 		FeaturedProducts,
 		setCurrentCategoryProducts,
+		removeDuplicates,
 	} = React.useContext(CartContext);
 	useEffect(() => {
 		themeChange(false);
@@ -73,26 +74,6 @@ export function Navbar(props) {
 									Products
 								</summary>
 								<ul className="menu menu-horizontal px-1 z-50">
-									<li className="text-lg md:text-xl w-full">
-										<NavLink
-											to={"/catalogue"}
-											id="contact_element"
-											className="hover:text-base-content text-2xl w-full"
-											onClick={() => {
-												const products_summary =
-													document.getElementById(
-														"products_summary"
-													);
-												products_summary.click();
-												setCurrentCategoryProducts(
-													productInfo
-												);
-											}}
-										>
-											<IconShoppingBagSearch className="w-10 h-10" />
-											Catalogue
-										</NavLink>
-									</li>
 									<li className="text-lg md:text-xl w-full">
 										<NavLink
 											to={"/category/hair"}
@@ -164,17 +145,7 @@ export function Navbar(props) {
 					className="hidden text-base-content
 			   md:flex"
 				>
-					<ul className="menu menu-horizontal px-1">
-						<li className="text-lg md:text-xl">
-							<NavLink
-								to={"/about"}
-								id="contact_element"
-								className="hover:text-base-content"
-							>
-								<IconInfoCircle className="w-12 h-12" />
-							</NavLink>
-						</li>
-					</ul>
+					
 				</div>
 
 				{/* name */}
@@ -294,16 +265,7 @@ export function Navbar(props) {
 											Products
 										</NavLink>
 									</li>
-									<li className="text-md md:text-xl">
-										<NavLink
-											to={"/about"}
-											id="contact_element"
-											className="hover:text-base-content"
-										>
-											<IconInfoCircle className="w-6 h-6" />
-											About Us
-										</NavLink>
-									</li>
+									
 									<li className="text-md md:text-xl">
 										<IconShoppingCart className="w-6 h-6 drawer-button drawer-toggle" />
 										Cart

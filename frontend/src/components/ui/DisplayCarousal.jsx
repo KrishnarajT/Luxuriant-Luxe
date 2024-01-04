@@ -145,8 +145,8 @@ export function DisplayCarousal(props) {
 
 						{product[2] && (
 							<EcommerceCard
-								color="bg-catalogue_bg"
-								text="text-black"
+								color="bg-black"
+								text="text-white"
 								cart_color="bg-white"
 								cart_text="text-black"
 								id={product[2]._id}
@@ -165,8 +165,8 @@ export function DisplayCarousal(props) {
 						)}
 						{product[3] && (
 							<EcommerceCard
-								color="bg-catalogue_bg"
-								text="text-black"
+								color="bg-black"
+								text="text-white"
 								cart_color="bg-white"
 								cart_text="text-black"
 								id={product[3]._id}
