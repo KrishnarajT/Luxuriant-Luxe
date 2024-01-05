@@ -68,31 +68,73 @@ export function Navbar(props) {
 					<div className="hidden md:flex">
 						<ul className="menu menu-horizontal px-1">
 							<li className="text-lg md:text-xl">
-								<label
-									id="cartlabel"
-									htmlFor="my-drawer"
-									className="drawer-button w-fit bg-transparent text-3xl bodoni border-none"
+								<NavLink
+									to={"/category/hair"}
+									state={{
+										currentCategoryProducts: HairProducts,
+									}}
+									id="contact_element"
+									className="hover:text-base-content text-2xl w-full"
+									onClick={() => {
+										setCurrentCategoryProducts(
+											HairProducts
+										);
+									}}
 								>
-									LL Hair
-								</label>
+									<label
+										id="cartlabel"
+										htmlFor="my-drawer"
+										className="drawer-button w-fit bg-transparent text-3xl bodoni border-none"
+									>
+										LL Hair
+									</label>
+								</NavLink>
 							</li>
 							<li className="text-lg md:text-xl">
-								<label
-									id="cartlabel"
-									htmlFor="my-drawer"
-									className="drawer-button w-fit bg-transparent text-3xl bodoni border-none"
+								<NavLink
+									to={"/category/skin"}
+									state={{
+										currentCategoryProducts: HairProducts,
+									}}
+									id="contact_element"
+									className="hover:text-base-content text-2xl w-full"
+									onClick={() => {
+										setCurrentCategoryProducts(
+											SkinProducts
+										);
+									}}
 								>
-									LL Skin
-								</label>
+									<label
+										id="cartlabel"
+										htmlFor="my-drawer"
+										className="drawer-button w-fit bg-transparent text-3xl bodoni border-none"
+									>
+										LL Skin
+									</label>
+								</NavLink>
 							</li>
 							<li className="text-lg md:text-xl">
-								<label
-									id="cartlabel"
-									htmlFor="my-drawer"
-									className="drawer-button w-fit bg-transparent text-3xl bodoni border-none"
+								<NavLink
+									to={"/category/cosmetics"}
+									state={{
+										currentCategoryProducts: HairProducts,
+									}}
+									id="contact_element"
+									className="hover:text-base-content text-2xl w-full"
+									onClick={() => {
+										setCurrentCategoryProducts(
+											CosmeticsProducts
+										);
+									}}
 								>
-									LL Cosmetics
-								</label>
+									<label
+										id="cartlabel"
+										htmlFor="my-drawer"
+										className="drawer-button w-fit bg-transparent text-3xl bodoni border-none"
+									>
+										LL Cosmetics
+									</label>
+								</NavLink>
 							</li>
 						</ul>
 					</div>
@@ -134,6 +176,7 @@ export function Navbar(props) {
 									id="cartlabel"
 									htmlFor="my-drawer"
 									className="drawer-button w-fit bg-transparent border-none"
+									onClick={() => navigate("/search")}
 								>
 									<IconSearch className="w-12 h-12" />
 								</label>

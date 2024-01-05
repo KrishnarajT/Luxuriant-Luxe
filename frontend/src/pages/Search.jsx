@@ -4,6 +4,7 @@ import { useParams, useLocation, useNavigate } from "react-router-dom";
 import { CartContext } from "../context/CartContext";
 import { EcommerceCard } from "../components/ui/EcommerceCard";
 import Footer from "../components/ui/Footer";
+import { IconSearch } from "@tabler/icons-react";
 
 // product info is a list of objects like these.
 // 	{
@@ -44,67 +45,62 @@ import Footer from "../components/ui/Footer";
 //     "points_awarded": 500
 // }
 
-const SubCategory = () => {
+const Search = () => {
 	const navigate = useNavigate();
-	const { removeDuplicates } = React.useContext(CartContext);
-	const location = useLocation();
-	const [currentSubCategoryProducts, setCurrentSubCategoryProducts] =
-		React.useState(undefined);
-	const sub_category_id = useParams();
+	const { productInfo } = React.useContext(CartContext);
+	const [searchTerm, setSearchTerm] = React.useState("");
 	useEffect(() => {
-		// console.log("Product Details", currentSubCategoryProducts);
-		// scroll to top on load
-		window.scrollTo(0, 0);
-		// removeDuplicates();
-		let category_products = location.state.currentSubCategoryProducts;
-		let sub_category_products = [];
-		let current_category_id = location.state.current_category_id;
-		let current_sub_category_id = location.state.current_sub_category_id;
-		for (let i = 0; i < category_products.length; i++) {
-			// filter category matching id
-			if (category_products[i]._id === current_category_id) {
-				// filter sub category matching id
-				for (
-					let j = 0;
-					j < category_products[i].sub_categories.length;
-					j++
-				) {
-					if (
-						category_products[i].sub_categories[j]._id ===
-						current_sub_category_id
-					) {
-						sub_category_products =
-							category_products[i].sub_categories[j].products;
-						break;
-					}
-				}
-				break;
-			}
-		}
-		setCurrentSubCategoryProducts(
-			location.state.currentSubCategoryProducts
-		);
-		console.log(location.state);
-		console.log(location.state.currentSubCategoryProducts);
-	}, [currentSubCategoryProducts]);
+		console.log(productInfo);
+	}, []);
 
-	// Use the 'type' parameter and 'location.state' in your component logic
+	function filterProducts() {
+		const filteredProducts = productInfo.filter((product) => {
+			return product.product_name
+				.toLowerCase()
+				.includes(searchTerm.toLowerCase());
+		});
+		return filteredProducts;
+	}
 
 	return (
 		<div>
+			{/* search box */}
+			<div>
+				<div className="flex flex-col items-center justify-center">
+					<div className="relative text-gray-600">
+						<input
+							type="search"
+							name="serch"
+							value={searchTerm}
+							onChange={(event) =>
+								setSearchTerm(event.target.value)
+							}
+							placeholder="Search"
+							className="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none"
+						/>
+						<button
+							type="submit"
+							className="absolute right-0 top-0 mt-3 mr-4"
+						>
+							<IconSearch className="w-6 h-6" />
+						</button>
+					</div>
+				</div>
+			</div>
+
 			<section
 				className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
 				md:text-4xl"
 				id="intro"
 			>
-				PRODUCTS
+				Search Results
 			</section>
 
 			{/* section of cards that have all products */}
 			<section className="flex justify-center p-16">
 				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-5 justify-items-start">
-					{currentSubCategoryProducts &&
-						currentSubCategoryProducts.map((product) => {
+					{productInfo &&
+						filterProducts().map((product) => {
 							return (
 								<EcommerceCard
 									color="bg-base-200"
@@ -135,4 +131,4 @@ const SubCategory = () => {
 	);
 };
 
-export default SubCategory;
+export default Search;

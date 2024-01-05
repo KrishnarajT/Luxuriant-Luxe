@@ -32,6 +32,7 @@ import ReturnRefundPolicy from "./pages/ReturnRefundPolicy";
 import ShippingPolicy from "./pages/ShippingPolicy";
 import OurGoal from "./pages/OurGoal";
 import PPolcy from "./pages/PPolcy";
+import Search from "./pages/Search";
 function App() {
 	const [isNavbarPresent, setisNavbarPresent] = useState(true);
 
@@ -54,7 +55,7 @@ function App() {
 						<Route path="/checkout" element={<Checkout />} />
 						<Route path="/category/:type" element={<Category />} />
 						<Route path="/product/:id" element={<Product />} />
-						<Route path="/sub_category" element={<SubCategory />} />
+						<Route path="/sub_category/:sub_category_id" element={<SubCategory />} />
 						<Route path="/faq" element={<FAQ />} />
 						<Route path="/contact" element={<Contact />} />
 						<Route path="/privacy_policy" element={<PPolcy />} />
@@ -71,6 +72,7 @@ function App() {
 							element={<ShippingPolicy />}
 						/>
 						<Route path="/our_goal" element={<OurGoal />} />
+						<Route path="/search" element={<Search />} />
 					</Routes>
 				</div>
 			</CartContextProvider>

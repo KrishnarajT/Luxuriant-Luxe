@@ -85,9 +85,7 @@ const Category = () => {
 					<div>
 						<img
 							src={
-								isValidHttpUrl(
-									currentCategory.category_image
-								)
+								isValidHttpUrl(currentCategory.category_image)
 									? currentCategory.category_image
 									: "path/to/default/image.jpg"
 							}
@@ -133,11 +131,15 @@ const Category = () => {
 														className="btn btn-primary"
 														onClick={() => {
 															navigate(
-																`/sub_category`,
+																`/sub_category/${sub_category.sub_category_id}`,
 																{
 																	state: {
 																		currentSubCategoryProducts:
 																			currentCategoryProducts,
+																		current_category_id:
+																			currentCategory.category_id,
+																		current_sub_category_id:
+																			sub_category.sub_category_id,
 																	},
 																}
 															);

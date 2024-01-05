@@ -4030,6 +4030,10 @@ details.collapse summary::-webkit-details-marker {
   margin-top: 1px;
 }
 
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
 .box-border {
   box-sizing: border-box;
 }
@@ -5663,6 +5667,10 @@ details.collapse summary::-webkit-details-marker {
   background-repeat: no-repeat;
 }
 
+.fill-current {
+  fill: currentColor;
+}
+
 .stroke-current {
   stroke: currentColor;
 }
@@ -5820,6 +5828,11 @@ details.collapse summary::-webkit-details-marker {
   padding-bottom: 1rem;
 }
 
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 .\!pr-7 {
   padding-right: 1.75rem !important;
 }
@@ -5878,6 +5891,10 @@ details.collapse summary::-webkit-details-marker {
 
 .pt-px {
   padding-top: 1px;
+}
+
+.pr-10 {
+  padding-right: 2.5rem;
 }
 
 .text-left {
@@ -6393,6 +6410,11 @@ details.collapse summary::-webkit-details-marker {
 .text-yellow-900 {
   --tw-text-opacity: 1;
   color: rgb(245 127 23 / var(--tw-text-opacity));
+}
+
+.text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(117 117 117 / var(--tw-text-opacity));
 }
 
 .underline {
