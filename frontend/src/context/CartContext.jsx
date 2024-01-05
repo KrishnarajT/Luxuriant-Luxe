@@ -20,96 +20,122 @@ const CartContextProvider = ({ children }) => {
 	const [beforeCheckoutProduct, setBeforeCheckoutProduct] = useState([]);
 	const [categories, setCategories] = useState([]);
 
-	// product info is a list of objects like these.
-	// 	{
-	//     "_id": "654cd992ae6a271afeed6b4e",
-	//     "product_name": "Product Name 2",
-	//     "product_cost": 100,
-	//     "product_image_links": {
-	//         "description_images": [
-	//             "https://i.imgur.com/CXToepvh.pnghttps://i.imgur.com/9fCsEDah.png",
-	//             "https://i.imgur.com/Y0axnEdh.png",
-	//             "https://i.imgur.com/h9ro4hNh.png",
-	//             "https://i.imgur.com/ZrHcLSBh.png",
-	//             "https://i.imgur.com/HGtISq0h.png",
-	//             "https://i.imgur.com/jxbpxRgh.png",
-	//             "https://i.imgur.com/UcwrTi6h.png",
-	//             "https://i.imgur.com/kpXJbXhh.png",
-	//             "https://i.imgur.com/E5NqNVRh.png"
-	//         ],
-	//         "real_results_images": [
-	//             "image1",
-	//             "image2"
-	//         ],
-	//         "how_to_use_images": [
-	//             "image1",
-	//             "image2"
-	//         ]
-	//     },
-	//     "product_category":
-	// [
-	// 	"hair",
-	// 	"asdfaasd",
-	// 	"asdf",
-	// 	"asdfasd",
-	// 	{
-	// 		_id: "659426913d6d0c66098a62fe",
-	// 		category_image: "some image",
-	// 		category_description: "category_description",
-	// 		sub_categories: [
-	// 			{
-	// 				sub_category_id: "68ecb1f5-16e4-4f9c-ac7d-08d0b7753761",
-	// 				sub_category_name: "asdf",
-	// 				sub_category_image: "asdf",
-	// 			},
-	// 		],
-	// 		category_name: "hair",
-	// 	},
-	// 	{
-	// 		_id: "6596d0118507d2288ac82287",
-	// 		category_name: "skin",
-	// 		category_description: "skin products",
-	// 		category_image: "some image",
-	// 		sub_categories: [
-	// 			{
-	// 				sub_category_id: "db500377-64c0-4106-ac6b-3439586334ca",
-	// 				sub_category_name: "qwer",
-	// 				sub_category_image: "qwer",
-	// 			},
-	// 		],
-	// 	},
-	// 	{
-	// 		_id: "6596d01b8507d2288ac82288",
-	// 		category_name: "cosmetics",
-	// 		category_description: "cosmetics products",
-	// 		sub_categories: [
-	// 			{
-	// 				sub_category_id: "6cea4d8e-980b-489e-803a-c87f66c9ca80",
-	// 				sub_category_name: "fghjfghj",
-	// 				sub_category_image: "fghj",
-	// 			},
-	// 		],
-	// 	},
-	// 	{
-	// 		_id: "6596d0398507d2288ac82289",
-	// 		category_name: "essentials",
-	// 		category_description: "essentials products",
-	// 		sub_categories: [],
-	// 	},
-	// 	{
-	// 		_id: "6596d04f8507d2288ac8228b",
-	// 		category_name: "holiday",
-	// 		category_description: "holiday products",
-	// 		sub_categories: [],
-	// 	},
-	// ];
-	//     "product_quantity": 100,
+	// Product looks like this
+	// {
+	//     "_id": "6595006375792d7d0086f66e",
+	//     "product_name": "reviewtest",
 	//     "product_description": {
-	//         "product_description": "this is pink jar",
-	//         "real_results_description": "real results are so and so",
-	//         "how_to_use_description": "how to use the product. "
+	//         "product_description": "",
+	//         "real_results_description": "",
+	//         "how_to_use_description": ""
 	//     },
-	//     "points_awarded": 500
+	//     "product_cost": 0,
+	//     "product_image_links": {
+	//         "description_images": [],
+	//         "real_results_images": [],
+	//         "how_to_use_images": []
+	//     },
+	//     "product_category": [
+	//         "hair",
+	//         "asdfaasd",
+	//         "asdf",
+	//         "asdfasd"
+	//     ],
+	//     "product_quantity": 0,
+	//     "points_awarded": 0,
+	//     "shades_present": false,
+	//     "volumes_present": false,
+	//     "product_shades": [
+	//         {
+	//             "shade_index": 0,
+	//             "shade_name": "",
+	//             "shade_image": "",
+	//             "shade_number": 0,
+	//             "shade_color": ""
+	//         },
+	//         {
+	//             "shade_index": 1,
+	//             "shade_name": "",
+	//             "shade_image": "",
+	//             "shade_number": 0,
+	//             "shade_color": ""
+	//         },
+	//         {
+	//             "shade_index": 2,
+	//             "shade_name": "",
+	//             "shade_image": "",
+	//             "shade_number": 0,
+	//             "shade_color": ""
+	//         },
+	//         {
+	//             "shade_index": 3,
+	//             "shade_name": "",
+	//             "shade_image": "",
+	//             "shade_number": 0,
+	//             "shade_color": ""
+	//         },
+	//         {
+	//             "shade_index": 4,
+	//             "shade_name": "",
+	//             "shade_image": "",
+	//             "shade_number": 0,
+	//             "shade_color": ""
+	//         },
+	//         {
+	//             "shade_index": 5,
+	//             "shade_name": "",
+	//             "shade_image": "",
+	//             "shade_number": 0,
+	//             "shade_color": ""
+	//         },
+	//         {
+	//             "shade_index": 6,
+	//             "shade_name": "",
+	//             "shade_image": "",
+	//             "shade_number": 0,
+	//             "shade_color": ""
+	//         }
+	//     ],
+	//     "product_volumess": [
+	//         {
+	//             "volume_index": 0,
+	//             "volume": 0,
+	//             "volume_cost": 0
+	//         },
+	//         {
+	//             "volume_index": 1,
+	//             "volume": 0,
+	//             "volume_cost": 0
+	//         },
+	//         {
+	//             "volume_index": 2,
+	//             "volume": 0,
+	//             "volume_cost": 0
+	//         },
+	//         {
+	//             "volume_index": 3,
+	//             "volume": 0,
+	//             "volume_cost": 0
+	//         }
+	//     ],
+	//     "product_reviews": [
+	//         {
+	//             "review": "this is a good product",
+	//             "rating": "3",
+	//             "username": "aweradf",
+	//             "review_date": "2024-01-24",
+	//             "_id": "92082344-c831-4bb8-b02a-8037f094350d",
+	//             "visible": true
+	//         },
+	//         {
+	//             "review": "",
+	//             "rating": 0,
+	//             "username": "",
+	//             "review_date": "1/3/2024",
+	//             "_id": "5413770c-1d16-4ab4-b450-87c90e1e7070"
+	//         }
+	//     ],
+	//     "product_ingredients": "somthing, something else, something again. "
 	// }
 
 	const segregateProducts = async (data) => {
@@ -348,75 +374,60 @@ const CartContextProvider = ({ children }) => {
 		// removeDuplicates();
 	}, []);
 
-	const addToCart = (item) => {
-		// item has the following structure:
-		// {
-		//     _id: 1,
-		//     cost: 100,
-		//     quantity: 1,
-		// }
-		// check if the item is already in the cart
-		// card is a list
-		// item is a dictionary
-		// if (cart.length === 0) {
-		// 	// if the cart is empty, add the item to the cart
-		// 	cart.push(item);
-		// } else {
-		// 	// if the cart is not empty, check if the item is in the cart
-		// 	let found = false;
-		// 	for (let i = 0; i < cart.length; i++) {
-		// 		if (cart[i]._id === item._id) {
-		// 			// if the item is in the cart, increase the quantity
-		// 			cart[i].quantity += 1;
-		// 			found = true;
-		// 			break;
-		// 		}
-		// 	}
-		// 	if (!found) {
-		// 		// if the item is not in the cart, add the item to the cart
-		// 		cart.push(item);
-		// 	}
-		// }
-		// setCart(cart);
-		// // set the cart in the local storage
-		// localStorage.setItem("cart", JSON.stringify(cart));
-	};
-
-	const removeFromCart = (item) => {
-		// item has the following structure:
-		// {
-		//     id: 1,
-		//     name: "Product 1",
-		//     price: 100,
-		//     quantity: 1,
-		// }
-
-		// check if the item is already in the cart
-		// card is a list
-		// item is a dictionary
-
+	const addToCart = (item_id) => {
+		// get the item from the productInfo
+		let item = {};
+		for (let i = 0; i < productInfo.length; i++) {
+			if (productInfo[i]._id === item_id) {
+				item = productInfo[i];
+				break;
+			}
+		}
+		// check if item is already in cart
 		if (cart.length === 0) {
-			return;
-			// if the cart is empty, do nothing
+			// if the cart is empty, add the item to the cart
+			item.product_quantity = 1;
+			cart.push(item);
 		} else {
 			// if the cart is not empty, check if the item is in the cart
 			let found = false;
 			for (let i = 0; i < cart.length; i++) {
 				if (cart[i]._id === item._id) {
-					// if the item is in the cart, decrease the quantity
-					cart[i].quantity -= 1;
-					if (cart[i].quantity === 0) {
-						// if the quantity is 0, remove the item from the cart
-						cart.splice(i, 1);
-					}
+					// if the item is in the cart, increase the quantity
+					cart[i].product_quantity += 1;
 					found = true;
 					break;
 				}
 			}
 			if (!found) {
-				// if the item is not in the cart, do nothing
+				// if the item is not in the cart, add it to the cart
+				item.product_quantity = 1;
+				cart.push(item);
 			}
 		}
+
+		// set the cart in the local storage
+		localStorage.setItem("cart", JSON.stringify(cart));
+		setCart(cart);
+	};
+
+	const removeFromCart = (item_id) => {
+		let item = {};
+		for (let i = 0; i < productInfo.length; i++) {
+			if (productInfo[i]._id === item_id) {
+				item = productInfo[i];
+				break;
+			}
+		}
+		// check if the item is in the cart
+		for (let i = 0; i < cart.length; i++) {
+			if (cart[i]._id === item._id) {
+				// if the item is in the cart, remove it from the cart
+				cart.splice(i, 1);
+				break;
+			}
+		}
+		// set the cart in the local storage
 		setCart(cart);
 		// set the cart in the local storage
 		localStorage.setItem("cart", JSON.stringify(cart));
@@ -433,17 +444,22 @@ const CartContextProvider = ({ children }) => {
 	const getCartTotal = () => {
 		let total = 0;
 		for (let i = 0; i < cart.length; i++) {
-			total += cart[i].cost * cart[i].quantity;
+			total += cart[i].product_quantity * cart[i].product_cost;
 		}
-		return total;
 	};
 
 	const IncreaseProductQuantity = (_id) => {
+		let product_exists = false;
 		for (let i = 0; i < cart.length; i++) {
 			if (cart[i]._id === _id) {
 				cart[i].quantity += 1;
+				product_exists = true;
 				break;
 			}
+		}
+		// if product is not there, add it
+		if (!product_exists) {
+			addToCart(_id);
 		}
 		// set the cart in the local storage
 		localStorage.setItem("cart", JSON.stringify(cart));

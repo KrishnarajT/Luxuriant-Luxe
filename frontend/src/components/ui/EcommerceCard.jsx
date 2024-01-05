@@ -8,7 +8,7 @@ import {
 } from "@material-tailwind/react";
 import React from "react";
 import { CartContext } from "../../context/CartContext";
-import { toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 // Products is a list of such objects.
 // {
@@ -54,9 +54,9 @@ export function EcommerceCard(props) {
 	return (
 		<Card
 			className={`w-80 m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
-			onClick={() => {
-				navigate(`/product/${props.id}`);
-			}}
+			// onClick={() => {
+			// 	navigate(`/product/${props.id}`);
+			// }}
 		>
 			<CardHeader
 				shadow={true}
@@ -96,6 +96,9 @@ export function EcommerceCard(props) {
 					className={`${props.cart_color} ${props.cart_text} shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100 text-xl`}
 					onClick={() => {
 						addToCart(props.id);
+						// show side cart
+						document.getElementById("my-drawer").checked = true;
+
 						// toast
 						toast.success("Added to cart", {
 							duration: 4000,

@@ -25,6 +25,13 @@ import Product from "./pages/Product";
 import { Toaster } from "react-hot-toast";
 import SideCart from "./pages/SideCart";
 import SubCategory from "./pages/SubCategory";
+import FAQ from "./pages/FAQ";
+import Contact from "./pages/Contact";
+import TermsConditions from "./pages/TermsConditions";
+import ReturnRefundPolicy from "./pages/ReturnRefundPolicy";
+import ShippingPolicy from "./pages/ShippingPolicy";
+import OurGoal from "./pages/OurGoal";
+import PPolcy from "./pages/PPolcy";
 function App() {
 	const [isNavbarPresent, setisNavbarPresent] = useState(true);
 
@@ -48,6 +55,22 @@ function App() {
 						<Route path="/category/:type" element={<Category />} />
 						<Route path="/product/:id" element={<Product />} />
 						<Route path="/sub_category" element={<SubCategory />} />
+						<Route path="/faq" element={<FAQ />} />
+						<Route path="/contact" element={<Contact />} />
+						<Route path="/privacy_policy" element={<PPolcy />} />
+						<Route
+							path="/terms_conditions"
+							element={<TermsConditions />}
+						/>
+						<Route
+							path="/refund_return_policy"
+							element={<ReturnRefundPolicy />}
+						/>
+						<Route
+							path="/shipping_policy"
+							element={<ShippingPolicy />}
+						/>
+						<Route path="/our_goal" element={<OurGoal />} />
 					</Routes>
 				</div>
 			</CartContextProvider>

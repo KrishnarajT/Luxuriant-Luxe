@@ -16,7 +16,11 @@ const Cart = () => {
 	const [currentCustomerPoints, setCurrentCustomerPoints] = useState(0);
 	const [currentCustomerOrderCost, setCurrentCustomerOrderCost] = useState(0);
 	const [randomImageToDisplayTop, setRandomImageToDisplayTop] = useState(0);
-	const [cart, setCart] = useState(undefined);
+	const [counter, setCounter] = useState(0);
+	console.log("hi");
+	const [Cart, setCart] = useState([]);
+	let [drawer_check_button_checked, setDrawerCheckButtonChecked] =
+		React.useState(undefined);
 	let {
 		addToCart,
 		removeFromCart,
@@ -29,26 +33,51 @@ const Cart = () => {
 		EssentialsProducts,
 		beforeCheckoutProduct,
 		getCart,
+		cart,
 	} = React.useContext(CartContext);
 
-	// get cart from context
 	useEffect(() => {
-		setCart(getCart());
-	}, []);
+		let drawer_check_element = document.getElementById("my-drawer");
+		setDrawerCheckButtonChecked(drawer_check_element);
+	}, [drawer_check_button_checked]);
+
+	useEffect(() => {
+		// set interval to check if the drawer is open or not
+		// if the drawer is open, then check if the cart is empty or not
+		let interval = setInterval(() => {
+			if (drawer_check_button_checked === undefined) {
+				let drawer_check_element = document.getElementById("my-drawer");
+				setDrawerCheckButtonChecked(drawer_check_element);
+				setCounter((counter) => counter + 1);
+			} else if (drawer_check_button_checked.checked) {
+				setCart(cart);
+				console.log("checked", cart);
+				setCounter((counter) => counter + 1);
+			} else {
+				console.log("not checked", cart);
+			}
+		}, 1000);
+		return () => {
+			clearInterval(interval);
+		};
+	}, [counter]);
 
 	useEffect(() => {
 		console.log(beforeCheckoutProduct);
 	}, [beforeCheckoutProduct]);
 
 	useEffect(() => {
-		if (cart) {
-			console.log(cart);
+		if (Cart) {
+			console.log(Cart);
 			// calculate random image to display
 			// set random image to the first image of the first product in the cart
 			// if the cart is empty, or the image is empty, then set the image to a random image
-			if (cart.length > 0 && cart[0].images.length > 0) {
+			if (
+				Cart.length > 0 &&
+				Cart[0].product_image_links.description_images.length > 0
+			) {
 				setRandomImageToDisplayTop(
-					cart[0].product_image_links.description_images[0]
+					Cart[0].product_image_links.description_images[0]
 				);
 			} else {
 				setRandomImageToDisplayTop(random_image_link);
@@ -59,7 +88,7 @@ const Cart = () => {
 	}, [getCart()]);
 	return (
 		<div>
-			<Toaster />
+			{/* <Toaster /> */}
 			<div className="flex justify-center uppercase ml-4">
 				<div className="text-4xl bodoni font-semibold">Cart</div>
 			</div>
@@ -71,7 +100,7 @@ const Cart = () => {
 				/>
 			</div>
 			{/* Products */}
-			{cart !== undefined
+			{cart.length !== 0
 				? cart.map((product) => {
 						return (
 							<div className="flex justify-between">
@@ -86,22 +115,23 @@ const Cart = () => {
 								</div>
 								<div className="flex justify-center">
 									<div className="text-2xl ptsans">
-										{product.name}
+										{product.product_name}
 									</div>
 								</div>
 								<div className="flex justify-center">
 									<div className="text-2xl ptsans">
-										{product.quantity}
+										{product.product_quantity}
 									</div>
 								</div>
 								<div className="flex justify-center">
 									<div className="text-2xl ptsans">
-										{product.price}
+										{product.product_cost}
 									</div>
 								</div>
 								<div className="flex justify-center">
 									<div className="text-2xl ptsans">
-										{product.price * product.quantity}
+										{product.product_cost *
+											product.product_quantity}
 									</div>
 								</div>
 								<div className="flex flex-row gap-3 items-center my-2">
@@ -133,7 +163,8 @@ const Cart = () => {
 
 									{/* Add to cart button with cost */}
 									<button className="btn btn-md btn-primary text-xl">
-										Add to Cart ₹{selectedProductCost}
+										Add to Cart
+										{/* ₹{selectedProductCost} */}
 									</button>
 								</div>
 							</div>

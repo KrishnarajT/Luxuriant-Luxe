@@ -9,6 +9,7 @@ import {
 } from "@tabler/icons-react";
 import ScrollToTopButton from "./ScrollToTopButton";
 import { Toaster, toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
 	const [customerEmail, setCustomerEmail] = React.useState("");
@@ -18,7 +19,7 @@ const Footer = () => {
 	const [wantsSubscription, setWantsSubscription] = React.useState(false);
 	const [change, setChange] = React.useState(0);
 	const [currentCustomerPoints, setCurrentCustomerPoints] = React.useState(0);
-
+	const navigate = useNavigate();
 	const addCustomer = async () => {
 		// make sure email is not empty:
 		if (customerEmail === "") {
@@ -76,11 +77,101 @@ const Footer = () => {
 					Your Skin Our Priority
 				</p>
 				<p>Copyright © 2023 - All right reserved</p>
-				<div className="flex gap-4">
-					<a className="link">Privacy Policy</a>
-					<a className="link">Terms and Conditions</a>
-					<a className="link">Refund and Return Policy</a>
-					<a className="link">Shipping Policy</a>
+				<div className="flex gap-20">
+					<div className="flex gap-4 flex-col">
+						<div className="text-2xl">Support</div>
+						<a
+							className="link"
+							onClick={() => {
+								navigate("/faq");
+							}}
+						>
+							FAQ
+						</a>
+						<a
+							className="link"
+							onClick={
+							
+								() => {
+									navigate("/contact");
+								}
+							}
+						>
+							Contact
+						</a>
+					</div>
+					<div className="flex gap-4 flex-col">
+						<div className="text-2xl">About Us</div>
+						<a
+							className="link"
+							onClick={
+							
+								() => {
+									navigate("/about");
+								}
+							}
+						>
+							About LL
+						</a>
+						<a
+							className="link"
+							onClick={
+							
+								() => {
+									navigate("/our_goal");
+								}
+							}
+						>
+							Our Goal
+						</a>
+					</div>
+					<div className="flex gap-4 flex-col">
+						<div className="text-2xl">Legal</div>
+						<a
+							className="link"
+							onClick={
+							
+								() => {
+									navigate("/privacy_policy");
+								}
+							}
+						>
+							Privacy Policy
+						</a>
+						<a
+							className="link"
+							onClick={
+							
+								() => {
+									navigate("/terms_conditions");
+								}
+							}
+						>
+							Terms and Conditions
+						</a>
+						<a
+							className="link"
+							onClick={
+							
+								() => {
+									navigate("/refund_return_policy");
+								}
+							}
+						>
+							Refund and Return Policy
+						</a>
+						<a
+							className="link"
+							onClick={
+							
+								() => {
+									navigate("/shipping_policy");
+								}
+							}
+						>
+							Shipping Policy
+						</a>
+					</div>
 				</div>
 				<div>
 					<div className="form-control">
@@ -131,7 +222,7 @@ const Footer = () => {
 					</a>
 					<a
 						onClick={
-							// open mail client
+						
 							() => {
 								window.location.href =
 									"mailto:luxeluxuriant@gmail.com";

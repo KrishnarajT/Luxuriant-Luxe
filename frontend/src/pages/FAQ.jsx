@@ -1,98 +1,71 @@
 import React from "react";
+import { useEffect } from "react";
+import { BaseUrlContext } from "../context/BaseUrlContext";
+import axios from "axios";
+import Footer from "../components/ui/Footer";
 
 const FAQ = () => {
+	const [faqs, setFaqs] = React.useState([]);
+	const base_url = React.useContext(BaseUrlContext).baseUrl;
+	const fetchFAQsFromServer = async () => {
+		await axios
+			.post(`${base_url}/api/v1/Luxuriant/get_faqs`, {
+				headers: {
+					"Content-Type": "application/json",
+				},
+			})
+			.then((response) => {
+				// console.log(response);
+				if (response.data.message === "Success") {
+					const data = response.data.faqs;
+					// console.log(data);
+					setFaqs(data);
+				} else if (response.data.message === "No faqs found") {
+					setFaqs([]);
+				}
+				return response;
+			})
+			.catch((error) => {
+				console.error(error);
+			});
+	};
+
+	useEffect(() => {
+		async function fetchstuff() {
+			await fetchFAQsFromServer();
+		}
+		fetchstuff();
+	}, []);
+
 	return (
-		<div className="flex flex-col gap-4 w-full items-center justify-center">
+		<div className="flex flex-col gap-4 w-full items-center justify-center min-h-screen">
 			<section
 				className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
 				md:text-6xl  my-12"
 				id="intro"
 			>
-				FAQ
+				FAQs
 			</section>
-			<div className="md: w-3/4">
-				<div className="collapse bg-base-200 my-5">
-					<input type="radio" name="my-accordion-1" />
-					<div className="collapse-title text-2xl font-medium">
-						Are Luxuriant Luxe Products Safe For Breastfeeding and
-						Pregnant Moms?
-					</div>
-					<div className="collapse-content text-xl">
-						<p>Yes</p>
-					</div>
-				</div>
-				<div className="collapse bg-base-200 my-5">
-					<input type="radio" name="my-accordion-1" />
-					<div className="collapse-title text-2xl font-medium">
-						Are Luxuriant Luxe Products suitable for Sensitive Skin?
-					</div>
-					<div className="collapse-content text-xl">
-						<p>Yes</p>
-					</div>
-				</div>
-				<div className="collapse bg-base-200 my-5">
-					<input type="radio" name="my-accordion-1" />
-					<div className="collapse-title text-2xl font-medium">
-						Do Gloss Colors go well with Indian Skin Tones?
-					</div>
-					<div className="collapse-content text-xl">
-						<p>Yes</p>
-					</div>
-				</div>
-
-				<div className="collapse bg-base-200 my-5">
-					<input type="radio" name="my-accordion-1" />
-					<div className="collapse-title text-2xl font-medium">
-						In how many days will I receive my order?
-					</div>
-					<div className="collapse-content text-xl">
-						<p>
-							You should receieve the order within 2 to 3 days of
-							placing it. You will get a confirmation mail within
-							a day of making your payment.{" "}
-						</p>
-					</div>
-				</div>
-
-				<div className="collapse bg-base-200 my-5">
-					<input type="radio" name="my-accordion-1" />
-					<div className="collapse-title text-2xl font-medium">
-						What will happen if the product arrives damaged?
-					</div>
-					<div className="collapse-content text-xl">
-						<p>
-							You can send us verification of the damaged product
-							by connecting with us in our social media, and you
-							will receive a new product by us within the next few
-							days.{" "}
-						</p>
-					</div>
-				</div>
-
-				<div className="collapse bg-base-200 my-5">
-					<input type="radio" name="my-accordion-1" />
-					<div className="collapse-title text-2xl font-medium">
-						What is the process of getting a Refund?
-					</div>
-					<div className="collapse-content text-xl">
-						<p>
-							Connect to us via any of our social Media, and we
-							will provide you with a refund provided valid
-							considerations.{" "}
-						</p>
-					</div>
-				</div>
-
-				<div className="collapse bg-base-200 my-5">
-					<input type="radio" name="my-accordion-1" />
-					<div className="collapse-title text-2xl font-medium">
-						What support can we get as a Luxuriant Luxe Member?
-					</div>
-					<div className="collapse-content text-xl">
-						<p></p>
-					</div>
-				</div>
+			<div className="w-3/4 flex flex-col gap-4">
+				{faqs.length !== 0 ? (
+					faqs.map((faq) => {
+						return (
+							<div className="collapse bg-base-200">
+								<input type="radio" name="my-accordion-1" />
+								<div className="collapse-title text-2xl font-medium">
+									{faq.question}
+								</div>
+								<div className="collapse-content text-xl">
+									<p>{faq.answer}</p>
+								</div>
+							</div>
+						);
+					})
+				) : (
+					<div className="text-2xl">No FAQs Found</div>
+				)}
 			</div>
+			<Footer />
 		</div>
 	);
 };
