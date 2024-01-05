@@ -62,145 +62,143 @@ const Footer = () => {
 	};
 
 	return (
-		<footer className="footer footer-center p-10 bg-secondary bottom-0 text-secondary-content">
+		<footer
+			className="footer footer-center p-10 bg-transparent bottom-0 text-secondary-content mt-20"
+			id="footer"
+		>
 			<Toaster />
 			<aside>
-				<div
-					id="luxelogo"
-					className="w-20 h-20 bg-center snap-center self-center text-secondary-content"
-				></div>
 				<p className="dancing text-3xl text-secondary-content">
-					<span className="text-2xl cardo text-secondary-content">
+					<span className="text-8xl bodoni text-secondary-content uppercase font-thin">
 						Luxuriant Luxe
 					</span>
 					<br />
-					Your Skin Our Priority
+					{/* Your Skin Our Priority */}
 				</p>
-				<p>Copyright © 2023 - All right reserved</p>
-				<div className="flex gap-20">
-					<div className="flex gap-4 flex-col">
-						<div className="text-2xl">Support</div>
-						<a
-							className="link"
+			</aside>
+
+			<div className="flex gap-20 w-2/3 justify-around h-full">
+				<div className="flex gap-4 flex-col items-center justify-start h-full">
+					<div className="text-2xl uppercase underline font-bold">
+						Support
+					</div>
+					<a
+						className="link text-xl no-underline hover:underline"
+						onClick={() => {
+							navigate("/faq");
+						}}
+					>
+						FAQ
+					</a>
+					<a
+						className="link text-xl no-underline hover:underline"
+						onClick={() => {
+							navigate("/contact");
+						}}
+					>
+						Contact
+					</a>
+				</div>
+				<div className="flex gap-4 flex-col items-center justify-start h-full">
+					<div className="text-2xl uppercase underline font-bold">
+						About Us
+					</div>
+					<a
+						className="link text-xl no-underline hover:underline"
+						onClick={() => {
+							navigate("/about");
+						}}
+					>
+						About LL
+					</a>
+					<a
+						className="link text-xl no-underline hover:underline"
+						onClick={() => {
+							navigate("/our_goal");
+						}}
+					>
+						Our Goal
+					</a>
+				</div>
+				<div className="flex gap-4 flex-col items-center justify-start h-full">
+					<div className="text-2xl uppercase underline font-bold">
+						Legal
+					</div>
+					<a
+						className="link text-xl no-underline hover:underline"
+						onClick={() => {
+							navigate("/privacy_policy");
+						}}
+					>
+						Privacy Policy
+					</a>
+					<a
+						className="link text-xl no-underline hover:underline"
+						onClick={() => {
+							navigate("/terms_conditions");
+						}}
+					>
+						Terms and Conditions
+					</a>
+					<a
+						className="link text-xl no-underline hover:underline"
+						onClick={() => {
+							navigate("/refund_return_policy");
+						}}
+					>
+						Refund and Return Policy
+					</a>
+					<a
+						className="link text-xl no-underline hover:underline"
+						onClick={() => {
+							navigate("/shipping_policy");
+						}}
+					>
+						Shipping Policy
+					</a>
+				</div>
+			</div>
+			<div className="w-full">
+				<div className="form-control">
+					<label className="label">
+						<span className="label-text underline uppercase text-2xl ptsans">
+							Sign up for Updates
+						</span>
+					</label>
+					<div className="relative">
+						<input
+							type="text"
+							placeholder="email"
+							className="w-96 pr-16 input input-primary input-bordered"
+							onChange={(e) => {
+								setCustomerEmail(e.target.value);
+							}}
+						/>
+						<button
+							className="absolute top-0 right-0 rounded-l-none btn btn-primary"
 							onClick={() => {
-								navigate("/faq");
+								addCustomer();
 							}}
 						>
-							FAQ
-						</a>
-						<a
-							className="link"
-							onClick={
-							
-								() => {
-									navigate("/contact");
-								}
-							}
-						>
-							Contact
-						</a>
-					</div>
-					<div className="flex gap-4 flex-col">
-						<div className="text-2xl">About Us</div>
-						<a
-							className="link"
-							onClick={
-							
-								() => {
-									navigate("/about");
-								}
-							}
-						>
-							About LL
-						</a>
-						<a
-							className="link"
-							onClick={
-							
-								() => {
-									navigate("/our_goal");
-								}
-							}
-						>
-							Our Goal
-						</a>
-					</div>
-					<div className="flex gap-4 flex-col">
-						<div className="text-2xl">Legal</div>
-						<a
-							className="link"
-							onClick={
-							
-								() => {
-									navigate("/privacy_policy");
-								}
-							}
-						>
-							Privacy Policy
-						</a>
-						<a
-							className="link"
-							onClick={
-							
-								() => {
-									navigate("/terms_conditions");
-								}
-							}
-						>
-							Terms and Conditions
-						</a>
-						<a
-							className="link"
-							onClick={
-							
-								() => {
-									navigate("/refund_return_policy");
-								}
-							}
-						>
-							Refund and Return Policy
-						</a>
-						<a
-							className="link"
-							onClick={
-							
-								() => {
-									navigate("/shipping_policy");
-								}
-							}
-						>
-							Shipping Policy
-						</a>
+							Subscribe
+						</button>
 					</div>
 				</div>
-				<div>
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">
-								Subscribe to our newsletter
-							</span>
-						</label>
-						<div className="relative">
-							<input
-								type="text"
-								placeholder="email"
-								className="w-full pr-16 input input-primary input-bordered"
-								onChange={(e) => {
-									setCustomerEmail(e.target.value);
-								}}
-							/>
-							<button
-								className="absolute top-0 right-0 rounded-l-none btn btn-primary"
-								onClick={() => {
-									addCustomer();
-								}}
-							>
-								Subscribe
-							</button>
-						</div>
-					</div>
-				</div>
-			</aside>
+				<p className="text-lg italic">
+					By Signing up, you agree to our
+					<a
+						className="italic text-lg"
+						onClick={
+							// open phone client
+							() => {
+								navigate("/terms_conditions");
+							}
+						}
+					>
+						Terms
+					</a>
+				</p>
+			</div>
 			<nav className="text-secondary-content">
 				<div className="flex flex-wrap justify-center items-center gap-4 w-2/3 lg:w-fit">
 					<a href="https://wa.me/917666018928?text=Welcome%20to%20Luxuriant%20Luxe!%20How%20can%20we%20assist%20you%20today%3F%20">
@@ -221,13 +219,10 @@ const Footer = () => {
 						<IconBrandLinkedin className="w-8 h-8" />
 					</a>
 					<a
-						onClick={
-						
-							() => {
-								window.location.href =
-									"mailto:luxeluxuriant@gmail.com";
-							}
-						}
+						onClick={() => {
+							window.location.href =
+								"mailto:luxeluxuriant@gmail.com";
+						}}
 					>
 						<IconMail className="w-8 h-8" />
 					</a>

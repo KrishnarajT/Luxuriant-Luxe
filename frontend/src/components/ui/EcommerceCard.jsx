@@ -10,6 +10,8 @@ import React from "react";
 import { CartContext } from "../../context/CartContext";
 import { Toaster, toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { IconStarFilled } from "@tabler/icons-react";
+import { useEffect } from "react";
 // Products is a list of such objects.
 // {
 //     "_id": "654cd992ae6a271afeed6b4d",
@@ -49,6 +51,19 @@ import { useNavigate } from "react-router-dom";
 // }
 
 export function EcommerceCard(props) {
+	const [productStars, setProductStars] = React.useState(0);
+
+	useEffect(() => {
+		let sum = 0;
+		let visible_review_count = 0;
+		props.product_reviews.forEach((review) => {
+			if (review.visible) {
+				sum += review.rating;
+				visible_review_count += 1;
+			}
+		});
+		setProductStars(Math.round(sum / visible_review_count));
+	}, [props.product_reviews]);
 	const { addToCart } = React.useContext(CartContext);
 	const navigate = useNavigate();
 	return (
@@ -61,7 +76,7 @@ export function EcommerceCard(props) {
 			<CardHeader
 				shadow={true}
 				floated={false}
-				className="h-60 rounded-none"
+				className="h-72 rounded-none m-0"
 			>
 				<img
 					src={props.image}
@@ -69,25 +84,39 @@ export function EcommerceCard(props) {
 					className="h-full w-full object-cover rounded-none"
 				/>
 			</CardHeader>
-			<CardBody>
-				<div className="mb-2 flex items-center justify-between">
+			<CardBody className="pb-2">
+				<div className="mb-2 text-center">
 					<Typography
 						color="blue-gray"
-						className={`font-medium text-xl ${props.text}`}
+						className={`font-medium uppercase text-2xl text-center self-center ${props.text}`}
 					>
+						LL <br></br>
 						{props.name}
 					</Typography>
+					<div className="flex justify-center p-1 pb-0">
+						<div className="flex">
+							{[1, 2, 3, 4, 5].map((star) => (
+								<IconStarFilled
+									className={`w-10 h-10 ${
+										star <= productStars
+											? "text-yellow-500"
+											: "text-gray-300"
+									}`}
+								/>
+							))}
+						</div>
+					</div>
 					{/* <Typography color="blue-gray" className="font-medium">
 						₹{props.price}
 					</Typography> */}
 				</div>
-				<Typography
+				{/* <Typography
 					variant="small"
 					color="gray"
 					className={`font-normal opacity-75 break-words max-h-10 min-h-10 ${props.text}`}
 				>
 					{props.description.substring(0, 100)}...
-				</Typography>
+				</Typography> */}
 			</CardBody>
 			<CardFooter className="pt-0">
 				<Button

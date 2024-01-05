@@ -66,7 +66,7 @@ export function DisplayCarousal(props) {
 	console.log("products after editing", products);
 	return (
 		<Carousel
-			className="rounded-xl py-2 bg-base-100"
+			className="rounded-xl py-2 bg-transparent"
 			autoplay={true}
 			autoplayDelay={5000}
 			loop={true}
@@ -96,7 +96,7 @@ export function DisplayCarousal(props) {
 			{products.map((product) => {
 				return (
 					<div
-						className={`mx-24 flex flex-row gap-0 bg-pink-100 p-10 ${
+						className={`mx-24 flex flex-row gap-0 bg-transparent p-10 ${
 							product.length < 3
 								? "justify-start"
 								: "justify-center"
@@ -120,6 +120,7 @@ export function DisplayCarousal(props) {
 										.product_description
 								}
 								points={product[0].points_awarded}
+								product_reviews={product[0].product_reviews}
 							/>
 						)}
 						{product[1] && (
@@ -140,6 +141,7 @@ export function DisplayCarousal(props) {
 										.product_description
 								}
 								points={product[1].points_awarded}
+								product_reviews={product[1].product_reviews}
 							/>
 						)}
 
@@ -161,6 +163,7 @@ export function DisplayCarousal(props) {
 										.product_description
 								}
 								points={product[2].points_awarded}
+								product_reviews={product[2].product_reviews}
 							/>
 						)}
 						{product[3] && (
@@ -181,6 +184,7 @@ export function DisplayCarousal(props) {
 										.product_description
 								}
 								points={product[2].points_awarded}
+								product_reviews={product[2].product_reviews}
 							/>
 						)}
 					</div>

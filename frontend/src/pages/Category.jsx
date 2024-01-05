@@ -105,7 +105,7 @@ const Category = () => {
 				md:text-4xl"
 						id="intro"
 					>
-						{currentCategory.category_name.toUpperCase()} PRODUCTS
+						LL {currentCategory.category_name.toUpperCase()}
 					</section>
 
 					{/* section of cards that map to subcategories */}

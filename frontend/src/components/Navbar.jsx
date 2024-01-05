@@ -59,7 +59,7 @@ export function Navbar(props) {
 	return (
 		<div className="z-50">
 			<div
-				className={`navbar bg-base-100 text-base-content flex-row-reverse justify-end h-40 md:flex-row md:h-32`}
+				className={`navbar bg-transparent text-base-content flex-row-reverse justify-end h-40 md:flex-row md:h-32`}
 			>
 				{/* maincontents */}
 				<div className="hidden md:flex text-base-content">
