@@ -130,7 +130,8 @@ import { BaseUrlContext } from "../context/BaseUrlContext";
 
 const Product = () => {
 	const { id } = useParams();
-	const { productInfo } = React.useContext(CartContext);
+	const { productInfo, IncreaseProductQuantity, DecreaseProductQuantity } =
+		React.useContext(CartContext);
 	const base_url = React.useContext(BaseUrlContext).baseUrl;
 
 	const [product, setProduct] = React.useState(undefined);
@@ -464,6 +465,7 @@ const Product = () => {
 									setSelectedProductQuantity(
 										selectedProductQuantity + 1
 									);
+									IncreaseProductQuantity(product._id);
 								}}
 							>
 								<IconPlus />
@@ -583,7 +585,7 @@ const Product = () => {
 								</div>
 							</div>
 						)}
-						<div className="flex flex-col items-end p-8 m-4 mr-10 bg-base-200 rounded-3xl">
+						<div className="flex flex-col items-end p-8 m-4 mr-10 bg-transparent rounded-3xl">
 							<div className="text-5xl ptsans font-bold uppercase">
 								Mystique Behind our admiration
 							</div>
@@ -611,7 +613,7 @@ const Product = () => {
 							</div>
 						)}
 						<div className="flex-1 flex justify-center">
-							<div className=" w-full flex flex-col items-start p-8 m-4 ml-20 bg-base-200 rounded-3xl">
+							<div className=" w-full flex flex-col items-start p-8 m-4 ml-20 bg-transparent rounded-3xl">
 								<div className="text-5xl ptsans font-bold uppercase">
 									Real Results
 								</div>
@@ -640,7 +642,7 @@ const Product = () => {
 							</div>
 						)}
 						<div className="flex-1 flex justify-center">
-							<div className=" w-full flex flex-col items-end p-8 m-4 mr-10 bg-base-200 rounded-3xl">
+							<div className=" w-full flex flex-col items-end p-8 m-4 mr-10 bg-transparent rounded-3xl">
 								<div className="text-5xl ptsans font-bold uppercase">
 									How to Use
 								</div>
@@ -663,12 +665,29 @@ const Product = () => {
 				>
 					Reviews
 				</section>
+				<div className="flex justify-center">
+					<div className="flex flex-row gap-2">
+						{[1, 2, 3, 4, 5].map((star) => (
+							<IconStarFilled
+								className={`w-16 h-16 ${
+									star <= ProductStars
+										? "text-brown-500"
+										: "text-gray-300"
+								}`}
+							/>
+						))}
+					</div>
+
+					<div className="text-2xl ptsans self-center">
+						{product.product_reviews.length} reviews
+					</div>
+				</div>
 
 				{/* Review Cards */}
 				<div className="flex flex-col gap-4 p-4 m-4">
 					{productReviews &&
 						productReviews.map((review) => (
-							<div className="flex flex-col gap-4 p-4 m-4 bg-base-200 rounded-3xl">
+							<div className="flex flex-col gap-4 p-4 m-4 bg-transparent rounded-3xl">
 								<div className="flex flex-row justify-between">
 									<div className="text-2xl ptsans">
 										{review.username}
@@ -691,7 +710,7 @@ const Product = () => {
 
 				{/* Add Review */}
 
-				<div className="flex flex-col gap-4 p-4 m-4 bg-base-200 rounded-3xl">
+				<div className="flex flex-col gap-4 p-4 m-4 bg-transparent rounded-3xl">
 					<div className="flex flex-row justify-between">
 						<div className="text-2xl ptsans">Add Review</div>
 					</div>

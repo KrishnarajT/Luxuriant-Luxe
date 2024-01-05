@@ -112,41 +112,40 @@ const Category = () => {
 							{currentCategory.sub_categories?.map(
 								(sub_category) => {
 									return (
-										<div className="card w-96 bg-base-100 shadow-xl image-full">
+										<div
+											className="card w-96 bg-pink-100 shadow-xl image-full"
+											onClick={() => {
+												navigate(
+													`/sub_category/${sub_category.sub_category_id}`,
+													{
+														state: {
+															currentSubCategoryProducts:
+																currentCategoryProducts,
+															current_category_id:
+																currentCategory.category_id,
+															current_sub_category_id:
+																sub_category.sub_category_id,
+														},
+													}
+												);
+											}}
+										>
 											<figure>
 												<img
 													src={
-														sub_category.sub_category_image
+														sub_category.sub_category_image.includes(
+															"http"
+														)
+															? sub_category.sub_category_image
+															: "https://source.unsplash.com/random"
 													}
 												/>
 											</figure>
 											<div className="card-body">
-												<h2 className="card-title">
+												<div className="card-title text-3xl uppercase text-center flex w-full h-full items-center justify-center">
 													{
 														sub_category.sub_category_name
 													}
-												</h2>
-												<div className="card-actions justify-end">
-													<button
-														className="btn btn-primary"
-														onClick={() => {
-															navigate(
-																`/sub_category/${sub_category.sub_category_id}`,
-																{
-																	state: {
-																		currentSubCategoryProducts:
-																			currentCategoryProducts,
-																		current_category_id:
-																			currentCategory.category_id,
-																		current_sub_category_id:
-																			sub_category.sub_category_id,
-																	},
-																}
-															);
-														}}
-													>
-														Visit
-													</button>
 												</div>
 											</div>
 										</div>

@@ -273,7 +273,7 @@ const Home = () => {
 			</div>
 
 			<img
-				className="h-screen w-screen"
+				className="h-screen w-screen object-cover object-top"
 				src="https://source.unsplash.com/random"
 			/>
 
