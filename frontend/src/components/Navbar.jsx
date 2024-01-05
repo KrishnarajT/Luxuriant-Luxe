@@ -53,11 +53,6 @@ export function Navbar(props) {
 		}
 	});
 
-	function handleLogout() {
-		props.setisNavbarPresent(false);
-		navigate("/");
-	}
-
 	return (
 		<div className="z-50">
 			<div
@@ -81,11 +76,7 @@ export function Navbar(props) {
 										);
 									}}
 								>
-									<label
-										id="cartlabel"
-										htmlFor="my-drawer"
-										className="drawer-button w-fit bg-transparent text-3xl bodoni border-none"
-									>
+									<label className="w-fit bg-transparent text-3xl bodoni border-none">
 										LL Hair
 									</label>
 								</NavLink>
@@ -104,11 +95,7 @@ export function Navbar(props) {
 										);
 									}}
 								>
-									<label
-										id="cartlabel"
-										htmlFor="my-drawer"
-										className="drawer-button w-fit bg-transparent text-3xl bodoni border-none"
-									>
+									<label className="w-fit bg-transparent text-3xl bodoni border-none">
 										LL Skin
 									</label>
 								</NavLink>
@@ -127,11 +114,7 @@ export function Navbar(props) {
 										);
 									}}
 								>
-									<label
-										id="cartlabel"
-										htmlFor="my-drawer"
-										className="drawer-button w-fit bg-transparent text-3xl bodoni border-none"
-									>
+									<label className="w-fit bg-transparent text-3xl bodoni border-none">
 										LL Cosmetics
 									</label>
 								</NavLink>
@@ -162,11 +145,7 @@ export function Navbar(props) {
 					<div className="hidden md:flex">
 						<ul className="menu menu-horizontal px-1">
 							<li className="text-lg md:text-xl">
-								<label
-									id="cartlabel"
-									htmlFor="my-drawer"
-									className="drawer-button w-fit bg-transparent border-none text-4xl text-center self-center"
-								>
+								<label className="w-fit bg-transparent border-none text-4xl text-center self-center">
 									INR{" "}
 									<IconCurrencyRupee className="w-12 h-12" />
 								</label>
@@ -174,8 +153,7 @@ export function Navbar(props) {
 							<li className="text-lg md:text-xl">
 								<label
 									id="cartlabel"
-									htmlFor="my-drawer"
-									className="drawer-button w-fit bg-transparent border-none"
+									className="w-fit bg-transparent border-none"
 									onClick={() => navigate("/search")}
 								>
 									<IconSearch className="w-12 h-12" />
@@ -183,8 +161,8 @@ export function Navbar(props) {
 							</li>
 							<li className="text-lg md:text-xl">
 								<label
-									id="cartlabel"
 									htmlFor="my-drawer"
+									id="cartlabel"
 									className="drawer-button w-fit bg-transparent text-transparent border-none"
 								>
 									<img
@@ -228,7 +206,7 @@ export function Navbar(props) {
 									</li>
 
 									<li className="text-md md:text-xl">
-										<IconShoppingCart className="w-6 h-6 drawer-button drawer-toggle" />
+										<IconShoppingCart className="w-6 h-6 drawer-toggle" />
 										Cart
 									</li>
 									<li className="menu menu-horizontal px-1 py-0 ">

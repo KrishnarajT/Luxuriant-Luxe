@@ -77,6 +77,9 @@ export function EcommerceCard(props) {
 				shadow={true}
 				floated={false}
 				className="h-72 rounded-none m-0"
+				onClick={() => {
+					navigate(`/product/${props.id}`);
+				}}
 			>
 				<img
 					src={props.image}
