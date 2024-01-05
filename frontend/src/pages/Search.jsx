@@ -93,7 +93,7 @@ const Search = () => {
 				md:text-4xl"
 				id="intro"
 			>
-				Search Results
+				Search All Our Products
 			</section>
 
 			{/* section of cards that have all products */}

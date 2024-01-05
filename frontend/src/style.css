@@ -3033,10 +3033,6 @@ details.collapse summary::-webkit-details-marker {
       var(--handleoffsetcalculator) 0 0 3px hsl(var(--bc)) inset;
 }
 
-.rounded-btn {
-  border-radius: var(--rounded-btn, 0.5rem);
-}
-
 .glass,
   .glass.btn-active {
   border: none;
@@ -4018,6 +4014,10 @@ details.collapse summary::-webkit-details-marker {
   margin-top: 5rem;
 }
 
+.mt-3 {
+  margin-top: 0.75rem;
+}
+
 .mt-4 {
   margin-top: 1rem;
 }
@@ -4028,10 +4028,6 @@ details.collapse summary::-webkit-details-marker {
 
 .mt-px {
   margin-top: 1px;
-}
-
-.mt-3 {
-  margin-top: 0.75rem;
 }
 
 .box-border {
@@ -4191,10 +4187,6 @@ details.collapse summary::-webkit-details-marker {
   height: 100vh;
 }
 
-.h-16 {
-  height: 4rem;
-}
-
 .max-h-10 {
   max-height: 2.5rem;
 }
@@ -4347,6 +4339,10 @@ details.collapse summary::-webkit-details-marker {
   width: 1.25rem;
 }
 
+.w-5\/6 {
+  width: 83.333333%;
+}
+
 .w-6 {
   width: 1.5rem;
 }
@@ -4399,10 +4395,6 @@ details.collapse summary::-webkit-details-marker {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-16 {
-  width: 4rem;
 }
 
 .min-w-\[100vw\] {
@@ -5667,10 +5659,6 @@ details.collapse summary::-webkit-details-marker {
   background-repeat: no-repeat;
 }
 
-.fill-current {
-  fill: currentColor;
-}
-
 .stroke-current {
   stroke: currentColor;
 }
@@ -5768,6 +5756,11 @@ details.collapse summary::-webkit-details-marker {
   padding-right: 1rem;
 }
 
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -5828,11 +5821,6 @@ details.collapse summary::-webkit-details-marker {
   padding-bottom: 1rem;
 }
 
-.px-5 {
-  padding-left: 1.25rem;
-  padding-right: 1.25rem;
-}
-
 .\!pr-7 {
   padding-right: 1.75rem !important;
 }
@@ -5859,6 +5847,10 @@ details.collapse summary::-webkit-details-marker {
 
 .pb-2 {
   padding-bottom: 0.5rem;
+}
+
+.pr-10 {
+  padding-right: 2.5rem;
 }
 
 .pr-16 {
@@ -5891,10 +5883,6 @@ details.collapse summary::-webkit-details-marker {
 
 .pt-px {
   padding-top: 1px;
-}
-
-.pr-10 {
-  padding-right: 2.5rem;
 }
 
 .text-left {
@@ -5938,6 +5926,11 @@ details.collapse summary::-webkit-details-marker {
 
 .text-5xl {
   font-size: 3rem;
+  line-height: 1;
+}
+
+.text-7xl {
+  font-size: 4.5rem;
   line-height: 1;
 }
 
@@ -6214,6 +6207,11 @@ details.collapse summary::-webkit-details-marker {
   color: rgb(158 158 158 / var(--tw-text-opacity));
 }
 
+.text-gray-600 {
+  --tw-text-opacity: 1;
+  color: rgb(117 117 117 / var(--tw-text-opacity));
+}
+
 .text-gray-700 {
   --tw-text-opacity: 1;
   color: rgb(97 97 97 / var(--tw-text-opacity));
@@ -6410,11 +6408,6 @@ details.collapse summary::-webkit-details-marker {
 .text-yellow-900 {
   --tw-text-opacity: 1;
   color: rgb(245 127 23 / var(--tw-text-opacity));
-}
-
-.text-gray-600 {
-  --tw-text-opacity: 1;
-  color: rgb(117 117 117 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -7048,6 +7041,25 @@ footer {
 }
 
 footer::before {
+  content: "";
+  background: url('https://i.imgur.com/IQNVFHA.png') no-repeat center;
+  background-size: contain;
+  opacity: 0.3;
+  /* Change the opacity value as per your requirement */
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+#authenticbeauty {
+  position: relative;
+  z-index: 1;
+}
+
+#authenticbeauty::before {
   content: "";
   background: url('https://i.imgur.com/IQNVFHA.png') no-repeat center;
   background-size: contain;

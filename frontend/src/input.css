@@ -276,3 +276,22 @@ footer::before {
     position: absolute;
     z-index: -1;
 }
+
+#authenticbeauty {
+    position: relative;
+    z-index: 1;
+}
+
+#authenticbeauty::before {
+    content: "";
+    background: url('https://i.imgur.com/IQNVFHA.png') no-repeat center;
+    background-size: contain;
+    opacity: 0.3;
+    /* Change the opacity value as per your requirement */
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+}

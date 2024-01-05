@@ -220,6 +220,63 @@ const Home = () => {
 				<div className="ribbon color"></div>
 			</div>
 
+			{/* // Authentic beauty */}
+			<div
+				id="authenticbeauty"
+				className="h-screen w-screen flex items-center flex-col justify-center"
+				// style={{
+				// 	backgroundImage: "url(https://source.unsplash.com/random)",
+				// 	backgroundSize: "cover",
+				// 	backgroundPosition: "center",
+				// }}
+			>
+				{/* Title */}
+				<div className="flex justify-center">
+					<div className="flex text-center text-7xl underline ptsans uppercase">
+						Authentic Beauty
+					</div>
+				</div>
+
+				{/* Text */}
+				<div className="flex justify-center m-8">
+					<div className="w-5/6 text-3xl italic cardo">
+						Unveil the sublime secrets of skincare that honor the
+						essence of your unique beauty. For true radiance stems
+						not from a generic mold, but from the sacred symphony of
+						your individuality. Behold the LUXURIANT LUXE, an
+						exclusive range of expertly crafted potions that embrace
+						your skin's intrinsic character and empower its natural
+						faculties. With each elixir, your skin awakens to its
+						full potential, embarking on a transformative journey
+						towards unparalleled luminosity.
+					</div>
+				</div>
+
+				{/* More Text */}
+
+				<div className="flex justify-center">
+					<div className="flex text-center text-3xl italic">
+						Revitalize Your Skin with Super-Concentrated Potions
+					</div>
+				</div>
+				<div className="flex justify-center m-8">
+					<div className="w-5/6 text-3xl italic cardo">
+						Indulge in the power of high-octane, active ingredient
+						formulas that will leave your skin glowing like a
+						radiant goddess. Our best-selling and versatile products
+						are designed to work their magic on all skin types,
+						giving you a youthful, rejuvenated appearance. Give your
+						cells the joy they deserve and start your journey to
+						healthy, glowing skin today!
+					</div>
+				</div>
+			</div>
+
+			<img
+				className="h-screen w-screen"
+				src="https://source.unsplash.com/random"
+			/>
+
 			{/* <section>
 				<About />
 			</section> */}
