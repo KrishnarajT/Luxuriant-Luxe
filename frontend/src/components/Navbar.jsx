@@ -16,6 +16,8 @@ import {
 	IconShoppingCart,
 	IconSun,
 	IconUserBolt,
+	IconCurrencyRupee,
+	IconSearch,
 } from "@tabler/icons-react";
 import "../css/Navbar.css";
 import { PhHandbagFill } from "./ui/PhHandbagFill";
@@ -61,102 +63,40 @@ export function Navbar(props) {
 			<div
 				className={`navbar bg-transparent text-base-content flex-row-reverse justify-end h-40 md:flex-row md:h-32`}
 			>
-				{/* maincontents */}
-				<div className="hidden md:flex text-base-content">
-					<ul className="menu menu-horizontal text-base-content px-1">
-						<li>
-							<details>
-								<summary
-									className="text-3xl text-base-content z-50"
-									id="products_summary"
+				{/* hair skin and cosmetics */}
+				<div>
+					<div className="hidden md:flex">
+						<ul className="menu menu-horizontal px-1">
+							<li className="text-lg md:text-xl">
+								<label
+									id="cartlabel"
+									htmlFor="my-drawer"
+									className="drawer-button w-fit bg-transparent text-3xl bodoni border-none"
 								>
-									<PhHandbagFill className="w-10 h-10 text-base-content" />
-									Products
-								</summary>
-								<ul className="menu menu-horizontal px-1 z-50">
-									<li className="text-lg md:text-xl w-full">
-										<NavLink
-											to={"/category/hair"}
-											state={{
-												currentCategoryProducts:
-													HairProducts,
-											}}
-											id="contact_element"
-											className="hover:text-base-content text-2xl w-full"
-											onClick={() => {
-												const products_summary =
-													document.getElementById(
-														"products_summary"
-													);
-												products_summary.click();
-												setCurrentCategoryProducts(
-													HairProducts
-												);
-											}}
-										>
-											<MaterialSymbolsLightFace2 className="w-10 h-10" />
-											LL Hair
-										</NavLink>
-									</li>
-									<li className="text-lg md:text-xl w-full">
-										<NavLink
-											to={"/category/skin"}
-											state={{
-												currentCategoryProducts:
-													SkinProducts,
-											}}
-											id="contact_element"
-											className="hover:text-base-content text-2xl"
-											onClick={() => {
-												const products_summary =
-													document.getElementById(
-														"products_summary"
-													);
-												products_summary.click();
-												setCurrentCategoryProducts(
-													SkinProducts
-												);
-											}}
-										>
-											<IconParkOutlineCosmeticBrush className="w-10 h-10" />
-											LL Skin
-										</NavLink>
-									</li>
-									<li className="text-lg md:text-xl ">
-										<NavLink
-											to={"/category/cosmetics"}
-											state={{
-												currentCategoryProducts:
-													CosmeticsProducts,
-											}}
-											id="contact_element"
-											className="hover:text-base-content text-2xl"
-											onClick={() => {
-												// collapse this menu
-												// click on products summary again
-												const products_summary =
-													document.getElementById(
-														"products_summary"
-													);
-												products_summary.click();
-												setCurrentCategoryProducts(
-													CosmeticsProducts
-												);
-											}}
-										>
-											<SolarCosmeticBoldDuotone className="w-10 h-10" />
-											LL Cosmetics
-										</NavLink>
-									</li>
-								</ul>
-							</details>
-						</li>
-					</ul>
+									LL Hair
+								</label>
+							</li>
+							<li className="text-lg md:text-xl">
+								<label
+									id="cartlabel"
+									htmlFor="my-drawer"
+									className="drawer-button w-fit bg-transparent text-3xl bodoni border-none"
+								>
+									LL Skin
+								</label>
+							</li>
+							<li className="text-lg md:text-xl">
+								<label
+									id="cartlabel"
+									htmlFor="my-drawer"
+									className="drawer-button w-fit bg-transparent text-3xl bodoni border-none"
+								>
+									LL Cosmetics
+								</label>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div
-					className="hidden text-base-content
-			   md:flex"
-				></div>
 
 				{/* name */}
 				<div className="flex w-screen md:w-fit md:pl-0 md:display justify-center mr-8 md:flex-row md:flex-1 md:mr-0">
@@ -183,6 +123,25 @@ export function Navbar(props) {
 								<label
 									id="cartlabel"
 									htmlFor="my-drawer"
+									className="drawer-button w-fit bg-transparent border-none text-4xl text-center self-center"
+								>
+									INR{" "}
+									<IconCurrencyRupee className="w-12 h-12" />
+								</label>
+							</li>
+							<li className="text-lg md:text-xl">
+								<label
+									id="cartlabel"
+									htmlFor="my-drawer"
+									className="drawer-button w-fit bg-transparent border-none"
+								>
+									<IconSearch className="w-12 h-12" />
+								</label>
+							</li>
+							<li className="text-lg md:text-xl">
+								<label
+									id="cartlabel"
+									htmlFor="my-drawer"
 									className="drawer-button w-fit bg-transparent text-transparent border-none"
 								>
 									<img
@@ -190,57 +149,6 @@ export function Navbar(props) {
 										className="w-12 h-12"
 									/>
 								</label>
-							</li>
-							{/* 
-							{theme === "light" ? (
-								<li className="text-lg md:text-xl">
-									<button
-										className="btn btn-ghost rounded-btn"
-										onClick={() => {
-											setTheme("dark");
-										}}
-									>
-										<IconMoon
-											className="w-12 h-12"
-											onClick={() => {
-												setTheme("dark");
-											}}
-										/>
-									</button>
-								</li>
-							) : (
-								<li className="text-lg md:text-xl">
-									<button className="btn btn-ghost rounded-btn">
-										<IconSun
-											className="w-12 h-12 text-base-content hover:text-base-content"
-											onClick={() => {
-												setTheme("light");
-											}}
-										/>
-									</button>
-								</li> 
-							)}*/}
-						</ul>
-					</div>
-					{/* Profile */}
-					<div className="hidden md:flex text-base-content">
-						<ul className="menu menu-horizontal text-base-content px-1">
-							<li>
-								<details>
-									<summary>
-										<IconUserBolt className="w-12 h-12 text-base-content" />
-									</summary>
-									<ul className="p-2 bg-base-100 text-base-content">
-										<li
-											className="text-lg hover:text-base-content text-base-content"
-											onClick={() => {
-												handleLogout();
-											}}
-										>
-											<a>Logout</a>
-										</li>
-									</ul>
-								</details>
 							</li>
 						</ul>
 					</div>

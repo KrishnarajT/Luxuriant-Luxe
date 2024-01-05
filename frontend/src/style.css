@@ -4187,6 +4187,10 @@ details.collapse summary::-webkit-details-marker {
   height: 100vh;
 }
 
+.h-16 {
+  height: 4rem;
+}
+
 .max-h-10 {
   max-height: 2.5rem;
 }
@@ -4391,6 +4395,10 @@ details.collapse summary::-webkit-details-marker {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-16 {
+  width: 4rem;
 }
 
 .min-w-\[100vw\] {
