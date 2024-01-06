@@ -125,8 +125,8 @@ const Checkout = () => {
 
 	const SendOrderToBackend = async () => {
 		// show the placing order button
-		const placing_order = document.getElementById("placing_order");
-		placing_order.classList.remove("hidden");
+		// const placing_order = document.getElementById("placing_order");
+		// placing_order.classList.remove("hidden");
 
 		// print everything
 		console.log(customerEmail);
@@ -170,8 +170,8 @@ const Checkout = () => {
 			});
 		console.log(response.data);
 
-		// stop showing the placing order button
-		placing_order.classList.add("hidden");
+		// // stop showing the placing order button
+		// placing_order.classList.add("hidden");
 
 		if (response.data.message === "simulation") {
 			alert("Simulation Response, Added order");
@@ -524,10 +524,10 @@ const Checkout = () => {
 							// const buy_now_button = document.getElementById("buy_now_button");
 							// buy_now_button.style.display = "none";
 							// hide the qr code section
-							const qr_code =
-								document.getElementById("qr_payment");
-							qr_code.style.display = "none";
-							clearCart();
+							// const qr_code =
+							// 	document.getElementById("qr_payment");
+							// qr_code.style.display = "none";
+							// clearCart();
 						}}
 					>
 						I Have Paid!
