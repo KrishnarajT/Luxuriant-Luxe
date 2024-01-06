@@ -252,172 +252,189 @@ const Checkout = () => {
 			</section>
 
 			<div className="flex gap-4 w-screen">
-				<div className="w-1/2 flex flex-col p-4">
-					<div className="flex justify-center uppercase ml-4">
-						<div className="text-4xl bodoni font-semibold">
-							Contact
+				<div className="w-1/2 flex flex-col p-4 items-center">
+					<div className="w-2/3">
+						<div className="flex justify-center uppercase ml-4">
+							<div className="text-4xl bodoni font-semibold">
+								Contact
+							</div>
 						</div>
-					</div>
 
-					{/* Enter customer email */}
-					<div className="form-control">
-						<label className="label">
-							<span className="label-text">Your Email</span>
-						</label>
-						<label className="input-group">
-							<span>
-								<IconMail className="w-4 h-4" />
-							</span>
-							<input
-								type="text"
-								placeholder="Enter your email"
-								className="input input-bordered"
-								value={customerEmail}
-								onChange={(event) => {
-									setCustomerEmail(event.target.value);
-								}}
-							/>
-						</label>
-						{/* Checkbox for sending subscription mail */}
-						<div className="form-control mt-4">
-							<label className="cursor-pointer label">
-								<span className="label-text">
-									Subscribe to our newsletter?
+						{/* Enter customer email */}
+						<div className="form-control w-full">
+							<label className="label">
+								<span className="label-text text-xl">
+									Your Email
+								</span>
+							</label>
+							<label className="input-group">
+								<span>
+									<IconMail className="w-4 h-4" />
 								</span>
 								<input
-									type="checkbox"
-									className="checkbox"
-									value={wantsSubscription}
-									onClick={() => {
-										setWantsSubscription(
-											!wantsSubscription
-										);
-										console.log("checkbox clicked");
+									type="text"
+									placeholder="Enter your email"
+									className="input input-bordered w-full"
+									value={customerEmail}
+									onChange={(event) => {
+										setCustomerEmail(event.target.value);
 									}}
 								/>
 							</label>
+							{/* Checkbox for sending subscription mail */}
+							<div className="form-control mt-4">
+								<label className="cursor-pointer label">
+									<span className="label-text text-xl">
+										Subscribe to our newsletter?
+									</span>
+									<input
+										type="checkbox"
+										className="checkbox shadow shadow-2xl"
+										value={wantsSubscription}
+										onClick={() => {
+											setWantsSubscription(
+												!wantsSubscription
+											);
+											console.log("checkbox clicked");
+										}}
+									/>
+								</label>
+							</div>
 						</div>
-					</div>
-					<div className="flex justify-center uppercase ml-4">
-						<div className="text-4xl bodoni font-semibold">
-							Shipping Address
-						</div>
-					</div>
-
-					<div className="flex flex-col">
-						{/* Country, Region */}
-						<div className="form-control">
-							<label className="label">
-								<span className="label-text">Country</span>
-							</label>
-							<input
-								type="text"
-								placeholder="Enter your country"
-								className="input input-bordered"
-								value={country}
-								onChange={(event) => {
-									setCountry(event.target.value);
-								}}
-							/>
-						</div>
-
-						<div className="form-control">
-							<label className="label">
-								<span className="label-text">Region</span>
-							</label>
-							<input
-								type="text"
-								placeholder="Enter your region"
-								className="input input-bordered"
-								value={region}
-								onChange={(event) => {
-									setRegion(event.target.value);
-								}}
-							/>
+						<div className="flex justify-center uppercase ml-4 mt-4">
+							<div className="text-4xl bodoni font-semibold">
+								Shipping Address
+							</div>
 						</div>
 
-						{/* First Name, Last Name in different fields */}
-						<div className="form-control">
-							<label className="label">
-								<span className="label-text">First Name</span>
-							</label>
-							<input
-								type="text"
-								placeholder="Enter your first name"
-								className="input input-bordered"
-								value={firstName}
-								onChange={(event) => {
-									setFirstName(event.target.value);
-								}}
-							/>
-						</div>
+						<div className="flex flex-col">
+							{/* Country, Region */}
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text text-xl">
+										Country
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="Enter your country"
+									className="input input-bordered"
+									value={country}
+									onChange={(event) => {
+										setCountry(event.target.value);
+									}}
+								/>
+							</div>
 
-						<div className="form-control">
-							<label className="label">
-								<span className="label-text">Last Name</span>
-							</label>
-							<input
-								type="text"
-								placeholder="Enter your last name"
-								className="input input-bordered"
-								value={lastName}
-								onChange={(event) => {
-									setLastName(event.target.value);
-								}}
-							/>
-						</div>
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text text-xl">
+										Region
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="Enter your region"
+									className="input input-bordered"
+									value={region}
+									onChange={(event) => {
+										setRegion(event.target.value);
+									}}
+								/>
+							</div>
 
-						{/* Address */}
-						<div className="form-control">
-							<label className="label">
-								<span className="label-text">Address</span>
-							</label>
-							<input
-								type="text"
-								placeholder="Enter your address"
-								className="input input-bordered"
-								value={address}
-								onChange={(event) => {
-									setAddress(event.target.value);
-								}}
-							/>
-						</div>
+							{/* First Name, Last Name in different fields */}
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text text-xl">
+										First Name
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="Enter your first name"
+									className="input input-bordered"
+									value={firstName}
+									onChange={(event) => {
+										setFirstName(event.target.value);
+									}}
+								/>
+							</div>
 
-						{/* Apartment, Building */}
-						<div className="form-control">
-							<label className="label">
-								<span className="label-text">
-									Apartment/Building
-								</span>
-							</label>
-							<input
-								type="text"
-								placeholder="Enter your apartment or building"
-								className="input input-bordered"
-								value={apartment}
-								onChange={(event) => {
-									setApartment(event.target.value);
-								}}
-							/>
-						</div>
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text text-xl">
+										Last Name
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="Enter your last name"
+									className="input input-bordered"
+									value={lastName}
+									onChange={(event) => {
+										setLastName(event.target.value);
+									}}
+								/>
+							</div>
 
-						{/* Phone */}
-						<div className="form-control">
-							<label className="label">
-								<span className="label-text">Phone</span>
-							</label>
-							<input
-								type="text"
-								placeholder="Enter your phone number"
-								className="input input-bordered"
-								value={phone}
-								onChange={(event) => {
-									setPhone(event.target.value);
-								}}
-							/>
+							{/* Address */}
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text text-xl">
+										Address
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="Enter your address"
+									className="input input-bordered"
+									value={address}
+									onChange={(event) => {
+										setAddress(event.target.value);
+									}}
+								/>
+							</div>
+
+							{/* Apartment, Building */}
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text text-xl">
+										Apartment/Building
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="Enter your apartment or building"
+									className="input input-bordered"
+									value={apartment}
+									onChange={(event) => {
+										setApartment(event.target.value);
+									}}
+								/>
+							</div>
+
+							{/* Phone */}
+							<div className="form-control">
+								<label className="label">
+									<span className="label-text text-xl">
+										Phone
+									</span>
+								</label>
+								<input
+									type="text"
+									placeholder="Enter your phone number"
+									className="input input-bordered"
+									value={phone}
+									onChange={(event) => {
+										setPhone(event.target.value);
+									}}
+								/>
+							</div>
 						</div>
 					</div>
 				</div>
+
 				<div className="w-1/2 flex flex-col flex-1">
 					<Cart />
 				</div>
@@ -446,7 +463,9 @@ const Checkout = () => {
 					<div className="">
 						<div className="form-control">
 							<label className="label">
-								<span className="label-text">Your Name</span>
+								<span className="label-text text-xl">
+									Your Name
+								</span>
 							</label>
 							<label className="input-group">
 								<span>
@@ -465,7 +484,9 @@ const Checkout = () => {
 						</div>
 						<div className="form-control">
 							<label className="label">
-								<span className="label-text">Your Email</span>
+								<span className="label-text text-xl">
+									Your Email
+								</span>
 							</label>
 							<label className="input-group">
 								<span>
@@ -484,7 +505,7 @@ const Checkout = () => {
 						</div>
 						<div className="form-control">
 							<label className="label">
-								<span className="label-text">
+								<span className="label-text text-xl">
 									Your Phone Number
 								</span>
 							</label>
@@ -505,7 +526,9 @@ const Checkout = () => {
 						</div>
 						<div className="form-control">
 							<label className="label">
-								<span className="label-text">Your Address</span>
+								<span className="label-text text-xl">
+									Your Address
+								</span>
 							</label>
 							<label className="input-group">
 								<span>

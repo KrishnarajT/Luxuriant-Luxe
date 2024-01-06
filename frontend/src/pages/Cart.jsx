@@ -6,13 +6,10 @@ import { CartContext } from "../context/CartContext";
 import { useEffect } from "react";
 import { IconCurrencyRupee, IconMinus, IconPlus } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import { DisplayCarousal } from "../components/ui/DisplayCarousal";
 import { Toaster, toast } from "react-hot-toast";
 import { MiniDisplayCarousal } from "../components/ui/MiniDisplayCarousal";
 
-const random_image_link =
-	"https://images.unsplash.com/photo-1643185450492-6ba77dea00f6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29zbWV0aWNzfGVufDB8fDB8fHww";
+const random_image_link = "https://source.unsplash.com/random";
 const Cart = () => {
 	const navigate = useNavigate();
 	const [currentCustomerPoints, setCurrentCustomerPoints] = useState(0);
@@ -296,6 +293,10 @@ const Cart = () => {
 								src={
 									beforeCheckoutProduct[0].product_image_links
 										.description_images[0]
+										? beforeCheckoutProduct[0]
+												.product_image_links
+												.description_images[0]
+										: random_image_link
 								}
 								onClick={() => {
 									navigate(
@@ -348,7 +349,7 @@ const Cart = () => {
 			{/* Show Estimated Total */}
 			<div className="flex justify-center uppercase ml-4">
 				<div className="text-2xl bodoni font-semibold">
-					Estimated Total
+					Total
 				</div>
 			</div>
 			<div className="flex justify-center uppercase ml-4">
