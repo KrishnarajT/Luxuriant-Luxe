@@ -226,6 +226,7 @@ const Customers = () => {
 								<th>Customer Address</th>
 								<th>Customer Phone</th>
 								<th>Customer Points</th>
+								<th>Wants Subscription</th>
 								<th>Customer Id</th>
 								<th>Delete</th>
 							</tr>
@@ -246,6 +247,11 @@ const Customers = () => {
 											</td>
 											<td>{customer.customer_phone}</td>
 											<td>{customer.customer_points}</td>
+											<td>
+												{customer.wantsSubscription
+													? "Yes"
+													: "No"}
+											</td>
 											<td>{customer._id}</td>
 											<td>
 												<button

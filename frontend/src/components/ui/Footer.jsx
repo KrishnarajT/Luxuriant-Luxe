@@ -10,8 +10,12 @@ import {
 import ScrollToTopButton from "./ScrollToTopButton";
 import { Toaster, toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { BaseUrlContext } from "../../context/BaseUrlContext";
 
 const Footer = () => {
+	const base_url = React.useContext(BaseUrlContext).baseUrl;
+
 	const [customerEmail, setCustomerEmail] = React.useState("");
 	const [customerPhone, setCustomerPhone] = React.useState("");
 	const [customerAddress, setCustomerAddress] = React.useState("");
@@ -35,7 +39,9 @@ const Footer = () => {
 			wantsSubscription: true,
 		};
 		const response = await axios
-			.post(`${base_url}/api/v1/Luxuriant/add_customer_email`, { data })
+			.post(`${base_url}/api/v1/Luxuriant/add_customer`, {
+				customer_details: data,
+			})
 			.then((response) => {
 				return response;
 			})

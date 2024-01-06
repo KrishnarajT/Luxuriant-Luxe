@@ -126,7 +126,7 @@ const Emails = () => {
 				batch = [];
 				batchCount = 0;
 			}
-			if (customer.customer_email && customer.customer_name) {
+			if (customer.customer_email && customer.wantsSubscription) {
 				batch.push({
 					name: customer.customer_name,
 					email: customer.customer_email,
