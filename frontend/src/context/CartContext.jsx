@@ -19,6 +19,8 @@ const CartContextProvider = ({ children }) => {
 	const [currentCategoryProducts, setCurrentCategoryProducts] = useState([]);
 	const [beforeCheckoutProduct, setBeforeCheckoutProduct] = useState([]);
 	const [categories, setCategories] = useState([]);
+	const [currentCustomerPoints, setCurrentCustomerPoints] = useState(0);
+	const [discountedTotal, setDiscountedTotal] = useState(0);
 
 	// Product looks like this
 	// {
@@ -475,6 +477,13 @@ const CartContextProvider = ({ children }) => {
 		return total;
 	};
 
+	const getDiscountedTotal = () => {
+		let total = 0;
+		for (let i = 0; i < cart.length; i++) {
+			total += cart[i].selected_quantity * cart[i].product_cost;
+		}
+		return total - 10 * currentCustomerPoints;
+	};
 	const IncreaseProductQuantity = (_id) => {
 		let product_exists = false;
 		for (let i = 0; i < cart.length; i++) {
@@ -509,6 +518,14 @@ const CartContextProvider = ({ children }) => {
 		setCart(cart);
 	};
 
+	const getCartPoints = () => {
+		let points = 0;
+		for (let i = 0; i < cart.length; i++) {
+			points += cart[i].selected_quantity * cart[i].points_awarded;
+		}
+		return points;
+	};
+
 	const getCart = () => {
 		return cart;
 	};
@@ -537,6 +554,10 @@ const CartContextProvider = ({ children }) => {
 				currentCategoryProducts,
 				beforeCheckoutProduct,
 				categories,
+				currentCustomerPoints,
+				setCurrentCustomerPoints,
+				getDiscountedTotal,
+				getCartPoints,
 			}}
 		>
 			{children}

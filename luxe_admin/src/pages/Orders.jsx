@@ -161,7 +161,7 @@ const Orders = () => {
 				});
 				// console.log("product", current_product);
 				order_details_string +=
-					quantity + " x " + current_product[0].product_name + ", ";
+					quantity + " x " + current_product[0]?.product_name + ", ";
 			}
 			orderDetails[i].order_details = order_details_string;
 		}

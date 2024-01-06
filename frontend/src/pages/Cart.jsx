@@ -4,7 +4,12 @@ import React from "react";
 import { useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { useEffect } from "react";
-import { IconCurrencyRupee, IconMinus, IconPlus } from "@tabler/icons-react";
+import {
+	IconCurrencyRupee,
+	IconMinus,
+	IconPlus,
+	IconStarFilled,
+} from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
 import { MiniDisplayCarousal } from "../components/ui/MiniDisplayCarousal";
@@ -22,8 +27,6 @@ let isValidHttpUrl = (string) => {
 const random_image_link = "https://source.unsplash.com/random";
 const Cart = () => {
 	const navigate = useNavigate();
-	const [currentCustomerPoints, setCurrentCustomerPoints] = useState(0);
-	const [currentCustomerOrderCost, setCurrentCustomerOrderCost] = useState(0);
 	const [randomImageToDisplayTop, setRandomImageToDisplayTop] = useState(0);
 	const [sampleCount, setSampleCount] = useState(0);
 	const [counter, setCounter] = useState(0);
@@ -44,6 +47,9 @@ const Cart = () => {
 		beforeCheckoutProduct,
 		getCart,
 		cart,
+		currentCustomerPoints,
+		getDiscountedTotal,
+		getCartPoints,
 	} = React.useContext(CartContext);
 
 	function checkIfSample(product) {
@@ -74,14 +80,12 @@ const Cart = () => {
 				let drawer_check_element = document.getElementById("my-drawer");
 				setDrawerCheckButtonChecked(drawer_check_element);
 				setCounter((counter) => counter + 1);
-			} else if (drawer_check_button_checked.checked) {
+			} else {
 				setCart(cart);
 				console.log("cart total", getCartTotal());
 				setCartTotal(getCartTotal());
 				console.log("checked", cart);
 				setCounter((counter) => counter + 1);
-			} else {
-				console.log("not checked", cart);
 			}
 		}, 1000);
 		return () => {
@@ -290,6 +294,12 @@ const Cart = () => {
 													);
 													return;
 												}
+												if (cartTotal < 3000) {
+													toast.error(
+														"Cart total should be above ₹3000/-"
+													);
+													return;
+												}
 												addToCart(product._id);
 												setSampleCount(
 													(sampleCount) =>
@@ -398,12 +408,61 @@ const Cart = () => {
 				</div>
 			) : null}
 			{/* Show Estimated Total */}
-			<div className="flex justify-between uppercase ml-4 p-16">
-				<div className="text-2xl bodoni font-semibold">Total</div>
-				<div className="flex justify-center uppercase ml-4">
-					<div className="text-2xl bodoni font-semibold flex">
-						<IconCurrencyRupee className="w-8 h-8" />
-						{cartTotal}
+			<div className="flex flex-col gap-4 uppercase ml-4 p-16">
+				<div className="flex justify-between uppercase">
+					<div className="text-2xl bodoni font-semibold">Total</div>
+					<div className="flex justify-center uppercase ml-4">
+						<div className="text-2xl bodoni font-semibold flex items-center">
+							<IconCurrencyRupee className="w-8 h-8" />
+							{cartTotal}
+						</div>
+					</div>
+				</div>
+				<div className="flex justify-between uppercase">
+					<div className="text-2xl bodoni font-semibold">
+						Points Earned
+					</div>
+					<div className="flex justify-center uppercase ml-4">
+						<div className="text-2xl bodoni font-semibold flex gap-4 items-center">
+							<IconStarFilled className="w-8 h-8" />
+							{getCartPoints()}
+						</div>
+					</div>
+				</div>
+				<div className="flex justify-between uppercase">
+					<div className="text-2xl bodoni font-semibold">
+						Your Points
+					</div>
+					<div className="flex justify-center uppercase ml-4">
+						<div className="text-2xl bodoni font-semibold flex gap-4 items-center">
+							<IconStarFilled className="w-8 h-8" />
+							{currentCustomerPoints}
+						</div>
+					</div>
+				</div>
+				<div className="flex justify-between uppercase">
+					<div className="text-2xl bodoni font-semibold">
+						Discounts
+					</div>
+					<div className="flex justify-center uppercase ml-4">
+						<div className="text-2xl bodoni font-semibold flex gap-4 items-center">
+							<IconMinus className="w-8 h-8" />
+							{currentCustomerPoints} * 10 ={" "}
+							<IconCurrencyRupee className="w-8 h-8" />{" "}
+							{currentCustomerPoints * 10}
+						</div>
+					</div>
+				</div>
+				<div className="outline h-1 w-full"></div>
+				<div className="flex justify-between uppercase">
+					<div className="text-2xl bodoni font-semibold">
+						Final Total
+					</div>
+					<div className="flex justify-center uppercase ml-4">
+						<div className="text-2xl bodoni font-semibold flex gap-4 items-center">
+							<IconCurrencyRupee className="w-8 h-8" />{" "}
+							{getDiscountedTotal()}
+						</div>
 					</div>
 				</div>
 			</div>

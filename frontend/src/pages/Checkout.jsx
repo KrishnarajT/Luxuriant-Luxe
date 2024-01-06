@@ -45,6 +45,10 @@ const Checkout = () => {
 		IncreaseProductQuantity,
 		DecreaseProductQuantity,
 		getCart,
+		currentCustomerPoints,
+		setCurrentCustomerPoints,
+		getDiscountedTotal,
+		getCartPoints,
 	} = React.useContext(CartContext);
 
 	const [cart, setCart] = React.useState([]);
@@ -65,7 +69,6 @@ const Checkout = () => {
 	const [customerAddress, setCustomerAddress] = React.useState("");
 	const [customerName, setCustomerName] = React.useState("");
 	const [currentCustomerId, setCurrentCustomerId] = React.useState("");
-	const [currentCustomerPoints, setCurrentCustomerPoints] = React.useState(0);
 	const [currentCustomerOrderCost, setCurrentCustomerOrderCost] =
 		React.useState(0);
 	const [country, setCountry] = React.useState("");
@@ -74,27 +77,38 @@ const Checkout = () => {
 	const [lastName, setLastName] = React.useState("");
 	const [address, setAddress] = React.useState("");
 	const [apartment, setApartment] = React.useState("");
-	const [phone, setPhone] = React.useState("");
 	const [wantsSubscription, setWantsSubscription] = React.useState(false);
+	const [counter, setCounter] = React.useState(0);
+
+	useEffect(() => {
+		setCart(getCart());
+	}, [counter]);
 
 	const checkValidity = () => {
 		// check that none of the things are null
 		if (
 			customerEmail === "" ||
 			customerPhone === "" ||
-			customerAddress === "" ||
-			customerName === ""
+			region === "" ||
+			firstName === "" ||
+			lastName === "" ||
+			address === "" ||
+			apartment === ""
 		) {
 			alert("Please fill all the fields!");
 			return false;
 		}
 
-		// do a regex check for phone number ( +91 1234567890 )
-		const phone_regex = new RegExp("^[0-9]{10}$");
-		if (!phone_regex.test(customerPhone)) {
-			alert("Please enter a valid phone number!");
+		const phone = "1234567890";
+		const phoneRegex = /^[0-9]{10}$/;
+
+		if (phoneRegex.test(phone)) {
+			console.log("Phone number is valid");
+		} else {
+			console.log("Phone number is invalid");
 			return false;
 		}
+
 		// do a regex check for email
 		const email_regex = new RegExp("^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+$");
 		if (!email_regex.test(customerEmail)) {
@@ -102,17 +116,10 @@ const Checkout = () => {
 			return false;
 		}
 
-		// // make sure xss scripts are not present in address using regex
-		const xss_regex = new RegExp("<script>");
-		if (xss_regex.test(customerAddress)) {
-			alert("Please enter a valid address!");
-			return false;
-		}
-
-		if (xss_regex.test(customerName)) {
-			alert("Please enter a valid address!");
-			return false;
-		}
+		// merge fields to form customer address
+		setCustomerAddress(
+			`${country}, ${region}, ${firstName} ${lastName}, ${address}, ${apartment}`
+		);
 		return true;
 	};
 
@@ -141,7 +148,11 @@ const Checkout = () => {
 						customer_address: customerAddress,
 						customer_name: customerName,
 						customer_order: JSON.stringify(latest_cart),
-						order_cost: getCartTotal(),
+						order_cost: getDiscountedTotal(),
+						updated_customer_points:
+							currentCustomerPoints + getCartPoints(),
+						points_used: currentCustomerPoints,
+						wantsSubscription: wantsSubscription,
 					},
 				}
 			)
@@ -174,13 +185,21 @@ const Checkout = () => {
 	};
 
 	const getCustomerPoints = async () => {
+		const data = {
+			customer_email: customerEmail,
+		};
 		const response = await axios
-			.get(`${base_url}/api/v1/Luxuriant/get_customer_points`, {
-				params: {
-					customer_email: customerEmail,
-				},
+			.post(`${base_url}/api/v1/Luxuriant/get_customer_points`, {
+				data,
 			})
 			.then((response) => {
+				if (response.data.message === "success") {
+					console.log(
+						"customer points are: ",
+						response.data.customer_points
+					);
+					setCurrentCustomerPoints(response.data.customer_points);
+				}
 				return response;
 			})
 			.catch((error) => {
@@ -423,11 +442,11 @@ const Checkout = () => {
 								</label>
 								<input
 									type="text"
-									placeholder="Enter your phone number"
+									placeholder="Enter your phone number (only 10 digits)"
 									className="input input-bordered"
-									value={phone}
+									value={customerPhone}
 									onChange={(event) => {
-										setPhone(event.target.value);
+										setCustomerPhone(event.target.value);
 									}}
 								/>
 							</div>
@@ -445,120 +464,10 @@ const Checkout = () => {
 					className="flex flex-col p-4 justify-center items-center"
 					id="intro"
 				>
-					<div
-						className="flex flex-col p-4 m-8 justify-center items-center text-3xl bulgatti"
-						id="intro"
-					>
-						Details
-					</div>
-					<div className="alert alert-warning m-6 mt-0 max-w-5xl text-center flex flex-col justify-center">
-						<IconExclamationCircle className="w-8 h-8 " />
-
-						<span className="text-center">
-							Please ensure that the details are you enter are
-							accurate. We will send you an email confirming your
-							order within 24 hours.
-						</span>
-					</div>
-					<div className="">
-						<div className="form-control">
-							<label className="label">
-								<span className="label-text text-xl">
-									Your Name
-								</span>
-							</label>
-							<label className="input-group">
-								<span>
-									<IconMail className="w-4 h-4" />
-								</span>
-								<input
-									type="text"
-									placeholder="John Doe"
-									className="input input-bordered"
-									value={customerName}
-									onChange={(event) => {
-										setCustomerName(event.target.value);
-									}}
-								/>
-							</label>
-						</div>
-						<div className="form-control">
-							<label className="label">
-								<span className="label-text text-xl">
-									Your Email
-								</span>
-							</label>
-							<label className="input-group">
-								<span>
-									<IconMail className="w-4 h-4" />
-								</span>
-								<input
-									type="text"
-									placeholder="info@site.com"
-									className="input input-bordered"
-									value={customerEmail}
-									onChange={(event) => {
-										setCustomerEmail(event.target.value);
-									}}
-								/>
-							</label>
-						</div>
-						<div className="form-control">
-							<label className="label">
-								<span className="label-text text-xl">
-									Your Phone Number
-								</span>
-							</label>
-							<label className="input-group">
-								<span>
-									<IconPhoneCall className="w-4 h-4" />{" "}
-								</span>
-								<input
-									type="tel"
-									placeholder="XXXXXXXXXX (10 digits)"
-									className="input input-bordered"
-									value={customerPhone}
-									onChange={(event) => {
-										setCustomerPhone(event.target.value);
-									}}
-								/>
-							</label>
-						</div>
-						<div className="form-control">
-							<label className="label">
-								<span className="label-text text-xl">
-									Your Address
-								</span>
-							</label>
-							<label className="input-group">
-								<span>
-									<IconHome className="w-4 h-4" />{" "}
-								</span>
-								{/*<input type="tel" placeholder=""*/}
-								{/*       className="input input-bordered"/>*/}
-								<textarea
-									className="textarea textarea-bordered w-full"
-									placeholder="Flat, Building, Street, City, State"
-									value={customerAddress}
-									onChange={(event) => {
-										setCustomerAddress(event.target.value);
-									}}
-								></textarea>
-							</label>
-						</div>
-					</div>
-				</section>
-			) : (
-				<div></div>
-			)}
-			{cart.length !== 0 ? (
-				<section
-					className="flex flex-col p-4 justify-center items-center"
-					id="intro"
-				>
 					<button
-						className="btn btn-sm btn-primary"
+						className="btn btn-lg btn-primary"
 						id="buy_now_button"
+						disabled={getDiscountedTotal === 0 ? true : false}
 						onClick={() => {
 							console.log(
 								"buy now clicked. send some api calls. "
@@ -569,15 +478,9 @@ const Checkout = () => {
 								const qr_code =
 									document.getElementById("qr_payment");
 								qr_code.style.display = "flex";
-								// SendOrderToBackend();
-								// // hide the buy now button
-								// const buy_now_button = document.getElementById("buy_now_button");
-								// buy_now_button.style.display = "none";
-								// clearCart();
-
-								// show the placing order button
-								// const placing_order = document.getElementById("placing_order");
-								// placing_order.classList.remove("hidden");
+								if (customerEmail !== "") {
+									getCustomerPoints();
+								}
 							}
 						}}
 					>
@@ -589,26 +492,27 @@ const Checkout = () => {
 			)}
 			{cart.length !== 0 ? (
 				<section
-					className="flex flex-col items-center p-4 justify-center items-center hidden"
+					className="flex flex-col items-center p-4 justify-center hidden"
 					id="qr_payment"
 				>
 					<div className="alert alert-success max-w-5xl text-center flex flex-col justify-center">
-						<IconDiscountCheckFilled className="w-8 h-8" />
-						<span className="text-center">
+						{/* <IconDiscountCheckFilled className="w-8 h-8" /> */}
+						<span className="text-center text-2xl">
 							Pay this Number below or Scan the UPI QR Code, and
 							you will receive an email confirming your order
 							within 24 hours.{" "}
 						</span>
 					</div>
 					<div className="flex justify-center">
-						<div
+						<img
 							src={qr_code_image}
-							className="w-screen h-96 bg-center snap-center self-center"
-						></div>
+							alt="QR Code"
+							className="w-1/2 m-4"
+						/>
 					</div>
 
 					<button
-						className="btn btn-sm btn-primary"
+						className="btn btn-lg btn-primary m-4"
 						id="buy_now_button"
 						onClick={() => {
 							console.log(
@@ -616,10 +520,14 @@ const Checkout = () => {
 							);
 
 							SendOrderToBackend();
-							// // hide the buy now button
+							// hide the buy now button
 							// const buy_now_button = document.getElementById("buy_now_button");
 							// buy_now_button.style.display = "none";
-							// clearCart();
+							// hide the qr code section
+							const qr_code =
+								document.getElementById("qr_payment");
+							qr_code.style.display = "none";
+							clearCart();
 						}}
 					>
 						I Have Paid!

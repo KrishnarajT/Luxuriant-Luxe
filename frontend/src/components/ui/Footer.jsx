@@ -32,7 +32,7 @@ const Footer = () => {
 			customer_address: customerAddress,
 			customer_name: customerName,
 			customer_points: currentCustomerPoints,
-			wantsSubscription: wantsSubscription,
+			wantsSubscription: true,
 		};
 		const response = await axios
 			.post(`${base_url}/api/v1/Luxuriant/add_customer_email`, { data })
