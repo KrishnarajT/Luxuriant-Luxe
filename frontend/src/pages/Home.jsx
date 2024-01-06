@@ -5,7 +5,6 @@ import "../style.css";
 import "../input.css";
 import "../css/Home.css";
 import { IconArrowUpRight } from "@tabler/icons-react";
-import slideshowhtml from "../components/slideshow.html";
 import About from "./About";
 import FAQ from "./FAQ";
 import { CartContext } from "../context/CartContext";
