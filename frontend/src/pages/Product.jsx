@@ -172,7 +172,7 @@ const Product = () => {
 		if (product !== undefined) {
 			setProductReviews(product.product_reviews);
 			if (product.volumes_present) {
-				setSelectedVolume(product.product_volumes[0].volume);
+				setSelectedVolume(product.product_volumes[0]);
 				setSelectedProductCost(product.product_volumes[0].volume_cost);
 			} else {
 				setSelectedProductCost(product.product_cost);
@@ -296,10 +296,7 @@ const Product = () => {
 													);
 												}}
 											>
-												{
-													product.product_category[0]
-														.category_name?.toUpperCase()
-												}
+												{product.product_category[0].category_name?.toUpperCase()}
 											</a>
 										)}{" "}
 									</li>
@@ -328,9 +325,10 @@ const Product = () => {
 									{product.product_volumes !== "" && (
 										<div>
 											<div className="ptsans">
-												{selectedVolume} ml,{" "}
+												{selectedVolume?.volume} ml,{" "}
 												{(
-													selectedVolume * 0.033814
+													selectedVolume?.volume *
+													0.033814
 												).toFixed(2)}{" "}
 												fl oz
 											</div>
@@ -431,14 +429,12 @@ const Product = () => {
 										// draw a rectangle with the volume, upon clicking changes volume
 										<div
 											className={`w-20 h-10 rounded-none outline outline-1 flex items-center justify-center hover:bg-black hover:text-white ${
-												selectedVolume === volume.volume
+												selectedVolume === volume
 													? "bg-black text-white"
 													: "bg-white text-black"
 											}`}
 											onClick={() => {
-												setSelectedVolume(
-													volume.volume
-												);
+												setSelectedVolume(volume);
 												setSelectedProductCost(
 													volume.volume_cost
 												);
@@ -481,8 +477,18 @@ const Product = () => {
 									setSelectedProductQuantity(
 										selectedProductQuantity + 1
 									);
-									IncreaseProductQuantity(product._id);
-									IncreaseProductQuantity(product._id);
+									IncreaseProductQuantity(
+										product._id,
+										selectedProductCost,
+										selectedVolume,
+										selectedProductShade
+									);
+									IncreaseProductQuantity(
+										product._id,
+										selectedProductCost,
+										selectedVolume,
+										selectedProductShade
+									);
 								}}
 							>
 								<IconPlus />
@@ -493,7 +499,12 @@ const Product = () => {
 								className="btn btn-md btn-primary text-xl"
 								disabled={product.product_quantity === 0}
 								onClick={() => {
-									addToCart(product._id);
+									addToCart(
+										product._id,
+										selectedProductCost,
+										selectedVolume,
+										selectedProductShade
+									);
 									// open drawer
 									document.getElementById(
 										"my-drawer"
@@ -504,6 +515,11 @@ const Product = () => {
 							>
 								Add to Cart ₹{selectedProductCost}
 							</button>
+						</div>
+						<div>
+							<div className="text-2xl ptsans uppercase">
+								Earn {product.points_awarded} Reward Points!
+							</div>
 						</div>
 						{/* Show product in stock or not */}
 						<div className="">

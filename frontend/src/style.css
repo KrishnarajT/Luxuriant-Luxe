@@ -6882,6 +6882,11 @@ details.collapse summary::-webkit-details-marker {
   --tw-shadow: var(--tw-shadow-colored);
 }
 
+.shadow-black {
+  --tw-shadow-color: #000000;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
 .outline-none {
   outline: 2px solid transparent;
   outline-offset: 2px;

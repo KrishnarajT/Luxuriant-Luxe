@@ -374,7 +374,12 @@ const CartContextProvider = ({ children }) => {
 		// removeDuplicates();
 	}, []);
 
-	const addToCart = (item_id) => {
+	const addToCart = (
+		item_id,
+		selectedProductCost = null,
+		selectedVolume = null,
+		selectedProductShade = null
+	) => {
 		// get the item from the productInfo
 		let item = {};
 		for (let i = 0; i < productInfo.length; i++) {
@@ -382,6 +387,27 @@ const CartContextProvider = ({ children }) => {
 				item = productInfo[i];
 				break;
 			}
+		}
+		if (selectedProductCost !== null) {
+			item.product_cost = selectedProductCost;
+		}
+		if (selectedVolume !== null) {
+			item.selected_volume = selectedVolume;
+		} else {
+			if (item.volume_present) {
+				item.selected_volume = item.product_volumes[0].volume;
+			} else {
+				item.selected_volume = null;
+			}
+		}
+		if (selectedProductShade !== null) {
+			if (item.shades_present) {
+				item.selected_shade = selectedProductShade;
+			} else {
+				item.selected_shade = null;
+			}
+		} else {
+			item.selected_shade = null;
 		}
 		// check if item is already in cart
 		if (cart.length === 0) {
@@ -446,6 +472,7 @@ const CartContextProvider = ({ children }) => {
 		for (let i = 0; i < cart.length; i++) {
 			total += cart[i].selected_quantity * cart[i].product_cost;
 		}
+		return total;
 	};
 
 	const IncreaseProductQuantity = (_id) => {

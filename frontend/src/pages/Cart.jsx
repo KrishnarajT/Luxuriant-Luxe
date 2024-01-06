@@ -8,7 +8,17 @@ import { IconCurrencyRupee, IconMinus, IconPlus } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
 import { MiniDisplayCarousal } from "../components/ui/MiniDisplayCarousal";
+let isValidHttpUrl = (string) => {
+	let url;
 
+	try {
+		url = new URL(string);
+	} catch (_) {
+		return false;
+	}
+
+	return url.protocol === "http:" || url.protocol === "https:";
+};
 const random_image_link = "https://source.unsplash.com/random";
 const Cart = () => {
 	const navigate = useNavigate();
@@ -50,7 +60,7 @@ const Cart = () => {
 		console.log(product, is_sample);
 		return is_sample;
 	}
-
+	const [cartTotal, setCartTotal] = useState(0);
 	useEffect(() => {
 		let drawer_check_element = document.getElementById("my-drawer");
 		setDrawerCheckButtonChecked(drawer_check_element);
@@ -66,6 +76,8 @@ const Cart = () => {
 				setCounter((counter) => counter + 1);
 			} else if (drawer_check_button_checked.checked) {
 				setCart(cart);
+				console.log("cart total", getCartTotal());
+				setCartTotal(getCartTotal());
 				console.log("checked", cart);
 				setCounter((counter) => counter + 1);
 			} else {
@@ -123,8 +135,14 @@ const Cart = () => {
 									<div className="flex justify-center">
 										<img
 											src={
-												product.product_image_links
-													.description_images[0]
+												isValidHttpUrl(
+													product.product_image_links
+														.description_images[0]
+												)
+													? product
+															.product_image_links
+															.description_images[0]
+													: random_image_link
 											}
 											onClick={() => {
 												navigate(
@@ -141,8 +159,8 @@ const Cart = () => {
 										/>
 									</div>
 									<div className="flex flex-col w-full">
-										<div className="flex justify-center w-full">
-											<div className="text-3xl ptsans font-bold m-2 mt-0 w-full flex p-2">
+										<div className="flex flex-col justify-center w-full">
+											<div className="text-3xl ptsans font-bold m-2 mt-0 mb-0 w-full flex p-2">
 												{product.product_name}
 												<IconMinus className="w-8 h-8" />
 												{product.product_cost === 0 ? (
@@ -152,9 +170,42 @@ const Cart = () => {
 												) : (
 													<div className="flex">
 														<IconCurrencyRupee className="w-8 h-8" />
-														{product.product_cost}
+														{product.volume_present
+															? product
+																	.selected_volume
+																	?.volume_cost
+															: product.product_cost}
 													</div>
 												)}
+											</div>
+											<div className="text-3xl ptsans w-full flex gap-4 ml-4">
+												{product.volumes_present ? (
+													<div className="flex gap-4">
+														<div className="text-2xl">
+															{product.volumes_present
+																? product
+																		.selected_volume
+																		?.volume
+																: product
+																		.product_volumes[0]
+																		.volume}{" "}
+															ml
+														</div>
+													</div>
+												) : null}
+												{product.shades_present ? (
+													<div className="text-2xl">
+														Shade:{" "}
+														{product.selected_shade
+															?.shade_name
+															? product
+																	.selected_shade
+																	.shade_name
+															: product
+																	.product_shades[0]
+																	.shade_name}
+													</div>
+												) : null}
 											</div>
 										</div>
 										<div className="flex flex-row justify-end gap-3 items-center my-2">
@@ -347,14 +398,13 @@ const Cart = () => {
 				</div>
 			) : null}
 			{/* Show Estimated Total */}
-			<div className="flex justify-center uppercase ml-4">
-				<div className="text-2xl bodoni font-semibold">
-					Total
-				</div>
-			</div>
-			<div className="flex justify-center uppercase ml-4">
-				<div className="text-2xl bodoni font-semibold">
-					{getCartTotal()}
+			<div className="flex justify-between uppercase ml-4 p-16">
+				<div className="text-2xl bodoni font-semibold">Total</div>
+				<div className="flex justify-center uppercase ml-4">
+					<div className="text-2xl bodoni font-semibold flex">
+						<IconCurrencyRupee className="w-8 h-8" />
+						{cartTotal}
+					</div>
 				</div>
 			</div>
 		</div>

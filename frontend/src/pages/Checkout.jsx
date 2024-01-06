@@ -289,7 +289,7 @@ const Checkout = () => {
 									</span>
 									<input
 										type="checkbox"
-										className="checkbox shadow shadow-2xl"
+										className="checkbox shadow shadow-black"
 										value={wantsSubscription}
 										onClick={() => {
 											setWantsSubscription(
