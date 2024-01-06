@@ -103,7 +103,7 @@ const Search = () => {
 						filterProducts().map((product) => {
 							return (
 								<EcommerceCard
-									color="bg-base-200"
+									color="bg-secondary"
 									text="text-black"
 									cart_color="bg-black"
 									cart_text="text-white"
@@ -132,3 +132,4 @@ const Search = () => {
 };
 
 export default Search;
+

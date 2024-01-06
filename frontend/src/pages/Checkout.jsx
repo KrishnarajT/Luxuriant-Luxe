@@ -251,8 +251,8 @@ const Checkout = () => {
 				Checkout and Shipping
 			</section>
 
-			<div className="flex flex-row gap-4">
-				<div className="flex-1 flex flex-col p-4">
+			<div className="flex gap-4 w-screen">
+				<div className="w-1/2 flex flex-col p-4">
 					<div className="flex justify-center uppercase ml-4">
 						<div className="text-4xl bodoni font-semibold">
 							Contact
@@ -418,7 +418,7 @@ const Checkout = () => {
 						</div>
 					</div>
 				</div>
-				<div className="flex flex-col flex-1">
+				<div className="w-1/2 flex flex-col flex-1">
 					<Cart />
 				</div>
 			</div>

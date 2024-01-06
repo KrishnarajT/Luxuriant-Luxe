@@ -10,6 +10,7 @@ import { Toaster, toast } from "react-hot-toast";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import { BaseUrlContext } from "../context/BaseUrlContext";
+import { DisplayCarousal } from "../components/ui/DisplayCarousal";
 // Product looks like this
 // {
 //     "_id": "6595006375792d7d0086f66e",
@@ -130,8 +131,12 @@ import { BaseUrlContext } from "../context/BaseUrlContext";
 
 const Product = () => {
 	const { id } = useParams();
-	const { productInfo, IncreaseProductQuantity, DecreaseProductQuantity } =
-		React.useContext(CartContext);
+	const {
+		productInfo,
+		IncreaseProductQuantity,
+		DecreaseProductQuantity,
+		addToCart,
+	} = React.useContext(CartContext);
 	const base_url = React.useContext(BaseUrlContext).baseUrl;
 
 	const [product, setProduct] = React.useState(undefined);
@@ -452,6 +457,7 @@ const Product = () => {
 											selectedProductQuantity - 1
 										);
 									}
+									DecreaseProductQuantity(product._id);
 								}}
 							>
 								<IconMinus />
@@ -472,7 +478,18 @@ const Product = () => {
 							</div>
 
 							{/* Add to cart button with cost */}
-							<button className="btn btn-md btn-primary text-xl">
+							<button
+								className="btn btn-md btn-primary text-xl"
+								onClick={() => {
+									addToCart(product._id);
+									// open drawer
+									document.getElementById(
+										"my-drawer"
+									).checked = true;
+									// Toast
+									toast.success("Added to Cart!");
+								}}
+							>
 								Add to Cart ₹{selectedProductCost}
 							</button>
 						</div>
@@ -665,7 +682,7 @@ const Product = () => {
 				>
 					Reviews
 				</section>
-				<div className="flex justify-center">
+				<div className="flex justify-center flex-col items-center gap-4">
 					<div className="flex flex-row gap-2">
 						{[1, 2, 3, 4, 5].map((star) => (
 							<IconStarFilled
@@ -677,117 +694,162 @@ const Product = () => {
 							/>
 						))}
 					</div>
-
-					<div className="text-2xl ptsans self-center">
-						{product.product_reviews.length} reviews
-					</div>
+					<button
+						className="btn btn-primary"
+						onClick={() => {
+							document.querySelector("#my_modal_1").showModal();
+						}}
+					>
+						Write a Review
+					</button>
 				</div>
 
 				{/* Review Cards */}
 				<div className="flex flex-col gap-4 p-4 m-4">
 					{productReviews &&
 						productReviews.map((review) => (
-							<div className="flex flex-col gap-4 p-4 m-4 bg-transparent rounded-3xl">
-								<div className="flex flex-row justify-between">
-									<div className="text-2xl ptsans">
+							<div className="flex flex-col gap-4 p-4 mx-16 bg-transparent rounded-3xl my-2">
+								<div className="flex flex-col items-start justify-start">
+									<div className="text-2xl ptsans flex">
+										{[1, 2, 3, 4, 5].map((star) => (
+											<IconStarFilled
+												className={`w-8 h-8 ${
+													star <= review.rating
+														? "text-brown-500"
+														: "text-white"
+												}`}
+											/>
+										))}
+									</div>
+									<div className="text-4xl ptsans italic text-brown-300 font-bold">
 										{review.username}
 									</div>
-									<div className="text-2xl ptsans">
-										{review.review_date}
+									<div className="text-3xl my-2 ptsans">
+										{review.review}
 									</div>
 								</div>
 								<div className="flex flex-row justify-between">
-									<div className="text-2xl ptsans">
-										{review.review}
-									</div>
-									<div className="text-2xl ptsans">
-										{review.rating}
+									<div className="text-3xl ptsans">
+										{review.review_date}
 									</div>
 								</div>
 							</div>
 						))}
 				</div>
 
-				{/* Add Review */}
-
-				<div className="flex flex-col gap-4 p-4 m-4 bg-transparent rounded-3xl">
-					<div className="flex flex-row justify-between">
-						<div className="text-2xl ptsans">Add Review</div>
+				{/* You may also like */}
+				<section
+					className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
+				md:text-5xl uppercase"
+					id="intro"
+				>
+					You may also like
+				</section>
+				<DisplayCarousal products={productInfo} />
+				{/* Add Review Dialog box */}
+				<dialog id="my_modal_1" className="modal">
+					<div className="modal-box">
+						<h3 className="font-bold text-lg">Write a Review!</h3>
+						<p className="py-4">
+							What did you think about our product?
+						</p>
+						<div className="modal-action w-full justify-center flex">
+							<form method="dialog" className="w-full">
+								<div className="flex flex-col justify-between w-full">
+									<div>
+										<label className="text-2xl ptsans my-2">
+											Review title
+										</label>
+									</div>
+									<div className="text-2xl ptsans w-full">
+										<input
+											type="text"
+											className="input input-bordered w-full"
+											placeholder="Review Title"
+											value={reviewToAdd.username}
+											onChange={(e) => {
+												setReviewToAdd({
+													...reviewToAdd,
+													username: e.target.value,
+												});
+											}}
+										/>
+									</div>
+									<div>
+										<label className="text-2xl ptsans my-2">
+											Review
+										</label>
+									</div>
+									<div className="text-2xl ptsans w-full">
+										<input
+											type="text"
+											className="input input-bordered w-full"
+											placeholder="Review"
+											value={reviewToAdd.review}
+											onChange={(e) => {
+												setReviewToAdd({
+													...reviewToAdd,
+													review: e.target.value,
+												});
+											}}
+										/>
+									</div>
+									<div>
+										<label className="text-2xl ptsans my-2">
+											Rate on 5!
+										</label>
+									</div>
+									<div className="text-2xl ptsans">
+										<input
+											type="number"
+											className="input input-bordered"
+											placeholder="Rating"
+											max={5}
+											min={0}
+											value={reviewToAdd.rating}
+											onChange={(e) => {
+												setReviewToAdd({
+													...reviewToAdd,
+													rating: e.target.value,
+												});
+											}}
+										/>
+									</div>
+								</div>
+								<div className="flex flex-row justify-between">
+									<div className="text-2xl ptsans">
+										<button
+											className="btn btn-primary my-4"
+											onClick={() => {
+												// make sure no fields are empty
+												if (
+													reviewToAdd.username ===
+														"" ||
+													reviewToAdd.review === "" ||
+													reviewToAdd.rating === ""
+												) {
+													toast.error(
+														"Please fill all fields!"
+													);
+													return;
+												}
+												// make id using uuid4
+												setReviewToAdd({
+													...reviewToAdd,
+													_id: uuidv4(),
+												});
+												// send api call
+												handleAddReview();
+											}}
+										>
+											Add Review
+										</button>
+									</div>
+								</div>
+							</form>
+						</div>
 					</div>
-					<div className="flex flex-row justify-between">
-						<div className="text-2xl ptsans">
-							<input
-								type="text"
-								className="input input-bordered"
-								placeholder="Username"
-								value={reviewToAdd.username}
-								onChange={(e) => {
-									setReviewToAdd({
-										...reviewToAdd,
-										username: e.target.value,
-									});
-								}}
-							/>
-						</div>
-						<div className="text-2xl ptsans">
-							<input
-								type="text"
-								className="input input-bordered"
-								placeholder="Review"
-								value={reviewToAdd.review}
-								onChange={(e) => {
-									setReviewToAdd({
-										...reviewToAdd,
-										review: e.target.value,
-									});
-								}}
-							/>
-						</div>
-						<div className="text-2xl ptsans">
-							<input
-								type="number"
-								className="input input-bordered"
-								placeholder="Rating"
-								max={5}
-								min={0}
-								value={reviewToAdd.rating}
-								onChange={(e) => {
-									setReviewToAdd({
-										...reviewToAdd,
-										rating: e.target.value,
-									});
-								}}
-							/>
-						</div>
-					</div>
-					<div className="flex flex-row justify-between">
-						<div className="text-2xl ptsans">
-							<button
-								className="btn btn-primary"
-								onClick={() => {
-									// make sure no fields are empty
-									if (
-										reviewToAdd.username === "" ||
-										reviewToAdd.review === "" ||
-										reviewToAdd.rating === ""
-									) {
-										toast.error("Please fill all fields!");
-										return;
-									}
-									// make id using uuid4
-									setReviewToAdd({
-										...reviewToAdd,
-										_id: uuidv4(),
-									});
-									// send api call
-									handleAddReview();
-								}}
-							>
-								Add Review
-							</button>
-						</div>
-					</div>
-				</div>
+				</dialog>
 				<Footer />
 			</div>
 		)

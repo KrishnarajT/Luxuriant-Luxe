@@ -4,7 +4,7 @@ import React from "react";
 import { useState } from "react";
 import { CartContext } from "../context/CartContext";
 import { useEffect } from "react";
-import { IconMinus, IconPlus } from "@tabler/icons-react";
+import { IconCurrencyRupee, IconMinus, IconPlus } from "@tabler/icons-react";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { DisplayCarousal } from "../components/ui/DisplayCarousal";
@@ -100,80 +100,66 @@ const Cart = () => {
 				/>
 			</div>
 			{/* Products */}
-			{cart.length !== 0
-				? cart.map((product) => {
-						return (
-							<div className="flex justify-between">
-								<div className="flex justify-center">
-									<img
-										src={
-											product.product_image_links
-												.description_images[0]
-										}
-										className="w-24 h-24 object-center object-cover my-2"
-									/>
-								</div>
-								<div className="flex justify-center">
-									<div className="text-2xl ptsans">
-										{product.product_name}
+			<div className="flex flex-col gap-4">
+				{cart.length !== 0
+					? cart.map((product) => {
+							return (
+								<div className="flex p-4 bg-pink-200 m-4 mb-0">
+									<div className="flex justify-center">
+										<img
+											src={
+												product.product_image_links
+													.description_images[0]
+											}
+											className="w-24 h-24 object-center object-cover my-2"
+										/>
+									</div>
+									<div className="flex flex-col w-full">
+										<div className="flex justify-center w-full">
+											<div className="text-3xl ptsans font-bold m-2 mt-0 w-full flex p-2">
+												{product.product_name}
+												<IconMinus className="w-8 h-8" />
+												<IconCurrencyRupee className="w-8 h-8" />
+												{product.product_cost}
+											</div>
+										</div>
+										<div className="flex flex-row justify-end gap-3 items-center my-2">
+											<div
+												className="w-10 h-10 rounded-none outline outline-1 flex items-center justify-center bg-white text-black hover:bg-black hover:text-white"
+												onClick={() => {
+													// if (selectedProductQuantity > 1) {
+													// 	setSelectedProductQuantity(
+													// 		selectedProductQuantity - 1
+													// 	);
+													// }
+												}}
+											>
+												<IconMinus />
+											</div>
+											<div className="w-20 h-10 rounded-none outline outline-1 flex items-center justify-center bg-white text-black ">
+												{product.product_quantity}
+											</div>
+											<div
+												className="w-10 h-10 rounded-none outline outline-1 flex items-center justify-center bg-white text-black hover:bg-black hover:text-white"
+												onClick={() => {
+													// setSelectedProductQuantity(
+													// 	selectedProductQuantity + 1
+													// );
+												}}
+											>
+												<IconPlus />
+											</div>
+										</div>
 									</div>
 								</div>
-								<div className="flex justify-center">
-									<div className="text-2xl ptsans">
-										{product.product_quantity}
-									</div>
-								</div>
-								<div className="flex justify-center">
-									<div className="text-2xl ptsans">
-										{product.product_cost}
-									</div>
-								</div>
-								<div className="flex justify-center">
-									<div className="text-2xl ptsans">
-										{product.product_cost *
-											product.product_quantity}
-									</div>
-								</div>
-								<div className="flex flex-row gap-3 items-center my-2">
-									<div
-										className="w-10 h-10 rounded-none outline outline-1 flex items-center justify-center bg-white text-black hover:bg-black hover:text-white"
-										onClick={() => {
-											// if (selectedProductQuantity > 1) {
-											// 	setSelectedProductQuantity(
-											// 		selectedProductQuantity - 1
-											// 	);
-											// }
-										}}
-									>
-										<IconMinus />
-									</div>
-									<div className="w-20 h-10 rounded-none outline outline-1 flex items-center justify-center bg-white text-black ">
-										{/* {selectedProductQuantity} */}1
-									</div>
-									<div
-										className="w-10 h-10 rounded-none outline outline-1 flex items-center justify-center bg-white text-black hover:bg-black hover:text-white"
-										onClick={() => {
-											// setSelectedProductQuantity(
-											// 	selectedProductQuantity + 1
-											// );
-										}}
-									>
-										<IconPlus />
-									</div>
+							);
+					  })
+					: null}
+			</div>
 
-									{/* Add to cart button with cost */}
-									<button className="btn btn-md btn-primary text-xl">
-										Add to Cart
-										{/* ₹{selectedProductCost} */}
-									</button>
-								</div>
-							</div>
-						);
-				  })
-				: null}
 			{/* 2 free samples on purchase of more than 3k */}
 			<div>
-				<div className="flex justify-center uppercase ml-4">
+				<div className="flex justify-center uppercase ml-4 mt-4">
 					<div className="text-2xl bodoni font-semibold">
 						2 Free Samples On Purchase of ₹2999/-
 					</div>
@@ -221,31 +207,40 @@ const Cart = () => {
 			</div>
 			{/* Bath Truffle Routine which is a product, image, name, details and cost are displayed, there is also add button */}
 			{beforeCheckoutProduct.length > 0 ? (
-				<div className="flex justify-center">
-					<div className="flex justify-center">
-						<img
-							src={
-								beforeCheckoutProduct[0].product_image_links
-									.description_images[0]
-							}
-							className="w-24 h-24 object-center object-cover my-2"
-						/>
-					</div>
-
-					<div className="flex justify-center">
-						<div className="text-2xl ptsans">
-							{beforeCheckoutProduct[0].product_name}
+				<div className="flex justify-center w-full">
+					<div className="flex p-4 bg-transparent m-4 mb-0 w-full">
+						<div className="flex justify-center">
+							<img
+								src={
+									beforeCheckoutProduct[0].product_image_links
+										.description_images[0]
+								}
+								className="w-24 h-24 object-center object-cover my-2"
+							/>
 						</div>
-					</div>
-					<div className="flex justify-center">
-						<div className="text-2xl ptsans">
-							{beforeCheckoutProduct[0].product_cost}
+						<div className="flex flex-col w-full">
+							<div className="flex justify-center w-full">
+								<div className="text-3xl ptsans font-bold m-2 mt-0 w-full flex p-2">
+									{beforeCheckoutProduct[0].product_name}
+									<IconMinus className="w-8 h-8" />
+									<IconCurrencyRupee className="w-8 h-8" />
+									{beforeCheckoutProduct[0].product_cost}
+								</div>
+							</div>
+							<div className="flex justify-end">
+								<button
+									className="btn btn-primary uppercase w-fit rounded-none m-8"
+									onClick={() => {
+										addToCart(beforeCheckoutProduct[0], 1);
+										toast.success(
+											"Added to cart successfully"
+										);
+									}}
+								>
+									Add to Cart
+								</button>
+							</div>
 						</div>
-					</div>
-					<div className="flex flex-row gap-3 items-center my-2">
-						<button className="btn btn-md btn-primary text-xl">
-							Add to Cart ₹{beforeCheckoutProduct[0].product_cost}
-						</button>
 					</div>
 				</div>
 			) : null}
