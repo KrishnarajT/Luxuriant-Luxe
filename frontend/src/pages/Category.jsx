@@ -113,7 +113,7 @@ const Category = () => {
 								(sub_category) => {
 									return (
 										<div
-											className="card w-96 bg-pink-100 shadow-xl image-full"
+											className="card w-96 bg-pink-100 shadow-xl image-full max-h-96"
 											onClick={() => {
 												navigate(
 													`/sub_category/${sub_category.sub_category_id}`,
@@ -132,6 +132,7 @@ const Category = () => {
 										>
 											<figure>
 												<img
+													className="object-cover w-full h-96"
 													src={
 														sub_category.sub_category_image.includes(
 															"http"

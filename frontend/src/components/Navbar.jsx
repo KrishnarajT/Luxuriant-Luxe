@@ -124,20 +124,15 @@ export function Navbar(props) {
 				</div>
 
 				{/* name */}
-				<div className="flex w-screen md:w-fit md:pl-0 md:display justify-center mr-8 md:flex-row md:flex-1 md:mr-0">
-					<div
-						className="flex-row-reverse px-2 gap-0 flex
-			md:flex-row text-base-content"
-					>
-						<NavLink to={"/"} className="flex flex-row">
-							{/* <div
-								id="luxelogo"
-								className="w-28 h-28 bg-center snap-center self-center"
-							></div> */}
-							<div className="md:normal-case md:text-7xl text-3xl bodoni text-center">
-								LUXURIANT LUXE
-							</div>
-						</NavLink>
+
+				<div
+					className="flex-1 flex"
+					onClick={() => {
+						navigate("/");
+					}}
+				>
+					<div className="text-4xl md:text-6xl text-center self-center bodoni absolute left-1/2 transform -translate-x-1/2">
+						LUXURIANT LUXE
 					</div>
 				</div>
 				{/* Theme */}

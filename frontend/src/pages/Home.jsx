@@ -43,22 +43,10 @@ const Home = () => {
 	});
 	return (
 		<div className="">
-			<section>
-				<iframe
-					src={slideshowhtml}
-					style={{
-						width: "100%",
-						height: "100vh",
-						border: "none",
-						overflow: "hidden",
-						// position: "fixed",
-						// top: "0",
-						// left: "0",
-						// zIndex: "-1",
-					}}
-				></iframe>
-			</section>
-
+			<img
+				className="w-screen h-screen object-cover"
+				src="https://source.unsplash.com/random"
+			/>
 			<div className="ribbon color"></div>
 
 			<section className="flex flex-col w-screen my-6 ">

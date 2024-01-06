@@ -939,13 +939,6 @@ html {
   flex-grow: 1;
 }
 
-.card-actions {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-
 .card figure {
   display: flex;
   align-items: center;
@@ -4011,6 +4004,14 @@ details.collapse summary::-webkit-details-marker {
   margin: 0.125rem;
 }
 
+.m-16 {
+  margin: 4rem;
+}
+
+.m-2 {
+  margin: 0.5rem;
+}
+
 .m-4 {
   margin: 1rem;
 }
@@ -4025,14 +4026,6 @@ details.collapse summary::-webkit-details-marker {
 
 .m-8 {
   margin: 2rem;
-}
-
-.m-16 {
-  margin: 4rem;
-}
-
-.m-2 {
-  margin: 0.5rem;
 }
 
 .mx-16 {
@@ -4083,11 +4076,6 @@ details.collapse summary::-webkit-details-marker {
 .my-8 {
   margin-top: 2rem;
   margin-bottom: 2rem;
-}
-
-.mx-8 {
-  margin-left: 2rem;
-  margin-right: 2rem;
 }
 
 .-ml-1 {
@@ -4210,10 +4198,6 @@ details.collapse summary::-webkit-details-marker {
   margin-top: 1px;
 }
 
-.mb-4 {
-  margin-bottom: 1rem;
-}
-
 .box-border {
   box-sizing: border-box;
 }
@@ -4276,6 +4260,10 @@ details.collapse summary::-webkit-details-marker {
 
 .h-12 {
   height: 3rem;
+}
+
+.h-16 {
+  height: 4rem;
 }
 
 .h-2 {
@@ -4373,10 +4361,6 @@ details.collapse summary::-webkit-details-marker {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-16 {
-  height: 4rem;
 }
 
 .max-h-10 {
@@ -4477,6 +4461,10 @@ details.collapse summary::-webkit-details-marker {
 
 .w-12 {
   width: 3rem;
+}
+
+.w-16 {
+  width: 4rem;
 }
 
 .w-2\/3 {
@@ -4587,10 +4575,6 @@ details.collapse summary::-webkit-details-marker {
 
 .w-screen {
   width: 100vw;
-}
-
-.w-16 {
-  width: 4rem;
 }
 
 .min-w-\[100vw\] {
@@ -4733,6 +4717,11 @@ details.collapse summary::-webkit-details-marker {
 
 .translate-y-2\/4 {
   --tw-translate-y: 50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.translate-x-1\/2 {
+  --tw-translate-x: 50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -4892,6 +4881,10 @@ details.collapse summary::-webkit-details-marker {
   gap: 0.25rem;
 }
 
+.gap-16 {
+  gap: 4rem;
+}
+
 .gap-2 {
   gap: 0.5rem;
 }
@@ -4910,10 +4903,6 @@ details.collapse summary::-webkit-details-marker {
 
 .gap-8 {
   gap: 2rem;
-}
-
-.gap-16 {
-  gap: 4rem;
 }
 
 .divide-x > :not([hidden]) ~ :not([hidden]) {
@@ -5534,6 +5523,16 @@ details.collapse summary::-webkit-details-marker {
   background-color: rgb(255 152 0 / 0.2);
 }
 
+.bg-pink-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(248 187 208 / var(--tw-bg-opacity));
+}
+
+.bg-pink-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(244 143 177 / var(--tw-bg-opacity));
+}
+
 .bg-pink-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(233 30 99 / var(--tw-bg-opacity));
@@ -5624,16 +5623,6 @@ details.collapse summary::-webkit-details-marker {
 
 .bg-yellow-500\/20 {
   background-color: rgb(255 235 59 / 0.2);
-}
-
-.bg-pink-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(248 187 208 / var(--tw-bg-opacity));
-}
-
-.bg-pink-200 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(244 143 177 / var(--tw-bg-opacity));
 }
 
 .bg-opacity-60 {
@@ -5871,11 +5860,6 @@ details.collapse summary::-webkit-details-marker {
 
 .stroke-current {
   stroke: currentColor;
-}
-
-.object-contain {
-  -o-object-fit: contain;
-     object-fit: contain;
 }
 
 .object-cover {
@@ -6343,6 +6327,11 @@ details.collapse summary::-webkit-details-marker {
   color: rgb(38 50 56 / var(--tw-text-opacity));
 }
 
+.text-brown-300 {
+  --tw-text-opacity: 1;
+  color: rgb(161 136 127 / var(--tw-text-opacity));
+}
+
 .text-brown-500 {
   --tw-text-opacity: 1;
   color: rgb(121 85 72 / var(--tw-text-opacity));
@@ -6623,16 +6612,6 @@ details.collapse summary::-webkit-details-marker {
 .text-yellow-900 {
   --tw-text-opacity: 1;
   color: rgb(245 127 23 / var(--tw-text-opacity));
-}
-
-.text-pink-200 {
-  --tw-text-opacity: 1;
-  color: rgb(244 143 177 / var(--tw-text-opacity));
-}
-
-.text-brown-300 {
-  --tw-text-opacity: 1;
-  color: rgb(161 136 127 / var(--tw-text-opacity));
 }
 
 .underline {
@@ -7024,7 +7003,7 @@ body {
 @font-face {
   font-family: "Bodoni";
 
-  src: url("../assets/fonts/BodoniflfBold-MVZx.ttf");
+  src: url("../assets/fonts/BodoniFLF-Roman.ttf");
 }
 
 @font-face {
