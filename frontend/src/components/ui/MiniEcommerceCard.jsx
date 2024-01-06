@@ -49,18 +49,8 @@ import { useEffect } from "react";
 //     },
 //     "points_awarded": 500
 // }
-let isValidHttpUrl = (string) => {
-	let url;
 
-	try {
-		url = new URL(string);
-	} catch (_) {
-		return false;
-	}
-
-	return url.protocol === "http:" || url.protocol === "https:";
-};
-export function EcommerceCard(props) {
+export function MiniEcommerceCard(props) {
 	const [productStars, setProductStars] = React.useState(0);
 
 	useEffect(() => {
@@ -78,7 +68,7 @@ export function EcommerceCard(props) {
 	const navigate = useNavigate();
 	return (
 		<Card
-			className={`w-80 m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
+			className={`w-40 m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
 			// onClick={() => {
 			// 	navigate(`/product/${props.id}`);
 			// }}
@@ -86,14 +76,15 @@ export function EcommerceCard(props) {
 			<CardHeader
 				shadow={true}
 				floated={false}
-				className="h-72 rounded-none m-0"
+				className="max-h-32 min-h-32 rounded-none m-0"
 				onClick={() => {
 					navigate(`/product/${props.id}`);
+					document.getElementById("my-drawer").checked = false;
 				}}
 			>
 				<img
 					src={
-						isValidHttpUrl(props.image)
+						props.image
 							? props.image
 							: "https://source.unsplash.com/random"
 					}
@@ -105,7 +96,7 @@ export function EcommerceCard(props) {
 				<div className="mb-2 text-center">
 					<Typography
 						color="blue-gray"
-						className={`font-medium uppercase text-2xl text-center self-center ${props.text}`}
+						className={`font-medium uppercase text-xl text-center self-center ${props.text}`}
 					>
 						LL <br></br>
 						{props.name}
@@ -114,7 +105,7 @@ export function EcommerceCard(props) {
 						<div className="flex">
 							{[1, 2, 3, 4, 5].map((star) => (
 								<IconStarFilled
-									className={`w-10 h-10 ${
+									className={`w-6 h-6 ${
 										star <= productStars
 											? "text-yellow-500"
 											: "text-gray-300"
@@ -135,7 +126,7 @@ export function EcommerceCard(props) {
 					{props.description.substring(0, 100)}...
 				</Typography> */}
 			</CardBody>
-			<CardFooter className="pt-0">
+			{/* <CardFooter className="pt-0">
 				<Button
 					ripple={true}
 					fullWidth={true}
@@ -158,7 +149,7 @@ export function EcommerceCard(props) {
 				>
 					Add to Cart ₹{props.price}
 				</Button>
-			</CardFooter>
+			</CardFooter> */}
 		</Card>
 	);
 }

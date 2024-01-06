@@ -4154,10 +4154,6 @@ details.collapse summary::-webkit-details-marker {
   margin-right: 1.25rem;
 }
 
-.mr-8 {
-  margin-right: 2rem;
-}
-
 .mt-0 {
   margin-top: 0px;
 }
@@ -4282,10 +4278,6 @@ details.collapse summary::-webkit-details-marker {
   height: 6rem;
 }
 
-.h-28 {
-  height: 7rem;
-}
-
 .h-3 {
   height: 0.75rem;
 }
@@ -4391,6 +4383,10 @@ details.collapse summary::-webkit-details-marker {
   max-height: 48px;
 }
 
+.max-h-32 {
+  max-height: 8rem;
+}
+
 .min-h-10 {
   min-height: 2.5rem;
 }
@@ -4425,6 +4421,10 @@ details.collapse summary::-webkit-details-marker {
 
 .min-h-screen {
   min-height: 100vh;
+}
+
+.min-h-32 {
+  min-height: 8rem;
 }
 
 .w-0 {
@@ -4483,10 +4483,6 @@ details.collapse summary::-webkit-details-marker {
   width: 6rem;
 }
 
-.w-28 {
-  width: 7rem;
-}
-
 .w-3 {
   width: 0.75rem;
 }
@@ -4513,6 +4509,10 @@ details.collapse summary::-webkit-details-marker {
 
 .w-4\/5 {
   width: 80%;
+}
+
+.w-40 {
+  width: 10rem;
 }
 
 .w-5 {
@@ -4717,11 +4717,6 @@ details.collapse summary::-webkit-details-marker {
 
 .translate-y-2\/4 {
   --tw-translate-y: 50%;
-  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-
-.translate-x-1\/2 {
-  --tw-translate-x: 50%;
   transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
@@ -7275,14 +7270,6 @@ footer::before {
   right: 0;
   position: absolute;
   z-index: -1;
-}
-
-@media (min-width: 720px) {
-  .mockup-phone .md\:display {
-    overflow: hidden;
-    border-radius: 40px;
-    margin-top: -25px;
-  }
 }
 
 .placeholder\:opacity-0::-moz-placeholder {
@@ -9878,10 +9865,6 @@ footer::before {
     margin-bottom: 1rem;
   }
 
-  .md\:mr-0 {
-    margin-right: 0px;
-  }
-
   .md\:flex {
     display: flex;
   }
@@ -9928,11 +9911,6 @@ footer::before {
 
   .md\:w-80 {
     width: 20rem;
-  }
-
-  .md\:w-fit {
-    width: -moz-fit-content;
-    width: fit-content;
   }
 
   .md\:min-w-\[60\%\] {
@@ -10015,10 +9993,6 @@ footer::before {
     padding: 1rem;
   }
 
-  .md\:pl-0 {
-    padding-left: 0px;
-  }
-
   .md\:text-left {
     text-align: left;
   }
@@ -10056,10 +10030,6 @@ footer::before {
   .md\:text-xl {
     font-size: 1.25rem;
     line-height: 1.75rem;
-  }
-
-  .md\:normal-case {
-    text-transform: none;
   }
 }
 

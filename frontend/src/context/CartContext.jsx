@@ -41,7 +41,7 @@ const CartContextProvider = ({ children }) => {
 	//         "asdf",
 	//         "asdfasd"
 	//     ],
-	//     "product_quantity": 0,
+	//     "selected_quantity": 0,
 	//     "points_awarded": 0,
 	//     "shades_present": false,
 	//     "volumes_present": false,
@@ -386,7 +386,7 @@ const CartContextProvider = ({ children }) => {
 		// check if item is already in cart
 		if (cart.length === 0) {
 			// if the cart is empty, add the item to the cart
-			item.product_quantity = 1;
+			item.selected_quantity = 1;
 			cart.push(item);
 		} else {
 			// if the cart is not empty, check if the item is in the cart
@@ -394,14 +394,14 @@ const CartContextProvider = ({ children }) => {
 			for (let i = 0; i < cart.length; i++) {
 				if (cart[i]._id === item._id) {
 					// if the item is in the cart, increase the quantity
-					cart[i].product_quantity += 1;
+					cart[i].selected_quantity += 1;
 					found = true;
 					break;
 				}
 			}
 			if (!found) {
 				// if the item is not in the cart, add it to the cart
-				item.product_quantity = 1;
+				item.selected_quantity = 1;
 				cart.push(item);
 			}
 		}
@@ -444,7 +444,7 @@ const CartContextProvider = ({ children }) => {
 	const getCartTotal = () => {
 		let total = 0;
 		for (let i = 0; i < cart.length; i++) {
-			total += cart[i].product_quantity * cart[i].product_cost;
+			total += cart[i].selected_quantity * cart[i].product_cost;
 		}
 	};
 
@@ -452,7 +452,7 @@ const CartContextProvider = ({ children }) => {
 		let product_exists = false;
 		for (let i = 0; i < cart.length; i++) {
 			if (cart[i]._id === _id) {
-				cart[i].quantity += 1;
+				cart[i].selected_quantity += 1;
 				product_exists = true;
 				break;
 			}
@@ -469,8 +469,8 @@ const CartContextProvider = ({ children }) => {
 	const DecreaseProductQuantity = (_id) => {
 		for (let i = 0; i < cart.length; i++) {
 			if (cart[i]._id === _id) {
-				cart[i].quantity -= 1;
-				if (cart[i].quantity === 0) {
+				cart[i].selected_quantity -= 1;
+				if (cart[i].selected_quantity === 0) {
 					// if the quantity is 0, remove the item from the cart
 					cart.splice(i, 1);
 				}

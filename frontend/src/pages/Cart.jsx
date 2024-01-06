@@ -9,13 +9,16 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { DisplayCarousal } from "../components/ui/DisplayCarousal";
 import { Toaster, toast } from "react-hot-toast";
+import { MiniDisplayCarousal } from "../components/ui/MiniDisplayCarousal";
 
 const random_image_link =
 	"https://images.unsplash.com/photo-1643185450492-6ba77dea00f6?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29zbWV0aWNzfGVufDB8fDB8fHww";
 const Cart = () => {
+	const navigate = useNavigate();
 	const [currentCustomerPoints, setCurrentCustomerPoints] = useState(0);
 	const [currentCustomerOrderCost, setCurrentCustomerOrderCost] = useState(0);
 	const [randomImageToDisplayTop, setRandomImageToDisplayTop] = useState(0);
+	const [sampleCount, setSampleCount] = useState(0);
 	const [counter, setCounter] = useState(0);
 	console.log("hi");
 	const [Cart, setCart] = useState([]);
@@ -35,6 +38,21 @@ const Cart = () => {
 		getCart,
 		cart,
 	} = React.useContext(CartContext);
+
+	function checkIfSample(product) {
+		let is_sample = false;
+		if (product.product_category) {
+			// flatten the array
+			for (let i = 0; i < product.product_category.length; i++) {
+				if (product.product_category[i].category_name === "sample") {
+					is_sample = true;
+					break;
+				}
+			}
+		}
+		console.log(product, is_sample);
+		return is_sample;
+	}
 
 	useEffect(() => {
 		let drawer_check_element = document.getElementById("my-drawer");
@@ -67,17 +85,17 @@ const Cart = () => {
 	}, [beforeCheckoutProduct]);
 
 	useEffect(() => {
-		if (Cart) {
-			console.log(Cart);
+		if (cart) {
+			console.log(cart);
 			// calculate random image to display
 			// set random image to the first image of the first product in the cart
 			// if the cart is empty, or the image is empty, then set the image to a random image
 			if (
-				Cart.length > 0 &&
-				Cart[0].product_image_links.description_images.length > 0
+				cart.length > 0 &&
+				cart[0].product_image_links.description_images.length > 0
 			) {
 				setRandomImageToDisplayTop(
-					Cart[0].product_image_links.description_images[0]
+					cart[0].product_image_links.description_images[0]
 				);
 			} else {
 				setRandomImageToDisplayTop(random_image_link);
@@ -85,7 +103,7 @@ const Cart = () => {
 		} else {
 			setRandomImageToDisplayTop(random_image_link);
 		}
-	}, [getCart()]);
+	}, [counter]);
 	return (
 		<div>
 			{/* <Toaster /> */}
@@ -111,6 +129,17 @@ const Cart = () => {
 												product.product_image_links
 													.description_images[0]
 											}
+											onClick={() => {
+												navigate(
+													`/product/${product._id}`
+												);
+												// uncheck the drawer
+												let drawer_check_element =
+													document.getElementById(
+														"my-drawer"
+													);
+												drawer_check_element.checked = false;
+											}}
 											className="w-24 h-24 object-center object-cover my-2"
 										/>
 									</div>
@@ -119,32 +148,54 @@ const Cart = () => {
 											<div className="text-3xl ptsans font-bold m-2 mt-0 w-full flex p-2">
 												{product.product_name}
 												<IconMinus className="w-8 h-8" />
-												<IconCurrencyRupee className="w-8 h-8" />
-												{product.product_cost}
+												{product.product_cost === 0 ? (
+													<div className="text-2xl">
+														Free
+													</div>
+												) : (
+													<div className="flex">
+														<IconCurrencyRupee className="w-8 h-8" />
+														{product.product_cost}
+													</div>
+												)}
 											</div>
 										</div>
 										<div className="flex flex-row justify-end gap-3 items-center my-2">
 											<div
 												className="w-10 h-10 rounded-none outline outline-1 flex items-center justify-center bg-white text-black hover:bg-black hover:text-white"
 												onClick={() => {
-													// if (selectedProductQuantity > 1) {
-													// 	setSelectedProductQuantity(
-													// 		selectedProductQuantity - 1
-													// 	);
-													// }
+													if (
+														checkIfSample(product)
+													) {
+														setSampleCount(
+															(sampleCount) =>
+																sampleCount - 1
+														);
+													}
+													DecreaseProductQuantity(
+														product._id
+													);
 												}}
 											>
 												<IconMinus />
 											</div>
 											<div className="w-20 h-10 rounded-none outline outline-1 flex items-center justify-center bg-white text-black ">
-												{product.product_quantity}
+												{product.selected_quantity}
 											</div>
 											<div
 												className="w-10 h-10 rounded-none outline outline-1 flex items-center justify-center bg-white text-black hover:bg-black hover:text-white"
 												onClick={() => {
-													// setSelectedProductQuantity(
-													// 	selectedProductQuantity + 1
-													// );
+													if (
+														!checkIfSample(product)
+													) {
+														IncreaseProductQuantity(
+															product._id
+														);
+													} else {
+														toast.error(
+															"Only 1 sample can be added"
+														);
+													}
 												}}
 											>
 												<IconPlus />
@@ -161,7 +212,7 @@ const Cart = () => {
 			<div>
 				<div className="flex justify-center uppercase ml-4 mt-4">
 					<div className="text-2xl bodoni font-semibold">
-						2 Free Samples On Purchase of ₹2999/-
+						1 Free Sample Over Purchse above ₹3000/-
 					</div>
 				</div>
 				<div className="flex justify-center uppercase ml-4">
@@ -170,7 +221,7 @@ const Cart = () => {
 			</div>
 			{/* samples images that are clickable, upon clicking are added to cart */}
 			{SampleProducts.length > 0 ? (
-				<div className="flex justify-center">
+				<div className="flex justify-center gap-4">
 					{SampleProducts.map((product) => {
 						return (
 							<div className="flex justify-center">
@@ -178,6 +229,37 @@ const Cart = () => {
 									src={
 										product.product_image_links
 											.description_images[0]
+									}
+									onClick={
+										() => {
+											if (sampleCount < 1) {
+												if (
+													product.product_quantity ===
+													0
+												) {
+													toast.error(
+														"Product is out of stock"
+													);
+													return;
+												}
+												addToCart(product._id);
+												setSampleCount(
+													(sampleCount) =>
+														sampleCount + 1
+												);
+												toast.success(
+													"Added to cart successfully"
+												);
+											} else {
+												toast.error(
+													"Only 1 sample can be added"
+												);
+											}
+										}
+										// uncheck the drawer
+										// let drawer_check_element =
+										// 	document.getElementById("my-drawer");
+										// drawer_check_element.checked = false;
 									}
 									className="w-24 h-24 object-center object-cover my-2"
 								/>
@@ -196,7 +278,7 @@ const Cart = () => {
 							</div>
 						</div>
 					}
-					<DisplayCarousal products={EssentialsProducts} />
+					<MiniDisplayCarousal products={EssentialsProducts} />
 				</div>
 			) : null}
 			{/* Before you checkout */}
@@ -215,6 +297,15 @@ const Cart = () => {
 									beforeCheckoutProduct[0].product_image_links
 										.description_images[0]
 								}
+								onClick={() => {
+									navigate(
+										`/product/${beforeCheckoutProduct[0]._id}`
+									);
+									// uncheck the drawer
+									let drawer_check_element =
+										document.getElementById("my-drawer");
+									drawer_check_element.checked = false;
+								}}
 								className="w-24 h-24 object-center object-cover my-2"
 							/>
 						</div>
@@ -231,7 +322,17 @@ const Cart = () => {
 								<button
 									className="btn btn-primary uppercase w-fit rounded-none m-8"
 									onClick={() => {
-										addToCart(beforeCheckoutProduct[0], 1);
+										console.log(beforeCheckoutProduct);
+										if (
+											beforeCheckoutProduct[0]
+												.product_quantity === 0
+										) {
+											toast.error(
+												"Product is out of stock"
+											);
+											return;
+										}
+										addToCart(beforeCheckoutProduct[0]._id);
 										toast.success(
 											"Added to cart successfully"
 										);

@@ -27,7 +27,7 @@ const SideCart = () => {
 						aria-label="close sidebar"
 						className="drawer-overlay"
 					></label>
-					<div className="w-1/3 min-h-full bg-base-200 text-base-content drawer-content">
+					<div className="w-2/5 min-h-full bg-base-200 text-base-content drawer-content">
 						<div className="w-full flex justify-start">
 							<IconX
 								className="w-12 h-12 m-4 opacity-75"

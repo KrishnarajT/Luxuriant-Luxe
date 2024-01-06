@@ -166,7 +166,7 @@ const Product = () => {
 		console.log(id);
 		setProduct(productInfo.find((product) => product._id === id));
 		console.log("product", product);
-	}, []);
+	}, [id]);
 
 	useEffect(() => {
 		if (product !== undefined) {
@@ -277,6 +277,7 @@ const Product = () => {
 							/>
 						</div>
 					</div>
+
 					{/* details */}
 					<div className="flex-1 flex flex-col gap-2">
 						{/* category breadcrumbs */}
@@ -291,11 +292,14 @@ const Product = () => {
 												onClick={(e) => {
 													e.preventDefault();
 													navigate(
-														`/category/${product.product_category[0]}`
+														`/category/${product.product_category[0].category_name}`
 													);
 												}}
 											>
-												{product.product_category[0].toUpperCase()}
+												{
+													product.product_category[0]
+														.category_name?.toUpperCase()
+												}
 											</a>
 										)}{" "}
 									</li>
@@ -382,7 +386,7 @@ const Product = () => {
 										.map((shade) => (
 											// draw a circle with the shade color, upon clicking changes shade
 											<div
-												className="w-10 h-10 rounded-full outline outline-1"
+												className="w-10 h-10 rounded-full outline outline-1 flex justify-center items-center"
 												style={{
 													backgroundColor: `#${shade.shade_color}`,
 												}}
@@ -394,7 +398,9 @@ const Product = () => {
 														shade.shade_image
 													);
 												}}
-											></div>
+											>
+												{shade.shade_number}
+											</div>
 										))}
 								</div>
 							</div>
@@ -468,9 +474,14 @@ const Product = () => {
 							<div
 								className="w-10 h-10 rounded-none outline outline-1 flex items-center justify-center bg-white text-black hover:bg-black hover:text-white"
 								onClick={() => {
+									if (product.product_quantity === 0) {
+										toast.error("Product out of stock!");
+										return;
+									}
 									setSelectedProductQuantity(
 										selectedProductQuantity + 1
 									);
+									IncreaseProductQuantity(product._id);
 									IncreaseProductQuantity(product._id);
 								}}
 							>
@@ -480,6 +491,7 @@ const Product = () => {
 							{/* Add to cart button with cost */}
 							<button
 								className="btn btn-md btn-primary text-xl"
+								disabled={product.product_quantity === 0}
 								onClick={() => {
 									addToCart(product._id);
 									// open drawer
@@ -493,7 +505,20 @@ const Product = () => {
 								Add to Cart ₹{selectedProductCost}
 							</button>
 						</div>
-
+						{/* Show product in stock or not */}
+						<div className="">
+							<div className="text-2xl ptsans">
+								{product.product_quantity > 0 ? (
+									<div className="text-green-500">
+										In Stock
+									</div>
+								) : (
+									<div className="text-red-500">
+										Out of Stock
+									</div>
+								)}
+							</div>
+						</div>
 						{/* Product Details, which will show description, visible upon clicking +, collapses after clicking - */}
 						<div className="flex flex-col gap-2">
 							<div className="flex flex-row gap-2 items-center">
