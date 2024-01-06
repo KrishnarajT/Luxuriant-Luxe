@@ -45,16 +45,15 @@ const Checkout = () => {
 		IncreaseProductQuantity,
 		DecreaseProductQuantity,
 		getCart,
+		cart,
 		currentCustomerPoints,
 		setCurrentCustomerPoints,
 		getDiscountedTotal,
 		getCartPoints,
 	} = React.useContext(CartContext);
 
-	const [cart, setCart] = React.useState([]);
-
 	useEffect(() => {
-		setCart(getCart());
+		// setCart(getCart());
 		if (theme === "light") {
 			const light_button = document.getElementById("light_button");
 			light_button.click();
@@ -81,7 +80,7 @@ const Checkout = () => {
 	const [counter, setCounter] = React.useState(0);
 
 	useEffect(() => {
-		setCart(getCart());
+		// setCart(getCart());
 	}, [counter]);
 
 	const checkValidity = () => {
@@ -120,6 +119,9 @@ const Checkout = () => {
 		setCustomerAddress(
 			`${country}, ${region}, ${firstName} ${lastName}, ${address}, ${apartment}`
 		);
+
+		// merge fields to form customer name
+		setCustomerName(`${firstName} ${lastName}`);
 		return true;
 	};
 
@@ -132,11 +134,12 @@ const Checkout = () => {
 		console.log(customerEmail);
 		console.log(customerPhone);
 		console.log(customerAddress);
-		console.log(customerName);
+		console.log("customr name is: ", customerName);
 		console.log(getCart());
 		console.log(getCartTotal());
 
 		let latest_cart = getCart();
+		console.log("The latest cart is: ", cart);
 		const response = await axios
 			.post(
 				`${base_url}/api/v1/Luxuriant/add_order`,
@@ -147,10 +150,9 @@ const Checkout = () => {
 						customer_phone: customerPhone,
 						customer_address: customerAddress,
 						customer_name: customerName,
-						customer_order: JSON.stringify(latest_cart),
+						customer_order: JSON.stringify(cart),
 						order_cost: getDiscountedTotal(),
-						updated_customer_points:
-							currentCustomerPoints + getCartPoints(),
+						updated_customer_points: getCartPoints(),
 						points_used: currentCustomerPoints,
 						wantsSubscription: wantsSubscription,
 					},
@@ -518,7 +520,7 @@ const Checkout = () => {
 							console.log(
 								"i have paid clicked. send some api calls. "
 							);
-
+							setCounter((counter) => counter + 1);
 							SendOrderToBackend();
 							// hide the buy now button
 							// const buy_now_button = document.getElementById("buy_now_button");

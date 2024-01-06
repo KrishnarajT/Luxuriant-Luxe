@@ -447,9 +447,9 @@ const Cart = () => {
 					<div className="flex justify-center uppercase ml-4">
 						<div className="text-2xl bodoni font-semibold flex gap-4 items-center">
 							<IconMinus className="w-8 h-8" />
-							{currentCustomerPoints} * 10 ={" "}
+							{currentCustomerPoints} / 10 ={" "}
 							<IconCurrencyRupee className="w-8 h-8" />{" "}
-							{currentCustomerPoints * 10}
+							{currentCustomerPoints / 10}
 						</div>
 					</div>
 				</div>

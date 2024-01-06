@@ -58,7 +58,7 @@ const Footer = () => {
 
 		if (response.data.message === "simulation") {
 			alert("Simulation Response, Added order");
-		} else if (response.data.message === "Success") {
+		} else if (response.data.message === "success") {
 			toast.success("You are Successfully Subscribed!");
 			clearCart();
 			setChange(1);

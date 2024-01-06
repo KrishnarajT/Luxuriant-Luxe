@@ -483,12 +483,12 @@ const Product = () => {
 										selectedVolume,
 										selectedProductShade
 									);
-									IncreaseProductQuantity(
-										product._id,
-										selectedProductCost,
-										selectedVolume,
-										selectedProductShade
-									);
+									// IncreaseProductQuantity(
+									// 	product._id,
+									// 	selectedProductCost,
+									// 	selectedVolume,
+									// 	selectedProductShade
+									// );
 								}}
 							>
 								<IconPlus />

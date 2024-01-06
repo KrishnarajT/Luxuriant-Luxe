@@ -482,7 +482,7 @@ const CartContextProvider = ({ children }) => {
 		for (let i = 0; i < cart.length; i++) {
 			total += cart[i].selected_quantity * cart[i].product_cost;
 		}
-		return total - 10 * currentCustomerPoints;
+		return total - currentCustomerPoints / 10;
 	};
 	const IncreaseProductQuantity = (_id) => {
 		let product_exists = false;
