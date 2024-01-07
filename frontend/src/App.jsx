@@ -37,7 +37,7 @@ function App() {
 	const [isNavbarPresent, setisNavbarPresent] = useState(true);
 
 	useEffect(() => {
-		console.log(isNavbarPresent);
+		// console.log(isNavbarPresent);
 	}, [isNavbarPresent]);
 
 	return (

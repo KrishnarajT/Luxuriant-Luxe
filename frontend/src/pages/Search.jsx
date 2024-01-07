@@ -50,7 +50,7 @@ const Search = () => {
 	const { productInfo } = React.useContext(CartContext);
 	const [searchTerm, setSearchTerm] = React.useState("");
 	useEffect(() => {
-		console.log(productInfo);
+		// console.log(productInfo);
 	}, []);
 
 	function filterProducts() {

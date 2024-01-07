@@ -54,7 +54,7 @@ const Footer = () => {
 					},
 				};
 			});
-		console.log(response.data);
+		// console.log(response.data);
 
 		if (response.data.message === "simulation") {
 			alert("Simulation Response, Added order");

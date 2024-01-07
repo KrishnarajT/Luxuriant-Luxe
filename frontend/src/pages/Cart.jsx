@@ -30,7 +30,7 @@ const Cart = () => {
 	const [randomImageToDisplayTop, setRandomImageToDisplayTop] = useState(0);
 	const [sampleCount, setSampleCount] = useState(0);
 	const [counter, setCounter] = useState(0);
-	console.log("hi");
+	// console.log("hi");
 	const [Cart, setCart] = useState([]);
 	let [drawer_check_button_checked, setDrawerCheckButtonChecked] =
 		React.useState(undefined);
@@ -63,7 +63,7 @@ const Cart = () => {
 				}
 			}
 		}
-		console.log(product, is_sample);
+		// console.log(product, is_sample);
 		return is_sample;
 	}
 	const [cartTotal, setCartTotal] = useState(0);
@@ -82,9 +82,9 @@ const Cart = () => {
 				setCounter((counter) => counter + 1);
 			} else {
 				setCart(cart);
-				console.log("cart total", getCartTotal());
+				// console.log("cart total", getCartTotal());
 				setCartTotal(getCartTotal());
-				console.log("checked", cart);
+				// console.log("checked", cart);
 				setCounter((counter) => counter + 1);
 			}
 		}, 1000);
@@ -94,12 +94,12 @@ const Cart = () => {
 	}, [counter]);
 
 	useEffect(() => {
-		console.log(beforeCheckoutProduct);
+		// console.log(beforeCheckoutProduct);
 	}, [beforeCheckoutProduct]);
 
 	useEffect(() => {
 		if (cart) {
-			console.log(cart);
+			// console.log(cart);
 			// calculate random image to display
 			// set random image to the first image of the first product in the cart
 			// if the cart is empty, or the image is empty, then set the image to a random image
@@ -384,7 +384,7 @@ const Cart = () => {
 								<button
 									className="btn btn-primary uppercase w-fit rounded-none m-8"
 									onClick={() => {
-										console.log(beforeCheckoutProduct);
+										// console.log(beforeCheckoutProduct);
 										if (
 											beforeCheckoutProduct[0]
 												.product_quantity === 0

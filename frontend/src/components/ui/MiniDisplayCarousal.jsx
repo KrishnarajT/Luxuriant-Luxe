@@ -50,7 +50,7 @@ import MaterialSymbolsArrowForwardIos from "./MaterialSymbolsArrowForwardIos";
 
 export function MiniDisplayCarousal(props) {
 	let products = props.products;
-	console.log("products b4 editing", products);
+	// console.log("products b4 editing", products);
 	// split products array into a new array that is an array of [3 products]
 	products = products.reduce((resultArray, item, index) => {
 		const chunkIndex = Math.floor(index / 3);
@@ -63,7 +63,7 @@ export function MiniDisplayCarousal(props) {
 
 		return resultArray;
 	}, []);
-	console.log("products after editing", products);
+	// console.log("products after editing", products);
 	return (
 		<Carousel
 			className="rounded-none bg-pink-200"

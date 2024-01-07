@@ -32,13 +32,13 @@ const Home = () => {
 			const dark_button = document.getElementById("dark_button");
 			dark_button.click();
 		}
-		console.log(productInfo);
-		console.log(HairProducts);
-		console.log(SkinProducts);
-		console.log(CosmeticsProducts);
-		console.log(EssentialsProducts);
-		console.log(HolidayProducts);
-		console.log(FeaturedProducts);
+		// console.log(productInfo);
+		// console.log(HairProducts);
+		// console.log(SkinProducts);
+		// console.log(CosmeticsProducts);
+		// console.log(EssentialsProducts);
+		// console.log(HolidayProducts);
+		// console.log(FeaturedProducts);
 	});
 	return (
 		<div className="">

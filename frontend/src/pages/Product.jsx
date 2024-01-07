@@ -162,10 +162,10 @@ const Product = () => {
 	const navigate = useNavigate();
 
 	useEffect(() => {
-		console.log(productInfo);
-		console.log(id);
+		// console.log(productInfo);
+		// console.log(id);
 		setProduct(productInfo.find((product) => product._id === id));
-		console.log("product", product);
+		// console.log("product", product);
 	}, [id]);
 
 	useEffect(() => {
@@ -185,9 +185,9 @@ const Product = () => {
 			if (product.shades_present) {
 				setSelectedProductShade(product.product_shades[0]);
 			}
-			console.log("product", product);
-			console.log("selectedVolume", selectedVolume);
-			console.log("selectedImage", selectedImage);
+			// console.log("product", product);
+			// console.log("selectedVolume", selectedVolume);
+			// console.log("selectedImage", selectedImage);
 			// calculate stars from reviews
 			let sum = 0;
 			let visible_review_count = 0;
@@ -212,14 +212,14 @@ const Product = () => {
 		// all reviews
 		let updatedReviews = [...productReviews, new_review];
 
-		console.log("reviewToAdd", reviewToAdd);
+		// console.log("reviewToAdd", reviewToAdd);
 		axios
 			.post(`${base_url}/api/v1/Luxuriant/add_review`, {
 				reviews: updatedReviews,
 				product_id: product._id,
 			})
 			.then((response) => {
-				console.log(response);
+				// console.log(response);
 				if (response.data.message === "Success") {
 					toast.success("Review Added!");
 				} else {

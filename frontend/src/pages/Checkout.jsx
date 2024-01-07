@@ -103,9 +103,9 @@ const Checkout = () => {
 		const phoneRegex = /^[0-9]{10}$/;
 
 		if (phoneRegex.test(phone)) {
-			console.log("Phone number is valid");
+			// console.log("Phone number is valid");
 		} else {
-			console.log("Phone number is invalid");
+			// console.log("Phone number is invalid");
 			return false;
 		}
 
@@ -132,15 +132,15 @@ const Checkout = () => {
 		// placing_order.classList.remove("hidden");
 
 		// print everything
-		console.log(customerEmail);
-		console.log(customerPhone);
-		console.log(customerAddress);
-		console.log("customr name is: ", customerName);
-		console.log(getCart());
-		console.log(getCartTotal());
+		// console.log(customerEmail);
+		// console.log(customerPhone);
+		// console.log(customerAddress);
+		// console.log("customr name is: ", customerName);
+		// console.log(getCart());
+		// console.log(getCartTotal());
 
 		let latest_cart = getCart();
-		console.log("The latest cart is: ", cart);
+		// console.log("The latest cart is: ", cart);
 		const response = await axios
 			.post(
 				`${base_url}/api/v1/Luxuriant/add_order`,
@@ -171,7 +171,7 @@ const Checkout = () => {
 					},
 				};
 			});
-		console.log(response.data);
+		// console.log(response.data);
 
 		// // stop showing the placing order button
 		// placing_order.classList.add("hidden");
@@ -209,10 +209,10 @@ const Checkout = () => {
 			})
 			.then((response) => {
 				if (response.data.message === "success") {
-					console.log(
-						"customer points are: ",
-						response.data.customer_points
-					);
+					// console.log(
+					// 	"customer points are: ",
+					// 	response.data.customer_points
+					// );
 					setCurrentCustomerPoints(response.data.customer_points);
 				}
 				return response;
@@ -226,7 +226,7 @@ const Checkout = () => {
 					},
 				};
 			});
-		console.log(response.data);
+		// console.log(response.data);
 
 		if (response.data.message === "simulation") {
 			alert("Simulation Response, Added order");
@@ -262,7 +262,7 @@ const Checkout = () => {
 					},
 				};
 			});
-		console.log(response.data);
+		// console.log(response.data);
 
 		if (response.data.message === "simulation") {
 			alert("Simulation Response, Added order");
@@ -329,7 +329,7 @@ const Checkout = () => {
 											setWantsSubscription(
 												!wantsSubscription
 											);
-											console.log("checkbox clicked");
+											// console.log("checkbox clicked");
 										}}
 									/>
 								</label>
@@ -525,9 +525,9 @@ const Checkout = () => {
 						className="btn btn-lg btn-primary m-4"
 						id="buy_now_button"
 						onClick={() => {
-							console.log(
-								"i have paid clicked. send some api calls. "
-							);
+							// console.log(
+							// 	"i have paid clicked. send some api calls. "
+							// );
 							setCounter((counter) => counter + 1);
 							SendOrderToBackend();
 							// hide the buy now button
@@ -565,9 +565,9 @@ const Checkout = () => {
 								<button
 									className="btn btn-secondary"
 									onClick={() => {
-										console.log(
-											"buy now clicked. send some api calls. "
-										);
+										// console.log(
+										// 	"buy now clicked. send some api calls. "
+										// );
 										// 	unhide the qr code
 										const qr_code =
 											document.getElementById(

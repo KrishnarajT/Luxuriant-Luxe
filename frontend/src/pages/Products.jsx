@@ -38,7 +38,7 @@ const Products = () => {
 			const dark_button = document.getElementById("dark_button");
 			dark_button.click();
 		}
-		console.log(productInfo);
+		// console.log(productInfo);
 	}, []);
 	return (
 		<div id="products_div">

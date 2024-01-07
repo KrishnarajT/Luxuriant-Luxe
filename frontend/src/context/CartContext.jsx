@@ -182,7 +182,7 @@ const CartContextProvider = ({ children }) => {
 			product_category = product_category.filter(
 				(category) => category !== undefined
 			);
-			console.log(product_category);
+			// console.log(product_category);
 			// if the product is a holiday product, add it to the holiday products array only if the holiday product array doesnt already have it. And make sure to ignore case
 			if (
 				product_category.some(

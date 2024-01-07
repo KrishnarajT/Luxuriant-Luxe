@@ -60,11 +60,11 @@ const SubCategory = () => {
 		let sub_category_products = [];
 		let current_category_id = location.state.current_category_id;
 		let current_sub_category_id = location.state.current_sub_category_id;
-		console.log(
-			category_products,
-			current_category_id,
-			current_sub_category_id
-		);
+		// console.log(
+		// 	category_products,
+		// 	current_category_id,
+		// 	current_sub_category_id
+		// );
 		for (let i = 0; i < category_products.length; i++) {
 			// filter category matching id
 			for (
@@ -96,7 +96,7 @@ const SubCategory = () => {
 				}
 			}
 		}
-		console.log("subcat", sub_category_products);
+		// console.log("subcat", sub_category_products);
 		setCurrentSubCategoryProducts(sub_category_products);
 	}, []);
 
