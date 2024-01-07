@@ -264,7 +264,7 @@ const Cart = () => {
 			<div>
 				<div className="flex justify-center uppercase ml-4 mt-4">
 					<div className="text-2xl bodoni font-semibold">
-						1 Free Sample Over Purchse above ₹3000/-
+						1 Free Sample Over Every Purchase!
 					</div>
 				</div>
 				<div className="flex justify-center uppercase ml-4">
@@ -294,9 +294,9 @@ const Cart = () => {
 													);
 													return;
 												}
-												if (cartTotal < 3000) {
+												if (cartTotal < 0) {
 													toast.error(
-														"Cart total should be above ₹3000/-"
+														"Cart total should be above 0/-"
 													);
 													return;
 												}

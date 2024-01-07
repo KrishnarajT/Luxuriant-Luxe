@@ -600,7 +600,7 @@ const Product = () => {
 						</div>
 
 						{/* 3 SVGs in a line */}
-						<div className="flex flex-row gap-2">
+						<div className="flex flex-row gap-4">
 							{/* 1st SVG */}
 							<div className="flex flex-col gap-2">
 								<img
@@ -612,7 +612,7 @@ const Product = () => {
 							{/* 2nd SVG */}
 							<div className="flex flex-col gap-2">
 								<img
-									src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-cruelty-free-vegan-and-vegetarian-flaticons-flat-flat-icons-2.png"
+									src="https://i.imgur.com/yuQEOcA.png"
 									alt="Image 2"
 									className="w-24 h-24"
 								/>
@@ -620,15 +620,15 @@ const Product = () => {
 							{/* 3rd SVG */}
 							<div className="flex flex-col gap-2">
 								<img
-									src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-cruelty-free-vegan-and-vegetarian-flaticons-flat-flat-icons-2.png"
+									src="https://i.imgur.com/PssWLjE.png"
 									alt="Image 3"
-									className="w-24 h-24"
+									className="w-fit h-24"
 								/>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div className="flex flex-col gap-8">
+				<div className="flex flex-col gap-8" id="texturebg">
 					{/* Product Description */}
 					<div className="flex flex-row justify-between">
 						{product.product_image_links && (
@@ -643,8 +643,8 @@ const Product = () => {
 								</div>
 							</div>
 						)}
-						<div className="flex flex-col items-end p-8 m-4 mr-10 bg-transparent rounded-3xl">
-							<div className="text-5xl ptsans font-bold uppercase">
+						<div className="flex flex-col items-end p-8 m-4 mr-10 rounded-3xl bg-white/60">
+							<div className="text-5xl ptsans font-bold uppercase z-10">
 								Mystique Behind our admiration
 							</div>
 							<div className="text-4xl italic cardo my-8">
@@ -657,7 +657,7 @@ const Product = () => {
 					</div>
 
 					{/* Real Results */}
-					<div className="flex flex-row-reverse justify-between">
+					<div className="flex flex-row-reverse justify-between ">
 						{product.product_image_links && (
 							<div className="w-1/2 flex justify-center p-8 m-4">
 								<div className="aspect-square w-2/3">
@@ -670,8 +670,8 @@ const Product = () => {
 								</div>
 							</div>
 						)}
-						<div className="flex-1 flex justify-center">
-							<div className=" w-full flex flex-col items-start p-8 m-4 ml-20 bg-transparent rounded-3xl">
+						<div className="flex-1 flex justify-center ">
+							<div className=" w-full flex flex-col items-start p-8 m-4 ml-20 bg-transparent rounded-3xl bg-white/60">
 								<div className="text-5xl ptsans font-bold uppercase">
 									Real Results
 								</div>
@@ -686,7 +686,7 @@ const Product = () => {
 					</div>
 
 					{/* How to Use */}
-					<div className="flex flex-row justify-between">
+					<div className="flex flex-row justify-between ">
 						{product.product_image_links && (
 							<div className="w-1/2 flex justify-center p-8 m-4">
 								<div className="aspect-square w-2/3">
@@ -699,8 +699,8 @@ const Product = () => {
 								</div>
 							</div>
 						)}
-						<div className="flex-1 flex justify-center">
-							<div className=" w-full flex flex-col items-end p-8 m-4 mr-10 bg-transparent rounded-3xl">
+						<div className="flex-1 flex justify-center ">
+							<div className=" w-full flex flex-col items-end p-8 m-4 mr-10 bg-white/60 rounded-3xl">
 								<div className="text-5xl ptsans font-bold uppercase">
 									How to Use
 								</div>

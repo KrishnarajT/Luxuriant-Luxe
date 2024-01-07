@@ -47,49 +47,50 @@ const Home = () => {
 				src="https://source.unsplash.com/random"
 			/>
 			<div className="ribbon color"></div>
-
-			<section className="flex flex-col w-screen my-6 ">
-				<div className="flex justify-between flex-row">
-					<div
-						className="p-4 m-8 justify-center items-start text-4xl forum
-				md:text-7xl"
-					>
-						LUXURIANT LUXE{" "}
-						<span className="text-accent forum mx-4 italic">
-							Essentials
-						</span>
-					</div>
-					<div>
-						<button
-							className="text-catalogue_bg underline btn btn-ghost btn-lg p-4 m-8 forum text-4xl"
-							onClick={() => {
-								setCurrentCategoryProducts(EssentialsProducts);
-								navigate("/category/essentials", {
-									state: {
-										currentCategoryProducts:
-											EssentialsProducts,
-									},
-								});
-							}}
-						>
-							Shop All
-						</button>
-					</div>
-				</div>
-
-				<div className="text-4xl px-16 cardo py-4">
+			<div className="flex flex-col">
+				<div>Revitalize your skin with uper-Concentrated potions</div>
+				<div className="text-4xl px-16 py-4">
 					These are the products that are essential for your daily
 					skin. They are recommended by our experts and are the best
 					in the market. These are the products that are essential for
 					your daily skin. They are recommended by our experts and are
 					the best in the market.
 				</div>
+			</div>
+			<section className="flex flex-col w-screen my-6 ">
+				<div className="flex justify-center flex-row">
+					<div
+						className="p-4 m-8 justify-center items-start text-4xl forum
+				md:text-7xl underline"
+					>
+						LUXURIANT LUXE{" "}
+						<span className="bodoni underline italic">
+							Essentials
+						</span>
+					</div>
+				</div>
+
 				<div className="flex justify-center w-full">
 					<div className="w-full mx-4">
 						{EssentialsProducts && (
 							<DisplayCarousal products={EssentialsProducts} />
 						)}
 					</div>
+				</div>
+				<div className="flex justify-center w-full">
+					<button
+						className="underline btn btn-ghost btn-lg p-4 m-8 forum text-5xl"
+						onClick={() => {
+							setCurrentCategoryProducts(EssentialsProducts);
+							navigate("/category/essentials", {
+								state: {
+									currentCategoryProducts: EssentialsProducts,
+								},
+							});
+						}}
+					>
+						Shop All
+					</button>
 				</div>
 				<div className="flex justify-center w-10/12 self-center">
 					<div className="text-4xl px-16 dmsans py-4 text-center ">
