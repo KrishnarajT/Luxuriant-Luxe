@@ -1,10 +1,10 @@
 import {
-	Card,
-	CardHeader,
-	CardBody,
-	CardFooter,
-	Typography,
-	Button,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button,
 } from "@material-tailwind/react";
 import React from "react";
 import { CartContext } from "../../context/CartContext";
@@ -51,82 +51,76 @@ import { useEffect } from "react";
 // }
 
 export function MiniEcommerceCard(props) {
-	const [productStars, setProductStars] = React.useState(0);
+  const [productStars, setProductStars] = React.useState(0);
 
-	useEffect(() => {
-		let sum = 0;
-		let visible_review_count = 0;
-		props.product_reviews.forEach((review) => {
-			if (review.visible) {
-				sum += review.rating;
-				visible_review_count += 1;
-			}
-		});
-		setProductStars(Math.round(sum / visible_review_count));
-	}, [props.product_reviews]);
-	const { addToCart } = React.useContext(CartContext);
-	const navigate = useNavigate();
-	return (
-		<Card
-			className={`w-40 m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
-			// onClick={() => {
-			// 	navigate(`/product/${props.id}`);
-			// }}
-		>
-			<CardHeader
-				shadow={true}
-				floated={false}
-				className="max-h-32 min-h-32 rounded-none m-0"
-				onClick={() => {
-					navigate(`/product/${props.id}`);
-					document.getElementById("my-drawer").checked = false;
-				}}
-			>
-				<img
-					src={
-						props.image
-							? props.image
-							: "https://source.unsplash.com/random"
-					}
-					alt="card-image"
-					className="h-full w-full object-cover rounded-none"
-				/>
-			</CardHeader>
-			<CardBody className="pb-2">
-				<div className="mb-2 text-center">
-					<Typography
-						color="blue-gray"
-						className={`font-medium uppercase text-xl text-center self-center ${props.text}`}
-					>
-						LL <br></br>
-						{props.name}
-					</Typography>
-					<div className="flex justify-center p-1 pb-0">
-						<div className="flex">
-							{[1, 2, 3, 4, 5].map((star) => (
-								<IconStarFilled
-									className={`w-6 h-6 ${
-										star <= productStars
-											? "text-yellow-500"
-											: "text-gray-300"
-									}`}
-								/>
-							))}
-						</div>
-					</div>
-					{/* <Typography color="blue-gray" className="font-medium">
+  useEffect(() => {
+    let sum = 0;
+    let visible_review_count = 0;
+    props.product_reviews.forEach((review) => {
+      if (review.visible) {
+        sum += review.rating;
+        visible_review_count += 1;
+      }
+    });
+    setProductStars(Math.round(sum / visible_review_count));
+  }, [props.product_reviews]);
+  const { addToCart } = React.useContext(CartContext);
+  const navigate = useNavigate();
+  return (
+    <Card
+      className={`w-40 m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
+      // onClick={() => {
+      // 	navigate(`/product/${props.id}`);
+      // }}
+    >
+      <CardHeader
+        shadow={true}
+        floated={false}
+        className="max-h-32 min-h-32 rounded-none m-0"
+        onClick={() => {
+          navigate(`/product/${props.id}`);
+          document.getElementById("my-drawer").checked = false;
+        }}
+      >
+        <img
+          src={props.image ? props.image : "https://source.unsplash.com/random"}
+          alt="card-image"
+          className="h-full w-full object-cover rounded-none"
+        />
+      </CardHeader>
+      <CardBody className="pb-2">
+        <div className="mb-2 text-center">
+          <Typography
+            color="blue-gray"
+            className={`font-medium uppercase text-xl text-center self-center ${props.text}`}
+          >
+            LL <br></br>
+            {props.name}
+          </Typography>
+          <div className="flex justify-center p-1 pb-0">
+            <div className="flex">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <IconStarFilled
+                  className={`w-6 h-6 ${
+                    star <= productStars ? "text-yellow-500" : "text-gray-300"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+          {/* <Typography color="blue-gray" className="font-medium">
 						₹{props.price}
 					</Typography> */}
-				</div>
-				{/* <Typography
+        </div>
+        {/* <Typography
 					variant="small"
 					color="gray"
 					className={`font-normal opacity-75 break-words max-h-10 min-h-10 ${props.text}`}
 				>
 					{props.description.substring(0, 100)}...
 				</Typography> */}
-			</CardBody>
-			{/* <CardFooter className="pt-0">
+      </CardBody>
+      {/* <CardFooter className="pt-0">
 				<Button
 					ripple={true}
 					fullWidth={true}
@@ -150,6 +144,6 @@ export function MiniEcommerceCard(props) {
 					Add to Cart ₹{props.price}
 				</Button>
 			</CardFooter> */}
-		</Card>
-	);
+    </Card>
+  );
 }

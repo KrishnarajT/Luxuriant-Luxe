@@ -34,50 +34,47 @@ import OurGoal from "./pages/OurGoal";
 import PPolcy from "./pages/PPolcy";
 import Search from "./pages/Search";
 function App() {
-	const [isNavbarPresent, setisNavbarPresent] = useState(true);
+  const [isNavbarPresent, setisNavbarPresent] = useState(true);
 
-	useEffect(() => {
-		// console.log(isNavbarPresent);
-	}, [isNavbarPresent]);
+  useEffect(() => {
+    // console.log(isNavbarPresent);
+  }, [isNavbarPresent]);
 
-	return (
-		<ThemeContextProvider>
-			<CartContextProvider>
-				<div className="">
-					<Toaster />
-					{isNavbarPresent ? (
-						<Navbar setisNavbarPresent={setisNavbarPresent} />
-					) : null}
-					<SideCart />
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/about" element={<About />} />
-						<Route path="/checkout" element={<Checkout />} />
-						<Route path="/category/:type" element={<Category />} />
-						<Route path="/product/:id" element={<Product />} />
-						<Route path="/sub_category/:sub_category_id" element={<SubCategory />} />
-						<Route path="/faq" element={<FAQ />} />
-						<Route path="/contact" element={<Contact />} />
-						<Route path="/privacy_policy" element={<PPolcy />} />
-						<Route
-							path="/terms_conditions"
-							element={<TermsConditions />}
-						/>
-						<Route
-							path="/refund_return_policy"
-							element={<ReturnRefundPolicy />}
-						/>
-						<Route
-							path="/shipping_policy"
-							element={<ShippingPolicy />}
-						/>
-						<Route path="/our_goal" element={<OurGoal />} />
-						<Route path="/search" element={<Search />} />
-					</Routes>
-				</div>
-			</CartContextProvider>
-		</ThemeContextProvider>
-	);
+  return (
+    <ThemeContextProvider>
+      <CartContextProvider>
+        <div className="">
+          <Toaster />
+          {isNavbarPresent ? (
+            <Navbar setisNavbarPresent={setisNavbarPresent} />
+          ) : null}
+          <SideCart />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/checkout" element={<Checkout />} />
+            <Route path="/category/:type" element={<Category />} />
+            <Route path="/product/:id" element={<Product />} />
+            <Route
+              path="/sub_category/:sub_category_id"
+              element={<SubCategory />}
+            />
+            <Route path="/faq" element={<FAQ />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy_policy" element={<PPolcy />} />
+            <Route path="/terms_conditions" element={<TermsConditions />} />
+            <Route
+              path="/refund_return_policy"
+              element={<ReturnRefundPolicy />}
+            />
+            <Route path="/shipping_policy" element={<ShippingPolicy />} />
+            <Route path="/our_goal" element={<OurGoal />} />
+            <Route path="/search" element={<Search />} />
+          </Routes>
+        </div>
+      </CartContextProvider>
+    </ThemeContextProvider>
+  );
 }
 
 export default App;

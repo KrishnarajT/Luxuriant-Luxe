@@ -1,10 +1,10 @@
 import {
-	Card,
-	CardHeader,
-	CardBody,
-	CardFooter,
-	Typography,
-	Button,
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button,
 } from "@material-tailwind/react";
 import React from "react";
 import { CartContext } from "../../context/CartContext";
@@ -50,113 +50,111 @@ import { useEffect } from "react";
 //     "points_awarded": 500
 // }
 let isValidHttpUrl = (string) => {
-	let url;
+  let url;
 
-	try {
-		url = new URL(string);
-	} catch (_) {
-		return false;
-	}
+  try {
+    url = new URL(string);
+  } catch (_) {
+    return false;
+  }
 
-	return url.protocol === "http:" || url.protocol === "https:";
+  return url.protocol === "http:" || url.protocol === "https:";
 };
 export function EcommerceCard(props) {
-	const [productStars, setProductStars] = React.useState(0);
+  const [productStars, setProductStars] = React.useState(0);
 
-	useEffect(() => {
-		let sum = 0;
-		let visible_review_count = 0;
-		props.product_reviews.forEach((review) => {
-			if (review.visible) {
-				sum += review.rating;
-				visible_review_count += 1;
-			}
-		});
-		setProductStars(Math.round(sum / visible_review_count));
-	}, [props.product_reviews]);
-	const { addToCart } = React.useContext(CartContext);
-	const navigate = useNavigate();
-	return (
-		<Card
-			className={`w-96 m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
-			// onClick={() => {
-			// 	navigate(`/product/${props.id}`);
-			// }}
-		>
-			<CardHeader
-				shadow={true}
-				floated={false}
-				className="h-72 rounded-none m-0"
-				onClick={() => {
-					navigate(`/product/${props.id}`);
-				}}
-			>
-				<img
-					src={
-						isValidHttpUrl(props.image)
-							? props.image
-							: "https://source.unsplash.com/random"
-					}
-					alt="card-image"
-					className="h-full w-full object-cover rounded-none"
-				/>
-			</CardHeader>
-			<CardBody className="pb-2">
-				<div className="mb-2 text-center">
-					<Typography
-						color="blue-gray"
-						className={`font-medium uppercase text-2xl text-center self-center ${props.text}`}
-					>
-						LL <br></br>
-						{props.name}
-					</Typography>
-					<Typography
-						className={`font-normal text-xl text-center mt-4 break-words max-h-10 min-h-10 ${props.text}`}
-					>
-						{props.description.substring(0, 100)}...
-					</Typography>
-					<div className="flex justify-center p-1 pb-0">
-						<div className="flex">
-							{[1, 2, 3, 4, 5].map((star) => (
-								<IconStarFilled
-									className={`w-10 h-10 ${
-										star <= productStars
-											? "text-yellow-500"
-											: "text-gray-300"
-									}`}
-								/>
-							))}
-						</div>
-					</div>
-					{/* <Typography color="blue-gray" className="font-medium">
+  useEffect(() => {
+    let sum = 0;
+    let visible_review_count = 0;
+    props.product_reviews.forEach((review) => {
+      if (review.visible) {
+        sum += review.rating;
+        visible_review_count += 1;
+      }
+    });
+    setProductStars(Math.round(sum / visible_review_count));
+  }, [props.product_reviews]);
+  const { addToCart } = React.useContext(CartContext);
+  const navigate = useNavigate();
+  return (
+    <Card
+      className={`w-96 m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
+      // onClick={() => {
+      // 	navigate(`/product/${props.id}`);
+      // }}
+    >
+      <CardHeader
+        shadow={true}
+        floated={false}
+        className="h-72 rounded-none m-0"
+        onClick={() => {
+          navigate(`/product/${props.id}`);
+        }}
+      >
+        <img
+          src={
+            isValidHttpUrl(props.image)
+              ? props.image
+              : "https://source.unsplash.com/random"
+          }
+          alt="card-image"
+          className="h-full w-full object-cover rounded-none"
+        />
+      </CardHeader>
+      <CardBody className="pb-2">
+        <div className="mb-2 text-center">
+          <Typography
+            color="blue-gray"
+            className={`font-medium uppercase text-2xl text-center self-center ${props.text}`}
+          >
+            LL <br></br>
+            {props.name}
+          </Typography>
+          <Typography
+            className={`font-normal text-xl text-center mt-4 break-words max-h-10 min-h-10 ${props.text}`}
+          >
+            {props.description.substring(0, 100)}...
+          </Typography>
+          <div className="flex justify-center p-1 pb-0">
+            <div className="flex">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <IconStarFilled
+                  className={`w-10 h-10 ${
+                    star <= productStars ? "text-yellow-500" : "text-gray-300"
+                  }`}
+                />
+              ))}
+            </div>
+          </div>
+          {/* <Typography color="blue-gray" className="font-medium">
 						₹{props.price}
 					</Typography> */}
-				</div>
-			</CardBody>
-			<CardFooter className="pt-0">
-				<Button
-					ripple={true}
-					fullWidth={true}
-					className={`${props.cart_color} ${props.cart_text} shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100 text-xl`}
-					onClick={() => {
-						addToCart(props.id);
-						// show side cart
-						document.getElementById("my-drawer").checked = true;
+        </div>
+      </CardBody>
+      <CardFooter className="pt-0">
+        <Button
+          ripple={true}
+          fullWidth={true}
+          className={`${props.cart_color} ${props.cart_text} shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100 text-xl`}
+          onClick={() => {
+            addToCart(props.id);
+            // show side cart
+            document.getElementById("my-drawer").checked = true;
 
-						// toast
-						toast.success("Added to cart", {
-							duration: 4000,
-							style: {
-								borderRadius: "10px",
-								// background: "#ca8f6d",
-								// color: "#000000",
-							},
-						});
-					}}
-				>
-					Add to Cart ₹{props.price}
-				</Button>
-			</CardFooter>
-		</Card>
-	);
+            // toast
+            toast.success("Added to cart", {
+              duration: 4000,
+              style: {
+                borderRadius: "10px",
+                // background: "#ca8f6d",
+                // color: "#000000",
+              },
+            });
+          }}
+        >
+          Add to Cart ₹{props.price}
+        </Button>
+      </CardFooter>
+    </Card>
+  );
 }

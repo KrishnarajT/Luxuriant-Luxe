@@ -46,90 +46,78 @@ import { IconSearch } from "@tabler/icons-react";
 // }
 
 const Search = () => {
-	const navigate = useNavigate();
-	const { productInfo } = React.useContext(CartContext);
-	const [searchTerm, setSearchTerm] = React.useState("");
-	useEffect(() => {
-		// console.log(productInfo);
-	}, []);
+  const navigate = useNavigate();
+  const { productInfo } = React.useContext(CartContext);
+  const [searchTerm, setSearchTerm] = React.useState("");
+  useEffect(() => {
+    // console.log(productInfo);
+  }, []);
 
-	function filterProducts() {
-		const filteredProducts = productInfo.filter((product) => {
-			return product.product_name
-				.toLowerCase()
-				.includes(searchTerm.toLowerCase());
-		});
-		return filteredProducts;
-	}
+  function filterProducts() {
+    const filteredProducts = productInfo.filter((product) => {
+      return product.product_name
+        .toLowerCase()
+        .includes(searchTerm.toLowerCase());
+    });
+    return filteredProducts;
+  }
 
-	return (
-		<div>
-			{/* search box */}
-			<div>
-				<div className="flex flex-col items-center justify-center">
-					<div className="relative text-gray-600">
-						<input
-							type="search"
-							name="serch"
-							value={searchTerm}
-							onChange={(event) =>
-								setSearchTerm(event.target.value)
-							}
-							placeholder="Search"
-							className="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none"
-						/>
-						<button
-							type="submit"
-							className="absolute right-0 top-0 mt-3 mr-4"
-						>
-							<IconSearch className="w-6 h-6" />
-						</button>
-					</div>
-				</div>
-			</div>
+  return (
+    <div>
+      {/* search box */}
+      <div>
+        <div className="flex flex-col items-center justify-center">
+          <div className="relative text-gray-600">
+            <input
+              type="search"
+              name="serch"
+              value={searchTerm}
+              onChange={(event) => setSearchTerm(event.target.value)}
+              placeholder="Search"
+              className="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none"
+            />
+            <button type="submit" className="absolute right-0 top-0 mt-3 mr-4">
+              <IconSearch className="w-6 h-6" />
+            </button>
+          </div>
+        </div>
+      </div>
 
-			<section
-				className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
+      <section
+        className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
 				md:text-4xl"
-				id="intro"
-			>
-				Search All Our Products
-			</section>
+        id="intro"
+      >
+        Search All Our Products
+      </section>
 
-			{/* section of cards that have all products */}
-			<section className="flex justify-center p-16">
-				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-4 justify-items-start">
-					{productInfo &&
-						filterProducts().map((product) => {
-							return (
-								<EcommerceCard
-									color="bg-secondary"
-									text="text-black"
-									cart_color="bg-black"
-									cart_text="text-white"
-									image={
-										product.product_image_links
-											.description_images
-									}
-									name={product.product_name}
-									price={product.product_cost}
-									description={
-										product.product_description
-											.product_description
-									}
-									points={product.points_awarded}
-									id={product._id}
-									product_reviews={product.product_reviews}
-								/>
-							);
-						})}
-				</div>
-			</section>
+      {/* section of cards that have all products */}
+      <section className="flex justify-center p-16">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-4 justify-items-start">
+          {productInfo &&
+            filterProducts().map((product) => {
+              return (
+                <EcommerceCard
+                  color="bg-secondary"
+                  text="text-black"
+                  cart_color="bg-black"
+                  cart_text="text-white"
+                  image={product.product_image_links.description_images}
+                  name={product.product_name}
+                  price={product.product_cost}
+                  description={product.product_description.product_description}
+                  points={product.points_awarded}
+                  id={product._id}
+                  product_reviews={product.product_reviews}
+                />
+              );
+            })}
+        </div>
+      </section>
 
-			<Footer />
-		</div>
-	);
+      <Footer />
+    </div>
+  );
 };
 
 export default Search;
-

@@ -1,5 +1,3 @@
 export const FancyButton = () => {
-	return (
-		<div>hi</div>
-	)
-}
+  return <div>hi</div>;
+};
