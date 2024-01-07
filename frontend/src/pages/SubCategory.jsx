@@ -60,33 +60,45 @@ const SubCategory = () => {
 		let sub_category_products = [];
 		let current_category_id = location.state.current_category_id;
 		let current_sub_category_id = location.state.current_sub_category_id;
+		console.log(
+			category_products,
+			current_category_id,
+			current_sub_category_id
+		);
 		for (let i = 0; i < category_products.length; i++) {
 			// filter category matching id
-			if (category_products[i]._id === current_category_id) {
-				// filter sub category matching id
-				for (
-					let j = 0;
-					j < category_products[i].sub_categories.length;
-					j++
+			for (
+				let j = 0;
+				j < category_products[i].product_category.length;
+				j++
+			) {
+				if (
+					category_products[i].product_category[j]._id ===
+					current_category_id
 				) {
-					if (
-						category_products[i].sub_categories[j]._id ===
-						current_sub_category_id
+					// filter sub category matching id
+					for (
+						let k = 0;
+						k <
+						category_products[i].product_category[j].sub_categories
+							.length;
+						k++
 					) {
-						sub_category_products =
-							category_products[i].sub_categories[j].products;
-						break;
+						// console.log(category_products[i].product_category[j].sub_categories[k].sub_category_id, current_sub_category_id)
+						if (
+							category_products[i].product_category[j]
+								.sub_categories[k].sub_category_id ===
+							current_sub_category_id
+						) {
+							sub_category_products.push(category_products[i]);
+						}
 					}
 				}
-				break;
 			}
 		}
-		setCurrentSubCategoryProducts(
-			location.state.currentSubCategoryProducts
-		);
-		console.log(location.state);
-		console.log(location.state.currentSubCategoryProducts);
-	}, [currentSubCategoryProducts]);
+		console.log("subcat", sub_category_products);
+		setCurrentSubCategoryProducts(sub_category_products);
+	}, []);
 
 	// Use the 'type' parameter and 'location.state' in your component logic
 

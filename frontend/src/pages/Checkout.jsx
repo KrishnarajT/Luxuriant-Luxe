@@ -179,11 +179,23 @@ const Checkout = () => {
 		if (response.data.message === "simulation") {
 			alert("Simulation Response, Added order");
 		} else if (response.data.message === "Success") {
-			toast.success("Order Placed Successfully!");
+			// toast.success("Order Placed Successfully!");
+			// toast using the modal
+			document.getElementById("order_placed_modal").showModal();
+			// show for 2 seconds
+			setTimeout(() => {
+				document.getElementById("order_placed_modal").close();
+			}, 2000);
 			clearCart();
 			setChange(1);
 		} else if (response.data.message === "Failure") {
-			toast.error("Order Failed!");
+			// toast.error("Order Failed!");
+			// toast using the modal
+			document.getElementById("order_not_placed_modal").showModal();
+			// show for 2 seconds
+			setTimeout(() => {
+				document.getElementById("order_not_placed_modal").close();
+			}, 2000);
 		}
 	};
 
@@ -568,6 +580,30 @@ const Checkout = () => {
 								</button>
 							</div>
 						</form>
+					</div>
+				</div>
+			</dialog>
+
+			{/* dialog for showing order placed */}
+			<dialog id="order_placed_modal" className="modal">
+				<div className="modal-box w-full p-0">
+					<div>
+						<img
+							src="https://i.imgur.com/aDL8JjQ.jpg"
+							alt="done"
+							className="w-full aspect-auto"
+						/>
+					</div>
+				</div>
+			</dialog>
+			<dialog id="order_not_placed_modal" className="modal">
+				<div className="modal-box w-full p-0">
+					<div>
+						<img
+							src="https://i.imgur.com/7m0kgVi.jpg"
+							alt="done"
+							className="w-full aspect-auto"
+						/>
 					</div>
 				</div>
 			</dialog>

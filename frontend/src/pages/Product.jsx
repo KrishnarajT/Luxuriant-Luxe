@@ -254,7 +254,7 @@ const Product = () => {
 								.filter((image) => image)
 								.map((image) => (
 									<img
-										className="w-28 h-28 rounded-xl outline outline-1 hover:scale-105 transition-all duration-200"
+										className="w-28 h-28 max-h-28 aspect-square rounded-xl outline outline-1 hover:scale-105 transition-all duration-200"
 										src={image}
 										alt="product preview"
 										onClick={() => {
@@ -606,7 +606,7 @@ const Product = () => {
 								<img
 									src="https://i.imgur.com/bra0upp.png"
 									alt="external-cruelty-free-vegan-and-vegetarian-flaticons-flat-flat-icons-2"
-									className="w-28 h-28"
+									className="w-28 h-28 max-h-28"
 								/>
 							</div>
 							{/* 2nd SVG */}

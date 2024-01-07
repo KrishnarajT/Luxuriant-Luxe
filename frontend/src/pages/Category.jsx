@@ -122,7 +122,7 @@ const Category = () => {
 															currentSubCategoryProducts:
 																currentCategoryProducts,
 															current_category_id:
-																currentCategory.category_id,
+																currentCategory._id,
 															current_sub_category_id:
 																sub_category.sub_category_id,
 														},

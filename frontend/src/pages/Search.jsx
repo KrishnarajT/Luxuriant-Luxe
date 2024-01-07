@@ -98,7 +98,7 @@ const Search = () => {
 
 			{/* section of cards that have all products */}
 			<section className="flex justify-center p-16">
-				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-5 justify-items-start">
+				<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-4 justify-items-start">
 					{productInfo &&
 						filterProducts().map((product) => {
 							return (
