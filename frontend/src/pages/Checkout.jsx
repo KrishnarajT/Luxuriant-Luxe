@@ -21,6 +21,7 @@ import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
 import Footer from "../components/ui/Footer";
 import Cart from "./Cart";
+import TermsAndConditionsText from "./TermsAndConditionsText";
 const qr_code_image = "https://i.imgur.com/ObMvMPQh.jpg";
 
 axios.defaults.headers.common["Access-Control-Allow-Origin"] =
@@ -94,7 +95,7 @@ const Checkout = () => {
 			address === "" ||
 			apartment === ""
 		) {
-			alert("Please fill all the fields!");
+			toast.error("Please fill all the fields!");
 			return false;
 		}
 
@@ -471,18 +472,13 @@ const Checkout = () => {
 						id="buy_now_button"
 						disabled={getDiscountedTotal === 0 ? true : false}
 						onClick={() => {
-							console.log(
-								"buy now clicked. send some api calls. "
-							);
-
 							if (checkValidity()) {
-								// 	unhide the qr code
-								const qr_code =
-									document.getElementById("qr_payment");
-								qr_code.style.display = "flex";
 								if (customerEmail !== "") {
 									getCustomerPoints();
 								}
+								document
+									.getElementById("my_modal_1")
+									.showModal();
 							}
 						}}
 					>
@@ -540,6 +536,41 @@ const Checkout = () => {
 			)}
 
 			<Footer />
+			{/* Open the modal using document.getElementById('ID').showModal() method */}
+			<dialog id="my_modal_1" className="modal">
+				<div className="modal-box">
+					<h3 className="font-bold text-lg"></h3>
+					<p className="py-4 text-2xl text-center">
+						Please read and Accept the terms and conditions.
+					</p>
+					<div className="modal-action px-2">
+						<form method="dialog">
+							<div className="max-h-72 outline rounded-xl outline-1 overflow-auto scroll-auto">
+								<TermsAndConditionsText />
+							</div>
+							{/* if there is a button in form, it will close the modal */}
+							<div className="flex justify-center m-4">
+								<button
+									className="btn btn-secondary"
+									onClick={() => {
+										console.log(
+											"buy now clicked. send some api calls. "
+										);
+										// 	unhide the qr code
+										const qr_code =
+											document.getElementById(
+												"qr_payment"
+											);
+										qr_code.style.display = "flex";
+									}}
+								>
+									I Accept the Terms and Conditions
+								</button>
+							</div>
+						</form>
+					</div>
+				</div>
+			</dialog>
 		</div>
 	);
 };
