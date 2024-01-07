@@ -1849,14 +1849,6 @@ html {
   --alert-bg-mix: hsl(var(--b1));
 }
 
-.alert-warning {
-  border-color: hsl(var(--wa) / 0.2);
-  --tw-text-opacity: 1;
-  color: hsl(var(--wac) / var(--tw-text-opacity));
-  --alert-bg: hsl(var(--wa));
-  --alert-bg-mix: hsl(var(--b1));
-}
-
 .avatar-group :where(.avatar) {
   overflow: hidden;
   border-radius: 9999px;
@@ -3057,10 +3049,6 @@ details.collapse summary::-webkit-details-marker {
   background-color: hsl(var(--b3) / var(--tw-bg-opacity));
 }
 
-.textarea-bordered {
-  --tw-border-opacity: 0.2;
-}
-
 .textarea:focus {
   outline-style: solid;
   outline-width: 2px;
@@ -3257,14 +3245,6 @@ details.collapse summary::-webkit-details-marker {
   border-top-width: 4px;
 }
 
-.btn-sm {
-  height: 2rem;
-  padding-left: 0.75rem;
-  padding-right: 0.75rem;
-  min-height: 2rem;
-  font-size: 0.875rem;
-}
-
 .btn-md {
   height: 3rem;
   padding-left: 1rem;
@@ -3281,12 +3261,6 @@ details.collapse summary::-webkit-details-marker {
   font-size: 1.125rem;
 }
 
-.btn-square:where(.btn-sm) {
-  height: 2rem;
-  width: 2rem;
-  padding: 0px;
-}
-
 .btn-square:where(.btn-md) {
   height: 3rem;
   width: 3rem;
@@ -3296,13 +3270,6 @@ details.collapse summary::-webkit-details-marker {
 .btn-square:where(.btn-lg) {
   height: 4rem;
   width: 4rem;
-  padding: 0px;
-}
-
-.btn-circle:where(.btn-sm) {
-  height: 2rem;
-  width: 2rem;
-  border-radius: 9999px;
   padding: 0px;
 }
 
@@ -4028,6 +3995,10 @@ details.collapse summary::-webkit-details-marker {
   margin: 2rem;
 }
 
+.m-3 {
+  margin: 0.75rem;
+}
+
 .mx-16 {
   margin-left: 4rem;
   margin-right: 4rem;
@@ -4359,6 +4330,10 @@ details.collapse summary::-webkit-details-marker {
   max-height: 2.5rem;
 }
 
+.max-h-32 {
+  max-height: 8rem;
+}
+
 .max-h-96 {
   max-height: 24rem;
 }
@@ -4383,16 +4358,16 @@ details.collapse summary::-webkit-details-marker {
   max-height: 48px;
 }
 
-.max-h-32 {
-  max-height: 8rem;
-}
-
 .min-h-10 {
   min-height: 2.5rem;
 }
 
 .min-h-16 {
   min-height: 4rem;
+}
+
+.min-h-32 {
+  min-height: 8rem;
 }
 
 .min-h-\[100px\] {
@@ -4421,10 +4396,6 @@ details.collapse summary::-webkit-details-marker {
 
 .min-h-screen {
   min-height: 100vh;
-}
-
-.min-h-32 {
-  min-height: 8rem;
 }
 
 .w-0 {
@@ -4683,10 +4654,6 @@ details.collapse summary::-webkit-details-marker {
 
 .basis-full {
   flex-basis: 100%;
-}
-
-.border-separate {
-  border-collapse: separate;
 }
 
 .-translate-x-1\/2 {
@@ -6696,6 +6663,11 @@ details.collapse summary::-webkit-details-marker {
   --tw-shadow: var(--tw-shadow-colored);
 }
 
+.shadow-black {
+  --tw-shadow-color: #000000;
+  --tw-shadow: var(--tw-shadow-colored);
+}
+
 .shadow-blue-500\/20 {
   --tw-shadow-color: rgb(33 150 243 / 0.2);
   --tw-shadow: var(--tw-shadow-colored);
@@ -6883,11 +6855,6 @@ details.collapse summary::-webkit-details-marker {
 
 .shadow-yellow-500\/40 {
   --tw-shadow-color: rgb(255 235 59 / 0.4);
-  --tw-shadow: var(--tw-shadow-colored);
-}
-
-.shadow-black {
-  --tw-shadow-color: #000000;
   --tw-shadow: var(--tw-shadow-colored);
 }
 
