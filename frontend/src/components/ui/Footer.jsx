@@ -75,7 +75,7 @@ const Footer = () => {
 			<Toaster />
 			<aside className="mt-0 pt-0">
 				<p className="dancing text-3xl text-secondary-content">
-					<span className="text-8xl bodoni text-secondary-content uppercase garbata font-thin">
+					<span className="text-8xl bodoni text-secondary-content uppercase font-thin">
 						Luxuriant Luxe
 					</span>
 					<br />
@@ -164,18 +164,18 @@ const Footer = () => {
 					</a>
 				</div>
 			</div>
-			<div className="w-full">
-				<div className="form-control">
+			<div className="w-1/3">
+				<div className="form-control w-full">
 					<label className="label">
-						<span className="label-text underline uppercase garbata text-2xl ptsans">
+						<span className="label-text underline uppercase garbata text-2xl garbata">
 							Sign up for Updates
 						</span>
 					</label>
-					<div className="relative">
+					<div className="relative w-full">
 						<input
 							type="text"
 							placeholder="email"
-							className="w-96 pr-16 input input-primary input-bordered"
+							className="pr-16 w-full input input-primary input-bordered"
 							onChange={(e) => {
 								setCustomerEmail(e.target.value);
 							}}

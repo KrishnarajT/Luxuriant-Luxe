@@ -69,7 +69,7 @@ const About = () => {
 				</p> */}
 				<div className="flex justify-center md:mx-20 md:my-4 md:hidden">
 					<div
-						className="text-xl mt-4 cardo text-center
+						className="text-xl mt-4 garbata text-center
 				md:p-10 md:rounded-2xl xl:text-4xl lg:text-3xl md:text-2xl md:text-left md:flex-1"
 					>
 						luxuriant luxe wont give you the false expectations from
@@ -86,7 +86,7 @@ const About = () => {
 			>
 				<div className="md:flex md:justify-center md:flex-row md:mx-20 md:my-4">
 					<div
-						className="text-xl mt-4 cardo text-center
+						className="text-xl mt-4 garbata text-center
 				md:p-10 md:rounded-2xl xl:text-4xl lg:text-3xl md:text-2xl md:text-left md:flex-1"
 					>
 						luxuriant luxe wont give you the false expectations from
@@ -114,11 +114,12 @@ const About = () => {
 					</span>
 				</p> */}
 
-				<div className="md:flex md:justify-center md:flex-row-reverse md:my-4 w-full"
+				<div
+					className="md:flex md:justify-center md:flex-row-reverse md:my-4 w-full"
 					id="brownbg"
 				>
 					<div
-						className="text-xl mt-4 cardo text-center
+						className="text-xl mt-4 garbata text-center
 				md:p-10 md:rounded-2xl xl:text-4xl lg:text-3xl md:text-2xl md:text-left md:flex-1 text-white"
 					>
 						ingredients. This formula won't harm your natural skin,
@@ -147,9 +148,9 @@ const About = () => {
 					Only Premium
 				</div>
 
-				<div className="text-xl mt-4 cardo text-center">
+				<div className="text-xl mt-4 garbata text-center">
 					Made with{" "}
-					<span className="text-accent cardo text-xl">
+					<span className="text-accent garbata text-xl">
 						{" "}
 						pure safe-to-use organic{" "}
 					</span>
@@ -157,7 +158,7 @@ const About = () => {
 					will only help you get rid of those dark spots, tan, open
 					pores, and small bumps and will make your skin outrageously
 					flawless like{" "}
-					<span className="text-accent cardo text-xl">
+					<span className="text-accent garbata text-xl">
 						{" "}
 						you've always dreamt of.{" "}
 					</span>
@@ -197,13 +198,13 @@ const About = () => {
 						</div>
 					</div>
 				</div>
-				{/* <div className="text-xl mt-4 cardo p-4 m-5 text-center md:w-4/5">
-					<span className="text-accent cardo text-xl lg:text-3xl">
+				{/* <div className="text-xl mt-4 garbata p-4 m-5 text-center md:w-4/5">
+					<span className="text-accent garbata text-xl lg:text-3xl">
 						Two people who got influenced by the ancient skincare
 						heritage from the 1st century and made it time travel to
 						2023 for you.
 					</span>
-					<span className="text-accent cardo text-xl lg:text-3xl">
+					<span className="text-accent garbata text-xl lg:text-3xl">
 						We are from Pune. We are a group of students who are
 						passionate about skincare and beauty. We strive to bring
 						you the best products at the best prices!

@@ -40,7 +40,7 @@ const OurGoal = () => {
 				>
 					<div className="md:flex md:justify-center md:flex-row md:mx-20 md:my-4">
 						<div
-							className="text-xl mt-4 cardo text-center
+							className="text-xl mt-4 garbata text-center
 				md:p-10 md:rounded-2xl xl:text-4xl lg:text-3xl md:text-2xl md:text-left md:flex-1"
 						>
 							luxuriant luxe wont give you the false expectations
@@ -68,11 +68,12 @@ const OurGoal = () => {
 					</span>
 				</p> */}
 
-					<div className="md:flex md:justify-center md:flex-row-reverse md:my-4 w-full"
+					<div
+						className="md:flex md:justify-center md:flex-row-reverse md:my-4 w-full"
 						id="brownbg"
 					>
 						<div
-							className="text-xl mt-4 cardo text-center
+							className="text-xl mt-4 garbata text-center
 				md:p-10 md:rounded-2xl xl:text-4xl lg:text-3xl md:text-4xl md:text-left md:flex-1 text-white"
 						>
 							Mission Description

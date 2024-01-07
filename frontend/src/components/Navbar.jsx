@@ -140,29 +140,29 @@ export function Navbar(props) {
 					<div className="hidden md:flex">
 						<ul className="menu menu-horizontal px-1">
 							<li className="text-lg md:text-xl">
-								<label className="bg-transparent border-none w-fit h-20 flex items-center justify-center text-3xl">
-									INR{" "}
-									<IconCurrencyRupee className="w-14 h-14" />
+								<label className="bg-transparent border-none w-fit flex items-center justify-center text-3xl">
+									INR
+									<IconCurrencyRupee className="w-8 h-8" />
 								</label>
 							</li>
 							<li className="text-lg md:text-xl">
 								<label
 									id="cartlabel"
-									className="bg-transparent border-none w-20 h-20 flex items-center justify-center"
+									className="bg-transparent border-none w-20 flex items-center justify-center px-0"
 									onClick={() => navigate("/search")}
 								>
-									<IconSearch className="w-14 h-14" />
+									<IconSearch className="w-10 h-10" />
 								</label>
 							</li>
 							<li className="text-lg md:text-xl">
 								<label
 									htmlFor="my-drawer"
 									id="cartlabel"
-									className="bg-transparent border-none w-20 h-20 flex items-center justify-center"
+									className="bg-transparent border-none w-20 flex items-center justify-center px-0"
 								>
 									<img
 										src="https://i.imgur.com/oOMEXgs.png"
-										className="w-12 h-16"
+										className="w-8 h-10"
 									/>
 								</label>
 							</li>

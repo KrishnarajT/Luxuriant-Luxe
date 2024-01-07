@@ -164,7 +164,7 @@ const Cart = () => {
 									</div>
 									<div className="flex flex-col w-full">
 										<div className="flex flex-col justify-center w-full">
-											<div className="text-3xl ptsans font-bold m-2 mt-0 mb-0 w-full flex p-2">
+											<div className="text-3xl garbata font-bold m-2 mt-0 mb-0 w-full flex p-2">
 												{product.product_name}
 												<IconMinus className="w-8 h-8" />
 												{product.product_cost === 0 ? (
@@ -182,7 +182,7 @@ const Cart = () => {
 													</div>
 												)}
 											</div>
-											<div className="text-3xl ptsans w-full flex gap-4 ml-4">
+											<div className="text-3xl garbata w-full flex gap-4 ml-4">
 												{product.volumes_present ? (
 													<div className="flex gap-4">
 														<div className="text-2xl">
@@ -331,7 +331,7 @@ const Cart = () => {
 				<div>
 					{
 						<div className="flex justify-center uppercase ml-4">
-							<div className="text-2xl bodoni font-semibold">
+							<div className="text-2xl bodoni font-semibold my-4">
 								Recommended Products
 							</div>
 						</div>
@@ -341,7 +341,7 @@ const Cart = () => {
 			) : null}
 			{/* Before you checkout */}
 			<div className="flex justify-center uppercase ml-4">
-				<div className="text-2xl bodoni font-semibold">
+				<div className="text-2xl bodoni font-semibold mt-8">
 					Before You Checkout!
 				</div>
 			</div>
@@ -368,12 +368,12 @@ const Cart = () => {
 										document.getElementById("my-drawer");
 									drawer_check_element.checked = false;
 								}}
-								className="w-24 h-24 object-center object-cover my-2"
+								className="h-40 w-44 aspect-square object-center object-cover my-2"
 							/>
 						</div>
 						<div className="flex flex-col w-full">
 							<div className="flex justify-center w-full">
-								<div className="text-3xl ptsans font-bold m-2 mt-0 w-full flex p-2">
+								<div className="text-3xl garbata font-bold m-2 mt-0 w-full flex p-2">
 									{beforeCheckoutProduct[0].product_name}
 									<IconMinus className="w-8 h-8" />
 									<IconCurrencyRupee className="w-8 h-8" />
@@ -424,7 +424,10 @@ const Cart = () => {
 					</div>
 					<div className="flex justify-center uppercase ml-4">
 						<div className="text-2xl bodoni font-semibold flex gap-4 items-center">
-							<IconStarFilled className="w-8 h-8" />
+							<img
+								src={"https://i.imgur.com/CH68qjv.png"}
+								className="w-8 h-8 object-center object-cover my-2"
+							/>
 							{getCartPoints()}
 						</div>
 					</div>
@@ -435,7 +438,10 @@ const Cart = () => {
 					</div>
 					<div className="flex justify-center uppercase ml-4">
 						<div className="text-2xl bodoni font-semibold flex gap-4 items-center">
-							<IconStarFilled className="w-8 h-8" />
+							<img
+								src={"https://i.imgur.com/CH68qjv.png"}
+								className="w-8 h-8 object-center object-cover my-2"
+							/>{" "}
 							{currentCustomerPoints}
 						</div>
 					</div>

@@ -63,7 +63,7 @@ const Catalogue = () => {
 				className="flex flex-col p-4 justify-center items-center md:hidden"
 				id="intro"
 			>
-				<div className="text-xl mt-4 cardo text-center md:text-3xl w-3/4">
+				<div className="text-xl mt-4 garbata text-center md:text-3xl w-3/4">
 					Tired of trying to find a product for your skin which is
 					organic beneficial and chemical free? Dont worry! We have
 					got you covered!
@@ -97,7 +97,7 @@ const Catalogue = () => {
 					</div>
 				</div>
 
-				<div className="text-4xl px-24 cardo py-4">
+				<div className="text-4xl px-24 garbata py-4">
 					A collection of all our products.
 				</div>
 				<div className="flex justify-center w-full">
@@ -108,7 +108,7 @@ const Catalogue = () => {
 					</div>
 				</div>
 				{/* <div className="flex justify-center w-10/12 self-center">
-					<div className="text-4xl px-16 dmsans py-4 text-center ">
+					<div className="text-4xl px-16 garbata py-4 text-center ">
 						As the originators and proprietors of the brand, we
 						serve as the primary users and assessors of our product.
 						We assure you that we utilize only the finest quality
@@ -144,7 +144,7 @@ const Catalogue = () => {
 					</div>
 				</div>
 
-				<div className="text-4xl px-24 cardo py-4">
+				<div className="text-4xl px-24 garbata py-4">
 					These are the products that are essential for your daily
 					skin. They are recommended by our experts and are the best
 					in the market. These are the products that are essential for
@@ -159,7 +159,7 @@ const Catalogue = () => {
 					</div>
 				</div>
 				{/* <div className="flex justify-center w-10/12 self-center">
-					<div className="text-4xl px-16 dmsans py-4 text-center ">
+					<div className="text-4xl px-16 garbata py-4 text-center ">
 						As the originators and proprietors of the brand, we
 						serve as the primary users and assessors of our product.
 						We assure you that we utilize only the finest quality
@@ -195,7 +195,7 @@ const Catalogue = () => {
 					</div>
 				</div>
 
-				<div className="text-4xl px-24 cardo py-4">
+				<div className="text-4xl px-24 garbata py-4">
 					These are the products that are essential for your daily
 					skin. They are recommended by our experts and are the best
 					in the market. These are the products that are essential for
@@ -210,7 +210,7 @@ const Catalogue = () => {
 					</div>
 				</div>
 				{/* <div className="flex justify-center w-10/12 self-center">
-					<div className="text-4xl px-16 dmsans py-4 text-center ">
+					<div className="text-4xl px-16 garbata py-4 text-center ">
 						As the originators and proprietors of the brand, we
 						serve as the primary users and assessors of our product.
 						We assure you that we utilize only the finest quality
@@ -246,7 +246,7 @@ const Catalogue = () => {
 					</div>
 				</div>
 
-				<div className="text-4xl px-24 cardo py-4">
+				<div className="text-4xl px-24 garbata py-4">
 					These are the products that are essential for your daily
 					skin. They are recommended by our experts and are the best
 					in the market. These are the products that are essential for
@@ -261,7 +261,7 @@ const Catalogue = () => {
 					</div>
 				</div>
 				{/* <div className="flex justify-center w-10/12 self-center">
-					<div className="text-4xl px-16 dmsans py-4 text-center ">
+					<div className="text-4xl px-16 garbata py-4 text-center ">
 						As the originators and proprietors of the brand, we
 						serve as the primary users and assessors of our product.
 						We assure you that we utilize only the finest quality
@@ -297,7 +297,7 @@ const Catalogue = () => {
 					</div>
 				</div>
 
-				<div className="text-4xl px-24 cardo py-4">
+				<div className="text-4xl px-24 garbata py-4">
 					These are the products that are essential for your daily
 					skin. They are recommended by our experts and are the best
 					in the market. These are the products that are essential for
@@ -312,7 +312,7 @@ const Catalogue = () => {
 					</div>
 				</div>
 				{/* <div className="flex justify-center w-10/12 self-center">
-					<div className="text-4xl px-16 dmsans py-4 text-center ">
+					<div className="text-4xl px-16 garbata py-4 text-center ">
 						As the originators and proprietors of the brand, we
 						serve as the primary users and assessors of our product.
 						We assure you that we utilize only the finest quality
@@ -346,7 +346,7 @@ const Catalogue = () => {
 					</div>
 				</div>
 
-				<div className="text-4xl px-24 cardo py-4">
+				<div className="text-4xl px-24 garbata py-4">
 					These are the products that are essential for your daily
 					skin. They are recommended by our experts and are the best
 					in the market. These are the products that are essential for
@@ -361,7 +361,7 @@ const Catalogue = () => {
 					</div>
 				</div>
 				{/* <div className="flex justify-center w-10/12 self-center">
-					<div className="text-4xl px-16 dmsans py-4 text-center ">
+					<div className="text-4xl px-16 garbata py-4 text-center ">
 						As the originators and proprietors of the brand, we
 						serve as the primary users and assessors of our product.
 						We assure you that we utilize only the finest quality
@@ -395,7 +395,7 @@ const Catalogue = () => {
 					</div>
 				</div>
 
-				<div className="text-4xl px-24 cardo py-4">
+				<div className="text-4xl px-24 garbata py-4">
 					These are the products that are essential for your daily
 					skin. They are recommended by our experts and are the best
 					in the market. These are the products that are essential for
@@ -410,7 +410,7 @@ const Catalogue = () => {
 					</div>
 				</div>
 				{/* <div className="flex justify-center w-10/12 self-center">
-					<div className="text-4xl px-16 dmsans py-4 text-center ">
+					<div className="text-4xl px-16 garbata py-4 text-center ">
 						As the originators and proprietors of the brand, we
 						serve as the primary users and assessors of our product.
 						We assure you that we utilize only the finest quality
@@ -442,7 +442,7 @@ const Catalogue = () => {
 							className="w-20 h-20 bg-center snap-center self-center text-secondary-content"
 						></div>
 						<p className="dancing text-3xl text-secondary-content">
-							<span className="text-2xl cardo text-secondary-content">
+							<span className="text-2xl garbata text-secondary-content">
 								Luxuriant Luxe
 							</span>
 							<br />
@@ -507,11 +507,11 @@ const Catalogue = () => {
 
 			<div className="flex justify-center toast-center toast">
 				<div
-					className="alert alert-success hidden transform-gpu transition-all duration-300 flex gap-4 md:text-3xl cardo"
+					className="alert alert-success hidden transform-gpu transition-all duration-300 flex gap-4 md:text-3xl garbata"
 					id="added_order"
 				>
 					<IconDiscountCheckFilled className="w-6 h-6 md:w-10 md:h-10" />
-					<span className="cardo">Added to Cart!</span>
+					<span className="garbata">Added to Cart!</span>
 				</div>
 			</div>
 

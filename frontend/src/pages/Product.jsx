@@ -254,7 +254,7 @@ const Product = () => {
 								.filter((image) => image)
 								.map((image) => (
 									<img
-										className="w-20 h-20 rounded-xl outline outline-1 hover:scale-105 transition-all duration-200"
+										className="w-28 h-28 rounded-xl outline outline-1 hover:scale-105 transition-all duration-200"
 										src={image}
 										alt="product preview"
 										onClick={() => {
@@ -284,11 +284,11 @@ const Product = () => {
 						<div>
 							<div className="text-sm breadcrumbs">
 								<ul>
-									<li className="text-2xl ptsans">
+									<li className="text-2xl garbata">
 										{" "}
 										{product.product_category && (
 											<a
-												className="ptsans"
+												className="garbata"
 												onClick={(e) => {
 													e.preventDefault();
 													navigate(
@@ -300,10 +300,10 @@ const Product = () => {
 											</a>
 										)}{" "}
 									</li>
-									<li className="text-2xl ptsans">
+									<li className="text-2xl garbata">
 										{product.product_name !== "" && (
 											<div>
-												<div className="ptsans">
+												<div className="garbata">
 													{product.product_name.toUpperCase()}
 												</div>
 											</div>
@@ -314,17 +314,17 @@ const Product = () => {
 						</div>
 						{/* Product name */}
 						<div>
-							<div className="text-5xl ptsans">
+							<div className="text-5xl garbata">
 								{product.product_name.toUpperCase()}
 							</div>
 						</div>
 						{/* Product Volume */}
 						{product.volumes_present ? (
 							<div>
-								<div className="text-2xl ptsans">
+								<div className="text-2xl garbata">
 									{product.product_volumes !== "" && (
 										<div>
-											<div className="ptsans">
+											<div className="garbata">
 												{selectedVolume?.volume} ml,{" "}
 												{(
 													selectedVolume?.volume *
@@ -342,10 +342,10 @@ const Product = () => {
 						{/* Product Shade Names*/}
 						{product.shades_present ? (
 							<div>
-								<div className="text-2xl ptsans">
+								<div className="text-2xl garbata">
 									{product.product_shades !== "" && (
 										<div>
-											<div className="ptsans flex flex-row gap-2">
+											<div className="garbata flex flex-row gap-2">
 												{/* show selected shade name and color */}
 												{selectedProductShade && (
 													<div className="flex gap-2 items-center">
@@ -355,7 +355,7 @@ const Product = () => {
 																backgroundColor: `#${selectedProductShade.shade_color}`,
 															}}
 														></div>
-														<div className="text-2xl ptsans">
+														<div className="text-2xl garbata">
 															{
 																selectedProductShade.shade_name
 															}
@@ -417,7 +417,7 @@ const Product = () => {
 								/>
 							))}
 
-							<div className="text-2xl ptsans self-center">
+							<div className="text-2xl garbata self-center">
 								{product.product_reviews.length} reviews
 							</div>
 						</div>
@@ -517,13 +517,13 @@ const Product = () => {
 							</button>
 						</div>
 						<div>
-							<div className="text-2xl ptsans uppercase">
+							<div className="text-2xl garbata uppercase">
 								Earn {product.points_awarded} Reward Points!
 							</div>
 						</div>
 						{/* Show product in stock or not */}
 						<div className="">
-							<div className="text-2xl ptsans">
+							<div className="text-2xl garbata">
 								{product.product_quantity > 0 ? (
 									<div className="text-green-500">
 										In Stock
@@ -538,9 +538,9 @@ const Product = () => {
 						{/* Product Details, which will show description, visible upon clicking +, collapses after clicking - */}
 						<div className="flex flex-col gap-2">
 							<div className="flex flex-row gap-2 items-center">
-								<div className="text-2xl ptsans">Details</div>
+								<div className="text-2xl garbata">Details</div>
 								<div
-									className="text-2xl ptsans"
+									className="text-2xl garbata"
 									onClick={() => {
 										setDetailsVisible(!detailsVisible);
 									}}
@@ -553,11 +553,11 @@ const Product = () => {
 								</div>
 							</div>
 							{detailsVisible && (
-								<div className="text-2xl ptsans">
+								<div className="text-2xl garbata">
 									{product.product_description
 										.product_description !== "" && (
 										<div>
-											<div className="ptsans">
+											<div className="garbata">
 												{product.product_details}
 											</div>
 										</div>
@@ -568,11 +568,11 @@ const Product = () => {
 						{/* Ingredients, visible upon clicking +, collapses after clicking - */}
 						<div className="flex flex-col gap-2">
 							<div className="flex flex-row gap-2 items-center">
-								<div className="text-2xl ptsans">
+								<div className="text-2xl garbata">
 									Ingredients
 								</div>
 								<div
-									className="text-2xl ptsans"
+									className="text-2xl garbata"
 									onClick={() => {
 										setIngredientsVisible(
 											!ingredientsVisible
@@ -587,10 +587,10 @@ const Product = () => {
 								</div>
 							</div>
 							{ingredientsVisible && (
-								<div className="text-2xl ptsans">
+								<div className="text-2xl garbata">
 									{product.product_ingredients !== "" && (
 										<div>
-											<div className="ptsans">
+											<div className="garbata">
 												{product.product_ingredients}
 											</div>
 										</div>
@@ -600,13 +600,13 @@ const Product = () => {
 						</div>
 
 						{/* 3 SVGs in a line */}
-						<div className="flex flex-row gap-4">
+						<div className="flex flex-row gap-4 items-center">
 							{/* 1st SVG */}
 							<div className="flex flex-col gap-2">
 								<img
 									src="https://i.imgur.com/bra0upp.png"
 									alt="external-cruelty-free-vegan-and-vegetarian-flaticons-flat-flat-icons-2"
-									className="w-24 h-24"
+									className="w-28 h-28"
 								/>
 							</div>
 							{/* 2nd SVG */}
@@ -645,11 +645,11 @@ const Product = () => {
 						)}
 						<div className="flex-1 flex justify-center ">
 							<div className=" w-full flex flex-col items-end p-8 m-4 mr-10 rounded-3xl">
-								<div className="bg-white/60 flex flex-col w-full h-full rounded-3xl p-8 items-end">
-									<div className="text-5xl ptsans font-bold uppercase text-right">
+								<div className="bg-white/60 flex flex-col w-full h-full rounded-3xl p-8 items-center">
+									<div className="text-5xl garbata font-bold uppercase text-center">
 										Mystique behind our admiration.
 									</div>
-									<div className="text-4xl italic cardo my-8">
+									<div className="text-4xl italic garbata my-8">
 										{
 											product.product_description
 												.product_description
@@ -676,11 +676,11 @@ const Product = () => {
 						)}
 						<div className="flex-1 flex justify-center ">
 							<div className=" w-full flex flex-col items-end p-8 m-4 mr-10 rounded-3xl">
-								<div className="bg-white/60 flex flex-col w-full h-full rounded-3xl p-8 items-end">
-									<div className="text-5xl ptsans font-bold uppercase text-left">
-										Mystique behind our admiration.
+								<div className="bg-white/60 flex flex-col w-full h-full rounded-3xl p-8 items-center">
+									<div className="text-5xl garbata font-bold uppercase text-center">
+										Real Results
 									</div>
-									<div className="text-4xl italic cardo my-8 text-left">
+									<div className="text-4xl italic garbata my-8 text-center">
 										{
 											product.product_description
 												.real_results_description
@@ -707,11 +707,11 @@ const Product = () => {
 						)}
 						<div className="flex-1 flex justify-center ">
 							<div className=" w-full flex flex-col items-end p-8 m-4 mr-10 rounded-3xl">
-								<div className="bg-white/60 flex flex-col w-full h-full rounded-3xl p-8 items-end">
-									<div className="text-5xl ptsans font-bold uppercase">
+								<div className="bg-white/60 flex flex-col w-full h-full rounded-3xl p-8 items-center">
+									<div className="text-5xl garbata font-bold uppercase">
 										How to Use
 									</div>
-									<div className="text-4xl italic cardo my-8">
+									<div className="text-4xl italic garbata my-8">
 										{
 											product.product_description
 												.how_to_use_description
@@ -759,7 +759,7 @@ const Product = () => {
 						productReviews.map((review) => (
 							<div className="flex flex-col gap-4 p-4 mx-16 bg-transparent rounded-3xl my-2">
 								<div className="flex flex-col items-start justify-start">
-									<div className="text-2xl ptsans flex">
+									<div className="text-2xl garbata flex">
 										{[1, 2, 3, 4, 5].map((star) => (
 											<IconStarFilled
 												className={`w-8 h-8 ${
@@ -770,15 +770,15 @@ const Product = () => {
 											/>
 										))}
 									</div>
-									<div className="text-4xl ptsans italic text-brown-300 font-bold">
+									<div className="text-4xl garbata italic text-brown-300 font-bold">
 										{review.username}
 									</div>
-									<div className="text-3xl my-2 ptsans">
+									<div className="text-3xl my-2 garbata">
 										{review.review}
 									</div>
 								</div>
 								<div className="flex flex-row justify-between">
-									<div className="text-3xl ptsans">
+									<div className="text-3xl garbata">
 										{review.review_date}
 									</div>
 								</div>
@@ -806,11 +806,11 @@ const Product = () => {
 							<form method="dialog" className="w-full">
 								<div className="flex flex-col justify-between w-full">
 									<div>
-										<label className="text-2xl ptsans my-2">
+										<label className="text-2xl garbata my-2">
 											Review title
 										</label>
 									</div>
-									<div className="text-2xl ptsans w-full">
+									<div className="text-2xl garbata w-full">
 										<input
 											type="text"
 											className="input input-bordered w-full"
@@ -825,11 +825,11 @@ const Product = () => {
 										/>
 									</div>
 									<div>
-										<label className="text-2xl ptsans my-2">
+										<label className="text-2xl garbata my-2">
 											Review
 										</label>
 									</div>
-									<div className="text-2xl ptsans w-full">
+									<div className="text-2xl garbata w-full">
 										<input
 											type="text"
 											className="input input-bordered w-full"
@@ -844,11 +844,11 @@ const Product = () => {
 										/>
 									</div>
 									<div>
-										<label className="text-2xl ptsans my-2">
+										<label className="text-2xl garbata my-2">
 											Rate on 5!
 										</label>
 									</div>
-									<div className="text-2xl ptsans">
+									<div className="text-2xl garbata">
 										<input
 											type="number"
 											className="input input-bordered"
@@ -866,7 +866,7 @@ const Product = () => {
 									</div>
 								</div>
 								<div className="flex flex-row justify-between">
-									<div className="text-2xl ptsans">
+									<div className="text-2xl garbata">
 										<button
 											className="btn btn-primary my-4"
 											onClick={() => {

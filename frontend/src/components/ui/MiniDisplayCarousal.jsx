@@ -66,7 +66,7 @@ export function MiniDisplayCarousal(props) {
 	console.log("products after editing", products);
 	return (
 		<Carousel
-			className="rounded-none py-2 bg-pink-200"
+			className="rounded-none bg-pink-200"
 			autoplay={true}
 			autoplayDelay={5000}
 			loop={true}
@@ -96,7 +96,7 @@ export function MiniDisplayCarousal(props) {
 			{products.map((product) => {
 				return (
 					<div
-						className={`mx-24 flex flex-row gap-0 bg-transparent p-10 ${
+						className={`mx-24 flex flex-row gap-0 bg-transparent p-10 py-0 ${
 							product.length < 3
 								? "justify-start"
 								: "justify-center"

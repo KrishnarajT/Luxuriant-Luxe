@@ -72,13 +72,13 @@ export function DisplayCarousal(props) {
 			loop={true}
 			prevArrow={({ handlePrev }) => (
 				<MaterialSymbolsArrowBackIos
-					className="text-gray-700 w-36 h-36 !absolute top-2/4 left-6 -translate-y-2/4 "
+					className="text-black w-44 h-44 !absolute top-2/4 left-6 -translate-y-2/4 "
 					onClick={handlePrev}
 				/>
 			)}
 			nextArrow={({ handleNext }) => (
 				<MaterialSymbolsArrowForwardIos
-					className="text-gray-700 w-36 h-36 !absolute top-2/4 !right-4 -translate-y-2/4"
+					className="text-black w-44 h-44 !absolute top-2/4 !right-4 -translate-y-2/4"
 					onClick={handleNext}
 				/>
 			)}

@@ -40,7 +40,7 @@ const SideCart = () => {
 						</div>
 						<Cart />
 						<div className="flex justify-center">
-							<div className="text-2xl ptsans">
+							<div className="text-2xl garbata">
 								Discounts are calculated at checkout
 							</div>
 						</div>

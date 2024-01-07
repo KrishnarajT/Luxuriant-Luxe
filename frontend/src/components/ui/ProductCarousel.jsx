@@ -23,10 +23,8 @@ export function ProductCarousel(props) {
 					color="white"
 					size="lg"
 					onClick={handlePrev}
-					className="!absolute top-2/4 left-4 -translate-y-2/4 bg-white opacity-40"
-				>
-					<IconCaretLeftFilled className="text-black" />
-				</IconButton>
+					className="!absolute top-2/4 left-4 -translate-y-2/4 bg-transparent"
+				></IconButton>
 			)}
 			nextArrow={({ handleNext }) => (
 				<IconButton
@@ -34,10 +32,8 @@ export function ProductCarousel(props) {
 					color="white"
 					size="lg"
 					onClick={handleNext}
-					className="!absolute top-2/4 !right-4 -translate-y-2/4 p-4 bg-white opacity-40 glass"
-				>
-					<IconCaretRightFilled className="text-black" />
-				</IconButton>
+					className="!absolute top-2/4 !right-4 -translate-y-2/4 p-4 bg-transparent"
+				></IconButton>
 			)}
 		>
 			{images && images.length > 0 ? (

@@ -105,7 +105,15 @@ body::-webkit-scrollbar-thumb {
 }
 
 .garbata {
-    font-family: 'garbata', serif;
+    font-family: 'PT Sans', sans-serif;
+}
+
+.montserrat {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.tangerine {
+    font-family: 'Tangerine', sans-serif;
 }
 
 #qr_code {

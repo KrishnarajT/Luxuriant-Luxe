@@ -48,7 +48,7 @@ const Home = () => {
 			/>
 			{/* <div className="ribbon color"></div> */}
 			<div className="flex flex-col">
-				<div className="text-4xl italic underline text-center my-4 mt-16 garbata">
+				<div className="text-5xl underline text-center my-4 mt-16 bodoni">
 					Revitalize your skin with Super-Concentrated Potions
 				</div>
 				<div className="text-4xl px-16 py-4 text-center garbata italic">
@@ -64,13 +64,11 @@ const Home = () => {
 			<section className="flex flex-col w-screen my-6 ">
 				<div className="flex justify-center flex-row">
 					<div
-						className="p-4 m-8 justify-center items-start text-4xl forum
-				md:text-7xl underline"
+						className="p-4 m-8 mb-0 justify-center items-start text-4xl bodoni
+				md:text-7xl"
 					>
 						LUXURIANT LUXE{" "}
-						<span className="bodoni underline italic">
-							Essentials
-						</span>
+						<span className="montserrat italic">Essentials</span>
 					</div>
 				</div>
 
@@ -83,7 +81,7 @@ const Home = () => {
 				</div>
 				<div className="flex justify-center w-full">
 					<button
-						className="underline btn btn-ghost btn-lg m-8 forum text-5xl"
+						className="underline btn btn-ghost btn-lg m-8 bodoni font-thin text-5xl"
 						onClick={() => {
 							setCurrentCategoryProducts(EssentialsProducts);
 							navigate("/category/essentials", {
@@ -97,7 +95,7 @@ const Home = () => {
 					</button>
 				</div>
 				{/* <div className="flex justify-center w-10/12 self-center">
-					<div className="text-4xl px-16 dmsans py-4 text-center ">
+					<div className="text-4xl px-16 garbata py-4 text-center ">
 						As the originators and proprietors of the brand, we
 						serve as the primary users and assessors of our product.
 						We assure you that we utilize only the finest quality
@@ -109,8 +107,8 @@ const Home = () => {
 			<section className="flex flex-col w-screen my-6 ">
 				<div className="flex justify-center flex-row">
 					<div
-						className="p-4 m-8 justify-center items-start text-4xl forum
-				md:text-7xl underline"
+						className="p-4 m-8 mb-0 justify-center items-start text-4xl montserrat
+				md:text-7xl font-thin"
 					>
 						FEATURED ORGANIC CLEANSERS
 					</div>
@@ -125,7 +123,7 @@ const Home = () => {
 				</div>
 				<div className="flex justify-center w-full">
 					<button
-						className="underline btn btn-ghost btn-lg m-8 forum text-5xl"
+						className="underline btn btn-ghost btn-lg m-8 bodoni font-thin text-4xl"
 						onClick={() => {
 							setCurrentCategoryProducts(FeaturedProducts);
 							navigate("/category/featured", {
@@ -139,7 +137,7 @@ const Home = () => {
 					</button>
 				</div>
 				{/* <div className="flex justify-center w-10/12 self-center">
-					<div className="text-4xl px-16 dmsans py-4 text-center ">
+					<div className="text-4xl px-16 garbata py-4 text-center ">
 						As the originators and proprietors of the brand, we
 						serve as the primary users and assessors of our product.
 						We assure you that we utilize only the finest quality
@@ -151,21 +149,24 @@ const Home = () => {
 			<section className="flex flex-col w-screen my-6 ">
 				<div className="flex justify-center flex-row">
 					<div
-						className="p-4 m-8 justify-center text-center items-center text-4xl forum
+						className="p-4 m-8 mb-0 justify-center text-center items-center text-4xl bodoni
 				md:text-7xl"
 					>
-						<span className="text-primary dmsans mx-4 text-center">
+						<span className="text-primary montserrat mx-4 text-center">
 							HOLIDAY GIFT SETS
 						</span>
 					</div>
 				</div>
-				<div className="flex flex-col">
-					<div className="text-2xl text-center px-16 cardo italic w-full">
-						From us to your loved ones - XOXO
+				<div className="flex justify-center">
+					<div className="text-8xl bodoni tangerine text-center px-16 garbata italic w-full translate-x-20">
+						From us to your loved ones
+						<div className="bodoni text-right w-3/4 font-normal">
+							~LL
+						</div>
 					</div>
-					<div className="self-center">
+					<div className="flex justify-end translate-y-20 -translate-x-20">
 						<button
-							className="text-catalogue_bg underline btn btn-ghost btn-lg forum text-4xl my-2"
+							className="underline btn btn-ghost btn-lg m-8 bodoni font-thin text-4xl"
 							onClick={() => {
 								setCurrentCategoryProducts(HolidayProducts);
 								navigate("/category/holiday", {
@@ -180,6 +181,7 @@ const Home = () => {
 						</button>
 					</div>
 				</div>
+
 				<div className="flex justify-center w-full">
 					<div className="w-full mx-4">
 						{HolidayProducts && (
@@ -187,8 +189,9 @@ const Home = () => {
 						)}
 					</div>
 				</div>
+
 				{/* <div className="flex justify-center w-10/12 self-center">
-					<div className="text-4xl px-16 dmsans py-4 text-center ">
+					<div className="text-4xl px-16 garbata py-4 text-center ">
 						As the originators and proprietors of the brand, we
 						serve as the primary users and assessors of our product.
 						We assure you that we utilize only the finest quality
@@ -201,14 +204,14 @@ const Home = () => {
 				<Catalogue />
 			</section> */}
 
-			<div className="my-12">
+			{/* <div className="my-12">
 				<div className="ribbon color"></div>
-			</div>
+			</div> */}
 
 			{/* // Authentic beauty */}
 			<div
 				id="authenticbeauty"
-				className="h-screen w-screen flex items-center flex-col justify-center"
+				className="h-screen w-screen flex items-center flex-col justify-evenly"
 				// style={{
 				// 	backgroundImage: "url(https://source.unsplash.com/random)",
 				// 	backgroundSize: "cover",
@@ -217,14 +220,14 @@ const Home = () => {
 			>
 				{/* Title */}
 				<div className="flex justify-center">
-					<div className="flex text-center text-7xl underline ptsans uppercase">
+					<div className="flex text-center text-7xl montserrat uppercase">
 						Authentic Beauty
 					</div>
 				</div>
 
 				{/* Text */}
 				<div className="flex justify-center m-8">
-					<div className="w-5/6 text-3xl italic cardo">
+					<div className="w-5/6 text-3xl italic garbata">
 						Unveil the sublime secrets of skincare that honor the
 						essence of your unique beauty. For true radiance stems
 						not from a generic mold, but from the sacred symphony of
@@ -240,12 +243,12 @@ const Home = () => {
 				{/* More Text */}
 
 				<div className="flex justify-center">
-					<div className="flex text-center text-3xl italic">
+					<div className="flex text-center text-3xl italic bodoni">
 						Revitalize Your Skin with Super-Concentrated Potions
 					</div>
 				</div>
 				<div className="flex justify-center m-8">
-					<div className="w-5/6 text-3xl italic cardo">
+					<div className="w-5/6 text-3xl italic garbata">
 						Indulge in the power of high-octane, active ingredient
 						formulas that will leave your skin glowing like a
 						radiant goddess. Our best-selling and versatile products
