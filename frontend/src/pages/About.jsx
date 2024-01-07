@@ -36,7 +36,6 @@ const box_images = [
 	"https://i.imgur.com/znpMKO4h.jpg",
 	"https://i.imgur.com/iqcG17th.jpg",
 ];
-
 const About = () => {
 	const navigate = useNavigate();
 	const { theme } = React.useContext(ThemeContext);
@@ -56,19 +55,19 @@ const About = () => {
 		<div id="about_div">
 			{/* intro */}
 			<section
-				className="flex flex-col p-4 m-8 justify-center items-center"
+				className="flex flex-col m-8 justify-center items-center"
 				id="intro"
 			>
 				<div className="text-4xl xl:text-6xl lg:text-5xl bodoni my-6 mb-3">
 					ABOUT US
 				</div>
 
-				<p
+				{/* <p
 					className="dancing text-2xl text-center mb-6 mt-8
 				md:text-5xl"
 				>
 					Makeup is a Choice, Skincare is Essential.
-				</p>
+				</p> */}
 				<div className="flex justify-center md:mx-20 md:my-4 md:hidden">
 					<div
 						className="text-xl mt-4 cardo text-center
@@ -83,7 +82,7 @@ const About = () => {
 
 			{/* big screen intro */}
 			<section
-				className="md:flex flex-col p-4 m-8 justify-center items-center hidden"
+				className="md:flex flex-col justify-center items-center hidden"
 				id="intro"
 			>
 				<div className="md:flex md:justify-center md:flex-row md:mx-20 md:my-4">
@@ -105,7 +104,7 @@ const About = () => {
 						</div>
 					</div>
 				</div>
-				<p
+				{/* <p
 					className="dancing text-2xl text-center mb-6 mt-8
 				md:text-5xl"
 				>
@@ -114,26 +113,19 @@ const About = () => {
 						{" "}
 						most Premium products{" "}
 					</span>
-				</p>
+				</p> */}
 
-				<div className="md:flex md:justify-center md:flex-row-reverse md:mx-20 md:my-4">
+				<div className="md:flex md:justify-center md:flex-row-reverse md:my-4 w-full"
+					id="brownbg"
+				>
 					<div
 						className="text-xl mt-4 cardo text-center
-				md:p-10 md:rounded-2xl xl:text-4xl lg:text-3xl md:text-2xl md:text-left md:flex-1"
+				md:p-10 md:rounded-2xl xl:text-4xl lg:text-3xl md:text-2xl md:text-left md:flex-1 text-white"
 					>
-						Made with{" "}
-						<span className="text-accent cardo xl:text-4xl lg:text-3xl md:text-2xl italic">
-							{" "}
-							pure safe-to-use organic{" "}
-						</span>
 						ingredients. This formula won't harm your natural skin,
 						it will only help you get rid of those dark spots, tan,
 						open pores, and small bumps and will make your skin
 						outrageously flawless like{" "}
-						<span className="text-accent cardo xl:text-4xl lg:text-3xl md:text-2xl italic">
-							{" "}
-							you've always dreamt of.{" "}
-						</span>
 					</div>
 					<div className="md:flex-1 md:flex md:p-4 md:justify-start p-4">
 						<div className="rounded-3xl flex items-center 2xl:w-1/2">
@@ -149,7 +141,7 @@ const About = () => {
 
 			{/* big screen about */}
 			<section
-				className="flex flex-col p-2 m-8 justify-center items-center md:hidden"
+				className="flex flex-col p-2 m-8 justify-center items-center md:hidden bg-brown-500"
 				id="intro"
 			>
 				<div className="text-4xl md:text-5xl bodoni my-6">
@@ -206,7 +198,7 @@ const About = () => {
 						</div>
 					</div>
 				</div>
-				<div className="text-xl mt-4 cardo p-4 m-5 text-center md:w-4/5">
+				{/* <div className="text-xl mt-4 cardo p-4 m-5 text-center md:w-4/5">
 					<span className="text-accent cardo text-xl lg:text-3xl">
 						Two people who got influenced by the ancient skincare
 						heritage from the 1st century and made it time travel to
@@ -217,7 +209,7 @@ const About = () => {
 						passionate about skincare and beauty. We strive to bring
 						you the best products at the best prices!
 					</span>
-				</div>
+				</div> */}
 			</section>
 			{isAboutPage ? <Footer /> : <div></div>}
 		</div>

@@ -78,7 +78,7 @@ export function EcommerceCard(props) {
 	const navigate = useNavigate();
 	return (
 		<Card
-			className={`w-80 m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
+			className={`w-96 m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
 			// onClick={() => {
 			// 	navigate(`/product/${props.id}`);
 			// }}
@@ -110,6 +110,11 @@ export function EcommerceCard(props) {
 						LL <br></br>
 						{props.name}
 					</Typography>
+					<Typography
+						className={`font-normal text-xl text-center mt-4 break-words max-h-10 min-h-10 ${props.text}`}
+					>
+						{props.description.substring(0, 100)}...
+					</Typography>
 					<div className="flex justify-center p-1 pb-0">
 						<div className="flex">
 							{[1, 2, 3, 4, 5].map((star) => (
@@ -127,13 +132,6 @@ export function EcommerceCard(props) {
 						₹{props.price}
 					</Typography> */}
 				</div>
-				{/* <Typography
-					variant="small"
-					color="gray"
-					className={`font-normal opacity-75 break-words max-h-10 min-h-10 ${props.text}`}
-				>
-					{props.description.substring(0, 100)}...
-				</Typography> */}
 			</CardBody>
 			<CardFooter className="pt-0">
 				<Button

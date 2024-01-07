@@ -267,6 +267,10 @@ footer {
     background-color: #f0ddd3;
 }
 
+#brownbg {
+    background-color: #906126;
+}
+
 footer::before {
     content: "";
     background: url('https://i.imgur.com/IQNVFHA.png') no-repeat center;

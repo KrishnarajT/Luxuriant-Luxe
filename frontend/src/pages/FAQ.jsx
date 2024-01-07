@@ -50,7 +50,7 @@ const FAQ = () => {
 				{faqs.length !== 0 ? (
 					faqs.map((faq) => {
 						return (
-							<div className="collapse bg-base-200">
+							<div className="collapse bg-secondary">
 								<input type="radio" name="my-accordion-1" />
 								<div className="collapse-title text-2xl font-medium">
 									{faq.question}

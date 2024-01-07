@@ -11,6 +11,21 @@ const Contact = () => {
 			>
 				Contact
 			</section>
+
+			<div className="flex flex-col w-full gap-4 justify-center items-center">
+				<div
+					className="text-4xl garbata text-center"
+				>Call us (Monday - Friday)(9am - 6pm) +91 7666018928</div>
+				<div
+					className="text-4xl garbata text-center"
+				>
+					Reach us out on our Whatsapp : <br></br>
+					+91 766018928 <br></br>
+					Instagram : luxuriant_luxe or
+					<br></br>
+					Mail : luxeluxuriant@gmail.com
+				</div>
+			</div>
 			{/* Your contact page content goes here */}
 			<Footer />
 		</div>

@@ -73,9 +73,9 @@ const Footer = () => {
 			id="footer"
 		>
 			<Toaster />
-			<aside>
+			<aside className="mt-0 pt-0">
 				<p className="dancing text-3xl text-secondary-content">
-					<span className="text-8xl bodoni text-secondary-content uppercase font-thin">
+					<span className="text-8xl bodoni text-secondary-content uppercase garbata font-thin">
 						Luxuriant Luxe
 					</span>
 					<br />
@@ -83,13 +83,13 @@ const Footer = () => {
 				</p>
 			</aside>
 
-			<div className="flex gap-20 w-2/3 justify-around h-full">
+			<div className="flex gap-20 w-4/5 justify-between h-full">
 				<div className="flex gap-4 flex-col items-center justify-start h-full">
-					<div className="text-2xl uppercase underline font-bold">
+					<div className="text-3xl uppercase garbata underline font-bold">
 						Support
 					</div>
 					<a
-						className="link text-xl no-underline hover:underline"
+						className="link text-2xl no-underline garbata hover:underline"
 						onClick={() => {
 							navigate("/faq");
 						}}
@@ -97,7 +97,7 @@ const Footer = () => {
 						FAQ
 					</a>
 					<a
-						className="link text-xl no-underline hover:underline"
+						className="link text-2xl no-underline garbata hover:underline"
 						onClick={() => {
 							navigate("/contact");
 						}}
@@ -106,11 +106,11 @@ const Footer = () => {
 					</a>
 				</div>
 				<div className="flex gap-4 flex-col items-center justify-start h-full">
-					<div className="text-2xl uppercase underline font-bold">
+					<div className="text-3xl uppercase garbata underline font-bold">
 						About Us
 					</div>
 					<a
-						className="link text-xl no-underline hover:underline"
+						className="link text-2xl no-underline garbata hover:underline"
 						onClick={() => {
 							navigate("/about");
 						}}
@@ -118,7 +118,7 @@ const Footer = () => {
 						About LL
 					</a>
 					<a
-						className="link text-xl no-underline hover:underline"
+						className="link text-2xl no-underline garbata hover:underline"
 						onClick={() => {
 							navigate("/our_goal");
 						}}
@@ -127,11 +127,11 @@ const Footer = () => {
 					</a>
 				</div>
 				<div className="flex gap-4 flex-col items-center justify-start h-full">
-					<div className="text-2xl uppercase underline font-bold">
+					<div className="text-3xl uppercase garbata underline font-bold">
 						Legal
 					</div>
 					<a
-						className="link text-xl no-underline hover:underline"
+						className="link text-2xl no-underline garbata hover:underline"
 						onClick={() => {
 							navigate("/privacy_policy");
 						}}
@@ -139,7 +139,7 @@ const Footer = () => {
 						Privacy Policy
 					</a>
 					<a
-						className="link text-xl no-underline hover:underline"
+						className="link text-2xl no-underline garbata hover:underline"
 						onClick={() => {
 							navigate("/terms_conditions");
 						}}
@@ -147,7 +147,7 @@ const Footer = () => {
 						Terms and Conditions
 					</a>
 					<a
-						className="link text-xl no-underline hover:underline"
+						className="link text-2xl no-underline garbata hover:underline"
 						onClick={() => {
 							navigate("/refund_return_policy");
 						}}
@@ -155,7 +155,7 @@ const Footer = () => {
 						Refund and Return Policy
 					</a>
 					<a
-						className="link text-xl no-underline hover:underline"
+						className="link text-2xl no-underline garbata hover:underline"
 						onClick={() => {
 							navigate("/shipping_policy");
 						}}
@@ -167,7 +167,7 @@ const Footer = () => {
 			<div className="w-full">
 				<div className="form-control">
 					<label className="label">
-						<span className="label-text underline uppercase text-2xl ptsans">
+						<span className="label-text underline uppercase garbata text-2xl ptsans">
 							Sign up for Updates
 						</span>
 					</label>
@@ -206,15 +206,15 @@ const Footer = () => {
 				</p>
 			</div>
 			<nav className="text-secondary-content">
-				<div className="flex flex-wrap justify-center items-center gap-4 w-2/3 lg:w-fit">
+				<div className="flex flex-wrap justify-center items-center gap-16 w-2/3 lg:w-fit">
 					<a href="https://wa.me/917666018928?text=Welcome%20to%20Luxuriant%20Luxe!%20How%20can%20we%20assist%20you%20today%3F%20">
-						<IconBrandWhatsapp className="w-8 h-8" />
+						<IconBrandWhatsapp className="w-14 h-14" />
 					</a>
 					<a href="https://www.instagram.com/luxuriant_luxe">
-						<IconBrandInstagram className="w-8 h-8" />
+						<IconBrandInstagram className="w-14 h-14" />
 					</a>
 					<a href="https://www.facebook.com/profile.php?id=61551508050876">
-						<IconBrandFacebook className="w-8 h-8" />
+						<IconBrandFacebook className="w-14 h-14" />
 					</a>
 					{/*<a*/}
 					{/*	href=""*/}
@@ -222,7 +222,7 @@ const Footer = () => {
 					{/*	<IconBrandTelegram className="w-8 h-8"/>*/}
 					{/*</a>*/}
 					<a href="https://www.linkedin.com/in/luxuriant-luxe-1b852a292">
-						<IconBrandLinkedin className="w-8 h-8" />
+						<IconBrandLinkedin className="w-14 h-14" />
 					</a>
 					<a
 						onClick={() => {
@@ -230,7 +230,7 @@ const Footer = () => {
 								"mailto:luxeluxuriant@gmail.com";
 						}}
 					>
-						<IconMail className="w-8 h-8" />
+						<IconMail className="w-14 h-14" />
 					</a>
 					<a
 						onClick={
@@ -240,7 +240,7 @@ const Footer = () => {
 							}
 						}
 					>
-						<IconPhoneCall className="w-8 h-8" />
+						<IconPhoneCall className="w-14 h-14" />
 					</a>
 					<ScrollToTopButton />
 				</div>

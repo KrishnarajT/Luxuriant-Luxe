@@ -53,7 +53,7 @@ export function DisplayCarousal(props) {
 	console.log("products b4 editing", products);
 	// split products array into a new array that is an array of [3 products]
 	products = products.reduce((resultArray, item, index) => {
-		const chunkIndex = Math.floor(index / 4);
+		const chunkIndex = Math.floor(index / 3);
 
 		if (!resultArray[chunkIndex]) {
 			resultArray[chunkIndex] = []; // start a new chunk
@@ -71,22 +71,14 @@ export function DisplayCarousal(props) {
 			autoplayDelay={5000}
 			loop={true}
 			prevArrow={({ handlePrev }) => (
-				// <IconButton
-				// 	variant="text"
-				// 	// color="white"
-				// 	// size="lg"
-				// 	onClick={handlePrev}
-				// 	className="!absolute top-2/4 left-6 -translate-y-2/4 w-24 h-24"
-				// >
 				<MaterialSymbolsArrowBackIos
-					className="text-black w-24 h-24 !absolute top-2/4 left-6 -translate-y-2/4 "
+					className="text-gray-700 w-36 h-36 !absolute top-2/4 left-6 -translate-y-2/4 "
 					onClick={handlePrev}
 				/>
-				// </IconButton>
 			)}
 			nextArrow={({ handleNext }) => (
 				<MaterialSymbolsArrowForwardIos
-					className="text-black w-24 h-24 !absolute top-2/4 !right-4 -translate-y-2/4"
+					className="text-gray-700 w-36 h-36 !absolute top-2/4 !right-4 -translate-y-2/4"
 					onClick={handleNext}
 				/>
 			)}
