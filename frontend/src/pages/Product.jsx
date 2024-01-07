@@ -604,7 +604,7 @@ const Product = () => {
 							{/* 1st SVG */}
 							<div className="flex flex-col gap-2">
 								<img
-									src="https://img.icons8.com/external-flaticons-flat-flat-icons/64/external-cruelty-free-vegan-and-vegetarian-flaticons-flat-flat-icons-2.png"
+									src="https://i.imgur.com/bra0upp.png"
 									alt="external-cruelty-free-vegan-and-vegetarian-flaticons-flat-flat-icons-2"
 									className="w-24 h-24"
 								/>

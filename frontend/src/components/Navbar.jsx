@@ -76,7 +76,7 @@ export function Navbar(props) {
 										);
 									}}
 								>
-									<label className="w-fit bg-transparent text-3xl bodoni border-none">
+									<label className="w-fit bg-transparent text-4xl bodoni border-none">
 										LL Hair
 									</label>
 								</NavLink>
@@ -95,7 +95,7 @@ export function Navbar(props) {
 										);
 									}}
 								>
-									<label className="w-fit bg-transparent text-3xl bodoni border-none">
+									<label className="w-fit bg-transparent text-4xl bodoni border-none">
 										LL Skin
 									</label>
 								</NavLink>
@@ -114,7 +114,7 @@ export function Navbar(props) {
 										);
 									}}
 								>
-									<label className="w-fit bg-transparent text-3xl bodoni border-none">
+									<label className="w-fit bg-transparent text-4xl bodoni border-none">
 										LL Cosmetics
 									</label>
 								</NavLink>
@@ -131,7 +131,7 @@ export function Navbar(props) {
 						navigate("/");
 					}}
 				>
-					<div className="text-4xl md:text-6xl text-center self-center bodoni absolute left-1/2 transform -translate-x-1/2">
+					<div className="text-4xl md:text-7xl text-center self-center bodoni absolute left-1/2 transform -translate-x-1/2">
 						LUXURIANT LUXE
 					</div>
 				</div>
@@ -140,29 +140,29 @@ export function Navbar(props) {
 					<div className="hidden md:flex">
 						<ul className="menu menu-horizontal px-1">
 							<li className="text-lg md:text-xl">
-								<label className="w-fit bg-transparent border-none text-4xl text-center self-center">
+								<label className="bg-transparent border-none w-fit h-20 flex items-center justify-center text-3xl">
 									INR{" "}
-									<IconCurrencyRupee className="w-12 h-12" />
+									<IconCurrencyRupee className="w-14 h-14" />
 								</label>
 							</li>
 							<li className="text-lg md:text-xl">
 								<label
 									id="cartlabel"
-									className="w-fit bg-transparent border-none"
+									className="bg-transparent border-none w-20 h-20 flex items-center justify-center"
 									onClick={() => navigate("/search")}
 								>
-									<IconSearch className="w-12 h-12" />
+									<IconSearch className="w-14 h-14" />
 								</label>
 							</li>
 							<li className="text-lg md:text-xl">
 								<label
 									htmlFor="my-drawer"
 									id="cartlabel"
-									className="drawer-button w-fit bg-transparent text-transparent border-none"
+									className="bg-transparent border-none w-20 h-20 flex items-center justify-center"
 								>
 									<img
-										src="https://img.icons8.com/ios-filled/100/shopping-bag.png"
-										className="w-12 h-12"
+										src="https://i.imgur.com/oOMEXgs.png"
+										className="w-12 h-16"
 									/>
 								</label>
 							</li>
