@@ -4,8 +4,8 @@ export const BaseUrlContext = createContext();
 
 export const BaseUrlProvider = ({children}) => {
 	const [baseUrl, setBaseUrl] = useState(
-		// "https://gleaming-flannel-shirt-fox.cyclic.app"
-		"http://localhost:3000"
+		"https://gleaming-flannel-shirt-fox.cyclic.app"
+		// "http://localhost:3000"
 	);
 	
 	return (
