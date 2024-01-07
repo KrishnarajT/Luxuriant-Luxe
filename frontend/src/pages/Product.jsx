@@ -630,37 +630,10 @@ const Product = () => {
 				</div>
 				<div className="flex flex-col gap-8" id="texturebg">
 					{/* Product Description */}
-					<div className="flex flex-row justify-between">
+					<div className="flex flex-row justify-between ">
 						{product.product_image_links && (
 							<div className="w-1/2 flex justify-center p-8 m-4">
-								<div className="aspect-square w-2/3">
-									<ProductCarousel
-										images={
-											product.product_image_links
-												.description_images
-										}
-									/>
-								</div>
-							</div>
-						)}
-						<div className="flex flex-col items-end p-8 m-4 mr-10 rounded-3xl bg-white/60">
-							<div className="text-5xl ptsans font-bold uppercase z-10">
-								Mystique Behind our admiration
-							</div>
-							<div className="text-4xl italic cardo my-8">
-								{
-									product.product_description
-										.product_description
-								}
-							</div>
-						</div>
-					</div>
-
-					{/* Real Results */}
-					<div className="flex flex-row-reverse justify-between ">
-						{product.product_image_links && (
-							<div className="w-1/2 flex justify-center p-8 m-4">
-								<div className="aspect-square w-2/3">
+								<div className="aspect-square">
 									<ProductCarousel
 										images={
 											product.product_image_links
@@ -671,15 +644,48 @@ const Product = () => {
 							</div>
 						)}
 						<div className="flex-1 flex justify-center ">
-							<div className=" w-full flex flex-col items-start p-8 m-4 ml-20 bg-transparent rounded-3xl bg-white/60">
-								<div className="text-5xl ptsans font-bold uppercase">
-									Real Results
+							<div className=" w-full flex flex-col items-end p-8 m-4 mr-10 rounded-3xl">
+								<div className="bg-white/60 flex flex-col w-full h-full rounded-3xl p-8 items-end">
+									<div className="text-5xl ptsans font-bold uppercase text-right">
+										Mystique behind our admiration.
+									</div>
+									<div className="text-4xl italic cardo my-8">
+										{
+											product.product_description
+												.product_description
+										}
+									</div>
 								</div>
-								<div className="text-4xl italic cardo my-8">
-									{
-										product.product_description
-											.real_results_description
-									}
+							</div>
+						</div>
+					</div>
+
+					{/* Real Results */}
+					<div className="flex flex-row-reverse justify-between ">
+						{product.product_image_links && (
+							<div className="w-1/2 flex justify-center p-8 m-4">
+								<div className="aspect-square">
+									<ProductCarousel
+										images={
+											product.product_image_links
+												.real_results_images
+										}
+									/>
+								</div>
+							</div>
+						)}
+						<div className="flex-1 flex justify-center ">
+							<div className=" w-full flex flex-col items-end p-8 m-4 mr-10 rounded-3xl">
+								<div className="bg-white/60 flex flex-col w-full h-full rounded-3xl p-8 items-end">
+									<div className="text-5xl ptsans font-bold uppercase text-left">
+										Mystique behind our admiration.
+									</div>
+									<div className="text-4xl italic cardo my-8 text-left">
+										{
+											product.product_description
+												.real_results_description
+										}
+									</div>
 								</div>
 							</div>
 						</div>
@@ -689,7 +695,7 @@ const Product = () => {
 					<div className="flex flex-row justify-between ">
 						{product.product_image_links && (
 							<div className="w-1/2 flex justify-center p-8 m-4">
-								<div className="aspect-square w-2/3">
+								<div className="aspect-square">
 									<ProductCarousel
 										images={
 											product.product_image_links
@@ -700,15 +706,17 @@ const Product = () => {
 							</div>
 						)}
 						<div className="flex-1 flex justify-center ">
-							<div className=" w-full flex flex-col items-end p-8 m-4 mr-10 bg-white/60 rounded-3xl">
-								<div className="text-5xl ptsans font-bold uppercase">
-									How to Use
-								</div>
-								<div className="text-4xl italic cardo my-8">
-									{
-										product.product_description
-											.how_to_use_description
-									}
+							<div className=" w-full flex flex-col items-end p-8 m-4 mr-10 rounded-3xl">
+								<div className="bg-white/60 flex flex-col w-full h-full rounded-3xl p-8 items-end">
+									<div className="text-5xl ptsans font-bold uppercase">
+										How to Use
+									</div>
+									<div className="text-4xl italic cardo my-8">
+										{
+											product.product_description
+												.how_to_use_description
+										}
+									</div>
 								</div>
 							</div>
 						</div>

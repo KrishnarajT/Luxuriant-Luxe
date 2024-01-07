@@ -6070,6 +6070,10 @@ details.collapse summary::-webkit-details-marker {
   text-align: center;
 }
 
+.text-right {
+  text-align: right;
+}
+
 .text-start {
   text-align: start;
 }
@@ -6982,39 +6986,15 @@ body {
 }
 
 @font-face {
-  font-family: "MonaLisa";
-
-  src: url("../assets/fonts/Monalisa.ttf");
-}
-
-@font-face {
   font-family: "Bodoni";
 
   src: url("../assets/fonts/BodoniFLF-Roman.ttf");
 }
 
 @font-face {
-  font-family: "Bulgatti";
+  font-family: "garbata";
 
-  src: url("../assets/fonts/Bulgatti-xgMV.ttf");
-}
-
-@font-face {
-  font-family: "Hendrickson";
-
-  src: url("../assets/fonts/Hendrickson-K7GOD.otf");
-}
-
-@font-face {
-  font-family: "RainyWind";
-
-  src: url("../assets/fonts/Rainy Wind.ttf");
-}
-
-@font-face {
-  font-family: "Storytelling";
-
-  src: url("../assets/fonts/StorytellingDEMO.ttf");
+  src: url("../assets/fonts/Averia-Regular.ttf");
 }
 
 body {
@@ -7047,30 +7027,6 @@ body::-webkit-scrollbar-thumb {
   /* color of the scroll thumb */
   border-radius: 4rem;
   /* roundness of the scroll thumb */
-}
-
-.enriqueta {
-  font-family: 'Enriqueta', serif;
-}
-
-.monalisa {
-  font-family: 'MonaLisa', serif;
-}
-
-.hendrickson {
-  font-family: 'Hendrickson', serif;
-}
-
-.rainywind {
-  font-family: 'RainyWind', serif;
-}
-
-.storytelling {
-  font-family: 'Storytelling', serif;
-}
-
-.bulgatti {
-  font-family: 'Bulgatti', serif;
 }
 
 .prata {
@@ -7115,6 +7071,10 @@ body::-webkit-scrollbar-thumb {
 
 .ptsans {
   font-family: 'PT Sans', sans-serif;
+}
+
+.garbata {
+  font-family: 'garbata', serif;
 }
 
 #qr_code {

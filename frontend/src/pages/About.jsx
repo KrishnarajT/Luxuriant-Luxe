@@ -14,7 +14,6 @@ import {
 } from "@tabler/icons-react";
 import ScrollToTopButton from "../components/ui/ScrollToTopButton";
 import { useLocation } from "react-router-dom";
-import { ProductCarousel } from "../components/ui/ProductCarousel";
 import Footer from "../components/ui/Footer";
 const creator_images = [
 	"https://i.imgur.com/t6211Pkh.png",
