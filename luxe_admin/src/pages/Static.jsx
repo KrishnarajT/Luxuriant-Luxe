@@ -197,6 +197,9 @@ const Static = () => {
 					<IconRefresh className="w-8 h-8" />
 				</button>
 			</div>
+			<div className="text-center text-3xl text-error m-4 p-4">
+				Dont change the keys. Only change the values
+			</div>
 			<div>
 				{staticInfo?.length > 0 ? (
 					<div className="overflow-x-auto mx-4 outline rounded-2xl">
