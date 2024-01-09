@@ -146,6 +146,7 @@ const Login = (props) => {
 		setFaqInfo,
 		categoryInfo,
 		setCategoryInfo,
+		setStaticInfo,
 	} = React.useContext(DBInfoContext);
 
 	let navigate = useNavigate();
@@ -201,6 +202,7 @@ const Login = (props) => {
 			const data = response.data.products;
 			console.log(data);
 			setProductInfo(data);
+			setStaticInfo(response.data.static_stuff);
 			productDetails = data;
 		} else if (response.data.message === "No Products found") {
 			setProductInfo([]);

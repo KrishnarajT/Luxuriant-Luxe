@@ -8,6 +8,7 @@ import {
 	IconBoxSeam,
 	IconBrush,
 	IconCategory,
+	IconHammer,
 	IconLogout,
 	IconMail,
 	IconMenu2,
@@ -127,6 +128,16 @@ export function Navbar(props) {
 							>
 								<IconQuestionMark className="w-6 h-6" />
 								FAQs
+							</NavLink>
+						</li>
+						<li className="text-md md:text-xl whitespace-nowrap flex-nowrap w-36 mx-1">
+							<NavLink
+								to={"/static"}
+								id="contact_element"
+								className="hover:text-base-content"
+							>
+								<IconHammer className="w-6 h-6" />
+								Static
 							</NavLink>
 						</li>
 					</ul>

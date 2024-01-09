@@ -8,6 +8,7 @@ export const DBInfoContextProvider = ({ children }) => {
 	const [productInfo, setProductInfo] = useState(null);
 	const [faqInfo, setFaqInfo] = useState(null);
 	const [categoryInfo, setCategoryInfo] = useState(null);
+	const [staticInfo, setStaticInfo] = useState(null);
 
 	const getProductFromId = async (id) => {
 		return productInfo.find((product) => product.id === id);
@@ -18,6 +19,8 @@ export const DBInfoContextProvider = ({ children }) => {
 			value={{
 				orderInfo,
 				setOrderInfo,
+				staticInfo,
+				setStaticInfo,
 				customerInfo,
 				setCustomerInfo,
 				productInfo,

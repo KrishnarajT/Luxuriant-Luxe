@@ -22,6 +22,7 @@ import Emails from "./pages/Emails.jsx";
 import Faqs from "./pages/Faqs.jsx";
 import Categories from "./pages/Categories.jsx";
 import Product from "./pages/Product.jsx";
+import Static from "./pages/Static.jsx";
 
 function App() {
 	const [isNavbarPresent, setisNavbarPresent] = useState(true);
@@ -58,6 +59,7 @@ function App() {
 							<Route path="/emails" element={<Emails/>}/>
 							<Route path="/faqs" element={<Faqs />} />
 							<Route path="/categories" element={<Categories />} />
+							<Route path="/static" element={<Static />} />
 								
 						</Routes>
 					</div>
