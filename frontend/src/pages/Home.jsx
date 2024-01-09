@@ -23,6 +23,7 @@ const Home = () => {
 		HolidayProducts,
 		FeaturedProducts,
 		setCurrentCategoryProducts,
+		staticStuff,
 	} = React.useContext(CartContext);
 	useEffect(() => {
 		if (theme === "light") {
@@ -44,7 +45,11 @@ const Home = () => {
 		<div className="">
 			<img
 				className="w-screen h-screen object-cover"
-				src="https://source.unsplash.com/random"
+				src={
+					staticStuff
+						? staticStuff["home_page_startup_image"]
+						: "https://source.unsplash.com/random"
+				}
 			/>
 			{/* <div className="ribbon color"></div> */}
 			<div className="flex flex-col">
