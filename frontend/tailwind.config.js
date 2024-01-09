@@ -24,6 +24,7 @@ module.exports = withMT({
 				secondary_dark: "#e3d1bc",
 				accent_dark: "#eb5959",
 				catalogue_bg: "#ca8f6d",
+				site_pink_bg: "#f8dddd",
 			},
 		},
 	},

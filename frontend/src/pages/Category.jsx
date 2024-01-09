@@ -97,8 +97,7 @@ const Category = () => {
             />
           </div>
           <section
-            className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
-				md:text-4xl"
+            className="flex flex-col p-4 m-8 justify-center items-center text-6xl bodoni"
             id="intro"
           >
             LL {currentCategory.category_name.toUpperCase()}

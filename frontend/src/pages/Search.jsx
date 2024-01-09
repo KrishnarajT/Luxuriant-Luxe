@@ -67,16 +67,16 @@ const Search = () => {
       {/* search box */}
       <div>
         <div className="flex flex-col items-center justify-center">
-          <div className="relative text-gray-600">
+          <div className="relative text-gray-600 w-96">
             <input
               type="search"
               name="serch"
               value={searchTerm}
               onChange={(event) => setSearchTerm(event.target.value)}
               placeholder="Search"
-              className="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none"
+              className="bg-white h-14 px-5 pr-10 rounded-full text-xl droidserif w-full outline outline-2"
             />
-            <button type="submit" className="absolute right-0 top-0 mt-3 mr-4">
+            <button type="submit" className="absolute right-0 top-0 mt-4 mr-4">
               <IconSearch className="w-6 h-6" />
             </button>
           </div>
@@ -84,8 +84,7 @@ const Search = () => {
       </div>
 
       <section
-        className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
-				md:text-4xl"
+        className="flex flex-col p-4 m-8 justify-center items-center text-5xl bodoni"
         id="intro"
       >
         Search All Our Products
