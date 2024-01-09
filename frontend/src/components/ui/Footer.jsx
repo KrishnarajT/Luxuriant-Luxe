@@ -89,7 +89,7 @@ const Footer = () => {
 						Support
 					</div>
 					<a
-						className="link text-2xl md:text-2xl lg:text-3xl no-underline droidserif hover:underline"
+						className="link text-2xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl no-underline droidserif hover:underline"
 						onClick={() => {
 							navigate("/faq");
 						}}
@@ -97,7 +97,7 @@ const Footer = () => {
 						FAQ
 					</a>
 					<a
-						className="link text-2xl md:text-2xl lg:text-3xl no-underline droidserif hover:underline"
+						className="link text-2xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl no-underline droidserif hover:underline"
 						onClick={() => {
 							navigate("/contact");
 						}}
@@ -110,7 +110,7 @@ const Footer = () => {
 						About Us
 					</div>
 					<a
-						className="link text-2xl md:text-2xl lg:text-3xl no-underline droidserif hover:underline"
+						className="link text-2xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl no-underline droidserif hover:underline"
 						onClick={() => {
 							navigate("/about");
 						}}
@@ -118,7 +118,7 @@ const Footer = () => {
 						About LL
 					</a>
 					<a
-						className="link text-2xl md:text-2xl lg:text-3xl no-underline droidserif hover:underline"
+						className="link text-2xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl no-underline droidserif hover:underline"
 						onClick={() => {
 							navigate("/our_goal");
 						}}
@@ -131,7 +131,7 @@ const Footer = () => {
 						Legal
 					</div>
 					<a
-						className="link text-2xl md:text-2xl lg:text-3xl no-underline droidserif hover:underline"
+						className="link text-2xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl no-underline droidserif hover:underline"
 						onClick={() => {
 							navigate("/privacy_policy");
 						}}
@@ -139,7 +139,7 @@ const Footer = () => {
 						Privacy Policy
 					</a>
 					<a
-						className="link text-2xl md:text-2xl lg:text-3xl no-underline droidserif hover:underline"
+						className="link text-2xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl no-underline droidserif hover:underline"
 						onClick={() => {
 							navigate("/terms_conditions");
 						}}
@@ -147,7 +147,7 @@ const Footer = () => {
 						Terms and Conditions
 					</a>
 					<a
-						className="link text-2xl md:text-2xl lg:text-3xl no-underline droidserif hover:underline"
+						className="link text-2xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl no-underline droidserif hover:underline"
 						onClick={() => {
 							navigate("/refund_return_policy");
 						}}
@@ -155,7 +155,7 @@ const Footer = () => {
 						Refund and Return Policy
 					</a>
 					<a
-						className="link text-2xl md:text-2xl lg:text-3xl no-underline droidserif hover:underline"
+						className="link text-2xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl no-underline droidserif hover:underline"
 						onClick={() => {
 							navigate("/shipping_policy");
 						}}
@@ -167,7 +167,7 @@ const Footer = () => {
 			<div className="w-1/3">
 				<div className="form-control w-full">
 					<label className="label">
-						<span className="label-text underline uppercase droidserif text-2xl md:text-2xl lg:text-3xl droidserif">
+						<span className="label-text underline uppercase droidserif text-2xl md:text-2xl lg:text-xl xl:text-2xl 2xl:text-3xl droidserif">
 							Sign up for Updates
 						</span>
 					</label>
