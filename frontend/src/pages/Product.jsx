@@ -245,10 +245,10 @@ const Product = () => {
 		product && (
 			<div>
 				<Toaster />
-				<div className="w-screen p-4 flex flex-row">
+				<div className="w-screen p-4 flex justify-center mt-8 h-[52rem]">
 					{/* images */}
-					<div className="flex-1 flex flex-row p-4">
-						<div className="w-1/5 flex flex-col gap-4 items-end px-2 justify-center">
+					<div className="w-1/2 flex flex-row">
+						<div className="w-1/5 flex flex-col gap-4 items-center justify-start">
 							{/* four squares with image previews. Upon clicking the main image is changed to the one clicked.  */}
 							{product.product_image_links.description_images
 								.filter((image) => image)
@@ -264,7 +264,7 @@ const Product = () => {
 								))}
 						</div>
 						<div
-							className="w-4/5 p-8"
+							className="w-4/5 px-4"
 							style={{
 								maxHeight: "70vh",
 							}}
@@ -273,364 +273,375 @@ const Product = () => {
 							<img
 								src={selectedImage}
 								alt="product image"
-								className="w-full h-full object-cover rounded-xl object-top"
+								className="w-full max-h-[45rem] object-cover rounded-xl object-top p-0"
 							/>
 						</div>
 					</div>
 
 					{/* details */}
-					<div className="flex-1 flex flex-col gap-2">
-						{/* category breadcrumbs */}
-						<div>
-							<div className="text-sm breadcrumbs">
-								<ul>
-									<li className="text-2xl droidserif">
-										{" "}
-										{product.product_category && (
-											<a
-												className="droidserif"
-												onClick={(e) => {
-													e.preventDefault();
-													navigate(
-														`/category/${product.product_category[0].category_name}`
-													);
-												}}
-											>
-												{product.product_category[0].category_name?.toUpperCase()}
-											</a>
-										)}{" "}
-									</li>
-									<li className="text-2xl droidserif">
-										{product.product_name !== "" && (
+					<div className="w-1/2 p-4">
+						<div className="flex flex-col gap-2">
+							{/* category breadcrumbs */}
+							<div>
+								<div className="text-sm breadcrumbs">
+									<ul>
+										<li className="text-2xl droidserif">
+											{" "}
+											{product.product_category && (
+												<a
+													className="droidserif"
+													onClick={(e) => {
+														e.preventDefault();
+														navigate(
+															`/category/${product.product_category[0].category_name}`
+														);
+													}}
+												>
+													{product.product_category[0].category_name?.toUpperCase()}
+												</a>
+											)}{" "}
+										</li>
+										<li className="text-2xl droidserif">
+											{product.product_name !== "" && (
+												<div>
+													<div className="droidserif">
+														{product.product_name.toUpperCase()}
+													</div>
+												</div>
+											)}
+										</li>
+									</ul>
+								</div>
+							</div>
+							{/* Product name */}
+							<div>
+								<div className="text-5xl droidserif">
+									{product.product_name.toUpperCase()}
+								</div>
+							</div>
+							{/* Product Volume */}
+							{product.volumes_present ? (
+								<div>
+									<div className="text-2xl droidserif">
+										{product.product_volumes !== "" && (
 											<div>
 												<div className="droidserif">
-													{product.product_name.toUpperCase()}
+													{selectedVolume?.volume} ml,{" "}
+													{(
+														selectedVolume?.volume *
+														0.033814
+													).toFixed(2)}{" "}
+													fl oz
 												</div>
 											</div>
 										)}
-									</li>
-								</ul>
-							</div>
-						</div>
-						{/* Product name */}
-						<div>
-							<div className="text-5xl droidserif">
-								{product.product_name.toUpperCase()}
-							</div>
-						</div>
-						{/* Product Volume */}
-						{product.volumes_present ? (
-							<div>
-								<div className="text-2xl droidserif">
-									{product.product_volumes !== "" && (
-										<div>
-											<div className="droidserif">
-												{selectedVolume?.volume} ml,{" "}
-												{(
-													selectedVolume?.volume *
-													0.033814
-												).toFixed(2)}{" "}
-												fl oz
-											</div>
-										</div>
-									)}
-								</div>
-							</div>
-						) : (
-							<div></div>
-						)}
-						{/* Product Shade Names*/}
-						{product.shades_present ? (
-							<div>
-								<div className="text-2xl droidserif">
-									{product.product_shades !== "" && (
-										<div>
-											<div className="droidserif flex flex-row gap-2">
-												{/* show selected shade name and color */}
-												{selectedProductShade && (
-													<div className="flex gap-2 items-center">
-														<div
-															className="w-10 h-10 rounded-full outline outline-1"
-															style={{
-																backgroundColor: `#${selectedProductShade.shade_color}`,
-															}}
-														></div>
-														<div className="text-2xl droidserif">
-															{
-																selectedProductShade.shade_name
-															}
-														</div>
-													</div>
-												)}
-											</div>
-										</div>
-									)}
-								</div>
-							</div>
-						) : (
-							<div></div>
-						)}
-						{/* Product Shade Colors in circle buttons */}
-						{product.shades_present ? (
-							<div>
-								<div className="flex flex-row gap-3">
-									{product.product_shades
-										.filter(
-											(shade) =>
-												shade.shade_color &&
-												shade.shade_name &&
-												shade.shade_number
-										)
-										.map((shade) => (
-											// draw a circle with the shade color, upon clicking changes shade
-											<div
-												className="w-10 h-10 rounded-full outline outline-1 flex justify-center items-center"
-												style={{
-													backgroundColor: `#${shade.shade_color}`,
-												}}
-												onClick={() => {
-													setSelectedProductShade(
-														shade
-													);
-													setSelectedImage(
-														shade.shade_image
-													);
-												}}
-											>
-												{shade.shade_number}
-											</div>
-										))}
-								</div>
-							</div>
-						) : (
-							<div></div>
-						)}
-						{/* Product stars */}
-						<div className="flex flex-row gap-2">
-							{[1, 2, 3, 4, 5].map((star) => (
-								<IconStarFilled
-									className={`w-10 h-10 ${
-										star <= ProductStars
-											? "text-yellow-500"
-											: "text-gray-300"
-									}`}
-								/>
-							))}
-
-							<div className="text-2xl droidserif self-center">
-								{product.product_reviews.length} reviews
-							</div>
-						</div>
-						{/* Produve volume Choices */}
-						{product.volumes_present ? (
-							<div>
-								<div className="flex flex-row gap-3">
-									{product.product_volumes.map((volume) => (
-										// draw a rectangle with the volume, upon clicking changes volume
-										<div
-											className={`w-20 h-10 rounded-none outline outline-1 flex items-center justify-center hover:bg-black hover:text-white ${
-												selectedVolume === volume
-													? "bg-black text-white"
-													: "bg-white text-black"
-											}`}
-											onClick={() => {
-												setSelectedVolume(volume);
-												setSelectedProductCost(
-													volume.volume_cost
-												);
-											}}
-										>
-											{volume.volume} ml
-										</div>
-									))}
-								</div>
-							</div>
-						) : (
-							<div></div>
-						)}
-						{/* Product Selected Quantity */}
-						{/* Rectangle with - and + on either side of value that change the selected quantity upon clicking */}
-						<div className="flex flex-row gap-3 items-center my-2">
-							<div
-								className="w-10 h-10 rounded-none outline outline-1 flex items-center justify-center bg-white text-black hover:bg-black hover:text-white"
-								onClick={() => {
-									if (selectedProductQuantity > 1) {
-										setSelectedProductQuantity(
-											selectedProductQuantity - 1
-										);
-									}
-									DecreaseProductQuantity(product._id);
-								}}
-							>
-								<IconMinus />
-							</div>
-							<div className="w-20 h-10 rounded-none outline outline-1 flex items-center justify-center bg-white text-black ">
-								{selectedProductQuantity}
-							</div>
-							<div
-								className="w-10 h-10 rounded-none outline outline-1 flex items-center justify-center bg-white text-black hover:bg-black hover:text-white"
-								onClick={() => {
-									if (product.product_quantity === 0) {
-										toast.error("Product out of stock!");
-										return;
-									}
-									setSelectedProductQuantity(
-										selectedProductQuantity + 1
-									);
-									IncreaseProductQuantity(
-										product._id,
-										selectedProductCost,
-										selectedVolume,
-										selectedProductShade
-									);
-									// IncreaseProductQuantity(
-									// 	product._id,
-									// 	selectedProductCost,
-									// 	selectedVolume,
-									// 	selectedProductShade
-									// );
-								}}
-							>
-								<IconPlus />
-							</div>
-
-							{/* Add to cart button with cost */}
-							<button
-								className="btn btn-md btn-primary text-xl"
-								disabled={product.product_quantity === 0}
-								onClick={() => {
-									addToCart(
-										product._id,
-										selectedProductCost,
-										selectedVolume,
-										selectedProductShade
-									);
-									// open drawer
-									document.getElementById(
-										"my-drawer"
-									).checked = true;
-									// Toast
-									toast.success("Added to Cart!");
-								}}
-							>
-								Add to Cart ₹{selectedProductCost}
-							</button>
-						</div>
-						<div>
-							<div className="text-2xl droidserif uppercase">
-								Earn {product.points_awarded} Reward Points!
-							</div>
-						</div>
-						{/* Show product in stock or not */}
-						<div className="">
-							<div className="text-2xl droidserif">
-								{product.product_quantity > 0 ? (
-									<div className="text-green-500">
-										In Stock
 									</div>
-								) : (
-									<div className="text-red-500">
-										Out of Stock
+								</div>
+							) : (
+								<div></div>
+							)}
+							{/* Product Shade Names*/}
+							{product.shades_present ? (
+								<div>
+									<div className="text-2xl droidserif">
+										{product.product_shades !== "" && (
+											<div>
+												<div className="droidserif flex flex-row gap-2">
+													{/* show selected shade name and color */}
+													{selectedProductShade && (
+														<div className="flex gap-2 items-center">
+															<div
+																className="w-10 h-10 rounded-full outline outline-1"
+																style={{
+																	backgroundColor: `#${selectedProductShade.shade_color}`,
+																}}
+															></div>
+															<div className="text-2xl droidserif">
+																{
+																	selectedProductShade.shade_name
+																}
+															</div>
+														</div>
+													)}
+												</div>
+											</div>
+										)}
+									</div>
+								</div>
+							) : (
+								<div></div>
+							)}
+							{/* Product Shade Colors in circle buttons */}
+							{product.shades_present ? (
+								<div>
+									<div className="flex flex-row gap-3">
+										{product.product_shades
+											.filter(
+												(shade) =>
+													shade.shade_color &&
+													shade.shade_name &&
+													shade.shade_number
+											)
+											.map((shade) => (
+												// draw a circle with the shade color, upon clicking changes shade
+												<div
+													className="w-10 h-10 rounded-full outline outline-1 flex justify-center items-center"
+													style={{
+														backgroundColor: `#${shade.shade_color}`,
+													}}
+													onClick={() => {
+														setSelectedProductShade(
+															shade
+														);
+														setSelectedImage(
+															shade.shade_image
+														);
+													}}
+												>
+													{shade.shade_number}
+												</div>
+											))}
+									</div>
+								</div>
+							) : (
+								<div></div>
+							)}
+							{/* Product stars */}
+							<div className="flex flex-row gap-2">
+								{[1, 2, 3, 4, 5].map((star) => (
+									<IconStarFilled
+										className={`w-10 h-10 ${
+											star <= ProductStars
+												? "text-yellow-500"
+												: "text-gray-300"
+										}`}
+									/>
+								))}
+
+								<div className="text-2xl droidserif self-center">
+									{product.product_reviews.length} reviews
+								</div>
+							</div>
+							{/* Produve volume Choices */}
+							{product.volumes_present ? (
+								<div>
+									<div className="flex flex-row gap-3">
+										{product.product_volumes.map(
+											(volume) => (
+												// draw a rectangle with the volume, upon clicking changes volume
+												<div
+													className={`w-20 h-10 rounded-none outline outline-1 flex items-center justify-center hover:bg-black hover:text-white ${
+														selectedVolume ===
+														volume
+															? "bg-black text-white"
+															: "bg-white text-black"
+													}`}
+													onClick={() => {
+														setSelectedVolume(
+															volume
+														);
+														setSelectedProductCost(
+															volume.volume_cost
+														);
+													}}
+												>
+													{volume.volume} ml
+												</div>
+											)
+										)}
+									</div>
+								</div>
+							) : (
+								<div></div>
+							)}
+							{/* Product Selected Quantity */}
+							{/* Rectangle with - and + on either side of value that change the selected quantity upon clicking */}
+							<div className="flex flex-row gap-3 items-center my-2">
+								<div
+									className="w-10 h-10 rounded-none outline outline-1 flex items-center justify-center bg-white text-black hover:bg-black hover:text-white"
+									onClick={() => {
+										if (selectedProductQuantity > 1) {
+											setSelectedProductQuantity(
+												selectedProductQuantity - 1
+											);
+										}
+										DecreaseProductQuantity(product._id);
+									}}
+								>
+									<IconMinus />
+								</div>
+								<div className="w-20 h-10 rounded-none outline outline-1 flex items-center justify-center bg-white text-black ">
+									{selectedProductQuantity}
+								</div>
+								<div
+									className="w-10 h-10 rounded-none outline outline-1 flex items-center justify-center bg-white text-black hover:bg-black hover:text-white"
+									onClick={() => {
+										if (product.product_quantity === 0) {
+											toast.error(
+												"Product out of stock!"
+											);
+											return;
+										}
+										setSelectedProductQuantity(
+											selectedProductQuantity + 1
+										);
+										IncreaseProductQuantity(
+											product._id,
+											selectedProductCost,
+											selectedVolume,
+											selectedProductShade
+										);
+										// IncreaseProductQuantity(
+										// 	product._id,
+										// 	selectedProductCost,
+										// 	selectedVolume,
+										// 	selectedProductShade
+										// );
+									}}
+								>
+									<IconPlus />
+								</div>
+
+								{/* Add to cart button with cost */}
+								<button
+									className="btn btn-md btn-primary text-xl"
+									disabled={product.product_quantity === 0}
+									onClick={() => {
+										addToCart(
+											product._id,
+											selectedProductCost,
+											selectedVolume,
+											selectedProductShade
+										);
+										// open drawer
+										document.getElementById(
+											"my-drawer"
+										).checked = true;
+										// Toast
+										toast.success("Added to Cart!");
+									}}
+								>
+									Add to Cart ₹{selectedProductCost}
+								</button>
+							</div>
+							<div>
+								<div className="text-2xl droidserif uppercase">
+									Earn {product.points_awarded} Reward Points!
+								</div>
+							</div>
+							{/* Show product in stock or not */}
+							<div className="">
+								<div className="text-2xl droidserif">
+									{product.product_quantity > 0 ? (
+										<div className="text-green-500">
+											In Stock
+										</div>
+									) : (
+										<div className="text-red-500">
+											Out of Stock
+										</div>
+									)}
+								</div>
+							</div>
+							{/* Product Details, which will show description, visible upon clicking +, collapses after clicking - */}
+							<div className="flex flex-col gap-2">
+								<div className="flex flex-row gap-2 items-center">
+									<div className="text-2xl droidserif">
+										Details
+									</div>
+									<div
+										className="text-2xl droidserif"
+										onClick={() => {
+											setDetailsVisible(!detailsVisible);
+										}}
+									>
+										{detailsVisible ? (
+											<IconMinus />
+										) : (
+											<IconPlus />
+										)}
+									</div>
+								</div>
+								{detailsVisible && (
+									<div className="text-2xl droidserif">
+										{product.product_description
+											.product_description !== "" && (
+											<div>
+												<div className="droidserif">
+													{product.product_details}
+												</div>
+											</div>
+										)}
 									</div>
 								)}
 							</div>
-						</div>
-						{/* Product Details, which will show description, visible upon clicking +, collapses after clicking - */}
-						<div className="flex flex-col gap-2">
-							<div className="flex flex-row gap-2 items-center">
-								<div className="text-2xl droidserif">
-									Details
+							{/* Ingredients, visible upon clicking +, collapses after clicking - */}
+							<div className="flex flex-col gap-2">
+								<div className="flex flex-row gap-2 items-center">
+									<div className="text-2xl droidserif">
+										Ingredients
+									</div>
+									<div
+										className="text-2xl droidserif"
+										onClick={() => {
+											setIngredientsVisible(
+												!ingredientsVisible
+											);
+										}}
+									>
+										{ingredientsVisible ? (
+											<IconMinus />
+										) : (
+											<IconPlus />
+										)}
+									</div>
 								</div>
-								<div
-									className="text-2xl droidserif"
-									onClick={() => {
-										setDetailsVisible(!detailsVisible);
-									}}
-								>
-									{detailsVisible ? (
-										<IconMinus />
-									) : (
-										<IconPlus />
-									)}
-								</div>
-							</div>
-							{detailsVisible && (
-								<div className="text-2xl droidserif">
-									{product.product_description
-										.product_description !== "" && (
-										<div>
-											<div className="droidserif">
-												{product.product_details}
+								{ingredientsVisible && (
+									<div className="text-2xl droidserif">
+										{product.product_ingredients !== "" && (
+											<div>
+												<div className="droidserif">
+													{
+														product.product_ingredients
+													}
+												</div>
 											</div>
-										</div>
-									)}
-								</div>
-							)}
-						</div>
-						{/* Ingredients, visible upon clicking +, collapses after clicking - */}
-						<div className="flex flex-col gap-2">
-							<div className="flex flex-row gap-2 items-center">
-								<div className="text-2xl droidserif">
-									Ingredients
-								</div>
-								<div
-									className="text-2xl droidserif"
-									onClick={() => {
-										setIngredientsVisible(
-											!ingredientsVisible
-										);
-									}}
-								>
-									{ingredientsVisible ? (
-										<IconMinus />
-									) : (
-										<IconPlus />
-									)}
-								</div>
+										)}
+									</div>
+								)}
 							</div>
-							{ingredientsVisible && (
-								<div className="text-2xl droidserif">
-									{product.product_ingredients !== "" && (
-										<div>
-											<div className="droidserif">
-												{product.product_ingredients}
-											</div>
-										</div>
-									)}
-								</div>
-							)}
-						</div>
 
-						{/* 3 SVGs in a line */}
-						<div className="flex flex-row gap-4 items-center">
-							{/* 1st SVG */}
-							<div className="flex flex-col gap-2">
-								<img
-									src="https://i.imgur.com/bra0upp.png"
-									alt="external-cruelty-free-vegan-and-vegetarian-flaticons-flat-flat-icons-2"
-									className="w-28 h-28 max-h-28"
-								/>
-							</div>
-							{/* 2nd SVG */}
-							<div className="flex flex-col gap-2">
-								<img
-									src="https://i.imgur.com/yuQEOcA.png"
-									alt="Image 2"
-									className="w-24 h-24"
-								/>
-							</div>
-							{/* 3rd SVG */}
-							<div className="flex flex-col gap-2">
-								<img
-									src="https://i.imgur.com/PssWLjE.png"
-									alt="Image 3"
-									className="w-fit h-24"
-								/>
+							{/* 3 SVGs in a line */}
+							<div className="flex flex-row gap-4 items-center w-80 my-3">
+								{/* 1st SVG */}
+								<div className="flex flex-col gap-2">
+									<img
+										src="https://i.imgur.com/bra0upp.png"
+										alt="external-cruelty-free-vegan-and-vegetarian-flaticons-flat-flat-icons-2"
+										className="w-28 h-28 max-h-28"
+									/>
+								</div>
+								{/* 2nd SVG */}
+								<div className="flex flex-col gap-2">
+									<img
+										src="https://i.imgur.com/yuQEOcA.png"
+										alt="Image 2"
+										className="w-24 h-24"
+									/>
+								</div>
+								{/* 3rd SVG */}
+								<div className="flex flex-col gap-2">
+									<img
+										src="https://i.imgur.com/PssWLjE.png"
+										alt="Image 3"
+										className="w-[5.5rem] h-[6rem]"
+									/>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div className="flex flex-col gap-8" id="texturebg">
+				<div className="flex flex-col gap-8 mt-8" id="texturebg">
 					{/* Product Description */}
 					<div className="flex flex-row justify-between ">
 						{product.product_image_links && (

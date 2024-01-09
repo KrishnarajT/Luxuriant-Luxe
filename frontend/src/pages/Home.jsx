@@ -51,7 +51,7 @@ const Home = () => {
 				<div className="text-5xl underline text-center my-4 mt-16 bodoni">
 					Revitalize your skin with Super-Concentrated Potions
 				</div>
-				<div className="text-4xl px-16 py-4 text-center droidserif italic">
+				<div className="md:text-2xl lg:text-3xl px-16 py-4 text-center droidserif italic">
 					Indulge in the power of high-octane, active ingredient
 					formulas that will leave your skin glowing like a radiant
 					goddess. Our best-selling and versatile products are

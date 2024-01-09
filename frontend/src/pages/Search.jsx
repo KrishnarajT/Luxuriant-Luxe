@@ -92,12 +92,12 @@ const Search = () => {
 
       {/* section of cards that have all products */}
       <section className="flex justify-center p-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-4 justify-items-start">
+        <div className="flex flex-wrap justify-center">
           {productInfo &&
             filterProducts().map((product) => {
               return (
                 <EcommerceCard
-                  color="bg-secondary"
+                  color="bg-white"
                   text="text-black"
                   cart_color="bg-black"
                   cart_text="text-white"

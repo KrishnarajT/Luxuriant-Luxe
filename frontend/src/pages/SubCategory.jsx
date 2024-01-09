@@ -95,41 +95,47 @@ const SubCategory = () => {
   // Use the 'type' parameter and 'location.state' in your component logic
 
   return (
-    <div>
-      <section
-        className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
-				md:text-4xl"
-        id="intro"
-      >
-        PRODUCTS
-      </section>
+		<div>
+			<section
+				className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
+				md:text-5xl"
+				id="intro"
+			>
+				PRODUCTS
+			</section>
 
-      {/* section of cards that have all products */}
-      <section className="flex justify-center p-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 xl:grid-cols-4 justify-items-start">
-          {currentSubCategoryProducts &&
-            currentSubCategoryProducts.map((product) => {
-              return (
-                <EcommerceCard
-                  color="bg-base-200"
-                  text="text-black"
-                  cart_color="bg-black"
-                  cart_text="text-white"
-                  image={product.product_image_links.description_images}
-                  name={product.product_name}
-                  price={product.product_cost}
-                  description={product.product_description.product_description}
-                  points={product.points_awarded}
-                  id={product._id}
-                  product_reviews={product.product_reviews}
-                />
-              );
-            })}
-        </div>
-      </section>
+			{/* section of cards that have all products */}
+			<section className="flex justify-center p-16">
+				<div className="flex flex-wrap justify-center">
+					{currentSubCategoryProducts &&
+						currentSubCategoryProducts.map((product) => {
+							return (
+								<EcommerceCard
+									color="bg-white"
+									text="text-black"
+									cart_color="bg-black"
+									cart_text="text-white"
+									image={
+										product.product_image_links
+											.description_images
+									}
+									name={product.product_name}
+									price={product.product_cost}
+									description={
+										product.product_description
+											.product_description
+									}
+									points={product.points_awarded}
+									id={product._id}
+									product_reviews={product.product_reviews}
+								/>
+							);
+						})}
+				</div>
+			</section>
 
-      <Footer />
-    </div>
+			<Footer />
+		</div>
   );
 };
 
