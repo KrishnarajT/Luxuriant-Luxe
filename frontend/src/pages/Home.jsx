@@ -33,13 +33,6 @@ const Home = () => {
 			const dark_button = document.getElementById("dark_button");
 			dark_button.click();
 		}
-		// console.log(productInfo);
-		// console.log(HairProducts);
-		// console.log(SkinProducts);
-		// console.log(CosmeticsProducts);
-		// console.log(EssentialsProducts);
-		// console.log(HolidayProducts);
-		// console.log(FeaturedProducts);
 	});
 	return (
 		<div className="">
@@ -47,33 +40,48 @@ const Home = () => {
 				className="w-screen h-screen object-cover"
 				src={
 					staticStuff
-						? staticStuff["home_page_startup_image"]
+						? staticStuff["home_page_background_image"]
 						: "https://source.unsplash.com/random"
 				}
 			/>
 			{/* <div className="ribbon color"></div> */}
 			<div className="flex flex-col">
-				<div className="text-5xl underline text-center my-4 mt-16 bodoni">
-					Revitalize your skin with Super-Concentrated Potions
+				<div className="text-[2.5vw] underline text-center my-4 mt-16 bodoni">
+					{staticStuff["home_page_first_header"] ? (
+						staticStuff["home_page_first_header"]
+					) : (
+						<>
+							Revitalize your skin with Super-Concentrated Potions
+						</>
+					)}
 				</div>
-				<div className="md:text-2xl lg:text-3xl px-16 py-4 text-center droidserif italic">
-					Indulge in the power of high-octane, active ingredient
-					formulas that will leave your skin glowing like a radiant
-					goddess. Our best-selling and versatile products are
-					designed to work their magic on all skin types, giving you a
-					youthful, rejuvenated appearance. Give your cells the joy
-					they deserve and start your journey to healthy, glowing skin
-					today!
+				<div className="text-[1.5vw] leading-tight px-16 py-4 text-center droidserif italic">
+					{staticStuff["home_page_first_description"] ? (
+						staticStuff["home_page_first_description"]
+					) : (
+						<>
+							Indulge in the power of high-octane, active
+							ingredient formulas that will leave your skin
+							glowing like a radiant goddess. Our best-selling and
+							versatile products are designed to work their magic
+							on all skin types, giving you a youthful,
+							rejuvenated appearance. Give your cells the joy they
+							deserve and start your journey to healthy, glowing
+							skin today!
+						</>
+					)}
 				</div>
 			</div>
 			<section className="flex flex-col w-screen my-6 ">
 				<div className="flex justify-center flex-row">
 					<div
-						className="p-4 m-8 mb-0 justify-center items-start text-4xl bodoni
-				md:text-7xl"
+						className="p-4 m-8 mb-0 justify-center items-start bodoni text-[2.8vw]
+				"
 					>
 						LUXURIANT LUXE{" "}
-						<span className="montserrat italic">Essentials</span>
+						<span className="montserrat italic text-[2.8vw]">
+							Essentials
+						</span>
 					</div>
 				</div>
 
@@ -86,7 +94,7 @@ const Home = () => {
 				</div>
 				<div className="flex justify-center w-full">
 					<button
-						className="underline btn btn-ghost btn-lg m-8 bodoni font-thin text-5xl"
+						className="text-4xl underline btn btn-ghost btn-lg m-8 bodoni font-thin"
 						onClick={() => {
 							setCurrentCategoryProducts(EssentialsProducts);
 							navigate("/category/essentials", {
@@ -112,8 +120,8 @@ const Home = () => {
 			<section className="flex flex-col w-screen my-6 ">
 				<div className="flex justify-center flex-row">
 					<div
-						className="p-4 m-8 mb-0 justify-center items-start text-4xl montserrat
-				md:text-7xl font-thin"
+						className="p-4 m-8 mb-0 justify-center items-start text-[2.8vw] montserrat
+				 font-thin"
 					>
 						FEATURED ORGANIC CLEANSERS
 					</div>
@@ -128,7 +136,7 @@ const Home = () => {
 				</div>
 				<div className="flex justify-center w-full">
 					<button
-						className="underline btn btn-ghost btn-lg m-8 bodoni font-thin text-4xl"
+						className="text-4xl underline btn btn-ghost btn-lg m-8 bodoni font-thin text-4xl"
 						onClick={() => {
 							setCurrentCategoryProducts(FeaturedProducts);
 							navigate("/category/featured", {
@@ -154,8 +162,8 @@ const Home = () => {
 			<section className="flex flex-col w-screen my-6 ">
 				<div className="flex justify-center flex-row">
 					<div
-						className="p-4 m-8 mb-0 justify-center text-center items-center text-4xl bodoni
-				md:text-7xl"
+						className="p-4 m-8 mb-0 justify-center text-center items-center text-[2.8vw] bodoni
+				"
 					>
 						<span className="text-primary montserrat mx-4 text-center">
 							HOLIDAY GIFT SETS
@@ -163,9 +171,9 @@ const Home = () => {
 					</div>
 				</div>
 				<div className="flex justify-center">
-					<div className="text-8xl bodoni tangerine text-center px-16 droidserif italic w-full translate-x-20">
+					<div className="text-[4vw] bodoni tangerine text-center px-16 droidserif italic w-full translate-x-20">
 						From us to your loved ones
-						<div className="bodoni text-right w-3/4 font-normal">
+						<div className="bodoni text-right w-3/4 font-normal text-[3.5vw]">
 							~LL
 						</div>
 					</div>
@@ -225,49 +233,91 @@ const Home = () => {
 			>
 				{/* Title */}
 				<div className="flex justify-center">
-					<div className="flex text-center text-7xl montserrat uppercase">
-						Authentic Beauty
+					<div className="flex text-center text-[3.5vw] montserrat uppercase">
+						{staticStuff[
+							"home_page_authentic_beauty_1st_header"
+						] ? (
+							staticStuff["home_page_authentic_beauty_1st_header"]
+						) : (
+							<>Authentic Beauty</>
+						)}
 					</div>
 				</div>
 
 				{/* Text */}
 				<div className="flex justify-center m-8">
-					<div className="w-5/6 text-3xl italic droidserif">
-						Unveil the sublime secrets of skincare that honor the
-						essence of your unique beauty. For true radiance stems
-						not from a generic mold, but from the sacred symphony of
-						your individuality. Behold the LUXURIANT LUXE, an
-						exclusive range of expertly crafted potions that embrace
-						your skin's intrinsic character and empower its natural
-						faculties. With each elixir, your skin awakens to its
-						full potential, embarking on a transformative journey
-						towards unparalleled luminosity.
+					<div className="w-5/6 text-[1.5vw] italic droidserif">
+						{staticStuff[
+							"home_page_authentic_beauty_1st_header_desc"
+						] ? (
+							staticStuff[
+								"home_page_authentic_beauty_1st_header_desc"
+							]
+						) : (
+							<>
+								Unveil the sublime secrets of skincare that
+								honor the essence of your unique beauty. For
+								true radiance stems not from a generic mold, but
+								from the sacred symphony of your individuality.
+								Behold the LUXURIANT LUXE, an exclusive range of
+								expertly crafted potions that embrace your
+								skin's intrinsic character and empower its
+								natural faculties. With each elixir, your skin
+								awakens to its full potential, embarking on a
+								transformative journey towards unparalleled
+								luminosity.
+							</>
+						)}
 					</div>
 				</div>
 
 				{/* More Text */}
 
 				<div className="flex justify-center">
-					<div className="flex text-center text-4xl italic bodoni">
-						Revitalize Your Skin with Super-Concentrated Potions
+					<div className="flex text-center text-[2.5vw] italic bodoni">
+						{staticStuff[
+							"home_page_authentic_beauty_2nd_header"
+						] ? (
+							staticStuff["home_page_authentic_beauty_2nd_header"]
+						) : (
+							<>
+								Revitalize Your Skin with Super-Concentrated
+								Potions
+							</>
+						)}
 					</div>
 				</div>
 				<div className="flex justify-center m-8">
-					<div className="w-5/6 text-3xl italic droidserif">
-						Indulge in the power of high-octane, active ingredient
-						formulas that will leave your skin glowing like a
-						radiant goddess. Our best-selling and versatile products
-						are designed to work their magic on all skin types,
-						giving you a youthful, rejuvenated appearance. Give your
-						cells the joy they deserve and start your journey to
-						healthy, glowing skin today!
+					<div className="w-5/6 text-[1.5vw] italic droidserif">
+						{staticStuff[
+							"home_page_authentic_beauty_2nd_header_desc"
+						] ? (
+							staticStuff[
+								"home_page_authentic_beauty_2nd_header_desc"
+							]
+						) : (
+							<>
+								Indulge in the power of high-octane, active
+								ingredient formulas that will leave your skin
+								glowing like a radiant goddess. Our best-selling
+								and versatile products are designed to work
+								their magic on all skin types, giving you a
+								youthful, rejuvenated appearance. Give your
+								cells the joy they deserve and start your
+								journey to healthy, glowing skin today!
+							</>
+						)}
 					</div>
 				</div>
 			</div>
 
 			<img
 				className="h-screen w-screen object-cover object-top"
-				src="https://source.unsplash.com/random"
+				src={
+					staticStuff["home_page_last_image"]
+						? staticStuff["home_page_last_image"]
+						: "https://source.unsplash.com/random"
+				}
 			/>
 
 			{/* <section>

@@ -78,7 +78,7 @@ export function EcommerceCard(props) {
   const navigate = useNavigate();
   return (
     <Card
-      className={`w-96 m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
+      className={`w-[17vw] m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
       // onClick={() => {
       // 	navigate(`/product/${props.id}`);
       // }}
@@ -86,7 +86,7 @@ export function EcommerceCard(props) {
       <CardHeader
         shadow={true}
         floated={false}
-        className="h-72 rounded-none m-0"
+        className="h-[14vw] rounded-none m-0"
         onClick={() => {
           navigate(`/product/${props.id}`);
         }}
@@ -111,9 +111,9 @@ export function EcommerceCard(props) {
             {props.name}
           </Typography>
           <Typography
-            className={`font-normal text-xl text-center mt-4 break-words max-h-10 min-h-10 ${props.text}`}
+            className={`font-normal text-xl text-center mt-4 break-words max-h-20 min-h-10 ${props.text}`}
           >
-            {props.description.substring(0, 100)}...
+            {props.description.substring(0, 200)}...
           </Typography>
           <div className="flex justify-center p-1 pb-0">
             <div className="flex">

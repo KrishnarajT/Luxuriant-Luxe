@@ -45,7 +45,7 @@ const Home = () => {
 						className="w-20 h-20 bg-center snap-center self-center"
 					></div>
 					<p className="dancing text-3xl">
-						<span className="text-2xl prata">Luxuriant Luxe</span>
+						<span className="text-2xl">Luxuriant Luxe</span>
 						<br />
 						Your Skin Our Priority
 					</p>

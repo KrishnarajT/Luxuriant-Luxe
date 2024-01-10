@@ -739,7 +739,7 @@ const Product = () => {
 				{/* Reviews */}
 				<section
 					className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
-				md:text-5xl uppercase"
+				 uppercase"
 					id="intro"
 				>
 					Reviews
@@ -802,7 +802,7 @@ const Product = () => {
 				{/* You may also like */}
 				<section
 					className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
-				md:text-5xl uppercase"
+				 uppercase"
 					id="intro"
 				>
 					You may also like

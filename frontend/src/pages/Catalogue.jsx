@@ -53,7 +53,7 @@ const Catalogue = () => {
 		<div id="products_div">
 			<section
 				className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
-				md:text-5xl"
+				"
 				id="intro"
 			>
 				BROWSE OUR CATALOGUE
@@ -63,7 +63,7 @@ const Catalogue = () => {
 				className="flex flex-col p-4 justify-center items-center md:hidden"
 				id="intro"
 			>
-				<div className="text-xl mt-4 droidserif text-center md:text-3xl w-3/4">
+				<div className="text-xl mt-4 droidserif text-center  w-3/4">
 					Tired of trying to find a product for your skin which is
 					organic beneficial and chemical free? Dont worry! We have
 					got you covered!
@@ -76,7 +76,7 @@ const Catalogue = () => {
 				<div className="flex justify-between flex-row">
 					<div
 						className="p-4 m-18 mx-16 justify-center items-start text-4xl forum
-				md:text-7xl"
+				"
 					>
 						<span className="text-accent bodoni mx-4 text-center">
 							All Products
@@ -123,7 +123,7 @@ const Catalogue = () => {
 				<div className="flex justify-between flex-row">
 					<div
 						className="p-4 m-18 mx-16 justify-center items-start text-4xl forum
-				md:text-7xl"
+				"
 					>
 						<span className="text-accent bodoni mx-4 text-center">
 							LL Hair
@@ -174,7 +174,7 @@ const Catalogue = () => {
 				<div className="flex justify-between flex-row">
 					<div
 						className="p-4 m-8 mx-16 justify-center items-start text-4xl forum
-				md:text-7xl"
+				"
 					>
 						<span className="text-accent bodoni mx-4 text-center">
 							LL Skin
@@ -225,7 +225,7 @@ const Catalogue = () => {
 				<div className="flex justify-between flex-row">
 					<div
 						className="p-4 m-8 mx-16 justify-center items-start text-4xl forum
-				md:text-7xl"
+				"
 					>
 						<span className="text-accent bodoni mx-4 text-center">
 							LL Cosmetics
@@ -276,7 +276,7 @@ const Catalogue = () => {
 				<div className="flex justify-between flex-row">
 					<div
 						className="p-4 m-8 mx-16 justify-center items-start text-4xl forum
-				md:text-7xl"
+				"
 					>
 						<span className="text-accent bodoni mx-4 text-center">
 							LL Essentials
@@ -327,7 +327,7 @@ const Catalogue = () => {
 				<div className="flex justify-between flex-row">
 					<div
 						className="p-4 m-8 mx-16 justify-center items-start text-4xl forum
-				md:text-7xl"
+				"
 					>
 						<span className="text-accent bodoni mx-4 text-center">
 							Featured Orgnanic Cleansers
@@ -376,7 +376,7 @@ const Catalogue = () => {
 				<div className="flex justify-between flex-row">
 					<div
 						className="p-4 m-8 mx-16 justify-center items-start text-4xl forum
-				md:text-7xl"
+				"
 					>
 						<span className="text-accent bodoni mx-4 text-center">
 							Holiday Specials
@@ -507,7 +507,7 @@ const Catalogue = () => {
 
 			<div className="flex justify-center toast-center toast">
 				<div
-					className="alert alert-success hidden transform-gpu transition-all duration-300 flex gap-4 md:text-3xl droidserif"
+					className="alert alert-success hidden transform-gpu transition-all duration-300 flex gap-4  droidserif"
 					id="added_order"
 				>
 					<IconDiscountCheckFilled className="w-6 h-6 md:w-10 md:h-10" />

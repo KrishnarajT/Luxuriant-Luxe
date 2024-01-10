@@ -44,7 +44,7 @@ const Products = () => {
 		<div id="products_div">
 			<section
 				className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
-				md:text-5xl"
+				"
 				id="intro"
 			>
 				BROWSE OUR CATALOGUE
@@ -54,7 +54,7 @@ const Products = () => {
 				className="flex flex-col p-4 justify-center items-center md:hidden"
 				id="intro"
 			>
-				<div className="text-xl mt-4 droidserif text-center md:text-3xl w-3/4">
+				<div className="text-xl mt-4 droidserif text-center  w-3/4">
 					Tired of trying to find a product for your skin which is
 					organic beneficial and chemical free? Dont worry! We have
 					got you covered!
@@ -71,11 +71,11 @@ const Products = () => {
 				{/* left side div */}
 				<div className="flex flex-col w-3/4 gap-8 flex-1">
 					{/* title */}
-					<div className="text-4xl dancing my-6 mb-3 md:text-5xl lg:text-6xl xl:text-7xl">
+					<div className="text-4xl dancing my-6 mb-3   xl:text-7xl">
 						Oily Skin
 					</div>
 					{/* text desc */}
-					<div className="text-xl mt-4 droidserif text-center md:text-2xl xl:text-3xl md:text-left">
+					<div className="text-xl mt-4 droidserif text-center  xl:text-3xl md:text-left">
 						Tired of trying to find a product for your skin which is
 						organic beneficial and chemical free? Don't worry! We
 						have got you covered! Reduces Oiliness, makes skin
@@ -180,11 +180,11 @@ const Products = () => {
 				{/* left side div */}
 				<div className="flex flex-col w-3/4 gap-8 flex-1">
 					{/* title */}
-					<div className="text-4xl dancing my-6 mb-3 md:text-5xl lg:text-6xl xl:text-7xl">
+					<div className="text-4xl dancing my-6 mb-3   xl:text-7xl">
 						Dry Skin
 					</div>
 					{/* text desc */}
-					<div className="text-xl mt-4 droidserif text-center md:text-2xl xl:text-3xl md:text-left">
+					<div className="text-xl mt-4 droidserif text-center  xl:text-3xl md:text-left">
 						Our body cleanser is dedicated to rejuvenate and make
 						your dry skin soft, bouncy and supple again. Our
 						cleanser contains essential nature sources oils which
@@ -289,11 +289,11 @@ const Products = () => {
 				{/* left side div */}
 				<div className="flex flex-col w-3/4 gap-8 flex-1">
 					{/* title */}
-					<div className="text-4xl dancing my-6 mb-3 md:text-5xl lg:text-6xl xl:text-7xl">
+					<div className="text-4xl dancing my-6 mb-3   xl:text-7xl">
 						Normal Skin
 					</div>
 					{/* text desc */}
-					<div className="text-xl mt-4 droidserif text-center md:text-2xl xl:text-3xl md:text-left">
+					<div className="text-xl mt-4 droidserif text-center  xl:text-3xl md:text-left">
 						A perfect balance of essential oils and natural
 						smoothness helping you in simplifying and making your
 						bathing and skincare experience organic and fun.
@@ -402,7 +402,7 @@ const Products = () => {
 
 			<div className="flex justify-center toast-center toast">
 				<div
-					className="alert alert-success hidden transform-gpu transition-all duration-300 flex gap-4 md:text-3xl droidserif"
+					className="alert alert-success hidden transform-gpu transition-all duration-300 flex gap-4  droidserif"
 					id="added_order"
 				>
 					<IconDiscountCheckFilled className="w-6 h-6 md:w-10 md:h-10" />

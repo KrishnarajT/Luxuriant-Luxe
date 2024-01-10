@@ -161,7 +161,7 @@ const Cart = () => {
 									</div>
 									<div className="flex flex-col w-full">
 										<div className="flex flex-col justify-center w-full">
-											<div className="text-2xl md:text-2xl lg:text-3xl droidserif font-bold m-2 mt-0 mb-0 w-full flex p-2">
+											<div className="text-2xl   droidserif font-bold m-2 mt-0 mb-0 w-full flex p-2">
 												{product.product_name}
 												<IconMinus className="w-8 h-8" />
 												{product.product_cost === 0 ? (
@@ -179,7 +179,7 @@ const Cart = () => {
 													</div>
 												)}
 											</div>
-											<div className="text-2xl md:text-2xl lg:text-3xl droidserif w-full flex gap-4 ml-4">
+											<div className="text-2xl   droidserif w-full flex gap-4 ml-4">
 												{product.volumes_present ? (
 													<div className="flex gap-4">
 														<div className="text-2xl">
@@ -370,7 +370,7 @@ const Cart = () => {
 						</div>
 						<div className="flex flex-col w-full">
 							<div className="flex justify-center w-full">
-								<div className="text-2xl md:text-2xl lg:text-3xl droidserif font-bold m-2 mt-0 w-full flex p-2">
+								<div className="text-2xl   droidserif font-bold m-2 mt-0 w-full flex p-2">
 									{beforeCheckoutProduct[0].product_name}
 									<IconMinus className="w-8 h-8" />
 									<IconCurrencyRupee className="w-8 h-8" />

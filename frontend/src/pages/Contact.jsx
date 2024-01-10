@@ -5,18 +5,18 @@ const Contact = () => {
 	return (
 		<div>
 			<section
-				className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
-				md:text-6xl  my-12"
+				className="flex flex-col p-4 m-8 justify-center items-center text-[4vw] bodoni
+				  my-12"
 				id="intro"
 			>
 				Contact
 			</section>
 
 			<div className="flex flex-col w-full gap-4 justify-center items-center">
-				<div className="text-4xl droidserif text-center">
+				<div className="text-[2vw] leading-tight droidserif text-center">
 					Call us (Monday - Friday)(9am - 6pm) +91 7666018928
 				</div>
-				<div className="text-4xl droidserif text-center">
+				<div className="text-[2vw] leading-tight droidserif text-center">
 					Reach us out on our Whatsapp : <br></br>
 					+91 766018928 <br></br>
 					Instagram : luxuriant_luxe or

@@ -53,7 +53,7 @@ export function DisplayCarousal(props) {
   // console.log("products b4 editing", products);
   // split products array into a new array that is an array of [3 products]
   products = products.reduce((resultArray, item, index) => {
-    const chunkIndex = Math.floor(index / 3);
+    const chunkIndex = Math.floor(index / 4);
 
     if (!resultArray[chunkIndex]) {
       resultArray[chunkIndex] = []; // start a new chunk
@@ -88,9 +88,7 @@ export function DisplayCarousal(props) {
       {products.map((product) => {
         return (
           <div
-            className={`mx-24 flex flex-row gap-0 bg-transparent p-10 ${
-              product.length < 3 ? "justify-start" : "justify-center"
-            }`}
+            className={`mx-24 flex flex-row gap-0 bg-transparent p-10 justify-center`}
           >
             {product[0] && (
               <EcommerceCard
