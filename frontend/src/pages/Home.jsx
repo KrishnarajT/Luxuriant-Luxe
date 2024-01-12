@@ -75,11 +75,11 @@ const Home = () => {
 			<section className="flex flex-col w-screen my-6 ">
 				<div className="flex justify-center flex-row">
 					<div
-						className="p-4 m-8 mb-0 justify-center items-start bodoni text-[2.8vw]
+						className="p-4 m-8 mb-0 justify-center items-start bodoni text-[4.5vw] leading-tight
 				"
 					>
 						LUXURIANT LUXE{" "}
-						<span className="montserrat italic text-[2.8vw]">
+						<span className="montserrat italic text-[4.5vw]">
 							Essentials
 						</span>
 					</div>
@@ -120,7 +120,7 @@ const Home = () => {
 			<section className="flex flex-col w-screen my-6 ">
 				<div className="flex justify-center flex-row">
 					<div
-						className="p-4 m-8 mb-0 justify-center items-start text-[2.8vw] montserrat
+						className="p-4 m-8 mb-0 justify-center items-start text-[4.5vw] leading-tight montserrat
 				 font-thin"
 					>
 						FEATURED ORGANIC CLEANSERS
@@ -162,7 +162,7 @@ const Home = () => {
 			<section className="flex flex-col w-screen my-6 ">
 				<div className="flex justify-center flex-row">
 					<div
-						className="p-4 m-8 mb-0 justify-center text-center items-center text-[2.8vw] bodoni
+						className="p-4 m-8 mb-0 justify-center text-center items-center text-[4.5vw] leading-tight bodoni
 				"
 					>
 						<span className="text-primary montserrat mx-4 text-center">
@@ -171,9 +171,9 @@ const Home = () => {
 					</div>
 				</div>
 				<div className="flex justify-center">
-					<div className="text-[4vw] bodoni tangerine text-center px-16 droidserif italic w-full translate-x-20">
+					<div className="text-[4.5vw] bodoni tangerine text-center px-16 droidserif italic w-full translate-x-20">
 						From us to your loved ones
-						<div className="bodoni text-right w-3/4 font-normal text-[3.5vw]">
+						<div className="bodoni text-right w-3/4 font-normal text-[3.5vw] leading-tight py-0 my-0 -translate-y-10 -translate-x-10">
 							~LL
 						</div>
 					</div>
