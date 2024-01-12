@@ -79,14 +79,14 @@ export function MiniDisplayCarousal(props) {
 				// 	className="!absolute top-2/4 left-6 -translate-y-2/4 w-24 h-24"
 				// >
 				<MaterialSymbolsArrowBackIos
-					className="text-black w-24 h-24 !absolute top-2/4 left-6 -translate-y-2/4 "
+					className="text-black w-[3vw] h-[3vw] !absolute top-2/4 left-6 -translate-y-2/4 "
 					onClick={handlePrev}
 				/>
 				// </IconButton>
 			)}
 			nextArrow={({ handleNext }) => (
 				<MaterialSymbolsArrowForwardIos
-					className="text-black w-24 h-24 !absolute top-2/4 !right-4 -translate-y-2/4"
+					className="text-black w-[3vw] h-[3vw] !absolute top-2/4 !right-4 -translate-y-2/4"
 					onClick={handleNext}
 				/>
 			)}
@@ -96,7 +96,7 @@ export function MiniDisplayCarousal(props) {
 			{products.map((product) => {
 				return (
 					<div
-						className={`mx-24 flex flex-row gap-0 bg-transparent p-10 py-0 ${
+						className={`mx-[1vw] flex flex-row gap-0 bg-transparent p-10 py-0 ${
 							product.length < 3
 								? "justify-start"
 								: "justify-center"

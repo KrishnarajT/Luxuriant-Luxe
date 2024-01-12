@@ -161,11 +161,11 @@ const Cart = () => {
 									</div>
 									<div className="flex flex-col w-full">
 										<div className="flex flex-col justify-center w-full">
-											<div className="text-2xl   droidserif font-bold m-2 mt-0 mb-0 w-full flex p-2">
+											<div className="text-[1.4vw] leading-tight   droidserif font-bold m-2 mt-0 mb-0 w-full flex p-2">
 												{product.product_name}
 												<IconMinus className="w-8 h-8" />
 												{product.product_cost === 0 ? (
-													<div className="text-2xl">
+													<div className="text-[1.4vw] leading-tight">
 														Free
 													</div>
 												) : (
@@ -179,10 +179,10 @@ const Cart = () => {
 													</div>
 												)}
 											</div>
-											<div className="text-2xl   droidserif w-full flex gap-4 ml-4">
+											<div className="text-[1.4vw] leading-tight   droidserif w-full flex gap-4 ml-4">
 												{product.volumes_present ? (
 													<div className="flex gap-4">
-														<div className="text-2xl">
+														<div className="text-[1.4vw] leading-tight">
 															{product.volumes_present
 																? product
 																		.selected_volume
@@ -195,7 +195,7 @@ const Cart = () => {
 													</div>
 												) : null}
 												{product.shades_present ? (
-													<div className="text-2xl">
+													<div className="text-[1.4vw] leading-tight">
 														Shade:{" "}
 														{product.selected_shade
 															?.shade_name
@@ -260,12 +260,12 @@ const Cart = () => {
 			{/* 2 free samples on purchase of more than 3k */}
 			<div>
 				<div className="flex justify-center uppercase ml-4 mt-4">
-					<div className="text-2xl bodoni font-semibold">
+					<div className="text-[1.4vw] leading-tight bodoni font-semibold">
 						Free Sample Over Every Purchase!
 					</div>
 				</div>
 				<div className="flex justify-center uppercase ml-4">
-					<div className="text-2xl bodoni font-semibold"></div>
+					<div className="text-[1.4vw] leading-tight bodoni font-semibold"></div>
 				</div>
 			</div>
 			{/* samples images that are clickable, upon clicking are added to cart */}
@@ -328,7 +328,7 @@ const Cart = () => {
 				<div>
 					{
 						<div className="flex justify-center uppercase ml-4">
-							<div className="text-2xl bodoni font-semibold my-4">
+							<div className="text-[1.4vw] leading-tight bodoni font-semibold my-4">
 								Recommended Products
 							</div>
 						</div>
@@ -338,7 +338,7 @@ const Cart = () => {
 			) : null}
 			{/* Before you checkout */}
 			<div className="flex justify-center uppercase ml-4">
-				<div className="text-2xl bodoni font-semibold mt-8">
+				<div className="text-[1.4vw] leading-tight bodoni font-semibold mt-8">
 					Before You Checkout!
 				</div>
 			</div>
@@ -370,7 +370,7 @@ const Cart = () => {
 						</div>
 						<div className="flex flex-col w-full">
 							<div className="flex justify-center w-full">
-								<div className="text-2xl   droidserif font-bold m-2 mt-0 w-full flex p-2">
+								<div className="text-[1.4vw] leading-tight   droidserif font-bold m-2 mt-0 w-full flex p-2">
 									{beforeCheckoutProduct[0].product_name}
 									<IconMinus className="w-8 h-8" />
 									<IconCurrencyRupee className="w-8 h-8" />
@@ -405,12 +405,14 @@ const Cart = () => {
 				</div>
 			) : null}
 			{/* Show Estimated Total */}
-			<div className="flex flex-col gap-4 uppercase ml-4 p-16">
+			<div className="flex flex-col gap-[1vh] uppercase ml-4 p-[1vw]">
 				{/* total */}
 				<div className="flex justify-between uppercase">
-					<div className="text-2xl bodoni font-semibold">Total</div>
+					<div className="text-[1.4vw] leading-tight bodoni font-semibold">
+						Total
+					</div>
 					<div className="flex justify-center uppercase ml-4">
-						<div className="text-2xl bodoni font-semibold flex items-center">
+						<div className="text-[1.4vw] leading-tight bodoni font-semibold flex items-center">
 							<IconCurrencyRupee className="w-8 h-8" />
 							{cartTotal}
 						</div>
@@ -418,13 +420,13 @@ const Cart = () => {
 				</div>
 				{/* points earned */}
 				<div className="flex justify-between uppercase">
-					<div className="text-2xl bodoni font-semibold">
+					<div className="text-[1.4vw] leading-tight bodoni font-semibold">
 						Points Earned
 					</div>
 					<div className="flex justify-center uppercase ml-4">
-						<div className="text-2xl bodoni font-semibold flex gap-4 items-center">
+						<div className="text-[1.4vw] leading-tight bodoni font-semibold flex gap-4 items-center">
 							<img
-								src={"https://i.imgur.com/CH68qjv.png"}
+								src={"https://i.imgur.com/1SEsKVo.png"}
 								className="w-8 h-8 object-center object-cover"
 							/>
 							{getCartPoints()}
@@ -433,13 +435,13 @@ const Cart = () => {
 				</div>
 				{/* your points */}
 				<div className="flex justify-between uppercase">
-					<div className="text-2xl bodoni font-semibold">
+					<div className="text-[1.4vw] leading-tight bodoni font-semibold">
 						Your Points
 					</div>
 					<div className="flex justify-center uppercase ml-4">
-						<div className="text-2xl bodoni font-semibold flex gap-4 items-center">
+						<div className="text-[1.4vw] leading-tight bodoni font-semibold flex gap-4 items-center">
 							<img
-								src={"https://i.imgur.com/CH68qjv.png"}
+								src={"https://i.imgur.com/1SEsKVo.png"}
 								className="w-8 h-8 object-center object-cover"
 							/>{" "}
 							{currentCustomerPoints}
@@ -448,11 +450,11 @@ const Cart = () => {
 				</div>
 				{/* discounts */}
 				<div className="flex justify-between uppercase">
-					<div className="text-2xl bodoni font-semibold">
+					<div className="text-[1.4vw] leading-tight bodoni font-semibold">
 						Discounts
 					</div>
 					<div className="flex justify-center uppercase ml-4">
-						<div className="text-2xl bodoni font-semibold flex gap-4 items-center">
+						<div className="text-[1.4vw] leading-tight bodoni font-semibold flex gap-4 items-center">
 							<IconMinus className="w-8 h-8" />
 							{currentCustomerPoints} / 10 ={" "}
 							<IconCurrencyRupee className="w-8 h-8" />{" "}
@@ -463,11 +465,11 @@ const Cart = () => {
 				{/* final total */}
 				<div className="outline h-1 w-full"></div>
 				<div className="flex justify-between uppercase">
-					<div className="text-2xl bodoni font-semibold">
+					<div className="text-[1.4vw] leading-tight bodoni font-semibold">
 						Final Total
 					</div>
 					<div className="flex justify-center uppercase ml-4">
-						<div className="text-2xl bodoni font-semibold flex gap-4 items-center">
+						<div className="text-[1.4vw] leading-tight bodoni font-semibold flex gap-4 items-center">
 							<IconCurrencyRupee className="w-8 h-8" />{" "}
 							{getDiscountedTotal()}
 						</div>

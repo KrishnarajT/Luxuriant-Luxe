@@ -12,6 +12,7 @@ import { Toaster, toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { IconStarFilled } from "@tabler/icons-react";
 import { useEffect } from "react";
+
 // Products is a list of such objects.
 // {
 //     "_id": "654cd992ae6a271afeed6b4d",
@@ -77,84 +78,87 @@ export function EcommerceCard(props) {
   const { addToCart } = React.useContext(CartContext);
   const navigate = useNavigate();
   return (
-    <Card
-      className={`w-[17vw] m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
-      // onClick={() => {
-      // 	navigate(`/product/${props.id}`);
-      // }}
-    >
-      <CardHeader
-        shadow={true}
-        floated={false}
-        className="h-[14vw] rounded-none m-0"
-        onClick={() => {
-          navigate(`/product/${props.id}`);
-        }}
-      >
-        <img
-          src={
-            isValidHttpUrl(props.image)
-              ? props.image
-              : "https://source.unsplash.com/random"
-          }
-          alt="card-image"
-          className="h-full w-full object-cover rounded-none"
-        />
-      </CardHeader>
-      <CardBody className="pb-2">
-        <div className="mb-2 text-center">
-          <Typography
-            color="blue-gray"
-            className={`font-medium uppercase text-2xl text-center self-center ${props.text}`}
-          >
-            LL <br></br>
-            {props.name}
-          </Typography>
-          <Typography
-            className={`font-normal text-xl text-center mt-4 break-words max-h-20 min-h-10 ${props.text}`}
-          >
-            {props.description.substring(0, 200)}...
-          </Typography>
-          <div className="flex justify-center p-1 pb-0">
-            <div className="flex">
-              {[1, 2, 3, 4, 5].map((star) => (
-                <IconStarFilled
-                  className={`w-10 h-10 ${
-                    star <= productStars ? "text-yellow-500" : "text-gray-300"
-                  }`}
-                />
-              ))}
-            </div>
-          </div>
-          {/* <Typography color="blue-gray" className="font-medium">
+		<Card
+			className={`w-[17vw] m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
+			// onClick={() => {
+			// 	navigate(`/product/${props.id}`);
+			// }}
+		>
+			<CardHeader
+				shadow={true}
+				floated={false}
+				className="h-[14vw] rounded-none m-0"
+				onClick={() => {
+					navigate(`/product/${props.id}`);
+				}}
+			>
+				<img
+					src={
+						isValidHttpUrl(props.image)
+							? props.image
+							: "https://source.unsplash.com/random"
+					}
+					alt="card-image"
+					className="h-full w-full object-cover rounded-none"
+				/>
+			</CardHeader>
+			<CardBody className="pb-2">
+				<div className="mb-2 text-center">
+					<Typography
+						color="blue-gray"
+						className={`font-medium uppercase text-[1.3vw] ${props.text}`}
+					>
+						LL <br></br>
+						{props.name}
+					</Typography>
+					<Typography
+						className={`font-normal text-[0.9vw] leading-tight text-left mt-4 break-words max-h-[4vw] min-h-[2vw] ${props.text} min-h-[4vw]`}
+						style={{ hyphens: "auto", wordBreak: "break-word" }}
+					>
+						{props.description.substring(0, 90)}...
+					</Typography>
+					<div className="flex justify-center pt-2 pb-0">
+						<div className="flex">
+							{[1, 2, 3, 4, 5].map((star) => (
+								<IconStarFilled
+									className={`w-[2vw] h-[2vw] ${
+										star <= productStars
+											? "text-yellow-500"
+											: "text-gray-300"
+									}`}
+								/>
+							))}
+						</div>
+					</div>
+					{/* <Typography color="blue-gray" className="font-medium">
 						₹{props.price}
 					</Typography> */}
-        </div>
-      </CardBody>
-      <CardFooter className="pt-0">
-        <Button
-          ripple={true}
-          fullWidth={true}
-          className={`${props.cart_color} ${props.cart_text} shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100 text-xl`}
-          onClick={() => {
-            addToCart(props.id);
-            // show side cart
-            document.getElementById("my-drawer").checked = true;
+				</div>
+			</CardBody>
+			<CardFooter className="pt-0">
+				<Button
+					ripple={true}
+					fullWidth={true}
+					className={`${props.cart_color} ${props.cart_text} shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100 text-[1.1vw] leading-tight`}
+					onClick={() => {
+						addToCart(props.id);
+						// show side cart
+						document.getElementById("my-drawer").checked = true;
 
-            // toast
-            toast.success("Added to cart", {
-              duration: 4000,
-              style: {
-                borderRadius: "10px",
-                // background: "#ca8f6d",
-                // color: "#000000",
-              },
-            });
-          }}
-        >
-          Add to Cart ₹{props.price}
-        </Button>
-      </CardFooter>
-    </Card>
+						// toast
+						toast.success("Added to cart", {
+							duration: 4000,
+							style: {
+								borderRadius: "10px",
+								// background: "#ca8f6d",
+								// color: "#000000",
+							},
+						});
+					}}
+				>
+					Add to Cart ₹{props.price}
+				</Button>
+			</CardFooter>
+		</Card>
   );
 }

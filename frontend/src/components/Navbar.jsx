@@ -56,7 +56,7 @@ export function Navbar(props) {
 	return (
 		<div className="z-50">
 			<div
-				className={`navbar bg-transparent text-base-content flex-row-reverse justify-end h-40 md:flex-row md:h-32`}
+				className={`navbar bg-transparent text-base-content flex-row-reverse justify-end h-[6.5vw] md:flex-row`}
 			>
 				{/* hair skin and cosmetics */}
 				<div>
@@ -140,9 +140,9 @@ export function Navbar(props) {
 					<div className="hidden md:flex items-center justify-center">
 						<ul className="menu menu-horizontal px-1">
 							<li className="text-lg md:text-xl flex justify-center items-center">
-								<label className="bg-transparent border-none w-fit flex items-center justify-center text-[1.6vw]">
+								<label className="bg-transparent border-none w-fit flex items-center justify-center text-[1.6vw] px-1">
 									INR
-									<IconCurrencyRupee className="w-8 h-8 px-0 mx-0" />
+									<IconCurrencyRupee className="w-[2vw] h-[2vw] px-0 mx-0" />
 								</label>
 							</li>
 							<li className="text-lg md:text-xl flex icons-center justify-center">
@@ -151,18 +151,18 @@ export function Navbar(props) {
 									className="bg-transparent border-none w-fit flex items-center justify-center px-3"
 									onClick={() => navigate("/search")}
 								>
-									<IconSearch className="w-9 h-9" />
+									<IconSearch className="w-[2vw] h-[2vw]" />
 								</label>
 							</li>
 							<li className="text-lg md:text-xl flex justify-center items-center">
 								<label
 									htmlFor="my-drawer"
 									id="cartlabel"
-									className="bg-transparent border-none w-20 flex items-center justify-center px-0"
+									className="bg-transparent border-none w-[4vw] flex items-center justify-center px-0"
 								>
 									<img
-										src="https://i.imgur.com/oOMEXgs.png"
-										className="w-10 h-12"
+										src="https://i.imgur.com/rceLsGT.png"
+										className="h-[2.4vw]"
 									/>
 								</label>
 							</li>
@@ -176,7 +176,7 @@ export function Navbar(props) {
 						<li>
 							<details className="w-fit">
 								<summary className="text-md md:text-xl text-base-content">
-									<IconMenu2 className="w-6 h-6 text-base-content" />
+									<IconMenu2 className="w-[1vw] h-[1vw] text-base-content" />
 								</summary>
 								<ul className="p-2 bg-base-100 text-base-content z-50 flex flex-wrap flex-col w-fit gap-2">
 									<li className="text-md md:text-xl whitespace-nowrap flex-nowrap w-36">
@@ -185,7 +185,7 @@ export function Navbar(props) {
 											id="contact_element"
 											className="hover:text-base-content"
 										>
-											<IconHome className="w-6 h-6" />
+											<IconHome className="w-[1vw] h-[1vw]" />
 											Home
 										</NavLink>
 									</li>
@@ -195,19 +195,19 @@ export function Navbar(props) {
 											id="contact_element"
 											className="hover:text-base-content"
 										>
-											<IconShoppingBag className="w-6 h-6" />
+											<IconShoppingBag className="w-[1vw] h-[1vw]" />
 											Products
 										</NavLink>
 									</li>
 
 									<li className="text-md md:text-xl">
-										<IconShoppingCart className="w-6 h-6 drawer-toggle" />
+										<IconShoppingCart className="w-[1vw] h-[1vw] drawer-toggle" />
 										Cart
 									</li>
 									<li className="menu menu-horizontal px-1 py-0 ">
 										<details>
 											<summary className="text-md md:text-xl text-base-content">
-												<IconBrush className="w-6 h-6" />
+												<IconBrush className="w-[1vw] h-[1vw]" />
 												Theme
 											</summary>
 											<ul className="p-2 bg-base-100 text-base-content">
@@ -219,7 +219,7 @@ export function Navbar(props) {
 													}
 												>
 													<a>
-														<IconSun className="w-6 h-6" />
+														<IconSun className="w-[1vw] h-[1vw]" />
 														Light
 													</a>
 												</li>
@@ -231,7 +231,7 @@ export function Navbar(props) {
 													}
 												>
 													<a>
-														<IconMoon className="w-6 h-6" />
+														<IconMoon className="w-[1vw] h-[1vw]" />
 														Dark
 													</a>
 												</li>
@@ -241,7 +241,7 @@ export function Navbar(props) {
 									<li className="menu menu-horizontal px-1 py-0">
 										<details>
 											<summary className="text-md md:text-xl text-base-content">
-												<IconUserBolt className="w-6 h-6 text-base-content" />
+												<IconUserBolt className="w-[1vw] h-[1vw] text-base-content" />
 												Account
 											</summary>
 											<ul className="p-2 bg-base-100 text-base-content">
@@ -251,7 +251,7 @@ export function Navbar(props) {
 														id="contact_element"
 														className="hover:text-base-content"
 													>
-														<IconLogout className="w-6 h-6" />
+														<IconLogout className="w-[1vw] h-[1vw]" />
 														Logout
 													</NavLink>
 												</li>

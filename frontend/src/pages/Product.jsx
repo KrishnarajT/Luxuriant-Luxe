@@ -254,7 +254,7 @@ const Product = () => {
 								.filter((image) => image)
 								.map((image) => (
 									<img
-										className="w-28 h-28 max-h-28 aspect-square rounded-xl outline outline-1 hover:scale-105 transition-all duration-200"
+										className="w-[6vw] h-[6vw] max-h-[6vw] aspect-square rounded-xl outline outline-1 hover:scale-105 transition-all duration-200"
 										src={image}
 										alt="product preview"
 										onClick={() => {
@@ -273,7 +273,7 @@ const Product = () => {
 							<img
 								src={selectedImage}
 								alt="product image"
-								className="w-full max-h-[45rem] object-cover rounded-xl object-top p-0"
+								className="w-full max-h-[35vw] min-h-[35vw] object-cover rounded-xl object-top p-0"
 							/>
 						</div>
 					</div>
@@ -285,7 +285,7 @@ const Product = () => {
 							<div>
 								<div className="text-sm breadcrumbs">
 									<ul>
-										<li className="text-2xl droidserif">
+										<li className="text-[1.4vw] leading-tight droidserif">
 											{" "}
 											{product.product_category && (
 												<a
@@ -301,7 +301,7 @@ const Product = () => {
 												</a>
 											)}{" "}
 										</li>
-										<li className="text-2xl droidserif">
+										<li className="text-[1.4vw] leading-tight droidserif">
 											{product.product_name !== "" && (
 												<div>
 													<div className="droidserif">
@@ -315,14 +315,14 @@ const Product = () => {
 							</div>
 							{/* Product name */}
 							<div>
-								<div className="text-5xl droidserif">
+								<div className="text-[2.5vw] droidserif">
 									{product.product_name.toUpperCase()}
 								</div>
 							</div>
 							{/* Product Volume */}
 							{product.volumes_present ? (
 								<div>
-									<div className="text-2xl droidserif">
+									<div className="text-[1.4vw] leading-tight droidserif">
 										{product.product_volumes !== "" && (
 											<div>
 												<div className="droidserif">
@@ -343,7 +343,7 @@ const Product = () => {
 							{/* Product Shade Names*/}
 							{product.shades_present ? (
 								<div>
-									<div className="text-2xl droidserif">
+									<div className="text-[1.4vw] leading-tight droidserif">
 										{product.product_shades !== "" && (
 											<div>
 												<div className="droidserif flex flex-row gap-2">
@@ -356,7 +356,7 @@ const Product = () => {
 																	backgroundColor: `#${selectedProductShade.shade_color}`,
 																}}
 															></div>
-															<div className="text-2xl droidserif">
+															<div className="text-[1.4vw] leading-tight droidserif">
 																{
 																	selectedProductShade.shade_name
 																}
@@ -418,7 +418,7 @@ const Product = () => {
 									/>
 								))}
 
-								<div className="text-2xl droidserif self-center">
+								<div className="text-[1.4vw] leading-tight droidserif self-center">
 									{product.product_reviews.length} reviews
 								</div>
 							</div>
@@ -525,13 +525,13 @@ const Product = () => {
 								</button>
 							</div>
 							<div>
-								<div className="text-2xl droidserif uppercase">
+								<div className="text-[1.4vw] leading-tight droidserif uppercase">
 									Earn {product.points_awarded} Reward Points!
 								</div>
 							</div>
 							{/* Show product in stock or not */}
 							<div className="">
-								<div className="text-2xl droidserif">
+								<div className="text-[1.4vw] leading-tight droidserif">
 									{product.product_quantity > 0 ? (
 										<div className="text-green-500">
 											In Stock
@@ -546,11 +546,11 @@ const Product = () => {
 							{/* Product Details, which will show description, visible upon clicking +, collapses after clicking - */}
 							<div className="flex flex-col gap-2">
 								<div className="flex flex-row gap-2 items-center">
-									<div className="text-2xl droidserif">
+									<div className="text-[1.4vw] leading-tight droidserif">
 										Details
 									</div>
 									<div
-										className="text-2xl droidserif"
+										className="text-[1.4vw] leading-tight droidserif"
 										onClick={() => {
 											setDetailsVisible(!detailsVisible);
 										}}
@@ -563,7 +563,7 @@ const Product = () => {
 									</div>
 								</div>
 								{detailsVisible && (
-									<div className="text-2xl droidserif">
+									<div className="text-[1.4vw] leading-tight droidserif">
 										{product.product_description
 											.product_description !== "" && (
 											<div>
@@ -578,11 +578,11 @@ const Product = () => {
 							{/* Ingredients, visible upon clicking +, collapses after clicking - */}
 							<div className="flex flex-col gap-2">
 								<div className="flex flex-row gap-2 items-center">
-									<div className="text-2xl droidserif">
+									<div className="text-[1.4vw] leading-tight droidserif">
 										Ingredients
 									</div>
 									<div
-										className="text-2xl droidserif"
+										className="text-[1.4vw] leading-tight droidserif"
 										onClick={() => {
 											setIngredientsVisible(
 												!ingredientsVisible
@@ -597,7 +597,7 @@ const Product = () => {
 									</div>
 								</div>
 								{ingredientsVisible && (
-									<div className="text-2xl droidserif">
+									<div className="text-[1.4vw] leading-tight droidserif">
 										{product.product_ingredients !== "" && (
 											<div>
 												<div className="droidserif">
@@ -616,25 +616,25 @@ const Product = () => {
 								{/* 1st SVG */}
 								<div className="flex flex-col gap-2">
 									<img
-										src="https://i.imgur.com/bra0upp.png"
+										src="https://i.imgur.com/H2nJvEF.png"
 										alt="external-cruelty-free-vegan-and-vegetarian-flaticons-flat-flat-icons-2"
-										className="w-28 h-28 max-h-28"
+										className="w-[6vw] h-[6vw] max-h-[6vw]"
 									/>
 								</div>
 								{/* 2nd SVG */}
 								<div className="flex flex-col gap-2">
 									<img
-										src="https://i.imgur.com/yuQEOcA.png"
+										src="https://i.imgur.com/uZcdBf0.png"
 										alt="Image 2"
-										className="w-24 h-24"
+										className="w-[6vw] h-[6vw] max-h-[6vw]"
 									/>
 								</div>
 								{/* 3rd SVG */}
 								<div className="flex flex-col gap-2">
 									<img
-										src="https://i.imgur.com/PssWLjE.png"
+										src="https://i.imgur.com/Wy6KSH0.png"
 										alt="Image 3"
-										className="w-[5.5rem] h-[6rem]"
+										className="w-[5.5vw] h-[6vw] max-h-[6vw]"
 									/>
 								</div>
 							</div>
@@ -659,10 +659,10 @@ const Product = () => {
 						<div className="flex-1 flex justify-center ">
 							<div className=" w-full flex flex-col items-end p-8 m-4 mr-10 rounded-3xl">
 								<div className="bg-white/60 flex flex-col w-full h-full rounded-3xl p-8 items-center">
-									<div className="text-5xl droidserif font-bold uppercase text-center">
+									<div className="text-[2.5vw] droidserif font-bold uppercase text-center">
 										Mystique behind our admiration.
 									</div>
-									<div className="text-4xl italic droidserif my-8">
+									<div className="text-[1.7vw] text-center leading-tight italic droidserif my-8">
 										{
 											product.product_description
 												.product_description
@@ -690,10 +690,10 @@ const Product = () => {
 						<div className="flex-1 flex justify-center ">
 							<div className=" w-full flex flex-col items-end p-8 m-4 mr-10 rounded-3xl">
 								<div className="bg-white/60 flex flex-col w-full h-full rounded-3xl p-8 items-center">
-									<div className="text-5xl droidserif font-bold uppercase text-center">
+									<div className="text-[2.5vw] droidserif font-bold uppercase text-center">
 										Real Results
 									</div>
-									<div className="text-4xl italic droidserif my-8 text-center">
+									<div className="text-[1.7vw] text-center leading-tight italic droidserif my-8 text-center">
 										{
 											product.product_description
 												.real_results_description
@@ -707,12 +707,12 @@ const Product = () => {
 					{/* How to Use */}
 					<div className="flex flex-row justify-between ">
 						{product.product_image_links && (
-							<div className="w-1/2 flex justify-center p-8 m-4">
+							<div className="w-1/2 flex justify-center p-8 m-4 max-h-[50rem]">
 								<div className="aspect-square">
 									<ProductCarousel
 										images={
 											product.product_image_links
-												.description_images
+												.how_to_use_images
 										}
 									/>
 								</div>
@@ -721,10 +721,10 @@ const Product = () => {
 						<div className="flex-1 flex justify-center ">
 							<div className=" w-full flex flex-col items-end p-8 m-4 mr-10 rounded-3xl">
 								<div className="bg-white/60 flex flex-col w-full h-full rounded-3xl p-8 items-center">
-									<div className="text-5xl droidserif font-bold uppercase">
-										How to Use
+									<div className="text-[2.5vw] droidserif font-bold uppercase text-center">
+										Mystique behind our admiration.
 									</div>
-									<div className="text-4xl italic droidserif my-8">
+									<div className="text-[1.7vw] text-center leading-tight italic droidserif my-8">
 										{
 											product.product_description
 												.how_to_use_description
@@ -738,7 +738,7 @@ const Product = () => {
 
 				{/* Reviews */}
 				<section
-					className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
+					className="flex flex-col p-4 m-8 justify-center items-center text-[2vw] leading-tight bodoni
 				 uppercase"
 					id="intro"
 				>
@@ -772,7 +772,7 @@ const Product = () => {
 						productReviews.map((review) => (
 							<div className="flex flex-col gap-4 p-4 mx-16 bg-transparent rounded-3xl my-2">
 								<div className="flex flex-col items-start justify-start">
-									<div className="text-2xl droidserif flex">
+									<div className="text-[1.4vw] leading-tight droidserif flex">
 										{[1, 2, 3, 4, 5].map((star) => (
 											<IconStarFilled
 												className={`w-8 h-8 ${
@@ -783,15 +783,15 @@ const Product = () => {
 											/>
 										))}
 									</div>
-									<div className="text-4xl droidserif italic text-brown-300 font-bold mt-2">
+									<div className="text-[2vw] leading-tight droidserif italic text-brown-300 font-bold mt-2">
 										{review.username}
 									</div>
-									<div className="text-3xl my-2 droidserif">
+									<div className="text-[1.4vw] my-2 droidserif">
 										{review.review}
 									</div>
 								</div>
 								<div className="flex flex-row justify-between">
-									<div className="text-3xl droidserif">
+									<div className="text-[1.4vw] droidserif">
 										{review.review_date}
 									</div>
 								</div>
@@ -801,7 +801,7 @@ const Product = () => {
 
 				{/* You may also like */}
 				<section
-					className="flex flex-col p-4 m-8 justify-center items-center text-4xl bodoni
+					className="flex flex-col p-4 m-8 justify-center items-center text-[2vw] leading-tight bodoni
 				 uppercase"
 					id="intro"
 				>
@@ -819,11 +819,11 @@ const Product = () => {
 							<form method="dialog" className="w-full">
 								<div className="flex flex-col justify-between w-full">
 									<div>
-										<label className="text-2xl droidserif my-2">
+										<label className="text-[1.4vw] leading-tight droidserif my-2">
 											Review title
 										</label>
 									</div>
-									<div className="text-2xl droidserif w-full">
+									<div className="text-[1.4vw] leading-tight droidserif w-full">
 										<input
 											type="text"
 											className="input input-bordered w-full"
@@ -838,11 +838,11 @@ const Product = () => {
 										/>
 									</div>
 									<div>
-										<label className="text-2xl droidserif my-2">
+										<label className="text-[1.4vw] leading-tight droidserif my-2">
 											Review
 										</label>
 									</div>
-									<div className="text-2xl droidserif w-full">
+									<div className="text-[1.4vw] leading-tight droidserif w-full">
 										<input
 											type="text"
 											className="input input-bordered w-full"
@@ -857,11 +857,11 @@ const Product = () => {
 										/>
 									</div>
 									<div>
-										<label className="text-2xl droidserif my-2">
+										<label className="text-[1.4vw] leading-tight droidserif my-2">
 											Rate on 5!
 										</label>
 									</div>
-									<div className="text-2xl droidserif">
+									<div className="text-[1.4vw] leading-tight droidserif">
 										<input
 											type="number"
 											className="input input-bordered"
@@ -879,7 +879,7 @@ const Product = () => {
 									</div>
 								</div>
 								<div className="flex flex-row justify-between">
-									<div className="text-2xl droidserif">
+									<div className="text-[1.4vw] leading-tight droidserif">
 										<button
 											className="btn btn-primary my-4"
 											onClick={() => {

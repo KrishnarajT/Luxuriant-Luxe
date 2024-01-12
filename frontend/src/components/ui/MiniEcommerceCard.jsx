@@ -68,7 +68,7 @@ export function MiniEcommerceCard(props) {
   const navigate = useNavigate();
   return (
     <Card
-      className={`w-40 m-4 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
+      className={`w-[9vw] mx-[0.5vw] my-5 hover:scale-105 transition-all duration-300 ${props.color} ${props.text} rounded-none`}
       // onClick={() => {
       // 	navigate(`/product/${props.id}`);
       // }}
@@ -76,7 +76,7 @@ export function MiniEcommerceCard(props) {
       <CardHeader
         shadow={true}
         floated={false}
-        className="max-h-32 min-h-32 rounded-none m-0"
+        className="max-h-[8vw] min-h-[8vw] rounded-none m-0"
         onClick={() => {
           navigate(`/product/${props.id}`);
           document.getElementById("my-drawer").checked = false;
@@ -92,16 +92,15 @@ export function MiniEcommerceCard(props) {
         <div className="mb-2 text-center">
           <Typography
             color="blue-gray"
-            className={`font-medium uppercase text-xl text-center self-center ${props.text}`}
+            className={`font-medium uppercase text-[0.9vw] min-h-[3vw] leading-tight text-center self-center ${props.text}`}
           >
-            LL <br></br>
             {props.name}
           </Typography>
           <div className="flex justify-center p-1 pb-0">
             <div className="flex">
               {[1, 2, 3, 4, 5].map((star) => (
                 <IconStarFilled
-                  className={`w-6 h-6 ${
+                  className={`w-[1vw] h-[1vw] ${
                     star <= productStars ? "text-yellow-500" : "text-gray-300"
                   }`}
                 />
@@ -124,7 +123,7 @@ export function MiniEcommerceCard(props) {
 				<Button
 					ripple={true}
 					fullWidth={true}
-					className={`${props.cart_color} ${props.cart_text} shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100 text-xl`}
+					className={`${props.cart_color} ${props.cart_text} shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100 text-[1.1vw] min-h-16 leading-tight`}
 					onClick={() => {
 						addToCart(props.id);
 						// show side cart

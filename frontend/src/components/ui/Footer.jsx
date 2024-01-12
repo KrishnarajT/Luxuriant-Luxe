@@ -208,13 +208,13 @@ const Footer = () => {
 			<nav className="text-secondary-content">
 				<div className="flex flex-wrap justify-center items-center gap-16 w-2/3 lg:w-fit">
 					<a href="https://wa.me/917666018928?text=Welcome%20to%20Luxuriant%20Luxe!%20How%20can%20we%20assist%20you%20today%3F%20">
-						<IconBrandWhatsapp className="w-14 h-14" />
+						<IconBrandWhatsapp className="w-[2vw] h-[2vw]" />
 					</a>
 					<a href="https://www.instagram.com/luxuriant_luxe">
-						<IconBrandInstagram className="w-14 h-14" />
+						<IconBrandInstagram className="w-[2vw] h-[2vw]" />
 					</a>
 					<a href="https://www.facebook.com/profile.php?id=61551508050876">
-						<IconBrandFacebook className="w-14 h-14" />
+						<IconBrandFacebook className="w-[2vw] h-[2vw]" />
 					</a>
 					{/*<a*/}
 					{/*	href=""*/}
@@ -222,7 +222,7 @@ const Footer = () => {
 					{/*	<IconBrandTelegram className="w-8 h-8"/>*/}
 					{/*</a>*/}
 					<a href="https://www.linkedin.com/in/luxuriant-luxe-1b852a292">
-						<IconBrandLinkedin className="w-14 h-14" />
+						<IconBrandLinkedin className="w-[2vw] h-[2vw]" />
 					</a>
 					<a
 						onClick={() => {
@@ -230,7 +230,7 @@ const Footer = () => {
 								"mailto:luxeluxuriant@gmail.com";
 						}}
 					>
-						<IconMail className="w-14 h-14" />
+						<IconMail className="w-[2vw] h-[2vw]" />
 					</a>
 					<a
 						onClick={
@@ -240,7 +240,7 @@ const Footer = () => {
 							}
 						}
 					>
-						<IconPhoneCall className="w-14 h-14" />
+						<IconPhoneCall className="w-[2vw] h-[2vw]" />
 					</a>
 					<ScrollToTopButton />
 				</div>
